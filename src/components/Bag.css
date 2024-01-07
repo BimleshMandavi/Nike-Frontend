@@ -1,0 +1,37 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.bag-container{
+    height: 100%;
+    width: 100%;
+    border-bottom: 2px solid #e5e5e5;
+}
+.bag-items{
+    display: flex;
+    justify-content: space-between;
+}
+img{
+   height: 150px;
+   width: 150px;
+}
+.right-part{
+    display: flex;
+    justify-content: space-around;
+    gap: 25px;
+}
+.item-btns{
+    display: flex;
+    justify-content: flex-start;
+    height: 24px;
+    width: 24px;
+}
+.btns{
+    height: 24px;
+    width: 24px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+.left-part{
+    margin-left: 145px;
+}

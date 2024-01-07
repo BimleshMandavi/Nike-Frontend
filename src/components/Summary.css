@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin: 0;
+   
+}
+.summary-container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+        vertical-align: top;
+            margin-bottom: 16px;
+            padding-left: 8px;
+            padding-right: 8px;
+}
+.sum-heading{
+    font-size: 24px;
+    font-family: "Helvetica Now Text",Helvetica,Arial,sans-serif;
+        margin: 0 0 24px;
+        color: #111111;
+
+}
+.prices{
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-family: "Helvetica Now Text",
+        Helvetica,
+        Arial,
+        sans-serif;
+        color: #111111;
+        margin: 0 0 8px;
+}
+.delevery-info{
+    display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        font-family: "Helvetica Now Text",
+            Helvetica,
+            Arial,
+            sans-serif;
+        color: #111111;
+        margin: 0 0 10px;
+        padding-bottom: 12px;
+        gap: 50px;
+        border-bottom: 2px solid #e5e5e5;
+}
+.price-total{
+    display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        font-family: "Helvetica Now Text",
+            Helvetica,
+            Arial,
+            sans-serif;
+        color: #111111;
+        margin:12px 0px;
+        padding: 16px 0px;
+        border-bottom: 2px solid #e5e5e5;
+}
+.chekout-btns{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 15px 0;
+}
+.guest-btn{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 4px;
+    height: 38px;
+   
+}
+.member-btn{
+    display: flex;
+        justify-content: flex-end;
+        margin-bottom: 4px;
+        height: 38px;   
+}
+.final-btns{
+    
+    color: #ffffff;
+    background-color: #111111;
+    border: none;
+    border-radius:  20px;
+    width: 50%;
+    cursor: pointer;
+}
+.final-btns:hover{
+    color: #cfcccc;
+}

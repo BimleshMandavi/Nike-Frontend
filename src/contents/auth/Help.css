@@ -1,0 +1,38 @@
+*{
+    padding: 0;
+    margin: 0;
+
+}
+.help-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+   background-color: #ffff;
+}
+.help-container >a {
+
+    text-decoration: none;
+}
+.search-container a{
+    display: flex;
+    text-decoration: none;
+
+}
+.headline-1 > a{
+    text-decoration: none;
+    
+}
+.search-input .search-icon{
+    display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+}
+.help-body-cont{
+
+}
+.cont-1{
+
+}
