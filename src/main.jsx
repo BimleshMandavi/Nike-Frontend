@@ -39,11 +39,11 @@ const router = createBrowserRouter([
         path: "/pre-cart",
         element: <PreBag />,
       },
-      {
-        path: "/checkout",
-        element: <Checkout />,
-      },
     ],
+  },
+  {
+    path: "/checkout",
+    element: <Checkout />,
   },
 ]);
 

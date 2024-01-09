@@ -6,13 +6,22 @@ import { Box, Typography, TextField } from "@mui/material";
 
 const SignUp = () => {
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems:"center" }}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Box
         className="Main_box"
         sx={{ width: { lg: "460px", md: "460px", sm: "460px", xs: "90%" } }}
       >
-        <Box className="Logo" sx={{ marginTop: "46px", height:"50px",width:"50px" }}>
-          <SiNike  className="logo-01" sx={{height:"48px",width:"48px"}}/>
+        <Box
+          className="Logo"
+          sx={{ marginTop: "46px", height: "50px", width: "50px" }}
+        >
+          <SiNike className="logo-01" sx={{ height: "48px", width: "48px" }} />
           <SiJordan />
         </Box>
 
@@ -54,6 +63,7 @@ const SignUp = () => {
               padding: "15px",
               backgroundColor: "black",
               borderRadius: "30px",
+              cursor: "pointer",
             }}
             onClick={() => {
               console.log("Submit button has been clicked");

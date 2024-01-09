@@ -13,7 +13,7 @@ const Navbar_1 = () => {
       </div>
       <div className="user-menu nav-links">
         <div className="user-menu-items">
-          <Link to="/find-a-store">Find a Store</Link>|
+          <Link to="https://www.nike.com/in/retail">Find a Store</Link>|
           <Link to="/help">Help</Link>|<Link to="/sign-up">Join Us</Link>|
           <Link to="/sign-up">Sign in</Link>
         </div>
