@@ -1,10 +1,14 @@
 import { FaRegHeart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const PreBag = () => {
+  const navigate = useNavigate();
   const handleAddtoFav = () => {
     console.log("Item added to Fav");
   };
-  const handleAddToBag = () => {};
+  const handleAddToBag = () => {
+    navigate("/bag");
+  };
   const items = {
     id: "001",
     image: "img1.png",
@@ -19,7 +23,7 @@ const PreBag = () => {
   };
 
   return (
-    <div className="main-pre-container">
+    <div className="main-pre-container " style={{ overflow: "hidden" }}>
       <div
         className="pre-bag-container"
         style={{

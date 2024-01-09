@@ -3,7 +3,11 @@
     padding: 0;
     margin: 0;
 }
+.product-container{
+    overflow: hidden;
+}
 .product-img{
     height: 430px;
     width: 430px;
+    
 }

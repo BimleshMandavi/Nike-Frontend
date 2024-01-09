@@ -4,6 +4,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { ImInstagram } from "react-icons/im";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -12,10 +13,12 @@ function Footer() {
         <div className="hf-accordion-body">
           <ul>
             <li className="footer-link">
-              <a href="#">FIND A STORE</a>
+              <a href="https://www.nike.com/in/retail">FIND A STORE</a>
             </li>
             <li className="footer-link">
-              <a href="#">BECOME A MEMBER</a>
+              <a href="https://accounts.nike.com/lookup?client_id=4fd2d5e7db76e0f85a6bb56721bd51df&redirect_uri=https://www.nike.com/auth/login&response_type=code&scope=openid%20nike.digital%20profile%20email%20phone%20flow%20country&state=435d2c2b0c804008826debbf06af93ed&code_challenge=C6rQnvhcHFaAM7fBq2PWLt8rGY643aauhJ-e43o_8pU&code_challenge_method=S256">
+                BECOME A MEMBER
+              </a>
             </li>
             <li className="footer-link">
               <a href="#">Send Us Feedback</a>
@@ -25,68 +28,82 @@ function Footer() {
         <div className="hf-accordion-body">
           <ul>
             <li className="footer-link">
-              <a href="#">GET HELP</a>
+              <a href="https://www.nike.com/in/help">GET HELP</a>
             </li>
             <li className="footer-linkes">
-              <a href="#">Order Status</a>
+              <a href="https://www.nike.com/orders/details/">Order Status</a>
             </li>
             <li className="footer-linkes">
-              <a href="#">Delivery</a>
+              <a href="https://www.nike.com/in/help/a/shipping-delivery-gs">
+                Delivery
+              </a>
             </li>
             <li className="footer-linkes">
-              <a href="#">Returns</a>
+              <a href="https://www.nike.com/in/help/a/returns-policy-gs">
+                Returns
+              </a>
             </li>
             <li className="footer-linkes">
-              <a href="#">Payment Options</a>
+              <a href="https://www.nike.com/in/help/a/payment-options-gs">
+                Payment Options
+              </a>
             </li>
             <li className="footer-linkes">
-              <a href="#">Contact Us On Nike.com Inquiries</a>
+              <a href="https://www.nike.com/in/help/#contact">
+                Contact Us On Nike.com Inquiries
+              </a>
             </li>
             <li className="footer-linkes">
-              <a href="#">Contact Us On All Other Inquiries</a>
+              <a href="https://www.nike.com/in/help/a/india-consumer-care-policy">
+                Contact Us On All Other Inquiries
+              </a>
             </li>
           </ul>
         </div>
         <div className="hf-accordion-body">
           <ul>
             <li className="footer-link">
-              <a href="#">ABOUT NIKE</a>
+              <a href="https://about.nike.com/en">ABOUT NIKE</a>
             </li>
             <li className="footer-linkes">
-              <a href="#">News</a>
+              <a href="https://about.nike.com/en/newsroom">News</a>
             </li>
             <li className="footer-linkes">
-              <a href="#">Careers</a>
+              <a href="https://jobs.nike.com/">Careers</a>
             </li>
             <li className="footer-linkes">
-              <a href="#">Investors</a>
+              <a href="https://investors.nike.com/Home/default.aspx">
+                Investors
+              </a>
             </li>
             <li className="footer-linkes">
-              <a href="#">Sustainability</a>
+              <a href="https://www.nike.com/in/sustainability">
+                Sustainability
+              </a>
             </li>
           </ul>
         </div>
 
         <ul className="social-links">
           <li className="social-icons">
-            <a href="#">
+            <Link to="https://twitter.com/Nike">
               <FaTwitter className="social-link-icon" />
-            </a>
+            </Link>
           </li>
           <li className="social-icons">
-            <a href="#">
+            <Link to="https://www.facebook.com/nike">
               <FaFacebookF className="social-link-icon" />
-            </a>
+            </Link>
           </li>
           <li className="social-icons">
-            <a href="#">
+            <Link to="https://www.youtube.com/user/nike">
               <TiSocialYoutubeCircular className="social-link-icon" />
-            </a>
+            </Link>
           </li>
           <li className="social-icons">
-            <a href="#">
+            <Link to="https://www.instagram.com/nike">
               <ImInstagram className="social-link-icon" />
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -108,13 +125,19 @@ function Footer() {
               <a href="/">Guides</a>
             </li>
             <li>
-              <a href="#">Terms of Sale</a>
+              <Link to="https://www.eshopworld.com/shoppers/help/retailer/nike/terms-and-conditions-of-sale-en/">
+                Terms of Sale
+              </Link>
             </li>
             <li>
-              <a href="#">Terms of Use</a>
+              <Link to="https://agreementservice.svs.nike.com/in/en_gb/rest/agreement?agreementType=termsOfUse&uxId=com.nike&country=IN&language=en&requestType=redirect">
+                Terms of Use
+              </Link>
             </li>
             <li>
-              <a href="#">Nike Privacy Policy</a>
+              <Link to="https://agreementservice.svs.nike.com/sg/en_gb/rest/agreement?agreementType=privacyPolicy&uxId=com.nike.unite&country=SG&language=en&requestType=redirect">
+                Nike Privacy Policy
+              </Link>
             </li>
           </ul>
         </div>

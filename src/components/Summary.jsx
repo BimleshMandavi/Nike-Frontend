@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import "./Summary.css";
 
 const Summary = () => {
+  const navigate = useNavigate();
+
   const bagSummary = {
     subtotal: "₹ 1 695.00",
     Delivery: "₹ 1 250.00",
@@ -11,7 +14,7 @@ const Summary = () => {
   };
 
   const handleMemberButton = () => {
-    console.log("Member button has been clicked");
+    navigate("/checkout");
   };
   return (
     <div className="summary-container">

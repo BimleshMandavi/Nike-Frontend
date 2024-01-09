@@ -4,7 +4,10 @@ import "./Bag-Item.css";
 
 const BagItems = () => {
   return (
-    <div className="bagItem-container" style={{height:"100%"}}>
+    <div
+      className="bagItem-container"
+      style={{ height: "100%", overflow: "hidden" }}
+    >
       <div className="bag-cont">
         <Bag />
       </div>

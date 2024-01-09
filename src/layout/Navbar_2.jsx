@@ -1,9 +1,10 @@
 import { SiNike } from "react-icons/si";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoBagOutline } from "react-icons/io5";
-
+import { GiHamburgerMenu } from "react-icons/gi";
 import { FaGift } from "react-icons/fa6";
 import "./Navbar_2.css";
+import "./Media-query.css";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { styled, alpha } from "@mui/material/styles";
@@ -15,9 +16,9 @@ const Navbar_2 = () => {
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    border: "2px solid white",
+    borderRadius: "0 5px 5px 0",
+    background: "#F5F5F5",
+    cursor: "pointer",
     "&:hover": {
       backgroundColor: alpha(theme.palette.common.black, 0.25),
     },
@@ -61,7 +62,7 @@ const Navbar_2 = () => {
           <SiNike className="brand-logo-2" />
         </Link>
       </div>
-      <div className="nav_bar">
+      <div className="nav_bar nav-links">
         <Link to="#">New & Featured</Link>
         <Link to="#">Men</Link>
         <Link to="#">Women</Link>
@@ -74,28 +75,29 @@ const Navbar_2 = () => {
         <a href="#">SNKRS</a>
       </div>
       <div className="">
-        <Search>
+        <Search style={{ borderRadius: "20px" }}>
           <SearchIconWrapper>
-            <SearchIcon />
+            <SearchIcon style={{ cursor: "pointer" }} />
           </SearchIconWrapper>
           <StyledInputBase
-            placeholder="Search…"
+            className="search-toggle"
+            placeholder="Search"
             inputProps={{ "aria-label": "search" }}
           />
         </Search>
       </div>
-      <div className="action_bar">
+      <div className="action_bar ">
         <div className="favuorite-icon pre-order">
           <Link
             to="/favourites"
             onClick={() => console.log("favuorite btn has been clicked")}
           >
-            <IoMdHeartEmpty className="favuorite-logo" />
+            <IoMdHeartEmpty className="favuorite-logo nav-links" />
           </Link>
         </div>
         <div className="bag-icon pre-order">
           <Link to="/cart">
-            <IoBagOutline className="bag-icon" />
+            <IoBagOutline className="bag-icon " />
             <div
               className="bag-item-count"
               style={{
@@ -108,6 +110,25 @@ const Navbar_2 = () => {
           </Link>
         </div>
       </div>
+      <a
+        href="#"
+        className="nav-toggle"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "#111111",
+          textDecoration: "none",
+          height: "34px",
+          width: "34px",
+          marginRight: "20px",
+        }}
+      >
+        <GiHamburgerMenu
+          className="nav-toggle"
+          style={{ height: "100%", width: "100%" }}
+        />
+      </a>
     </div>
   );
 };

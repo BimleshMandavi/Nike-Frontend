@@ -10,12 +10,12 @@ import { Provider } from "react-redux";
 import nikeStore from "./constant/store/index.js";
 import Products from "./contents/Products.jsx";
 import PreBag from "./components/PreBag.jsx";
+import Checkout from "./components/Checkout.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-
     children: [
       { path: "/", element: <Home /> },
       {
@@ -38,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/pre-cart",
         element: <PreBag />,
+      },
+      {
+        path: "/checkout",
+        element: <Checkout />,
       },
     ],
   },

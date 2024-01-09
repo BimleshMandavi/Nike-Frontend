@@ -23,7 +23,7 @@ const Products = () => {
 
   const drawerWidth = 240;
   return (
-    <div className="homeItems-container">
+    <div className="product-container">
       <div className="secondery-div">
         <Box sx={{ display: "flex" }}>
           <CssBaseline />
