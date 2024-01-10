@@ -5,6 +5,7 @@ import { LiaSmsSolid } from "react-icons/lia";
 import { IoBagOutline } from "react-icons/io5";
 import { SiNike } from "react-icons/si";
 import TextField from "@mui/material/TextField";
+import { Link, useNavigate } from "react-router-dom";
 
 const Checkout = () => {
   const states = [
@@ -169,16 +170,24 @@ const Checkout = () => {
 
   return (
     <div className="main-checkout-cont">
-      <div className="checkout-nav">
+      <div className="checkout-nav" style={{ padding: "24px 48px" }}>
         <div className="left-logo">
-          <a href="/">
+          <Link to="/">
             <SiNike className="logo-img" />
-          </a>
+          </Link>
         </div>
         <div className="right-nav-cont">
           <span className="contact-num">000 800 100 9538</span>
-          <LiaSmsSolid className="check-right-logo sms-log" />
-          <IoBagOutline className="check-right-logo bag-log" />
+
+          <Link to="">
+            <LiaSmsSolid className="check-right-logo sms-log" />
+          </Link>
+          <Link to="/cart">
+            <IoBagOutline
+              className="check-right-logo bag-log"
+              style={{ cursor: "pointer" }}
+            />
+          </Link>
         </div>
       </div>
       <div className="checkout-body-cont">
@@ -460,32 +469,47 @@ const Checkout = () => {
           <h2 className="order-summary-title">Order Summary</h2>
           <div className="price-summary">
             <div className="prices">
-              <div className="sub-info">Subtotal</div>
-              <div className="sub-value">{bagSummary.subtotal}</div>
+              <div className="sub-info info">Subtotal</div>
+              <div className="sub-value info">{bagSummary.subtotal}</div>
             </div>
             <div className="delevery-info">
-              <div className="dele-info">Estimated Delivery & Handling</div>
-              <div className="dele-value">{bagSummary.Delivery}</div>
+              <div className="dele-info info">
+                Estimated Delivery & Handling
+              </div>
+              <div className="dele-value info">{bagSummary.Delivery}</div>
             </div>
             <div className="price-total">
-              <div className="total-info">Total</div>
-              <div className="total-value">{bagSummary.total}</div>
+              <div className="total-info ">Total</div>
+              <div className="total-value ">{bagSummary.total}</div>
+            </div>
+            <div className="summary-help-text" style={{ fontSize: "0.8rem" }}>
+              (The total reflects the price of your order, including all duties
+              and taxes)
             </div>
           </div>
-          <div className="order-summary">
-            <h3 className="shipment-title" style={{ display: "flex" }}>
+          <div className="order-summary" style={{ marginTop: "20px" }}>
+            <h3
+              className="shipment-title"
+              style={{ display: "flex", justifyContent: "center" }}
+            >
               Arrives Tue, 16 Jan - Wed, 7 Feb
             </h3>
             <div
               className="shipment"
-              style={{ display: "flex", justifyContent: "space-evenly" }}
+              style={{
+                display: "flex",
+                justifyContent: "space-evenly",
+                marginTop: "10px",
+              }}
             >
               <div className="item-imgs">
                 <img src={items.image} />
               </div>
               <div className="item-order-info">
                 <div className="item-title">
-                  <a href="/">{items.company}</a>
+                  <a href="/" style={{ textDecoration: "none" }}>
+                    {items.company}
+                  </a>
                 </div>
                 <div className="item-name">{items.item_name}</div>
                 <div className="item-color">Black/White</div>

@@ -68,3 +68,14 @@ a{
     font-weight: 500;
 
 }
+.order-summary-title{
+    font-size: 1.5rem;
+}
+.price-summary{
+    margin-top: 20px;
+    
+}
+.info{
+    color: #8d8d8d;
+    font-weight: 300;
+}
