@@ -5,7 +5,8 @@ import { LiaSmsSolid } from "react-icons/lia";
 import { IoBagOutline } from "react-icons/io5";
 import { SiNike } from "react-icons/si";
 import TextField from "@mui/material/TextField";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { HiOutlineMapPin } from "react-icons/hi2";
 
 const Checkout = () => {
   const states = [
@@ -167,7 +168,53 @@ const Checkout = () => {
     delivery_date: "10 Oct 2023",
     rating: { stars: 4.5, count: 1400 },
   };
-
+  const footerImg = [
+    {
+      id: "01",
+      images: "footerImg1.jpeg",
+    },
+    {
+      id: "02",
+      images: "footerImg2.png",
+    },
+    {
+      id: "03",
+      images: "footerImg3.png",
+    },
+    {
+      id: "04",
+      images: "footerImg4.png",
+    },
+    {
+      id: "05",
+      images: "footerImg5.jpeg",
+    },
+    {
+      id: "06",
+      images: "footerImg6.png",
+    },
+    {
+      id: "07",
+      images: "footerImg7.jpeg",
+    },
+    {
+      id: "08",
+      images: "footerImg8.png",
+    },
+    {
+      id: "09",
+      images: "footerImg9.jpeg",
+    },
+    {
+      id: "10",
+      images: "footerImg10.png",
+    },
+    {
+      id: "11",
+      images: "footerImg11.jpeg",
+    },
+  ];
+  console.log(footerImg);
   return (
     <div className="main-checkout-cont">
       <div className="checkout-nav" style={{ padding: "24px 48px" }}>
@@ -525,7 +572,103 @@ const Checkout = () => {
           <div className="shipent-summary"></div>
         </div>
       </div>
-      <div className="checkout-footer"></div>
+      <div
+        className="checkout-footer"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexWrap: "wrap",
+          background: "#111",
+          color: "#ffff",
+          height: "50px",
+          width: "100%",
+        }}
+      >
+        <div className="left-sub-footer" style={{ display: "flex" }}>
+          <a
+            href="#"
+            style={{
+              display: "flex",
+              color: "#ffff",
+              margin: "0 8px 0 8px ",
+              textDecoration: "none",
+              fontSize: "0.8rem",
+            }}
+          >
+            <HiOutlineMapPin />
+            <div className="cuntry-name">India</div>
+          </a>
+          <div
+            className="foot-link"
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              padding: "0 0 0 5px",
+            }}
+          >
+            <div
+              className="footer-element-links"
+              style={{
+                color: "#898989",
+                paddingLeft: "10px",
+                fontSize: "0.8rem",
+              }}
+            >
+              <span>© 2023 Nike,Inc.All Rights Reserved</span>
+            </div>
+            <div className="footer-element-links">
+              {" "}
+              <Link
+                to="https://www.eshopworld.com/shoppers/help/retailer/nike/terms-and-conditions-of-sale-en/"
+                style={{
+                  color: "#898989",
+                  textDecoration: "none",
+                  paddingLeft: "20px",
+                  fontSize: "0.8rem",
+                }}
+              >
+                Terms of Sale
+              </Link>
+            </div>
+            <div className="footer-element-links">
+              {" "}
+              <Link
+                to="https://agreementservice.svs.nike.com/in/en_gb/rest/agreement?agreementType=termsOfUse&uxId=com.nike&country=IN&language=en&requestType=redirect"
+                style={{
+                  color: "#898989",
+                  textDecoration: "none",
+                  paddingLeft: "20px",
+                  fontSize: "0.8rem",
+                }}
+              >
+                Terms of Use
+              </Link>
+            </div>
+            <div className="footer-element-links">
+              <Link
+                to="https://agreementservice.svs.nike.com/sg/en_gb/rest/agreement?agreementType=privacyPolicy&uxId=com.nike.unite&country=SG&language=en&requestType=redirect"
+                style={{
+                  color: "#898989",
+                  textDecoration: "none",
+                  paddingLeft: "20px",
+                  fontSize: "0.8rem",
+                }}
+              >
+                Privacy Policy
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className="right-sub-footer">
+          <div className="footer-element-right">
+            {footerImg.map((item) => {
+              <div className="footer-product" key={item.id}>
+                <img src={item.images} />;
+              </div>;
+            })}
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
