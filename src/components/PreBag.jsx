@@ -7,7 +7,7 @@ const PreBag = () => {
     console.log("Item added to Fav");
   };
   const handleAddToBag = () => {
-    navigate("/bag");
+    navigate("/cart");
   };
   const items = {
     id: "001",
