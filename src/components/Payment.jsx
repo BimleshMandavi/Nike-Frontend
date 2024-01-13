@@ -5,168 +5,17 @@ import { LiaSmsSolid } from "react-icons/lia";
 import { IoBagOutline } from "react-icons/io5";
 import { SiNike } from "react-icons/si";
 import TextField from "@mui/material/TextField";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 const Checkout = () => {
-  const states = [
-    {
-      value: "USD",
-      label: "Andaman and Nicobar Islands",
-    },
-    {
-      value: "EUR",
-      label: "Andhr Pradesh",
-    },
-    {
-      value: "BTC",
-      label: "Arunachal Pradesh",
-    },
-    {
-      value: "JPY",
-      label: "Assam",
-    },
-    {
-      value: "JPY",
-      label: "Bihar",
-    },
-    {
-      value: "JPY",
-      label: "Chandigarh",
-    },
-    {
-      value: "JPY",
-      label: "Chhattisgarh",
-    },
-    {
-      value: "JPY",
-      label: "Dadra and Nagar Haveli",
-    },
-    {
-      value: "JPY",
-      label: "Daman and Diu",
-    },
-    {
-      value: "JPY",
-      label: "Delhi",
-    },
-    {
-      value: "JPY",
-      label: "Goa",
-    },
-    {
-      value: "JPY",
-      label: "Gujrat",
-    },
-    {
-      value: "JPY",
-      label: "Haryana",
-    },
-    {
-      value: "JPY",
-      label: "Himachal Pradesh",
-    },
-    {
-      value: "JPY",
-      label: "Jammu and Kashmir",
-    },
-    {
-      value: "JPY",
-      label: "Jharkhand",
-    },
-    {
-      value: "JPY",
-      label: "Karnataka",
-    },
-    {
-      value: "JPY",
-      label: "Kerala",
-    },
-    {
-      value: "JPY",
-      label: "Lakshadeep",
-    },
-    {
-      value: "JPY",
-      label: "Madhya Pradesh",
-    },
-    {
-      value: "JPY",
-      label: "Maharashtra",
-    },
-    {
-      value: "JPY",
-      label: "Manipur",
-    },
-    {
-      value: "JPY",
-      label: "Meghalaya",
-    },
-    {
-      value: "JPY",
-      label: "Mizoram",
-    },
-    {
-      value: "JPY",
-      label: "Nagaland",
-    },
-    {
-      value: "JPY",
-      label: "Odisha",
-    },
-    {
-      value: "JPY",
-      label: "Puducherry",
-    },
-    {
-      value: "JPY",
-      label: "Punjab",
-    },
-    {
-      value: "JPY",
-      label: "Rajasthan",
-    },
-    {
-      value: "JPY",
-      label: "Sikkim",
-    },
-    {
-      value: "JPY",
-      label: "Tamil Nadu",
-    },
-    {
-      value: "JPY",
-      label: "Tripura",
-    },
-    {
-      value: "JPY",
-      label: "Uttarakhand",
-    },
-    {
-      value: "JPY",
-      label: "Uttar Pradesh",
-    },
-    {
-      value: "JPY",
-      label: "West Bengal",
-    },
-  ];
+  const bag = useSelector((store) => store.bag);
+
   const bagSummary = {
     subtotal: "₹ 1 695.00",
     Delivery: "₹ 1 250.00",
     total: "₹ 2 945.00",
-  };
-  const items = {
-    id: "001",
-    image: "img1.png",
-    company: "Carlton London",
-    item_name: "Rhodium-Plated CZ Floral Studs",
-    original_price: 1045,
-    current_price: 606,
-    discount_percentage: 42,
-    return_period: 14,
-    delivery_date: "10 Oct 2023",
-    rating: { stars: 4.5, count: 1400 },
   };
   const footerImg = [
     {
@@ -214,11 +63,17 @@ const Checkout = () => {
       images: "footerImg11.jpeg",
     },
   ];
-
-  const navigate = useNavigate();
-
-  const handlePayment = () => {
-    navigate("/payment");
+  const items = {
+    id: "001",
+    image: "img1.png",
+    company: "Carlton London",
+    item_name: "Rhodium-Plated CZ Floral Studs",
+    original_price: 1045,
+    current_price: 606,
+    discount_percentage: 42,
+    return_period: 14,
+    delivery_date: "10 Oct 2023",
+    rating: { stars: 4.5, count: 1400 },
   };
   return (
     <div className="main-checkout-cont">
@@ -238,7 +93,17 @@ const Checkout = () => {
             <IoBagOutline
               className="check-right-logo bag-log"
               style={{ cursor: "pointer" }}
-            />
+            >
+              <div
+                className="bag-item-count"
+                style={{
+                  textDecoration: "none",
+                  color: "#111111",
+                }}
+              >
+                {bag.length}
+              </div>
+            </IoBagOutline>
           </Link>
         </div>
       </div>
@@ -248,38 +113,23 @@ const Checkout = () => {
           style={{ width: "50%", height: "100%" }}
         >
           <div className="order-heading">
-            <h2>How would you like to get your order?</h2>
-            <div className="message-body">
-              <span className="message-cont">
-                Customs regulation for India require a copy of the recipient`s
-                KYC. The address on the KYC needs to match the shipping address.
-                Our courier will contact you via SMS/email to obtain a copy of
-                your KYC. The KYC will be stored securely and used solely for
-                the purpose of clearing customs (including sharing it with
-                customs officials) for all orders and returns. If your KYC does
-                not match your shipping address, please click the link for more
-                information.
-              </span>
-              <a href="https://www.nike.com/in/help/a/verify-passport">
-                Learn More
-              </a>
-            </div>
+            <h2>Have a promo code?</h2>
             <div className="btn-toggle">
               <Box sx={{ "& button": { m: 1 } }}>
                 <div>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    style={{
-                      width: "480px",
-                      height: "70px",
-                      border: "2px solid black",
-                      borderRadius: "12px",
-                      marginTop: "10px",
+                  <Box
+                    sx={{
+                      width: 500,
+                      maxWidth: "100%",
                     }}
+                    style={{ marginTop: "20px" }}
                   >
-                    Deliver It
-                  </Button>
+                    <TextField
+                      fullWidth
+                      placeholder="Promo"
+                      id="card-details"
+                    />
+                  </Box>
                 </div>
               </Box>
             </div>
@@ -288,151 +138,46 @@ const Checkout = () => {
                 className="add-input-area"
                 style={{ padding: "20px 0px 0px" }}
               >
-                <h2>Enter your name and address:</h2>
-                <form action="" style={{ padding: "20px 0px 0px" }}>
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="First Name"
-                      id="first name"
-                      helperText="Please enter your first name"
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="Last Name"
-                      id="fullWidth"
-                      helperText="Please enter your last name"
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="Address Line 1"
-                      id="fullWidth"
-                      helperText="Please enter your address details"
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="Address Line 2"
-                      id="fullWidth"
-                      helperText="Please enter your address details"
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="Address Line 3"
-                      id="fullWidth"
-                      helperText="Please enter your address details"
-                    />
-                  </Box>
-
-                  <Box
-                    component="form"
-                    sx={{
-                      "& .MuiTextField-root": { m: 1, width: "25ch" },
-                    }}
-                    style={{ marginTop: "20px" }}
-                    noValidate
-                    autoComplete="off"
-                  >
-                    <div style={{ marginTop: "20px" }}>
-                      <TextField
-                        id="outlined-multiline-flexible"
-                        label="Postal Code"
-                        multiline
-                        maxRows={4}
-                        helperText="Please enter your postcode"
-                      />
-                      <TextField
-                        id="outlined-textarea"
-                        label="Locality"
-                        multiline
-                        helperText="Please enter your locality"
-                      />
-                    </div>
-                  </Box>
-                  <Box
-                    component="form"
-                    sx={{
-                      "& .MuiTextField-root": { m: 1, width: "25ch" },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                  >
-                    <div style={{ display: "flex", marginTop: "20px" }}>
-                      <TextField
-                        id="outlined-select-currency-native"
-                        select
-                        label="State/Territory"
-                        SelectProps={{
-                          native: true,
+                <h2>How would you like to pay?</h2>
+                <div className="btn-toggle">
+                  <Box sx={{ "& button": { m: 1 } }}>
+                    <div>
+                      <Button
+                        variant="outlined"
+                        size="large"
+                        style={{
+                          width: "480px",
+                          height: "70px",
+                          border: "2px solid black",
+                          borderRadius: "12px",
+                          marginTop: "10px",
                         }}
                       >
-                        {states.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
-                        ))}
-                      </TextField>
-                      <Box
-                        component="form"
-                        sx={{
-                          "& .MuiTextField-root": { m: 1, width: "25ch" },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                      >
-                        <div>
-                          <TextField
-                            id="outlined-read-only-input"
-                            defaultValue="India"
-                            InputProps={{
-                              readOnly: true,
-                            }}
-                          />
-                        </div>
-                      </Box>
+                        Credit or Debit card
+                      </Button>
                     </div>
                   </Box>
-                </form>
+                  <Box sx={{ "& button": { m: 1 } }}>
+                    <div>
+                      <Button
+                        variant="outlined"
+                        size="large"
+                        style={{
+                          width: "480px",
+                          height: "70px",
+                          border: "2px solid black",
+                          borderRadius: "12px",
+                          marginTop: "10px",
+                        }}
+                      >
+                        G pay
+                      </Button>
+                    </div>
+                  </Box>
+                </div>
               </div>
               <div className="contact-info-area" style={{ marginTop: "20px" }}>
-                <h2>What`s your contact information?</h2>
+                <h2>Enter your payment details:</h2>
                 <form action="" style={{ marginTop: "20px" }}>
                   <Box
                     sx={{
@@ -443,9 +188,10 @@ const Checkout = () => {
                   >
                     <TextField
                       fullWidth
-                      label="Email"
+                      label="Name on card"
+                      placeholder="Name on card"
                       id="email"
-                      helperText="Please enter your email"
+                      helperText="Invailid card name"
                     />
                   </Box>
                   <Box
@@ -457,32 +203,42 @@ const Checkout = () => {
                   >
                     <TextField
                       fullWidth
-                      label="Phone Number"
+                      label="Card number"
+                      placeholder="Card number"
                       id="fullWidth"
-                      helperText="Please enter your phone number"
+                      helperText="Card number is required"
                     />
                   </Box>
                 </form>
               </div>
-              <div className="user-pan-info" style={{ marginTop: "20px" }}>
-                <h2>What`s your PAN?</h2>
-                <form action="">
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="PAN"
-                      id="pan"
-                      helperText="Enter your PAN to enable payment with UPI, Net Banking or local card"
-                    />
-                  </Box>
-                </form>
-              </div>
+              <Box
+                component="form"
+                sx={{
+                  "& .MuiTextField-root": { m: 1, width: "25ch" },
+                }}
+                style={{ marginTop: "20px" }}
+                noValidate
+                autoComplete="off"
+              >
+                <div style={{ marginTop: "20px" }}>
+                  <TextField
+                    id="outlined-multiline-flexible"
+                    placeholder="MM/YY"
+                    label="MM/YY"
+                    multiline
+                    maxRows={4}
+                    helperText="Expiry date is required"
+                  />
+                  <TextField
+                    id="outlined-textarea"
+                    placeholder="CVV"
+                    label="CVV"
+                    multiline
+                    helperText="CVV is required"
+                  />
+                </div>
+              </Box>
+
               <Button
                 variant="outlined"
                 size="large"
@@ -497,9 +253,8 @@ const Checkout = () => {
                   color: "white",
                   backgroundColor: "black",
                 }}
-                onClick={handlePayment}
               >
-                Continue
+                Place Order
               </Button>
             </div>
             <div className="item-summary-section" style={{ marginTop: "20px" }}>
@@ -623,7 +378,6 @@ const Checkout = () => {
               <span>© 2023 Nike,Inc.All Rights Reserved</span>
             </div>
             <div className="footer-element-links">
-              {" "}
               <Link
                 to="https://www.eshopworld.com/shoppers/help/retailer/nike/terms-and-conditions-of-sale-en/"
                 style={{

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Help from "./contents/auth/Help.jsx";
+
 import Home from "./components/Home.jsx";
 import BagItems from "./components/BagItems.jsx";
 import SignUp from "./contents/auth/SignUp.jsx";
@@ -11,6 +11,7 @@ import nikeStore from "./constant/store/index.js";
 import Products from "./contents/Products.jsx";
 import PreBag from "./components/PreBag.jsx";
 import Checkout from "./components/Checkout.jsx";
+import Payment from "./components/Payment.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,11 +19,6 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <Home /> },
-      {
-        path: "/help",
-        element: <Help />,
-      },
-
       {
         path: "/cart",
         element: <BagItems />,
@@ -44,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/checkout",
     element: <Checkout />,
+  },
+  {
+    path: "/payment",
+    element: <Payment />,
   },
 ]);
 
