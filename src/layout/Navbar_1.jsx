@@ -3,6 +3,7 @@ import "./Navbar_1.css";
 import { SiJordan } from "react-icons/si";
 import "./Media-query.css";
 
+
 const Navbar_1 = () => {
   return (
     <div className="nav1-container nav-links">

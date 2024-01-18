@@ -9,8 +9,7 @@
          box-sizing: border-box; 
        
 }
-.nav-container{
-   
+.nav2-container{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -29,9 +28,7 @@
         width: 70px;
         color: #000000;
 }
-.action_bar{
-    margin-right: 4%;
-}
+
 .nav_bar{
     display: flex;
     min-width: 400px;
@@ -128,6 +125,7 @@ display: none;
     text-decoration: none;
 
 }
+
 
 
 
