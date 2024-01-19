@@ -85,27 +85,28 @@ display: none;
     align-items: center;
     justify-content: center;
     margin-right: 12px;
-    height: 35px;
-    width: 35px;
+    height: 26px;
+    width: 26px;
     color: #111111;
+    background-color: #ffffff;
 
  
 }
 .favuorite-logo:hover {
     
-       background-color: #7E7E7E;
-       height: 35px;
-       width: 35px;
+       background-color:#bababa;
+       height: 26px;
+       width: 26px;
        border-radius: 50%;
    }
 .bag-icon{
     color: #111111;
     text-decoration: none;
-    height: 34px;
-    width: 34px;
+    height: 24px;
+    width: 24px;
 }
 .bag-icon:hover {
-    background-color: #7E7E7E;
+    background-color: #bababa;
     border-radius: 50%;
 }
 .gift-box{

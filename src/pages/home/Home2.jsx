@@ -1,4 +1,4 @@
-import Pic2 from "../assets/pic2.png";
+import Pic2 from "../../assets/pic2.png"
 import { Link } from "react-router-dom";
 import "./Home2.css";
 const Home2 = () => {

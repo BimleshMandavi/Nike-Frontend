@@ -3,7 +3,6 @@ import "./Navbar_1.css";
 import { SiJordan } from "react-icons/si";
 import "./Media-query.css";
 
-
 const Navbar_1 = () => {
   return (
     <div className="nav1-container nav-links">
@@ -16,7 +15,7 @@ const Navbar_1 = () => {
         <div className="user-menu-items">
           <Link to="https://www.nike.com/in/retail">Find a Store</Link>|
           <Link to="https://www.nike.com/in/help">Help</Link>|
-          <Link to="/sign-up">Join Us</Link>|<Link to="/sign-up">Sign in</Link>
+          <Link to="/sign-up">Join Us</Link>|<Link to="/sign-in">Sign in</Link>
         </div>
       </div>
     </div>

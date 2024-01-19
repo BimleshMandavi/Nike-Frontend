@@ -1,7 +1,7 @@
-import Home1 from "../contents/Home1";
-import Home2 from "../contents/Home2";
-import Home3 from "../contents/Home3";
-import Navbar_3 from "../layout/Navbar_3";
+import Home1 from "./Home1";
+import Home2 from "./Home2";
+import Home3 from "./Home3";
+import Navbar_3 from "../../layout/Navbar_3";
 
 const Home = () => {
   return (

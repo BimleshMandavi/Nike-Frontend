@@ -6,15 +6,12 @@ import { FaGift } from "react-icons/fa6";
 import "./Navbar_2.css";
 import "./Media-query.css";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux/es/hooks/useSelector";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Headroom from "react-headroom";
 
 const Navbar_2 = () => {
-  const bag = useSelector((store) => store.bag);
-
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: "0 5px 5px 0",
@@ -106,9 +103,7 @@ const Navbar_2 = () => {
                   textDecoration: "none",
                   color: "#111111",
                 }}
-              >
-                {bag.length}
-              </div>
+              ></div>
             </Link>
           </div>
         </div>

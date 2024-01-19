@@ -2,16 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./components/Home.jsx";
-import BagItems from "./components/BagItems.jsx";
-import SignUp from "./contents/auth/SignUp.jsx";
+import Home from "./pages/home/Home.jsx";
+import BagItems from "./pages/cart/BagItems.jsx";
+import SignIn from "./contents/auth/SignIn.jsx";
 import { Provider } from "react-redux";
-import nikeStore from "./constant/store/index.js";
-import Products from "./contents/Products.jsx";
-import PreBag from "./components/PreBag.jsx";
+import Products from "./pages/products/Products.jsx";
+import PreBag from "./pages/cart/PreBag.jsx";
 import Checkout from "./components/Checkout.jsx";
 import Payment from "./components/Payment.jsx";
 import Favourites from "./components/Favourites.jsx";
+import store from "./redux/store/store.js";
+import Join from "./contents/auth/Join.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,10 +28,7 @@ const router = createBrowserRouter([
         path: "/favourites",
         element: <Favourites />,
       },
-      {
-        path: "/sign-up",
-        element: <SignUp />,
-      },
+
       {
         path: "/products",
         element: <Products />,
@@ -49,11 +47,19 @@ const router = createBrowserRouter([
     path: "/payment",
     element: <Payment />,
   },
+  {
+    path: "/sign-in",
+    element: <SignIn />,
+  },
+  {
+    path: "/sign-up",
+    element: <Join />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={nikeStore}>
+    <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>

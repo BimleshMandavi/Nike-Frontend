@@ -17,7 +17,7 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Join = () => {
+const SignUp = () => {
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -49,7 +49,7 @@ const Join = () => {
 
         <Box className="Headline">
           <Typography variant="h5">
-            Enter your email to join us or sign up.
+            Enter your email to join us or sign in.
           </Typography>
         </Box>
 
@@ -57,16 +57,7 @@ const Join = () => {
           India <a href="">Change</a>
         </Box>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <TextField id="outlined-basic" label="Name" variant="outlined" />
-
-          <TextField
-            id="outlined-basic"
-            label="Email"
-            type={"email"}
-            required
-            variant="outlined"
-            style={{ marginTop: "20px" }}
-          />
+          <TextField id="outlined-basic" label="Email" variant="outlined" />
 
           <FormControl
             sx={{ width: "100%" }}
@@ -92,7 +83,6 @@ const Join = () => {
                 </InputAdornment>
               }
               label="Password"
-              required
             />
           </FormControl>
         </div>
@@ -102,7 +92,7 @@ const Join = () => {
           <a href=""> Terms of Use.</a>
         </Box>
         <Box className="terms_condition" sx={{ margin: "16px 0" }}>
-          Already signup? <Link to="/sign-in">Log in</Link>
+          New member ? <Link to="/sign-up">Sign up</Link>
         </Box>
 
         <Box
@@ -140,4 +130,4 @@ const Join = () => {
   );
 };
 
-export default Join;
+export default SignUp;

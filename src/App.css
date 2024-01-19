@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities; */
 *{
-    padding: 0;
-    margin: 0;
+    padding: 0 12px;
+    margin: 0 ;
 }

@@ -1,4 +1,4 @@
-import Pic3 from "../assets/pic3.png";
+import Pic3 from "../../assets/pic3.png";
 import { Link } from "react-router-dom";
 import "./Home3.css";
 const Home3 = () => {

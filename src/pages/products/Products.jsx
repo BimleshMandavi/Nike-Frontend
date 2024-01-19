@@ -11,7 +11,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { useDispatch, useSelector } from "react-redux";
 import "./Products.css";
 import { Link } from "react-router-dom";
-import { bagActions } from "../constant/bagSlice";
+import { bagActions } from "../../constant/bagSlice";
 
 const Products = () => {
   const dispatch = useDispatch();

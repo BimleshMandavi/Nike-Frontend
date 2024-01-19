@@ -1,5 +1,5 @@
 import Bag from "./Bag";
-import Summary from "./Summary";
+import Summary from "../../components/Summary";
 import "./Bag-Item.css";
 
 const BagItems = () => {

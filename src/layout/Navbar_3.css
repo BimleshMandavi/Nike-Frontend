@@ -11,9 +11,10 @@
     white-space: normal;
     text-align: center;
 }
-.nav-sec-1 h3{
+.nav-sec-1{
     font-family: inherit;
         color: #111;
+        font-size: 16px;
 }
 .nav-sec-2{
     margin: 0;
@@ -22,6 +23,10 @@
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
+}
+.nav3-para{
+    font-size: 12px;
+    height: 24px;
 }
 p a{
 color: var(--podium-cds-color-black);
