@@ -103,12 +103,10 @@ display: none;
     text-decoration: none;
     height: 34px;
     width: 34px;
-
- .bag-icon:hover{
+}
+.bag-icon:hover {
     background-color: #7E7E7E;
     border-radius: 50%;
-}
-
 }
 .gift-box{
     color: red;

@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import { useSelector } from "react-redux/es/hooks/useSelector";
+import Headroom from "react-headroom";
 
 const Checkout = () => {
   const bag = useSelector((store) => store.bag);
@@ -77,36 +78,38 @@ const Checkout = () => {
   };
   return (
     <div className="main-checkout-cont">
-      <div className="checkout-nav" style={{ padding: "24px 48px" }}>
-        <div className="left-logo">
-          <Link to="/">
-            <SiNike className="logo-img" />
-          </Link>
-        </div>
-        <div className="right-nav-cont">
-          <span className="contact-num">000 800 100 9538</span>
+      <Headroom>
+        <div className="checkout-nav" style={{ padding: "24px 48px" }}>
+          <div className="left-logo">
+            <Link to="/">
+              <SiNike className="logo-img" />
+            </Link>
+          </div>
+          <div className="right-nav-cont">
+            <span className="contact-num">000 800 100 9538</span>
 
-          <Link to="">
-            <LiaSmsSolid className="check-right-logo sms-log" />
-          </Link>
-          <Link to="/cart">
-            <IoBagOutline
-              className="check-right-logo bag-log"
-              style={{ cursor: "pointer" }}
-            >
-              <div
-                className="bag-item-count"
-                style={{
-                  textDecoration: "none",
-                  color: "#111111",
-                }}
+            <Link to="">
+              <LiaSmsSolid className="check-right-logo sms-log" />
+            </Link>
+            <Link to="/cart">
+              <IoBagOutline
+                className="check-right-logo bag-log"
+                style={{ cursor: "pointer" }}
               >
-                {bag.length}
-              </div>
-            </IoBagOutline>
-          </Link>
+                <div
+                  className="bag-item-count"
+                  style={{
+                    textDecoration: "none",
+                    color: "#111111",
+                  }}
+                >
+                  {bag.length}
+                </div>
+              </IoBagOutline>
+            </Link>
+          </div>
         </div>
-      </div>
+      </Headroom>
       <div className="checkout-body-cont">
         <div
           className="checkout-left-part"

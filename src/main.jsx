@@ -11,6 +11,7 @@ import Products from "./contents/Products.jsx";
 import PreBag from "./components/PreBag.jsx";
 import Checkout from "./components/Checkout.jsx";
 import Payment from "./components/Payment.jsx";
+import Favourites from "./components/Favourites.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <BagItems />,
+      },
+      {
+        path: "/favourites",
+        element: <Favourites />,
       },
       {
         path: "/sign-up",

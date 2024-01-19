@@ -7,6 +7,7 @@ import { SiNike } from "react-icons/si";
 import TextField from "@mui/material/TextField";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
+import Headroom from "react-headroom";
 
 const Checkout = () => {
   const states = [
@@ -222,26 +223,29 @@ const Checkout = () => {
   };
   return (
     <div className="main-checkout-cont">
-      <div className="checkout-nav" style={{ padding: "24px 48px" }}>
-        <div className="left-logo">
-          <Link to="/">
-            <SiNike className="logo-img" />
-          </Link>
-        </div>
-        <div className="right-nav-cont">
-          <span className="contact-num">000 800 100 9538</span>
+      <Headroom>
+        {" "}
+        <div className="checkout-nav" style={{ padding: "24px 48px" }}>
+          <div className="left-logo">
+            <Link to="/">
+              <SiNike className="logo-img" />
+            </Link>
+          </div>
+          <div className="right-nav-cont">
+            <span className="contact-num">000 800 100 9538</span>
 
-          <Link to="">
-            <LiaSmsSolid className="check-right-logo sms-log" />
-          </Link>
-          <Link to="/cart">
-            <IoBagOutline
-              className="check-right-logo bag-log"
-              style={{ cursor: "pointer" }}
-            />
-          </Link>
+            <Link to="">
+              <LiaSmsSolid className="check-right-logo sms-log" />
+            </Link>
+            <Link to="/cart">
+              <IoBagOutline
+                className="check-right-logo bag-log"
+                style={{ cursor: "pointer" }}
+              />
+            </Link>
+          </div>
         </div>
-      </div>
+       </Headroom>
       <div className="checkout-body-cont">
         <div
           className="checkout-left-part"

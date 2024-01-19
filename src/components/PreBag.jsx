@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const PreBag = () => {
   const navigate = useNavigate();
   const handleAddtoFav = () => {
-    console.log("Item added to Fav");
+    navigate("/favourites");
   };
   const handleAddToBag = () => {
     navigate("/cart");
