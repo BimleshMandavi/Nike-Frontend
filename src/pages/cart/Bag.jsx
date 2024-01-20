@@ -25,7 +25,7 @@ const Bag = () => {
   return (
     <div
       className="bag-container"
-      style={{ height: "48vh", overflow: "hidden" }}
+      style={{ height: "55.5vh", overflow: "hidden" }}
     >
       <div className="bag-heading">
         <p>Bag</p>

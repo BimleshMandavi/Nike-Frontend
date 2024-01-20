@@ -12,7 +12,7 @@ import Checkout from "./components/Checkout.jsx";
 import Payment from "./components/Payment.jsx";
 import Favourites from "./components/Favourites.jsx";
 import store from "./redux/store/store.js";
-import Join from "./contents/auth/Join.jsx";
+import Join from "./contents/register/Join.jsx";
 
 const router = createBrowserRouter([
   {

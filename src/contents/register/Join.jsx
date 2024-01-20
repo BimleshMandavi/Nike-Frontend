@@ -1,4 +1,4 @@
-import "./SignUp.css";
+import "../auth/SignUp.css";
 import { SiJordan } from "react-icons/si";
 import { SiNike } from "react-icons/si";
 import Visibility from "@mui/icons-material/Visibility";

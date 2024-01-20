@@ -7,11 +7,11 @@ import { SiNike } from "react-icons/si";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+// import { useSelector } from "react-redux/es/hooks/useSelector";
 import Headroom from "react-headroom";
 
 const Checkout = () => {
-  const bag = useSelector((store) => store.bag);
+  // const bag = useSelector((store) => store.bag);
 
   const bagSummary = {
     subtotal: "₹ 1 695.00",
@@ -103,7 +103,7 @@ const Checkout = () => {
                     color: "#111111",
                   }}
                 >
-                  {bag.length}
+                  {/* {bag.length} */}
                 </div>
               </IoBagOutline>
             </Link>
