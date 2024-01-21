@@ -22,8 +22,8 @@ export const {reducers} = slice
 
 
 
-export const register = () => async()=>{
-   const result = await authApi.register();
+export const register = (data) => async()=>{
+   const result = await authApi.register(data);
    if(result){
     return true;
    }
@@ -31,3 +31,11 @@ export const register = () => async()=>{
     return false
    }
 }
+export const login = (data) => async () => {
+  const result = await authApi.login(data);
+  if (result) {
+    return result.data;
+  } else {
+    return false;
+  }
+};
