@@ -1,8 +1,6 @@
 import { SiNike } from "react-icons/si";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { IoBagOutline } from "react-icons/io5";
-import { GiHamburgerMenu } from "react-icons/gi";
-import { FaGift } from "react-icons/fa6";
 import "./Navbar_2.css";
 import "./Media-query.css";
 import { Link } from "react-router-dom";
@@ -10,6 +8,8 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Headroom from "react-headroom";
+import { LuUser } from "react-icons/lu";
+import NavToggle from "./NavToggle";
 
 const Navbar_2 = () => {
   const Search = styled("div")(({ theme }) => ({
@@ -54,80 +54,81 @@ const Navbar_2 = () => {
   }));
 
   return (
-    <Headroom>
-      <div className="nav2-container">
-        <div className="logo-container">
-          <Link to="/">
-            <SiNike className="brand-logo-2" />
-          </Link>
-        </div>
-        <div className="nav_bar nav-links">
-          <Link to="#">New & Featured</Link>
-          <Link to="#">Men</Link>
-          <Link to="#">Women</Link>
-          <Link to="#">Kids</Link>
-          <Link to="#">Sale</Link>
-          <Link to="#">Customise</Link>
-          <Link to="#">
-            Gifts <FaGift className="gift-box" />
-          </Link>
-          <a href="#">SNKRS</a>
-        </div>
-        <div className="">
-          <Search style={{ borderRadius: "20px" }}>
-            <SearchIconWrapper>
-              <SearchIcon style={{ cursor: "pointer" }} />
-            </SearchIconWrapper>
-            <StyledInputBase
-              className="search-toggle"
-              placeholder="Search"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-        </div>
-        <div className="action_bar ">
-          <div className="favuorite-icon pre-order">
-            <Link
-              to="/favourites"
-              onClick={() => console.log("favuorite btn has been clicked")}
-            >
-              <IoMdHeartEmpty className="favuorite-logo nav-links" />
+    <>
+      <Headroom className="">
+        <div className="nav2-container pr-6 relative">
+          <div className="logo-container">
+            <Link to="/">
+              <SiNike className="brand-logo-2" />
             </Link>
           </div>
-          <div className="bag-icon pre-order">
-            <Link to="/cart">
-              <IoBagOutline className="bag-icon " />
-              <div
-                className="bag-item-count"
-                style={{
-                  textDecoration: "none",
-                  color: "#111111",
-                }}
-              ></div>
+          <div className=" hidden  gap-2 items-center lg:flex">
+            <Link to="#" className=" list-none no-underline">
+              New & Featured
             </Link>
+
+            <Link to="#" className=" no-underline">
+              Men
+            </Link>
+            <Link to="#" className=" no-underline">
+              Women
+            </Link>
+            <Link to="#" className=" no-underline">
+              Kids
+            </Link>
+            <Link to="#" className=" no-underline">
+              Sale
+            </Link>
+            <Link to="#" className=" no-underline">
+              Customise
+            </Link>
+            <a href="#" className=" no-underline">
+              SNKRS
+            </a>
+          </div>
+          <div className="search-input-cont ">
+            <Search style={{ borderRadius: "20px" }}>
+              <SearchIconWrapper>
+                <SearchIcon style={{ cursor: "pointer" }} />
+              </SearchIconWrapper>
+              <StyledInputBase
+                className="search-toggle"
+                placeholder="Search"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </div>
+          <div className="action_bar gap-6">
+            <div className="favuorite-icon pre-order">
+              <Link to="/favourites">
+                <IoMdHeartEmpty className="favuorite-logo links" />
+              </Link>
+            </div>
+            <div className="bag-icon pre-order ">
+              <Link to="/cart">
+                <IoBagOutline className="bag-icon " />
+                <div
+                  className="bag-item-count"
+                  style={{
+                    textDecoration: "none",
+                    color: "#111111",
+                  }}
+                ></div>
+              </Link>
+            </div>
+
+            <div className=" mr-7 gap-6  flex items-center justify-center">
+              <div className="user-login ">
+                <LuUser className=" flex lg:hidden text-2xl" />
+              </div>
+              <div className="nav-toggle">
+                <NavToggle className="flex lg:hidden text-2xl  justify-center pl-0" />
+              </div>
+            </div>
           </div>
         </div>
-        <a
-          href="#"
-          className="nav-toggle"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            color: "#111111",
-            textDecoration: "none",
-            height: "34px",
-            width: "34px",
-            marginRight: "20px",
-          }}
-        >
-          <GiHamburgerMenu
-            className="nav-toggle"
-            style={{ height: "100%", width: "100%" }}
-          />
-        </a>
-      </div>
-    </Headroom>
+      </Headroom>
+    </>
   );
 };
 

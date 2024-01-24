@@ -36,7 +36,7 @@
 }
 .nav_bar a{
     color: #111111;
-    padding: 12px 12px 18px;
+    padding: 18px 5px 18px;
     font-weight: 500;
         font-family: "Helvetica Now Text Medium", Helvetica, Arial, sans-serif;
         cursor: pointer;
@@ -55,6 +55,7 @@
     padding: 8px 48px;
     background: #F5F5F5;  
 }
+
 .search-icon{
 height: 100%;
 width: 100%;
@@ -75,11 +76,9 @@ border-radius: 0 5px 5px 0;
 .action_bar{
 display: flex;
 justify-content: space-evenly;
- 
+
 }
-.nav-toggle {
-display: none;
-}
+
 .favuorite-logo{
     display: flex;
     align-items: center;
@@ -89,8 +88,6 @@ display: none;
     width: 26px;
     color: #111111;
     background-color: #ffffff;
-
- 
 }
 .favuorite-logo:hover {
     
@@ -112,19 +109,36 @@ display: none;
 .gift-box{
     color: red;
 }
-
 .bag-item-count{
         margin: -25px 12px;
         height: 10%;
         width: 10%;
-        text-decoration: none;
-    
+        text-decoration: none;    
 }
 .bag-item-count{
     text-decoration: none;
 
 }
-
+.user-login-icon{
+    display: none;
+}
+.user-login a{
+    color: #111111;
+        text-decoration: none;
+        height: 24px;
+        width: 24px;
+        
+}
+.nav-toggle  {
+  
+color: #111111;
+    text-decoration: none;
+    height: 24px;
+    width: 24px;
+}
+.nav-toggle-icon{
+    display: none;
+}
 
 
 

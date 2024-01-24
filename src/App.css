@@ -1,7 +1,10 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 *{
     padding: 0 12px;
     margin: 0 ;
+}
+.chakra-slide{
+    width: 30%;
 }

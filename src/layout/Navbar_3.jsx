@@ -1,8 +1,9 @@
 import "./Navbar_3.css";
+import "./Media-query.css";
 const Navbar_3 = () => {
   return (
     <div
-      className="nav3-container"
+      className="nav3-container hidden lg:flex"
       style={{
         display: "flex",
         justifyContent: "center",

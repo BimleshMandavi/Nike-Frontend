@@ -5,7 +5,7 @@ import "./Media-query.css";
 
 const Navbar_1 = () => {
   return (
-    <div className="nav1-container nav-links">
+    <div className="nav1-container nav-links flex">
       <div className="nav1-logo">
         <Link to="#">
           <SiJordan className="logo-1" />

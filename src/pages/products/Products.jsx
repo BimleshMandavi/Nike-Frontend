@@ -1,114 +1,83 @@
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
-import { useDispatch, useSelector } from "react-redux";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import "./Products.css";
-import { Link } from "react-router-dom";
-import { bagActions } from "../../constant/bagSlice";
+import { LuSettings2 } from "react-icons/lu";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from "@mui/material";
+import ProductSider from "./ProductSider";
+import ProductItems from "./ProductItems";
 
 const Products = () => {
-  const dispatch = useDispatch();
-  const items = useSelector((store) => store.items);
-
-  const handleAddToPreBag = () => {
-    dispatch(bagActions.addToBag(items.id));
-  };
-
-  const drawerWidth = 240;
   return (
-    <div className="product-container">
-      <div className="secondery-div">
-        <Box sx={{ display: "flex" }}>
-          <CssBaseline />
-
-          <Drawer
-            variant="permanent"
-            sx={{
-              width: drawerWidth,
-              flexShrink: 0,
-              [`& .MuiDrawer-paper`]: {
-                width: drawerWidth,
-                boxSizing: "border-box",
-              },
+    <div className="product-main-container" style={{ marginTop: "5rem" }}>
+      <div
+        className="product-header"
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "0 48px 15px",
+        }}
+      >
+        <div className="left-head-part">
+          <h1>New</h1>
+        </div>
+        <div
+          className="right-head-part"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <div
+            className="filter-text"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              marginRight: "15px",
+              gap: "5px",
             }}
           >
-            <Toolbar />
-            <Box sx={{ overflow: "auto" }}>
-              <List>
-                {[
-                  "Shoes",
-                  "Jackets",
-                  "Send Hoodies & Sweatshirts",
-                  "Trousers & Tights",
-                  "Shorts",
-                  "Tops & T-Shirts",
-                  "Compression & Baselayer",
-                  "Tracksuits",
-                  "Socks",
-                  "Accessories & Equipment",
-                ].map((text) => (
-                  <ListItem key={text} disablePadding>
-                    <ListItemButton>
-                      {/* <ListItemIcon>
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon> */}
-                      <ListItemText primary={text} />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
-              <Divider />
-              <List>
-                {["All mail", "Trash", "Spam"].map((text) => (
-                  <ListItem key={text} disablePadding>
-                    <ListItemButton>
-                      {/* <ListItemIcon>
-                      {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                    </ListItemIcon> */}
-                      <ListItemText primary={text} />
-                    </ListItemButton>
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          </Drawer>
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <Toolbar />
-            <Typography paragraph>
-              <div
-                className="home-items-cont"
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  justifyContent: "space-evenly",
-                }}
+            <h1>Filter</h1>
+            <LuSettings2 />
+          </div>
+          <div className="sort-acco">
+            <Accordion style={{ padding: "0" }}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1-content"
+                id="panel1-header"
               >
-                {items.map((item) => (
-                  <div key={item.id}>
-                    <Link to="/pre-cart" onClick={handleAddToPreBag}>
-                      <img
-                        key={item.id}
-                        src={item.image}
-                        className="product-img"
-                      />
-                      <h3>{item.item_name}</h3>
-                      <div className="product-price">
-                        MRP : ₹{item.original_price}
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            </Typography>
-          </Box>
-        </Box>
+                Sort By
+              </AccordionSummary>
+              <AccordionDetails>
+                <List>
+                  {[
+                    "Featured",
+                    "Newest",
+                    "Price: High-Low",
+                    "Price: Low-High",
+                  ].map((text) => (
+                    <ListItem key={text} disablePadding>
+                      <ListItemButton>
+                        <ListItemText primary={text} />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </List>
+              </AccordionDetails>
+            </Accordion>
+          </div>
+        </div>
+      </div>
+      <div
+        className="product-body-cont"
+        style={{ display: "flex", justifyContent: "space-between" }}
+      >
+        <ProductSider />
+        <ProductItems />
       </div>
     </div>
   );

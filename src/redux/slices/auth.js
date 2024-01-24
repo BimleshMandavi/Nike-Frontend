@@ -13,6 +13,10 @@ const slice = createSlice({
         getUser(state,action){
             let data = {...action.payload.data}
             state.user = data
+        },
+
+        logoutUser(state){
+          state.user={};
         }
     }
 });
@@ -38,4 +42,9 @@ export const login = (data) => async () => {
   } else {
     return false;
   }
+};
+
+export const logout = async (dispatch) => {
+   await dispatch(slice.actions.logoutUser())
+   return true;
 };

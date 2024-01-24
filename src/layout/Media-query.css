@@ -1,11 +1,18 @@
-@media screen and (max-width: 1088px) {
-    .nav-toggle {
-        display: block;
-    }
+@media screen and (max-width: 1023px) {
+
 .nav-links{
     display: none;
 }
 .search-toggle{
     display: none;
+}
+.nav_bar a{
+    display: none;
+}
+.user-login-icon{
+    display: block;
+}
+.nav-toggle-icon{
+    display: block;
 }
 }

@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 
 function Footer() {
   return (
-    <div className="container">
-      <div className="footer-body">
+    <div className="footer-container w-full pb-0">
+      <div className="footer-body m-0">
         <div className="hf-accordion-body">
           <ul>
             <li className="footer-link">

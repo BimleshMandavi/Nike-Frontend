@@ -21,6 +21,7 @@
     "flowbite": "^2.2.1",
     "formik": "^2.4.5",
     "framer-motion": "^10.18.0",
+    "glider-js": "^1.7.8",
     "prop": "^0.1.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -32,6 +33,7 @@
     "react-router-dom": "^6.20.0",
     "react-slick": "^0.29.0",
     "redux": "^5.0.1",
+    "slick-carousel": "^1.8.1",
     "types": "^0.1.1"
   },
   "devDependencies": {
