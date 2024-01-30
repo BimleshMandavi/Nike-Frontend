@@ -1,6 +1,6 @@
 @media screen and (max-width: 1023px) {
 
-.nav-links{
+.nav-link{
     display: none;
 }
 .search-toggle{
@@ -8,6 +8,8 @@
 }
 .nav_bar a{
     display: none;
+    flex-direction: column;
+   
 }
 .user-login-icon{
     display: block;

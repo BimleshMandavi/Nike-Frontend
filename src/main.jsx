@@ -13,6 +13,7 @@ import Payment from "./components/Payment.jsx";
 import Favourites from "./components/Favourites.jsx";
 import store from "./redux/store/store.js";
 import Join from "./contents/register/Join.jsx";
+import { Toaster } from "react-hot-toast";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
         element: <Products />,
       },
       {
-        path: "/pre-cart",
+        path: "/pre-cart/:id",
         element: <PreBag />,
       },
     ],
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
+      <Toaster position="top-center" />
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>

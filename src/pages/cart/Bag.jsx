@@ -22,6 +22,10 @@ const Bag = () => {
   const handleDel = () => {
     console.log("item has been deleted");
   };
+
+  
+
+
   return (
     <div
       className="bag-container"

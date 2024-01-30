@@ -6,6 +6,7 @@ import { Box, TextField, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/slices/auth";
+import toast from "react-hot-toast";
 
 const Join = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Join = () => {
       console.log(result);
       if (result) {
         navigate("/sign-in");
+        toast.success("Resister successful");
         action.resetForm();
       }
     },

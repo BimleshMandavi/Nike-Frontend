@@ -38,10 +38,10 @@
     color: #111111;
     padding: 18px 5px 18px;
     font-weight: 500;
-        font-family: "Helvetica Now Text Medium", Helvetica, Arial, sans-serif;
-        cursor: pointer;
-     
-        text-decoration: none;
+    font-family: "Helvetica Now Text Medium", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
 }
 .nav_bar a:hover{
     border-bottom: 2px solid #000000;
@@ -55,7 +55,6 @@
     padding: 8px 48px;
     background: #F5F5F5;  
 }
-
 .search-icon{
 height: 100%;
 width: 100%;
@@ -90,7 +89,6 @@ justify-content: space-evenly;
     background-color: #ffffff;
 }
 .favuorite-logo:hover {
-    
        background-color:#bababa;
        height: 26px;
        width: 26px;
@@ -124,14 +122,12 @@ justify-content: space-evenly;
 }
 .user-login a{
     color: #111111;
-        text-decoration: none;
-        height: 24px;
-        width: 24px;
-        
+    text-decoration: none;
+    height: 24px;
+    width: 24px;    
 }
 .nav-toggle  {
-  
-color: #111111;
+    color: #111111;
     text-decoration: none;
     height: 24px;
     width: 24px;

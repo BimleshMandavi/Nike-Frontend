@@ -22,8 +22,21 @@ const slice = createSlice({
 });
 
 
-export const {reducers} = slice
+export const {reducer} = slice
 
+
+
+export const getUser = () => async(dispatch)=>{
+  const result = await authApi.getUser()
+  if(result){
+    await dispatch(slice.actions.getUser(result))
+    return true
+  }
+  else{
+    return false
+  }
+}
+ 
 
 
 export const register = (data) => async()=>{
@@ -44,7 +57,7 @@ export const login = (data) => async () => {
   }
 };
 
-export const logout = async (dispatch) => {
+export const logout = ()=>async (dispatch) => {
    await dispatch(slice.actions.logoutUser())
    return true;
 };

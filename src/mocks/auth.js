@@ -4,7 +4,7 @@ class AuthApi {
   async getUser() {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_HOST}/userapp/auth/me`,
+        `http://localhost:5003/userapp/user/me`,
         {
           method: "get",
           headers: {
@@ -13,7 +13,7 @@ class AuthApi {
         }
       );
 
-      if (response.status === "SUCCESS") {
+      if (response.data.status === "SUCCESS") {
         return response.data;
       }
     } catch (error) {

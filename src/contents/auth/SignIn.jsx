@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/slices/auth";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const SignUp = () => {
       if (result) {
         localStorage.setItem("accessToken", result.token);
         navigate("/");
+        toast.success("Login successful");
         action.resetForm();
       }
     },
