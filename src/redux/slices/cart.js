@@ -1,11 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { cartApi } from "../../mocks/cart";
 
+const initialState = {
+  cart: [],
+};
 const slice = createSlice({
   name: "cart",
-  initialState: [],
-  reducers: {},
+  initialState,
+  reducers: {
+    listCart(state, action) {
+      console.log("action");
+      console.log(action.payload);
+      if (action.payload) {
+        state.cart = [...action.payload.data];
+      }
+    },
+  },
 });
+
+export const { reducer } = slice;
 
 export const createCart = (data) => async () => {
   const result = await cartApi.createCart(data);
@@ -17,7 +30,6 @@ export const createCart = (data) => async () => {
   }
 };
 
-
 export const getCart = (data) => async () => {
   const result = await cartApi.getCart(data);
   if (result) {
@@ -27,5 +39,26 @@ export const getCart = (data) => async () => {
     return false;
   }
 };
+export const listCart = (id) => async (dispatch) => {
+  const result = await cartApi.listCart(id);
+  if (result) {
+    // console.log("result in  cart slice",result)
+    await dispatch(slice.actions.listCart(result.data));
+    // console.log("object")
+    return result;
+  } else {
+    return false;
+  }
+};
 
-export const { reducer } = slice;
+export const deleteCart = (id) => async () => {
+  const result = await cartApi.deleteCart(id);
+  if (result) {
+    console.log("result in delete cart", result);
+    // await dispatch(slice.actions.deleteCart(result.data));
+
+    return result;
+  } else {
+    return false;
+  }
+};
