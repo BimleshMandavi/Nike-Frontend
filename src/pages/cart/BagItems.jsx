@@ -6,7 +6,7 @@ const BagItems = () => {
   return (
     <div
       className="bagItem-container"
-      style={{ height: "100%", overflow: "hidden" }}
+      style={{ height: "100vh", overflow: "auto" }}
     >
       <div className="bag-cont">
         <Bag />

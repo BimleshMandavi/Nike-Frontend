@@ -13,7 +13,11 @@ const Products = () => {
       <ProductHeader />
       <div
         className="product-body-cont"
-        style={{ display: "flex", justifyContent: "space-between" }}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          overflow: "hidden",
+        }}
       >
         <ProductSider className="h-full" />
         <ProductItems />
