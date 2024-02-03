@@ -10,8 +10,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import Headroom from "react-headroom";
 import { LuUser } from "react-icons/lu";
 import NavToggle from "./NavToggle";
+import { useSelector } from "react-redux";
 
 const Navbar_2 = () => {
+  const { cart } = useSelector((state) => state.cart);
+
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: "0 5px 5px 0",
@@ -108,12 +111,17 @@ const Navbar_2 = () => {
               <Link to="/cart">
                 <IoBagOutline className="bag-icon " />
                 <div
-                  className="bag-item-count"
+                  className="bag-item-count text-xs"
                   style={{
                     textDecoration: "none",
                     color: "#111111",
+                    position: "relative",
+                    right: "6px",
+                    top: "8px",
                   }}
-                ></div>
+                >
+                  {cart.length}
+                </div>
               </Link>
             </div>
 
