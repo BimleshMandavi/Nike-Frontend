@@ -8,8 +8,66 @@ import TextField from "@mui/material/TextField";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import Headroom from "react-headroom";
+import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { createOrders } from "../redux/slices/orders";
+import toast from "react-hot-toast";
 
 const Checkout = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      addressLine1: "",
+      addressLine2: "",
+      addressLine3: "",
+      postalCode: "",
+      locality: "",
+      state: "",
+      email: "",
+      phoneNumber: "",
+      panNumber: "",
+    },
+    onSubmit: async (values, action) => {
+      const {
+        firstName,
+        lastName,
+        addressLine1,
+        addressLine2,
+        addressLine3,
+        postalCode,
+        locality,
+        state,
+        email,
+        phoneNumber,
+        panNumber,
+      } = values;
+      const data = {
+        firstName,
+        lastName,
+        addressLine1,
+        addressLine2,
+        addressLine3,
+        postalCode,
+        locality,
+        state,
+        email,
+        phoneNumber,
+        panNumber,
+      };
+      console.log("data of order", data);
+      let result = await dispatch(createOrders(data));
+      console.log("result in checkout page", result);
+      if (result) {
+        navigate("/payment");
+        toast.success("Chekout successful");
+        action.resetForm();
+      }
+    },
+  });
+
   const states = [
     {
       value: "USD",
@@ -216,15 +274,9 @@ const Checkout = () => {
     },
   ];
 
-  const navigate = useNavigate();
-
-  const handlePayment = () => {
-    navigate("/payment");
-  };
   return (
     <div className="main-checkout-cont">
       <Headroom>
-        {" "}
         <div className="checkout-nav" style={{ padding: "24px 48px" }}>
           <div className="left-logo">
             <Link to="/">
@@ -245,7 +297,7 @@ const Checkout = () => {
             </Link>
           </div>
         </div>
-       </Headroom>
+      </Headroom>
       <div className="checkout-body-cont">
         <div
           className="checkout-left-part"
@@ -287,13 +339,16 @@ const Checkout = () => {
                 </div>
               </Box>
             </div>
-            <div className="item-delivery-section">
+            <form
+              onSubmit={formik.handleSubmit}
+              className="item-delivery-section"
+            >
               <div
                 className="add-input-area"
                 style={{ padding: "20px 0px 0px" }}
               >
                 <h2>Enter your name and address:</h2>
-                <form action="" style={{ padding: "20px 0px 0px" }}>
+                <div style={{ padding: "20px 0px 0px" }}>
                   <Box
                     sx={{
                       width: 500,
@@ -305,6 +360,10 @@ const Checkout = () => {
                       fullWidth
                       label="First Name"
                       id="first name"
+                      name="firstName"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.firstName}
                       helperText="Please enter your first name"
                     />
                   </Box>
@@ -318,6 +377,10 @@ const Checkout = () => {
                     <TextField
                       fullWidth
                       label="Last Name"
+                      name="lastName"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.lastName}
                       id="fullWidth"
                       helperText="Please enter your last name"
                     />
@@ -332,6 +395,10 @@ const Checkout = () => {
                     <TextField
                       fullWidth
                       label="Address Line 1"
+                      name="addressLine1"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.addressLine1}
                       id="fullWidth"
                       helperText="Please enter your address details"
                     />
@@ -346,6 +413,10 @@ const Checkout = () => {
                     <TextField
                       fullWidth
                       label="Address Line 2"
+                      name="addressLine2"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.addressLine2}
                       id="fullWidth"
                       helperText="Please enter your address details"
                     />
@@ -360,6 +431,10 @@ const Checkout = () => {
                     <TextField
                       fullWidth
                       label="Address Line 3"
+                      name="addressLine3"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.addressLine3}
                       id="fullWidth"
                       helperText="Please enter your address details"
                     />
@@ -378,6 +453,10 @@ const Checkout = () => {
                       <TextField
                         id="outlined-multiline-flexible"
                         label="Postal Code"
+                        name="postalCode"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.postalCode}
                         multiline
                         maxRows={4}
                         helperText="Please enter your postcode"
@@ -385,6 +464,10 @@ const Checkout = () => {
                       <TextField
                         id="outlined-textarea"
                         label="Locality"
+                        name="locality"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.locality}
                         multiline
                         helperText="Please enter your locality"
                       />
@@ -403,6 +486,10 @@ const Checkout = () => {
                         id="outlined-select-currency-native"
                         select
                         label="State/Territory"
+                        name="state"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.state}
                         SelectProps={{
                           native: true,
                         }}
@@ -433,11 +520,14 @@ const Checkout = () => {
                       </Box>
                     </div>
                   </Box>
-                </form>
+                </div>
               </div>
               <div className="contact-info-area" style={{ marginTop: "20px" }}>
                 <h2>What`s your contact information?</h2>
-                <form action="" style={{ marginTop: "20px" }}>
+                <div
+                  onSubmit={formik.handleSubmit}
+                  style={{ marginTop: "20px" }}
+                >
                   <Box
                     sx={{
                       width: 500,
@@ -448,6 +538,10 @@ const Checkout = () => {
                     <TextField
                       fullWidth
                       label="Email"
+                      name="email"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.email}
                       id="email"
                       helperText="Please enter your email"
                     />
@@ -462,30 +556,37 @@ const Checkout = () => {
                     <TextField
                       fullWidth
                       label="Phone Number"
+                      name="phoneNumber"
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      value={formik.values.phoneNumber}
                       id="fullWidth"
                       helperText="Please enter your phone number"
                     />
                   </Box>
-                </form>
+                </div>
               </div>
               <div className="user-pan-info" style={{ marginTop: "20px" }}>
                 <h2>What`s your PAN?</h2>
-                <form action="">
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="PAN"
-                      id="pan"
-                      helperText="Enter your PAN to enable payment with UPI, Net Banking or local card"
-                    />
-                  </Box>
-                </form>
+
+                <Box
+                  sx={{
+                    width: 500,
+                    maxWidth: "100%",
+                  }}
+                  style={{ marginTop: "20px" }}
+                >
+                  <TextField
+                    fullWidth
+                    label="PAN"
+                    name="panNumber"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.panNumber}
+                    id="pan"
+                    helperText="Enter your PAN to enable payment with UPI, Net Banking or local card"
+                  />
+                </Box>
               </div>
               <Button
                 variant="outlined"
@@ -501,11 +602,10 @@ const Checkout = () => {
                   color: "white",
                   backgroundColor: "black",
                 }}
-                onClick={handlePayment}
               >
                 Continue
               </Button>
-            </div>
+            </form>
             <div className="item-summary-section" style={{ marginTop: "20px" }}>
               <div className="section-heading">
                 <h2>Delivery</h2>
@@ -627,7 +727,6 @@ const Checkout = () => {
               <span>© 2023 Nike,Inc.All Rights Reserved</span>
             </div>
             <div className="footer-element-links">
-              {" "}
               <Link
                 to="https://www.eshopworld.com/shoppers/help/retailer/nike/terms-and-conditions-of-sale-en/"
                 style={{
@@ -641,7 +740,6 @@ const Checkout = () => {
               </Link>
             </div>
             <div className="footer-element-links">
-              {" "}
               <Link
                 to="https://agreementservice.svs.nike.com/in/en_gb/rest/agreement?agreementType=termsOfUse&uxId=com.nike&country=IN&language=en&requestType=redirect"
                 style={{
@@ -670,12 +768,15 @@ const Checkout = () => {
           </div>
         </div>
         <div className="right-sub-footer">
-          <div className="footer-element-right">
-            {footerImg.map((item) => {
-              <div className="footer-product" key={item.id}>
-                <img src={item.images} />;
-              </div>;
-            })}
+          <div className="footer-element-right  flex absolute right-0">
+            {footerImg.map((item) => (
+              <div className="footer-product flex justify-end " key={item.id}>
+                <img
+                  className="flex w-[80px] h-[30px] justify-end pr-2"
+                  src={item.images}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>

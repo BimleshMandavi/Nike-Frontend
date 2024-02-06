@@ -12,8 +12,6 @@ const Bag = () => {
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
 
-  console.log("user", cart);
-
   const handleFetchListCart = async () => {
     try {
       if (!user?.id) {
@@ -40,7 +38,6 @@ const Bag = () => {
   };
   const handleDel = async (id) => {
     let data = await dispatch(deleteCart(id));
-    console.log(data);
     if (data) {
       setRefresh(!refresh);
       return true;
@@ -107,7 +104,7 @@ const Bag = () => {
               </div>
               <div className="left-part">
                 <span className="item-price">
-                  MRP:{data?.products[0]?.productId?.price?.mrp}
+                  MRP:₹ {data?.products[0]?.productId?.price?.mrp}
                 </span>
               </div>
             </div>
@@ -116,9 +113,7 @@ const Bag = () => {
           <div>No item in your bag !</div>
         )}
       </div>
-      <div className="more-product">
-       
-      </div>
+      <div className="more-product"></div>
     </div>
   );
 };

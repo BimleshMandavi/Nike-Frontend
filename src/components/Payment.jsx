@@ -7,17 +7,23 @@ import { SiNike } from "react-icons/si";
 import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
-// import { useSelector } from "react-redux/es/hooks/useSelector";
 import Headroom from "react-headroom";
+import { useDispatch, useSelector } from "react-redux";
+import { useFormik } from "formik";
 
 const Checkout = () => {
-  // const bag = useSelector((store) => store.bag);
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.cart);
+  let subtotal = 0;
+  let deliveryCoast = 1250;
 
-  const bagSummary = {
-    subtotal: "₹ 1 695.00",
-    Delivery: "₹ 1 250.00",
-    total: "₹ 2 945.00",
-  };
+  for (let i of cart) {
+    let price =
+      i && i.products && i.products[0] && i.products[0].productId?.price?.mrp;
+    subtotal = subtotal + price;
+  }
+  let total = deliveryCoast + subtotal;
+
   const footerImg = [
     {
       id: "01",
@@ -64,18 +70,7 @@ const Checkout = () => {
       images: "footerImg11.jpeg",
     },
   ];
-  const items = {
-    id: "001",
-    image: "img1.png",
-    company: "Carlton London",
-    item_name: "Rhodium-Plated CZ Floral Studs",
-    original_price: 1045,
-    current_price: 606,
-    discount_percentage: 42,
-    return_period: 14,
-    delivery_date: "10 Oct 2023",
-    rating: { stars: 4.5, count: 1400 },
-  };
+
   return (
     <div className="main-checkout-cont">
       <Headroom>
@@ -102,9 +97,7 @@ const Checkout = () => {
                     textDecoration: "none",
                     color: "#111111",
                   }}
-                >
-                  {/* {bag.length} */}
-                </div>
+                ></div>
               </IoBagOutline>
             </Link>
           </div>
@@ -281,17 +274,17 @@ const Checkout = () => {
           <div className="price-summary">
             <div className="prices">
               <div className="sub-info info">Subtotal</div>
-              <div className="sub-value info">{bagSummary.subtotal}</div>
+              <div className="sub-value info">{subtotal}</div>
             </div>
             <div className="delevery-info">
               <div className="dele-info info">
                 Estimated Delivery & Handling
               </div>
-              <div className="dele-value info">{bagSummary.Delivery}</div>
+              <div className="dele-value info">{deliveryCoast}</div>
             </div>
             <div className="price-total">
               <div className="total-info ">Total</div>
-              <div className="total-value ">{bagSummary.total}</div>
+              <div className="total-value ">{total}</div>
             </div>
             <div className="summary-help-text" style={{ fontSize: "0.8rem" }}>
               (The total reflects the price of your order, including all duties
@@ -305,33 +298,46 @@ const Checkout = () => {
             >
               Arrives Tue, 16 Jan - Wed, 7 Feb
             </h3>
-            <div
-              className="shipment"
-              style={{
-                display: "flex",
-                justifyContent: "space-evenly",
-                marginTop: "10px",
-              }}
-            >
-              <div className="item-imgs">
-                <img src={items.image} />
-              </div>
-              <div className="item-order-info">
-                <div className="item-title">
-                  <a href="/" style={{ textDecoration: "none" }}>
-                    {items.company}
-                  </a>
+            {cart.map((data) => {
+              <div
+                className="shipment"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  marginTop: "10px",
+                }}
+              >
+                <div className="item-imgs">
+                  <img src={data?.products[0]?.productId?.image} />
                 </div>
-                <div className="item-name">{items.item_name}</div>
-                <div className="item-color">Black/White</div>
+                <div className="item-order-info">
+                  <div className="item-title">
+                    <a href="/" style={{ textDecoration: "none" }}>
+                      {data?.products[0]?.productId?.title?.longTitle}
+                    </a>
+                  </div>
+                  <div className="item-name">
+                    {" "}
+                    {data?.products[0]?.productId?.title?.shortTitle}
+                  </div>
+                  <div className="item-color">
+                    {data?.products[0]?.productId?.subCategory}
+                  </div>
 
-                <div className="item-size">Size</div>
+                  <div className="item-size">Size</div>
 
-                <div className="item-quant">Quantity</div>
+                  <div className="item-quant">
+                    {" "}
+                    Quantity: {data?.products[0]?.qty}
+                  </div>
 
-                <div className="item-price">MRP:{items.original_price}</div>
-              </div>
-            </div>
+                  <div className="item-price">
+                    {" "}
+                    MRP:₹ {data?.products[0]?.productId?.price?.mrp}
+                  </div>
+                </div>
+              </div>;
+            })}
           </div>
           <div className="shipent-summary"></div>
         </div>
@@ -422,13 +428,16 @@ const Checkout = () => {
             </div>
           </div>
         </div>
-        <div className="right-sub-footer">
-          <div className="footer-element-right">
-            {footerImg.map((item) => {
-              <div className="footer-product" key={item.id}>
-                <img src={item.images} />;
-              </div>;
-            })}
+        <div className="right-sub-footer absolute right-0 ">
+          <div className="footer-element-right flex ">
+            {footerImg.map((item) => (
+              <div className="footer-product flex justify-end " key={item.id}>
+                <img
+                  className="flex w-[80px] h-[30px] justify-end pr-2"
+                  src={item.images}
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
