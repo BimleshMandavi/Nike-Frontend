@@ -14,6 +14,8 @@ import Favourites from "./components/Favourites.jsx";
 import store from "./redux/store/store.js";
 import Join from "./contents/register/Join.jsx";
 import { Toaster } from "react-hot-toast";
+import Shipping from "./components/Shiping.jsx";
+import Billing from "./components/Billing.jsx";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,14 @@ const router = createBrowserRouter([
   {
     path: "/checkout",
     element: <Checkout />,
+  },
+  {
+    path: "/shipping",
+    element: <Shipping />,
+  },
+  {
+    path: "/billing",
+    element: <Billing />,
   },
   {
     path: "/payment",

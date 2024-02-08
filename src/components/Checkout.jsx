@@ -9,62 +9,77 @@ import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import Headroom from "react-headroom";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
-import { createOrders } from "../redux/slices/orders";
+import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
+import { getUser, updateUser } from "../redux/slices/auth";
 
 const Checkout = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { user } = useSelector((state) => state.auth);
+  const { cart } = useSelector((state) => state.cart);
+
+  console.log("cart data in checkout", cart);
+
+  let subtotal = 0;
+  let deliveryCoast = 1250;
+
+  for (let i of cart) {
+    let price =
+      i && i.products && i.products[0] && i.products[0].productId?.price?.mrp;
+    subtotal = subtotal + price;
+  }
+  let total = deliveryCoast + subtotal;
+
+  console.log("user data", user);
+
+  useEffect(() => {
+    const handleGetUser = async () => {
+      try {
+        const data = await dispatch(getUser());
+        console.log("data", data);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    handleGetUser();
+  }, []);
+
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      addressLine1: "",
-      addressLine2: "",
-      addressLine3: "",
-      postalCode: "",
-      locality: "",
-      state: "",
-      email: "",
-      phoneNumber: "",
-      panNumber: "",
+      firstName: user?.name,
+      lastName: user?.lastName,
+      locality: user?.address?.locality,
+      state: user?.address?.state,
+
+      city: user?.address?.city,
+      zipcode: user?.address?.zipcode,
+      // email: user?.email,
+      // phone: "",
     },
     onSubmit: async (values, action) => {
-      const {
-        firstName,
-        lastName,
-        addressLine1,
-        addressLine2,
-        addressLine3,
-        postalCode,
-        locality,
-        state,
-        email,
-        phoneNumber,
-        panNumber,
-      } = values;
-      const data = {
-        firstName,
-        lastName,
-        addressLine1,
-        addressLine2,
-        addressLine3,
-        postalCode,
-        locality,
-        state,
-        email,
-        phoneNumber,
-        panNumber,
+      console.log("values", values);
+      let data = {
+        address: [
+          {
+            locality: values?.locality,
+            city: values?.city,
+            state: values?.state,
+
+            zipcode: values?.zipcode,
+          },
+        ],
       };
-      console.log("data of order", data);
-      let result = await dispatch(createOrders(data));
-      console.log("result in checkout page", result);
+      let result = await dispatch(updateUser(user?.id, data));
+      console.log("data in checkout", data);
       if (result) {
-        navigate("/payment");
+        navigate("/shipping");
         toast.success("Chekout successful");
         action.resetForm();
       }
+      console.log("result in checkout page", result);
     },
   });
 
@@ -86,147 +101,131 @@ const Checkout = () => {
       label: "Assam",
     },
     {
-      value: "JPY",
+      value: "JPX",
       label: "Bihar",
     },
     {
-      value: "JPY",
+      value: "XPY",
       label: "Chandigarh",
     },
     {
-      value: "JPY",
+      value: "JXY",
       label: "Chhattisgarh",
     },
     {
-      value: "JPY",
+      value: "CPY",
       label: "Dadra and Nagar Haveli",
     },
     {
-      value: "JPY",
+      value: "JCY",
       label: "Daman and Diu",
     },
     {
-      value: "JPY",
+      value: "JPC",
       label: "Delhi",
     },
     {
-      value: "JPY",
+      value: "APY",
       label: "Goa",
     },
     {
-      value: "JPY",
+      value: "JAY",
       label: "Gujrat",
     },
     {
-      value: "JPY",
+      value: "JPA",
       label: "Haryana",
     },
     {
-      value: "JPY",
+      value: "BPY",
       label: "Himachal Pradesh",
     },
     {
-      value: "JPY",
+      value: "JBY",
       label: "Jammu and Kashmir",
     },
     {
-      value: "JPY",
+      value: "JPB",
       label: "Jharkhand",
     },
     {
-      value: "JPY",
+      value: "CPY",
       label: "Karnataka",
     },
     {
-      value: "JPY",
+      value: "JCY",
       label: "Kerala",
     },
     {
-      value: "JPY",
+      value: "JPC",
       label: "Lakshadeep",
     },
     {
-      value: "JPY",
+      value: "DPY",
       label: "Madhya Pradesh",
     },
     {
-      value: "JPY",
+      value: "JDY",
       label: "Maharashtra",
     },
     {
-      value: "JPY",
+      value: "JPD",
       label: "Manipur",
     },
     {
-      value: "JPY",
+      value: "EPY",
       label: "Meghalaya",
     },
     {
-      value: "JPY",
+      value: "JEY",
       label: "Mizoram",
     },
     {
-      value: "JPY",
+      value: "JPE",
       label: "Nagaland",
     },
     {
-      value: "JPY",
+      value: "FPY",
       label: "Odisha",
     },
     {
-      value: "JPY",
+      value: "JFY",
       label: "Puducherry",
     },
     {
-      value: "JPY",
+      value: "JPF",
       label: "Punjab",
     },
     {
-      value: "JPY",
+      value: "GPY",
       label: "Rajasthan",
     },
     {
-      value: "JPY",
+      value: "JGY",
       label: "Sikkim",
     },
     {
-      value: "JPY",
+      value: "JPG",
       label: "Tamil Nadu",
     },
     {
-      value: "JPY",
+      value: "HPY",
       label: "Tripura",
     },
     {
-      value: "JPY",
+      value: "JHY",
       label: "Uttarakhand",
     },
     {
-      value: "JPY",
+      value: "JPH",
       label: "Uttar Pradesh",
     },
     {
-      value: "JPY",
+      value: "IPY",
       label: "West Bengal",
     },
   ];
-  const bagSummary = {
-    subtotal: "₹ 1 695.00",
-    Delivery: "₹ 1 250.00",
-    total: "₹ 2 945.00",
-  };
-  const items = {
-    id: "001",
-    image: "img1.png",
-    company: "Carlton London",
-    item_name: "Rhodium-Plated CZ Floral Studs",
-    original_price: 1045,
-    current_price: 606,
-    discount_percentage: 42,
-    return_period: 14,
-    delivery_date: "10 Oct 2023",
-    rating: { stars: 4.5, count: 1400 },
-  };
+
   const footerImg = [
     {
       id: "01",
@@ -289,11 +288,23 @@ const Checkout = () => {
             <Link to="">
               <LiaSmsSolid className="check-right-logo sms-log" />
             </Link>
-            <Link to="/cart">
+            <Link to="/cart" className="relative bottom-3">
               <IoBagOutline
-                className="check-right-logo bag-log"
+                className="check-right-logo bag-log relative top-0"
                 style={{ cursor: "pointer" }}
               />
+              <div
+                className="bag-item-count text-[11px]"
+                style={{
+                  textDecoration: "none",
+                  color: "#111111",
+                  position: "relative",
+                  right: "6px",
+                  top: "8px",
+                }}
+              >
+                {cart.length}
+              </div>
             </Link>
           </div>
         </div>
@@ -385,60 +396,6 @@ const Checkout = () => {
                       helperText="Please enter your last name"
                     />
                   </Box>
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="Address Line 1"
-                      name="addressLine1"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.addressLine1}
-                      id="fullWidth"
-                      helperText="Please enter your address details"
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="Address Line 2"
-                      name="addressLine2"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.addressLine2}
-                      id="fullWidth"
-                      helperText="Please enter your address details"
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="Address Line 3"
-                      name="addressLine3"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.addressLine3}
-                      id="fullWidth"
-                      helperText="Please enter your address details"
-                    />
-                  </Box>
 
                   <Box
                     component="form"
@@ -452,22 +409,22 @@ const Checkout = () => {
                     <div style={{ marginTop: "20px" }}>
                       <TextField
                         id="outlined-multiline-flexible"
-                        label="Postal Code"
-                        name="postalCode"
+                        label="Zip Code"
+                        name="zipcode"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.postalCode}
+                        value={formik.values.zipcode}
                         multiline
                         maxRows={4}
                         helperText="Please enter your postcode"
                       />
                       <TextField
                         id="outlined-textarea"
-                        label="Locality"
-                        name="locality"
+                        label="City"
+                        name="city"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.locality}
+                        value={formik.values.city}
                         multiline
                         helperText="Please enter your locality"
                       />
@@ -495,7 +452,7 @@ const Checkout = () => {
                         }}
                       >
                         {states.map((option) => (
-                          <option key={option.value} value={option.value}>
+                          <option key={option.value} value={option.label}>
                             {option.label}
                           </option>
                         ))}
@@ -512,8 +469,9 @@ const Checkout = () => {
                           <TextField
                             id="outlined-read-only-input"
                             defaultValue="India"
+                            name="country"
                             InputProps={{
-                              readOnly: true,
+                              readOnly: false,
                             }}
                           />
                         </div>
@@ -539,9 +497,10 @@ const Checkout = () => {
                       fullWidth
                       label="Email"
                       name="email"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.email}
+                      // onChange={formik.handleChange}
+                      // onBlur={formik.handleBlur}
+                      value={user?.email}
+                      disabled={user?.email ? true : false}
                       id="email"
                       helperText="Please enter your email"
                     />
@@ -556,10 +515,10 @@ const Checkout = () => {
                     <TextField
                       fullWidth
                       label="Phone Number"
-                      name="phoneNumber"
+                      name="phone"
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.phoneNumber}
+                      value={formik.values.phone}
                       id="fullWidth"
                       helperText="Please enter your phone number"
                     />
@@ -610,13 +569,13 @@ const Checkout = () => {
               <div className="section-heading">
                 <h2>Delivery</h2>
               </div>
-              <div className="section-heading">
+              <div className="section-heading text-slate-500">
                 <h2>Shipping</h2>
               </div>
-              <div className="section-heading">
+              <div className="section-heading text-slate-500">
                 <h2>Billing</h2>
               </div>
-              <div className="section-heading">
+              <div className="section-heading text-slate-500">
                 <h2>Payment</h2>
               </div>
             </div>
@@ -627,17 +586,17 @@ const Checkout = () => {
           <div className="price-summary">
             <div className="prices">
               <div className="sub-info info">Subtotal</div>
-              <div className="sub-value info">{bagSummary.subtotal}</div>
+              <div className="sub-value info">{subtotal}</div>
             </div>
             <div className="delevery-info">
               <div className="dele-info info">
                 Estimated Delivery & Handling
               </div>
-              <div className="dele-value info">{bagSummary.Delivery}</div>
+              <div className="dele-value info">{deliveryCoast}</div>
             </div>
             <div className="price-total">
               <div className="total-info ">Total</div>
-              <div className="total-value ">{bagSummary.total}</div>
+              <div className="total-value ">{total}</div>
             </div>
             <div className="summary-help-text" style={{ fontSize: "0.8rem" }}>
               (The total reflects the price of your order, including all duties
@@ -651,33 +610,47 @@ const Checkout = () => {
             >
               Arrives Tue, 16 Jan - Wed, 7 Feb
             </h3>
-            <div
-              className="shipment"
-              style={{
-                display: "flex",
-                justifyContent: "space-evenly",
-                marginTop: "10px",
-              }}
-            >
-              <div className="item-imgs">
-                <img src={items.image} />
-              </div>
-              <div className="item-order-info">
-                <div className="item-title">
-                  <a href="/" style={{ textDecoration: "none" }}>
-                    {items.company}
-                  </a>
+            {cart.map((data) => (
+              <div
+                key={data.index}
+                className="shipment"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-evenly",
+                  marginTop: "10px",
+                }}
+              >
+                <div className="item-imgs">
+                  <img src={data?.products[0]?.productId?.image} />
                 </div>
-                <div className="item-name">{items.item_name}</div>
-                <div className="item-color">Black/White</div>
+                <div className="item-order-info">
+                  <div className="item-title">
+                    <a href="/" style={{ textDecoration: "none" }}>
+                      {data?.products[0]?.productId?.title?.longTitle}
+                    </a>
+                  </div>
+                  <div className="item-name">
+                    {data?.products[0]?.productId?.title?.shortTitle}
+                  </div>
+                  <div className="item-color">
+                    {" "}
+                    Colour: {data?.products[0]?.productId?.subCategory}
+                  </div>
 
-                <div className="item-size">Size</div>
+                  <div className="item-size">Size</div>
 
-                <div className="item-quant">Quantity</div>
+                  <div className="item-quant">
+                    {" "}
+                    Quantity: {data?.products[0]?.qty}
+                  </div>
 
-                <div className="item-price">MRP:{items.original_price}</div>
+                  <div className="item-price">
+                    {" "}
+                    MRP:₹ {data?.products[0]?.productId?.price?.mrp}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
           <div className="shipent-summary"></div>
         </div>
@@ -767,12 +740,12 @@ const Checkout = () => {
             </div>
           </div>
         </div>
-        <div className="right-sub-footer">
-          <div className="footer-element-right  flex absolute right-0">
+        <div className="right-sub-footer  absolute right-0">
+          <div className="footer-element-right flex ">
             {footerImg.map((item) => (
               <div className="footer-product flex justify-end " key={item.id}>
                 <img
-                  className="flex w-[80px] h-[30px] justify-end pr-2"
+                  className="flex w-[45px] h-[27px] justify-end pr-2 mr-[8px]"
                   src={item.images}
                 />
               </div>

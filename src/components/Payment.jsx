@@ -5,15 +5,17 @@ import { LiaSmsSolid } from "react-icons/lia";
 import { IoBagOutline } from "react-icons/io5";
 import { SiNike } from "react-icons/si";
 import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import Headroom from "react-headroom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 
 const Checkout = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
   let subtotal = 0;
   let deliveryCoast = 1250;
 
@@ -71,6 +73,15 @@ const Checkout = () => {
     },
   ];
 
+  const handleEdit = () => {
+    navigate("/checkout");
+  };
+  const handleEditShipping = () => {
+    navigate("/shipping");
+  };
+  const handleEditBiling = () => {
+    navigate("/billing");
+  };
   return (
     <div className="main-checkout-cont">
       <Headroom>
@@ -86,19 +97,23 @@ const Checkout = () => {
             <Link to="">
               <LiaSmsSolid className="check-right-logo sms-log" />
             </Link>
-            <Link to="/cart">
+            <Link to="/cart" className="relative bottom-3">
               <IoBagOutline
                 className="check-right-logo bag-log"
                 style={{ cursor: "pointer" }}
+              ></IoBagOutline>
+              <div
+                className="bag-item-count text-[11px]"
+                style={{
+                  textDecoration: "none",
+                  color: "#111111",
+                  position: "relative",
+                  right: "6px",
+                  top: "8px",
+                }}
               >
-                <div
-                  className="bag-item-count"
-                  style={{
-                    textDecoration: "none",
-                    color: "#111111",
-                  }}
-                ></div>
-              </IoBagOutline>
+                {cart.length}
+              </div>
             </Link>
           </div>
         </div>
@@ -254,14 +269,97 @@ const Checkout = () => {
               </Button>
             </div>
             <div className="item-summary-section" style={{ marginTop: "20px" }}>
-              <div className="section-heading">
-                <h2>Delivery</h2>
+              <div className="section-heading mb-[20%] ">
+                <h2 className="mb-2">Delivery</h2>
+                <div className="flex ">
+                  <div className="text-[20px]">
+                    <div className="user-address-info text-slate-600 flex ">
+                      <div>{user?.firstName}</div>
+                      <div>{user?.lastName}</div>
+                    </div>
+                    <div className="user-city  text-slate-600">
+                      <div>{user?.email}</div>
+                    </div>
+                  </div>
+                  <div className="edit-info-btn relative left-[260px]">
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                        border: "2px solid grey",
+                        borderRadius: "20px",
+                      }}
+                    >
+                      <Button onClick={handleEdit} size="sm">
+                        Edit
+                      </Button>
+                    </Box>
+                  </div>
+                </div>
               </div>
-              <div className="section-heading">
-                <h2>Shipping</h2>
+              <div className="section-heading mb-[20%]">
+                <h2 className="mb-2">Shipping</h2>
+                <div className="flex ">
+                  <div className="text-[20px]">
+                    <div className="text-slate-500 w-[30%] text-[18px]">
+                      {deliveryCoast} Shipping
+                    </div>
+                    <div className="text-[18px] text-slate-500">
+                      <p className="text-[18px] text-slate-500 mb-0">
+                        Shipment One
+                      </p>
+                      <p className="text-[18px] text-slate-500 mb-0">
+                        {" "}
+                        Arrives Tue, 16 Jan - Wed, 7 Feb
+                      </p>
+                    </div>
+                  </div>
+                  <div className="edit-info-btn h-[34px]  relative left-[260px]">
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                        border: "2px solid grey",
+                        borderRadius: "20px",
+                      }}
+                    >
+                      <Button onClick={handleEditShipping} size="sm">
+                        Edit
+                      </Button>
+                    </Box>
+                  </div>
+                </div>
               </div>
-              <div className="section-heading">
-                <h2>Billing</h2>
+              <div className="section-heading mb-[20%] ">
+                <h2 className="mb-2">Billing</h2>
+                <div className="flex ">
+                  <div className="text-[20px]">
+                    <div className="user-address-info text-slate-600 flex ">
+                      <div>{user?.firstName}</div>
+                      <div>{user?.lastName}</div>
+                    </div>
+                    <div className="user-city  text-slate-600">
+                      <div>{user?.city}</div>
+                    </div>
+                  </div>
+                  <div className="edit-info-btn relative left-[260px]">
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        flexWrap: "wrap",
+                        border: "2px solid grey",
+                        borderRadius: "20px",
+                      }}
+                    >
+                      <Button onClick={handleEditBiling} size="sm">
+                        Edit
+                      </Button>
+                    </Box>
+                  </div>
+                </div>
               </div>
               <div className="section-heading">
                 <h2>Payment</h2>
@@ -298,8 +396,9 @@ const Checkout = () => {
             >
               Arrives Tue, 16 Jan - Wed, 7 Feb
             </h3>
-            {cart.map((data) => {
+            {cart.map((data) => (
               <div
+                key={data.index}
                 className="shipment"
                 style={{
                   display: "flex",
@@ -336,8 +435,8 @@ const Checkout = () => {
                     MRP:₹ {data?.products[0]?.productId?.price?.mrp}
                   </div>
                 </div>
-              </div>;
-            })}
+              </div>
+            ))}
           </div>
           <div className="shipent-summary"></div>
         </div>
@@ -433,7 +532,7 @@ const Checkout = () => {
             {footerImg.map((item) => (
               <div className="footer-product flex justify-end " key={item.id}>
                 <img
-                  className="flex w-[80px] h-[30px] justify-end pr-2"
+                  className="flex w-[45px] h-[27px] justify-end pr-2 mr-[8px]"
                   src={item.images}
                 />
               </div>

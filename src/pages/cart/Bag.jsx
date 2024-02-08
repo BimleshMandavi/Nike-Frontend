@@ -4,6 +4,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCart, listCart } from "../../redux/slices/cart";
 import { useEffect, useState } from "react";
+import { getUser } from "../../redux/slices/auth";
 
 const Bag = () => {
   const dispatch = useDispatch();
@@ -12,13 +13,23 @@ const Bag = () => {
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
 
+  const fetchUser = async () => {
+    let result = await dispatch(getUser());
+    if (result) {
+      return true;
+    }
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  console.log("user", cart);
+  console.log(user);
+
   const handleFetchListCart = async () => {
     try {
-      if (!user?.id) {
-        return;
-      }
-
-      let result = await dispatch(listCart(user?.id));
+      let result = await dispatch(listCart(1, 10, user?.id));
       if (result) {
         return true;
       } else {
@@ -31,13 +42,14 @@ const Bag = () => {
 
   useEffect(() => {
     handleFetchListCart();
-  }, [refresh]);
+  }, []);
 
   const handleFav = () => {
     console.log("item has been added to wishlist");
   };
   const handleDel = async (id) => {
     let data = await dispatch(deleteCart(id));
+    console.log(data);
     if (data) {
       setRefresh(!refresh);
       return true;

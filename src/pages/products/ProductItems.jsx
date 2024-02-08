@@ -18,12 +18,6 @@ function ProductItems() {
       return false;
     }
   };
-  // const handleAddToPreBag = async(id) => {
-  //    let result = await dispatch(getSingleProduct(id))
-  //    if(result){
-  //     return true;
-  //    }
-  // };
 
   useEffect(() => {
     fetchProducts();

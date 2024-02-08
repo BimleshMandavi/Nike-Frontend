@@ -15,6 +15,9 @@ const slice = createSlice({
         state.cart = [...action.payload.data];
       }
     },
+    deleteCart (state){
+       state.cart=[]
+    }
   },
 });
 
@@ -39,8 +42,8 @@ export const getCart = (data) => async () => {
     return false;
   }
 };
-export const listCart = (id) => async (dispatch) => {
-  const result = await cartApi.listCart(id);
+export const listCart = (page,limit='10',id) => async (dispatch) => {
+  const result = await cartApi.listCart(page,limit,id);
   if (result) {
     // console.log("result in  cart slice",result)
     await dispatch(slice.actions.listCart(result.data));

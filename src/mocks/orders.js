@@ -12,6 +12,7 @@ class OrdersApi {
           },
         }
       );
+      console.log("data in mocks", data);
       console.log("response in orders mocks", response);
       if (response.data.status == "SUCCESS") {
         return response.data;
@@ -20,6 +21,8 @@ class OrdersApi {
       console.log("error", error);
     }
   }
+
+ 
 }
 
 export const ordersApi = new OrdersApi();

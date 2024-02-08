@@ -43,7 +43,7 @@ class CartApi {
   async deleteCart(id) {
     try {
       const response = await axios.delete(
-        `http://localhost:5003/userapp/cart/soft-delete/${id}`,
+        `http://localhost:5003/userapp/cart/delete/${id}`,
 
         {
           headers: {
@@ -60,13 +60,10 @@ class CartApi {
     }
   }
 
-  async listCart(id) {
+  async listCart(page,limit,id) {
     try {
       let data = {
-        query: {
-          userId: id,
-          isDeleted: false,
-        },
+        query: {userId:id},
         options: {
           collation: "",
           sort: { name: 1 },
@@ -74,8 +71,8 @@ class CartApi {
           projection: "",
           lean: false,
           leanWithId: true,
-          page: 1,
-          limit: 10,
+          page: page,
+          limit: limit,
           pagination: true,
           useEstimatedCount: false,
           useCustomCountFn: false,

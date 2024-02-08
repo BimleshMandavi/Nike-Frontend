@@ -46,13 +46,13 @@ const PreBag = () => {
   const handleAddtoFav = () => {
     navigate("/favourites");
   };
-  const handleAddToBag = async() => {
+  const handleAddToBag = async(productId) => {
     try {
       let data = {
         "userId":user?.id,
          "products":[
         {
-            "productId": id,
+            "productId": productId,
             "qty": 1
         }
      ]
@@ -170,7 +170,7 @@ const PreBag = () => {
                     borderRadius: "30px",
                     cursor: "pointer",
                   }}
-                  onClick={handleAddToBag}
+                  onClick={()=>handleAddToBag(product?.id)}
                 >
                   Add to Bag
                 </button>
