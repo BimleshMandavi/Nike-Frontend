@@ -16,6 +16,7 @@ import Join from "./contents/register/Join.jsx";
 import { Toaster } from "react-hot-toast";
 import Shipping from "./components/Shiping.jsx";
 import Billing from "./components/Billing.jsx";
+import Profile from "./contents/userPorfile/Profile.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/pre-cart/:id",
         element: <PreBag />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },
