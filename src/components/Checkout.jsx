@@ -497,8 +497,7 @@ const Checkout = () => {
                       fullWidth
                       label="Email"
                       name="email"
-                      // onChange={formik.handleChange}
-                      // onBlur={formik.handleBlur}
+                    
                       value={user?.email}
                       disabled={user?.email ? true : false}
                       id="email"

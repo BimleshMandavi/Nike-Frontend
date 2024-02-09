@@ -1,4 +1,4 @@
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar_1.css";
 import { SiJordan } from "react-icons/si";
 import "./Media-query.css";
@@ -38,6 +38,10 @@ const Navbar_1 = () => {
       toast.success("Logout successful");
       return true;
     }
+  };
+
+  const handleProfile = () => {
+    navigate("/profile");
   };
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -102,7 +106,9 @@ const Navbar_1 = () => {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <span onClick={handleProfile}> Profile</span>
+                </MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
                 <MenuItem onClick={handleClose}>
                   <span onClick={handleLogOut}>Logout</span>
