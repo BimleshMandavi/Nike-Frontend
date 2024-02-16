@@ -40,6 +40,7 @@ const Join = () => {
         height: "60vh",
         margin: "60px 0",
       }}
+      className="px-[30px] pt-6"
     >
       <form onSubmit={formik.handleSubmit}>
         <Box

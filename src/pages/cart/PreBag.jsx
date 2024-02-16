@@ -41,31 +41,31 @@ const PreBag = () => {
   const navigate = useNavigate();
   const [product, setProduct] = useState();
 
-  const {user} = useSelector((state) => state.auth)
-  console.log("user",user)
+  const { user } = useSelector((state) => state.auth);
+  console.log("user", user);
   const handleAddtoFav = () => {
     navigate("/favourites");
   };
-  const handleAddToBag = async(productId) => {
+  const handleAddToBag = async (productId) => {
     try {
       let data = {
-        "userId":user?.id,
-         "products":[
-        {
-            "productId": productId,
-            "qty": 1
-        }
-     ]
-}   
-  console.log("data",data)
-      const result = await dispatch(createCart(data))
-      console.log("result",result)
-      if(result.status ===  'SUCCESS'){
-        toast.success("Your Product is added to Cart")
-        navigate("/cart")
+        userId: user?.id,
+        products: [
+          {
+            productId: productId,
+            qty: 1,
+          },
+        ],
+      };
+      console.log("data", data);
+      const result = await dispatch(createCart(data));
+      console.log("result", result);
+      if (result.status === "SUCCESS") {
+        toast.success("Your Product is added to Cart");
+        navigate("/cart");
       }
     } catch (error) {
-      console.log("error",error)
+      console.log("error", error);
     }
   };
   const fetchSingleProduct = async () => {
@@ -81,35 +81,15 @@ const PreBag = () => {
   }, []);
 
   return (
-    <div className="main-pre-container " style={{ overflow: "hidden" }}>
+    <div className="main-pre-container ">
       <div
-        className="pre-bag-container"
+        className="pre-bag-container pl"
         style={{
-          display: "flex",
-          justifyContent: "center",
-          paddingLeft: "450px",
           marginTop: "50px",
         }}
       >
-        <div
-          className="product-right-part"
-          style={{ display: "flex", justifyContent: "center" }}
-        >
-          <div className="product-img">
-            <img
-              src={product?.image}
-              style={{ height: "100%", width: "100%" }}
-            />
-          </div>
-        </div>
-        <div
-          className="product-left-part pl-12 max-h-[70vh] overflow-y-auto overflow-x-hidden"
-          style={{ width: "180vw", overflowY: "scroll" }}
-        >
-          <div
-            className="product-info"
-            style={{ width: "50%", margin: " 0 0", padding: "0 0 0 20px" }}
-          >
+        <div className="product-right-part pl-8 pb-5">
+          <div>
             <h1 className="text-3xl">{product?.title?.shortTitle}</h1>
             <h3>{product?.title?.longTitle}</h3>
             <div className="product-price">MRP : ₹{product?.price?.mrp}.00</div>
@@ -119,7 +99,13 @@ const PreBag = () => {
             <div className="product-color">
               <p className="text-xl">color : {product?.subCategory}</p>
             </div>
-
+          </div>
+        </div>
+        <div className="product-left-part ">
+          <div className="product-info">
+            <div className="product-img">
+              <img className="w-[500px] h-[300px]" src={product?.image} />
+            </div>
             <div className="product-size">
               <p className="text-1xl">Select Size</p>
               <div className="size-grid">
@@ -170,7 +156,7 @@ const PreBag = () => {
                     borderRadius: "30px",
                     cursor: "pointer",
                   }}
-                  onClick={()=>handleAddToBag(product?.id)}
+                  onClick={() => handleAddToBag(product?.id)}
                 >
                   Add to Bag
                 </button>

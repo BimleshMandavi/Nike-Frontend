@@ -5,8 +5,8 @@ import "./Bag-Item.css";
 const BagItems = () => {
   return (
     <div
-      className="bagItem-container"
-      style={{ height: "100vh", overflow: "auto" }}
+      className="bagItem-container 
+max-w-full"
     >
       <div className="bag-cont">
         <Bag />

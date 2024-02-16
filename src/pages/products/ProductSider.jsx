@@ -22,7 +22,7 @@ import {
 const ProductSider = () => {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   return (
-    <div className="product-accordition">
+    <div className="product-accordition hidden sm:flex">
       <div
         style={{
           maxHeight: "70vh",

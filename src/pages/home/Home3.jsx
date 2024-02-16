@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Home3.css";
 const Home3 = () => {
   return (
-    <div className="home3-container">
+    <div className="home3-container overflow-y-hidden">
       <div className="item-head-cont"></div>
       <div className="item3-cont">
         <Link to="/products">

@@ -39,7 +39,7 @@ const ProductHeader = () => {
           <h1>Filter</h1>
           <LuSettings2 />
         </div>
-        <div className="sort-acco">
+        <div className="sort-acco hidden sm:flex">
           <Accordion style={{ padding: "0" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}

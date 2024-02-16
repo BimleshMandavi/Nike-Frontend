@@ -31,10 +31,10 @@ function ProductItems() {
 
   return (
     <div
-      className="product-container max-h-[90vh]"
-      style={{ overflowY: "scroll", paddingLeft: "34px" }}
+      className="product-container max-h-[90vh] overflow-y-hidden sm:overflow-y-scroll pl-0 sm:pl-[34px] "
+      style={{ overflowY: "scroll" }}
     >
-      <div className="secondery-div" style={{ display: "flex" }}>
+      <div className="secondery-div  ">
         <Box sx={{ display: "flex" }}>
           <CssBaseline />
           <div className="product-cont">
@@ -52,10 +52,13 @@ function ProductItems() {
                   {product &&
                     product?.length > 0 &&
                     product.map((item, index) => (
-                      <div key={index} className="pt-5">
+                      <div key={index} className="pt-5 ">
                         <Link to={`/pre-cart/${item.id}`}>
-                          <div className="product-img w-[50%]">
-                            <img src={item?.image} className="product-img" />
+                          <div className="product-img ">
+                            <img
+                              src={item?.image}
+                              className="product-img w-[50%]"
+                            />
                           </div>
                           <div className="product-details w-[50%]  pt-1">
                             <h3 className="no-underline">

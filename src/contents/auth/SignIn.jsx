@@ -41,6 +41,7 @@ const SignUp = () => {
         height: "60vh",
         margin: "40px 0",
       }}
+      className="px-[30px] pt-6"
     >
       <form onSubmit={formik.handleSubmit}>
         <Box

@@ -53,7 +53,7 @@ const Navbar_1 = () => {
     setAnchorEl(null);
   };
   return (
-    <div className="nav1-container nav-link flex">
+    <div className="nav1-container nav-link flex ">
       <div className="nav1-logo">
         <Link to="#">
           <SiJordan className="logo-1" />

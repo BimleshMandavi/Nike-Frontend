@@ -3,17 +3,24 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoBagOutline } from "react-icons/io5";
 import "./Navbar_2.css";
 import "./Media-query.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import Headroom from "react-headroom";
 import { LuUser } from "react-icons/lu";
 import NavToggle from "./NavToggle";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Box, Button, Menu, MenuItem } from "@mui/material";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { logout } from "../redux/slices/auth";
 
 const Navbar_2 = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -56,16 +63,40 @@ const Navbar_2 = () => {
     },
   }));
 
+  const handleLogOut = async () => {
+    let result = await dispatch(logout());
+    if (result) {
+      localStorage.removeItem("accessToken", "");
+      navigate("/");
+      toast.success("Logout successful");
+      return true;
+    }
+  };
+
+  const handleProfile = () => {
+    navigate("/profile");
+  };
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <>
       <Headroom className="">
-        <div className="nav2-container pr-6 relative">
+        <div className="nav2-container  relative ">
           <div className="logo-container">
             <Link to="/">
               <SiNike className="brand-logo-2" />
             </Link>
           </div>
-          <div className=" hidden  gap-2 items-center lg:flex">
+          <div className=" hidden  gap-4 items-center lg:flex flex-wrap">
             <Link to="#" className=" list-none no-underline">
               New & Featured
             </Link>
@@ -89,7 +120,7 @@ const Navbar_2 = () => {
               SNKRS
             </a>
           </div>
-          <div className="search-input-cont ">
+          <div className="search-input-cont hidden md:flex">
             <Search style={{ borderRadius: "20px" }}>
               <SearchIconWrapper>
                 <SearchIcon style={{ cursor: "pointer" }} />
@@ -101,36 +132,81 @@ const Navbar_2 = () => {
               />
             </Search>
           </div>
-          <div className="action_bar gap-6">
-            <div className="favuorite-icon pre-order">
-              <Link to="/favourites">
-                <IoMdHeartEmpty className="favuorite-logo links" />
-              </Link>
-            </div>
-            <div className="bag-icon pre-order ">
-              <Link to="/cart">
-                <IoBagOutline className="bag-icon " />
-                <div
-                  className="bag-item-count text-xs"
-                  style={{
-                    textDecoration: "none",
-                    color: "#111111",
-                    position: "relative",
-                    right: "6px",
-                    top: "8px",
-                  }}
+
+          <div className="action_bar">
+            <div className="flex items-center">
+              <div className="flex sm:hidden pr-2">
+                <SearchIcon style={{ cursor: "pointer" }} />
+              </div>
+              <div className="favuorite-icon pre-order">
+                <Link
+                  className=" align-middle hidden sm:flex"
+                  to="/favourites "
                 >
-                  {cart.length}
-                </div>
-              </Link>
+                  <IoMdHeartEmpty className="favuorite-logo links" />
+                </Link>
+              </div>
+              <div className="bag-icon pre-order ">
+                <Link to="/cart">
+                  <IoBagOutline className="bag-icon " />
+                  <div
+                    className="bag-item-count text-xs"
+                    style={{
+                      textDecoration: "none",
+                      color: "#111111",
+                      position: "relative",
+                      right: "6px",
+                      top: "8px",
+                    }}
+                  >
+                    {cart.length}
+                  </div>
+                </Link>
+              </div>
             </div>
 
-            <div className=" mr-7 gap-6  flex items-center justify-center">
-              <div className="user-login ">
-                <LuUser className=" flex lg:hidden text-2xl" />
+            <div className=" mr-7   flex items-center justify-center">
+              <div className="user-login flex lg:hidden ">
+                <Box
+                  sx={{
+                    display: Object.keys(user).length === 0 ? "none" : "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  <span className="hidden sm:flex">Hi, {user.name}</span>
+                  <div className="ml-4">
+                    <Button
+                      id="basic-button"
+                      aria-controls={open ? "basic-menu" : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? "true" : undefined}
+                      onClick={handleClick}
+                      className="text-black center p-0"
+                    >
+                      <LuUser className="flex lg:hidden text-2xl text-black" />
+                    </Button>
+                    <Menu
+                      id="basic-menu"
+                      anchorEl={anchorEl}
+                      open={open}
+                      onClose={handleClose}
+                      MenuListProps={{
+                        "aria-labelledby": "basic-button",
+                      }}
+                    >
+                      <MenuItem onClick={handleClose}>
+                        <span onClick={handleProfile}> Profile</span>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>My account</MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <span onClick={handleLogOut}>Logout</span>
+                      </MenuItem>
+                    </Menu>
+                  </div>
+                </Box>
               </div>
-              <div className="nav-toggle">
-                <NavToggle className="flex lg:hidden text-2xl  justify-center pl-0" />
+              <div className=" flex lg:hidden text-2xl  pl-0">
+                <NavToggle />
               </div>
             </div>
           </div>

@@ -14,16 +14,16 @@ const HomeSlider = () => {
   };
 
   return (
-    <div className="home-slider-container pl-10 pr-10 text-black-300 bg-slate-500">
+    <div className="home-slider-container pl-10 pr-10 text-black-300 bg-slate-500 overflow-y-hidden">
       <h2> Featured</h2>
-      <Slider {...settings}>
+      <Slider className="overflow-y-hidden" {...settings}>
         <div>
           <img src={Pic2} alt="" />
         </div>
         <div>
           <img src={Pic2} alt="" />
         </div>
-        <div> 
+        <div>
           <img src={Pic2} alt="" />
         </div>
         <div>

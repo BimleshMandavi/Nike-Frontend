@@ -44,9 +44,7 @@ const Bag = () => {
     handleFetchListCart();
   }, []);
 
-  const handleFav = () => {
-    console.log("item has been added to wishlist");
-  };
+  const handleFav = () => {};
   const handleDel = async (id) => {
     let data = await dispatch(deleteCart(id));
     console.log(data);
@@ -58,27 +56,29 @@ const Bag = () => {
     }
   };
 
+  let subtotal = 0;
+  let deliveryCoast = 1250;
+
+  for (let i of cart) {
+    let price =
+      i && i.products && i.products[0] && i.products[0].productId?.price?.mrp;
+    subtotal = subtotal + price;
+  }
+  let total = deliveryCoast + subtotal;
+
   return (
     <div className="bag-container">
-      <div className="bag-heading">
+      <div className="bag-heading flex justify-center sm:justify-start">
         <p>Bag</p>
       </div>
-      <div
-        style={{
-          maxHeight: "100vh",
-          overflowY: "auto",
-        }}
-      >
+      <div className="flex justify-center pb-10 border-b-2 gap-1 sm:hidden">
+        <span>{cart.length} Items</span> | <span> ₹ {total}.00</span>
+      </div>
+
+      <div className="pt-8 border-b-2 pb-10">
         {cart && cart.length > 0 ? (
           cart.map((data) => (
-            <div
-              className="bag-items"
-              key={data.id}
-              style={{
-                padding: "10px 0px 10px 0px",
-                borderBottom: "2px solid grey",
-              }}
-            >
+            <div className="bag-items py-[10] " key={data.id}>
               <div className="right-part">
                 <div className="item-imgs">
                   <img src={data?.products[0]?.productId?.image} />

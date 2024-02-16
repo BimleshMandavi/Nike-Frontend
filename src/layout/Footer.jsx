@@ -3,14 +3,21 @@ import { FaTwitter } from "react-icons/fa6";
 import { FaFacebookF } from "react-icons/fa";
 import { TiSocialYoutubeCircular } from "react-icons/ti";
 import { ImInstagram } from "react-icons/im";
-import "./Footer.css";
 import { Link } from "react-router-dom";
+import AccordionGroup from "@mui/joy/AccordionGroup";
+import Accordion from "@mui/joy/Accordion";
+import AccordionDetails from "@mui/joy/AccordionDetails";
+import AccordionSummary, {
+  accordionSummaryClasses,
+} from "@mui/joy/AccordionSummary";
+import AddIcon from "@mui/icons-material/Add";
+import "./Footer.css";
 
 function Footer() {
   return (
-    <div className="footer-container w-full pb-0">
+    <div className="footer-container block md:flex">
       <div className="footer-body m-0">
-        <div className="hf-accordion-body">
+        <div className="hf-accordion-body pt-8">
           <ul>
             <li className="footer-link">
               <a href="https://www.nike.com/in/retail">FIND A STORE</a>
@@ -25,66 +32,93 @@ function Footer() {
             </li>
           </ul>
         </div>
-        <div className="hf-accordion-body">
-          <ul>
-            <li className="footer-link">
-              <a href="https://www.nike.com/in/help">GET HELP</a>
-            </li>
-            <li className="footer-linkes">
-              <a href="https://www.nike.com/orders/details/">Order Status</a>
-            </li>
-            <li className="footer-linkes">
-              <a href="https://www.nike.com/in/help/a/shipping-delivery-gs">
-                Delivery
-              </a>
-            </li>
-            <li className="footer-linkes">
-              <a href="https://www.nike.com/in/help/a/returns-policy-gs">
-                Returns
-              </a>
-            </li>
-            <li className="footer-linkes">
-              <a href="https://www.nike.com/in/help/a/payment-options-gs">
-                Payment Options
-              </a>
-            </li>
-            <li className="footer-linkes">
-              <a href="https://www.nike.com/in/help/#contact">
-                Contact Us On Nike.com Inquiries
-              </a>
-            </li>
-            <li className="footer-linkes">
-              <a href="https://www.nike.com/in/help/a/india-consumer-care-policy">
-                Contact Us On All Other Inquiries
-              </a>
-            </li>
-          </ul>
+        <div className="hf-accordion-body pt-8 block sm:flex md:flex">
+          <AccordionGroup
+            sx={{
+              maxWidth: 400,
+              [`& .${accordionSummaryClasses.indicator}`]: {
+                transition: "0.2s",
+              },
+              [`& [aria-expanded="true"] .${accordionSummaryClasses.indicator}`]:
+                {
+                  transform: "rotate(45deg)",
+                },
+              width: "100%",
+            }}
+          >
+            <Accordion>
+              <AccordionSummary indicator={<AddIcon />}>
+                <li className="footer-link">
+                  <a href="#">GET HELP</a>
+                </li>
+              </AccordionSummary>
+              <AccordionDetails>
+                <ul>
+                  <li className="footer-linkes">
+                    <a href="https://www.nike.com/orders/details/">
+                      Order Status
+                    </a>
+                  </li>
+                  <li className="footer-linkes">
+                    <a href="https://www.nike.com/in/help/a/shipping-delivery-gs">
+                      Delivery
+                    </a>
+                  </li>
+                  <li className="footer-linkes">
+                    <a href="https://www.nike.com/in/help/a/returns-policy-gs">
+                      Returns
+                    </a>
+                  </li>
+                  <li className="footer-linkes">
+                    <a href="https://www.nike.com/in/help/a/payment-options-gs">
+                      Payment Options
+                    </a>
+                  </li>
+                  <li className="footer-linkes">
+                    <a href="https://www.nike.com/in/help/#contact">
+                      Contact Us On Nike.com Inquiries
+                    </a>
+                  </li>
+                  <li className="footer-linkes">
+                    <a href="https://www.nike.com/in/help/a/india-consumer-care-policy">
+                      Contact Us On All Other Inquiries
+                    </a>
+                  </li>
+                </ul>
+              </AccordionDetails>
+            </Accordion>
+            <Accordion>
+              <AccordionSummary indicator={<AddIcon />}>
+                <li className="footer-link">
+                  <a href="#">ABOUT NIKE</a>
+                </li>
+              </AccordionSummary>
+              <AccordionDetails>
+                <ul>
+                  <li className="footer-linkes">
+                    <a href="https://about.nike.com/en/newsroom">News</a>
+                  </li>
+                  <li className="footer-linkes">
+                    <a href="https://jobs.nike.com/">Careers</a>
+                  </li>
+                  <li className="footer-linkes">
+                    <a href="https://investors.nike.com/Home/default.aspx">
+                      Investors
+                    </a>
+                  </li>
+                  <li className="footer-linkes">
+                    <a href="https://www.nike.com/in/sustainability">
+                      Sustainability
+                    </a>
+                  </li>
+                </ul>
+              </AccordionDetails>
+            </Accordion>
+          </AccordionGroup>
         </div>
-        <div className="hf-accordion-body">
-          <ul>
-            <li className="footer-link">
-              <a href="https://about.nike.com/en">ABOUT NIKE</a>
-            </li>
-            <li className="footer-linkes">
-              <a href="https://about.nike.com/en/newsroom">News</a>
-            </li>
-            <li className="footer-linkes">
-              <a href="https://jobs.nike.com/">Careers</a>
-            </li>
-            <li className="footer-linkes">
-              <a href="https://investors.nike.com/Home/default.aspx">
-                Investors
-              </a>
-            </li>
-            <li className="footer-linkes">
-              <a href="https://www.nike.com/in/sustainability">
-                Sustainability
-              </a>
-            </li>
-          </ul>
-        </div>
+        <div className="hf-accordion-body block sm:flex md:flex"></div>
 
-        <ul className="social-links">
+        <ul className="social-links block sm:flex">
           <li className="social-icons">
             <Link to="https://twitter.com/Nike">
               <FaTwitter className="social-link-icon" />
@@ -107,40 +141,39 @@ function Footer() {
           </li>
         </ul>
       </div>
-      <div className="sub-footer">
-        <div className="sub-footer-menu-1">
-          <div className="location">
-            <a href="#">
-              <HiOutlineMapPin />
-            </a>
-            <span className="country-pin">India</span>
-          </div>
-          <div className="copyright-sms">
-            <span>© 2023 Nike, Inc. All Rights Reserved</span>
-          </div>
+
+      <div className="sub-footer-menu-1 pt-6 block sm:flex md:flex w-full">
+        <div className="location flex">
+          <a href="#" className="flex justify-center">
+            <HiOutlineMapPin />
+          </a>
+          <div className="country-pin">India</div>
         </div>
-        <div className="sub-footer-menu-2">
-          <ul>
-            <li>
-              <a href="/">Guides</a>
-            </li>
-            <li>
-              <Link to="https://www.eshopworld.com/shoppers/help/retailer/nike/terms-and-conditions-of-sale-en/">
-                Terms of Sale
-              </Link>
-            </li>
-            <li>
-              <Link to="https://agreementservice.svs.nike.com/in/en_gb/rest/agreement?agreementType=termsOfUse&uxId=com.nike&country=IN&language=en&requestType=redirect">
-                Terms of Use
-              </Link>
-            </li>
-            <li>
-              <Link to="https://agreementservice.svs.nike.com/sg/en_gb/rest/agreement?agreementType=privacyPolicy&uxId=com.nike.unite&country=SG&language=en&requestType=redirect">
-                Nike Privacy Policy
-              </Link>
-            </li>
-          </ul>
+        <div className="copyright-sms w-full block sm:flex">
+          <span>© 2023 Nike, Inc. All Rights Reserved</span>
         </div>
+      </div>
+      <div className="sub-footer-menu-2 pt-4 pb-4 block sm:flex md:flex">
+        <ul className="block sm:flex">
+          <li className="block sm:flex p-[8px]">
+            <a href="/">Guides</a>
+          </li>
+          <li className="block sm:flex p-[8px]">
+            <Link to="https://www.eshopworld.com/shoppers/help/retailer/nike/terms-and-conditions-of-sale-en/">
+              Terms of Sale
+            </Link>
+          </li>
+          <li className="block sm:flex p-[8px]">
+            <Link to="https://agreementservice.svs.nike.com/in/en_gb/rest/agreement?agreementType=termsOfUse&uxId=com.nike&country=IN&language=en&requestType=redirect">
+              Terms of Use
+            </Link>
+          </li>
+          <li className="block sm:flex p-[8px]">
+            <Link to="https://agreementservice.svs.nike.com/sg/en_gb/rest/agreement?agreementType=privacyPolicy&uxId=com.nike.unite&country=SG&language=en&requestType=redirect">
+              Nike Privacy Policy
+            </Link>
+          </li>
+        </ul>
       </div>
     </div>
   );

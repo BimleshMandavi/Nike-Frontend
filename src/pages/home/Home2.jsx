@@ -5,7 +5,7 @@ import "./Home2.css";
 import HomeSlider from "./HomeSlider";
 const Home2 = () => {
   return (
-    <div className="home2-container">
+    <div className="home2-container overflowY-hidden">
       {/* <div className="item-title"></div>
       <div className="item-cont">
         <Link to="/products">

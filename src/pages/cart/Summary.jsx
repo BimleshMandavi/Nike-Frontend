@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 const Summary = () => {
   const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
+
   let subtotal = 0;
   let deliveryCoast = 1250;
 
@@ -24,7 +26,7 @@ const Summary = () => {
   };
 
   return (
-    <div className="summary-container">
+    <div className="summary-container ">
       <div className="sum-heading">Summary</div>
       <div>
         <div className="prices">
@@ -41,7 +43,13 @@ const Summary = () => {
         </div>
       </div>
       <div className="chekout-btns">
-        <div className="guest-btn">
+        <div
+          className="guest-btn"
+          style={{
+            display: Object.keys(user).length === 0 ? "flex" : "none",
+            alignItems: "center",
+          }}
+        >
           <button
             className="final-btns"
             type="submit"

@@ -17,6 +17,7 @@ import { Toaster } from "react-hot-toast";
 import Shipping from "./components/Shiping.jsx";
 import Billing from "./components/Billing.jsx";
 import Profile from "./contents/userPorfile/Profile.jsx";
+import Orders from "./components/Orders.jsx";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/orders",
+        element: <Orders />,
       },
     ],
   },

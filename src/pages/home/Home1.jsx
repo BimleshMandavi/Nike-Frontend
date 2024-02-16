@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Home1 = () => {
   return (
-    <div className="home1-container">
+    <div className="home1-container overflow-hidden">
       <Link to="/products">
         {" "}
         <img src={Pic1} alt="Home pic" />

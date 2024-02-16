@@ -3,7 +3,7 @@ import "./Media-query.css";
 const Navbar_3 = () => {
   return (
     <div
-      className="nav3-container hidden lg:flex"
+      className="nav3-container hidden lg:flex overflow-y-hidden"
       style={{
         display: "flex",
         justifyContent: "center",
@@ -18,7 +18,7 @@ const Navbar_3 = () => {
         No matter what you feel like doing today, It`s better as a Member.
       </p>
       <p className="nav3-para">
-        <a href="#">Join Us</a>
+        <a href="sign-up">Join Us</a>
       </p>
     </div>
   );
