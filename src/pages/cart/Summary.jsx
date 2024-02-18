@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./Summary.css";
 import { useSelector } from "react-redux";
 
-const Summary = () => {
+  const Summary = () => {
   const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
