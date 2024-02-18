@@ -29,7 +29,7 @@ function Profile() {
             <Avatar className="h-[80px] w-[80px]" />
             <div className=" flex pl-8 flex-col">
               <div className="flex gap-2 text-lg">
-                <h1 className="text-3xl">{user?.firstName}</h1>
+                <h1 className="text-3xl">{user?.name}</h1>
                 <h1 className="text-3xl">{user?.lastName}</h1>
               </div>
               <div className="text-slate-500">

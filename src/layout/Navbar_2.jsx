@@ -157,6 +157,7 @@ const Navbar_2 = () => {
                       position: "relative",
                       right: "6px",
                       top: "8px",
+                      display: Object.keys(cart).length === 0 ? "none" : "flex",
                     }}
                   >
                     {cart.length}

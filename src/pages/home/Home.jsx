@@ -1,6 +1,7 @@
-import Home1 from "./Home1";
-import Home2 from "./Home2";
-import Home3 from "./Home3";
+import Block1 from "./Block1";
+import Block2 from "./Block2";
+import Block3 from "./Block3";
+
 import Navbar_3 from "../../layout/Navbar_3";
 
 const Home = () => {
@@ -8,9 +9,9 @@ const Home = () => {
     <>
       {" "}
       <Navbar_3 />
-      <Home1 />
-      <Home2></Home2>
-      <Home3></Home3>
+      <Block1 />
+      <Block2 />
+      <Block3 />
     </>
   );
 };

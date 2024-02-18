@@ -1,49 +1,41 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Pic2 from "../../assets/pic2.png";
+import { article } from "../../constant/Home";
+import { Link } from "react-router-dom";
 
 const HomeSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+
+    autoplay: true,
+    speed: 300,
+    autoplaySpeed: 2000,
+    slidesToShow: 4,
+    slidesToScroll: 2,
     Arrow: true,
   };
 
   return (
-    <div className="home-slider-container pl-10 pr-10 text-black-300 bg-slate-500 overflow-y-hidden">
-      <h2> Featured</h2>
-      <Slider className="overflow-y-hidden" {...settings}>
-        <div>
-          <img src={Pic2} alt="" />
-        </div>
-        <div>
-          <img src={Pic2} alt="" />
-        </div>
-        <div>
-          <img src={Pic2} alt="" />
-        </div>
-        <div>
-          <img src={Pic2} alt="" />
-        </div>
-        <div>
-          <img src={Pic2} alt="" />
-        </div>
-        <div>
-          <img src={Pic2} alt="" />
-        </div>
-        <div>
-          <img src={Pic2} alt="" />
-        </div>
-        <div>
-          <img src={Pic2} alt="" />
-        </div>
-        <div>
-          <img src={Pic2} alt="" />
-        </div>
+    <div className="home-slider-container w-[100%] ">
+      <h2 className="text-2xl pt-5 pl-8">Always Iconic</h2>
+      <Slider {...settings}>
+        {article.map((item) => (
+          <Link
+            key={item.id}
+            to={"/products"}
+            className="w-[200px] h-[340px] py-2 px-7"
+          >
+            <div>
+              <img
+                className="max-w-full mix-blend-color-burn"
+                src={item.url}
+                alt=""
+              />
+            </div>
+          </Link>
+        ))}
       </Slider>
     </div>
   );
