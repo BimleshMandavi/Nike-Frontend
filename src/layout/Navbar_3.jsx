@@ -13,7 +13,7 @@ const Navbar_3 = () => {
   };
   return (
     <div>
-      <div className="slider-container">
+      <div className="slider-container w-full">
         <Slider {...settings}>
           <div>
             <div

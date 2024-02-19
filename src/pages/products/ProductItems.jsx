@@ -52,7 +52,9 @@ function ProductItems() {
                   {product &&
                     product?.length > 0 &&
                     product.map((item, index) => (
-                      <div key={index} className="pt-5 ">
+                      <div key={index} className="pt-5" style={{
+                        
+                      }}>
                         <Link to={`/pre-cart/${item.id}`}>
                           <div className="product-img ">
                             <img

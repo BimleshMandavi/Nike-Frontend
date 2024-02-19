@@ -174,8 +174,10 @@ const Navbar_2 = () => {
                     alignItems: "center",
                   }}
                 >
-                  <span className="hidden sm:flex">Hi, {user.name}</span>
-                  <div className="ml-4">
+                  <span className="hidden sm:flex pl-[30px]">
+                    Hi, {user.name}
+                  </span>
+                  <div className="ml-4 ">
                     <Button
                       id="basic-button"
                       aria-controls={open ? "basic-menu" : undefined}
@@ -184,9 +186,10 @@ const Navbar_2 = () => {
                       onClick={handleClick}
                       className="text-black center p-0"
                     >
-                      <LuUser className="flex lg:hidden text-2xl text-black" />
+                      <LuUser className="flex lg:hidden text-2xl text-black " />
                     </Button>
                     <Menu
+                      className="list hover:"
                       id="basic-menu"
                       anchorEl={anchorEl}
                       open={open}

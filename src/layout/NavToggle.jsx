@@ -162,12 +162,25 @@ export default function TemporaryDrawer() {
                       >
                         Profile
                       </div>
-                      <div className="no-underline pt-3">Inbox</div>
-                      <div className="no-underline pt-3">Orders</div>
-                      <div className="no-underline pt-3">Favourites</div>
-                      <div className="no-underline pt-3">Experinces</div>
-                      <div className="no-underline pt-3">Account Settings</div>
-                      <div className="no-underline pt-3" onClick={handleLogOut}>
+                      <div className="no-underline pt-3 cursor-pointer">
+                        Inbox
+                      </div>
+                      <div className="no-underline pt-3 cursor-pointer">
+                        Orders
+                      </div>
+                      <div className="no-underline pt-3 cursor-pointer">
+                        Favourites
+                      </div>
+                      <div className="no-underline pt-3 cursor-pointer">
+                        Experinces
+                      </div>
+                      <div className="no-underline pt-3 cursor-pointer">
+                        Account Settings
+                      </div>
+                      <div
+                        className="no-underline pt-3 cursor-pointer"
+                        onClick={handleLogOut}
+                      >
                         Log Out
                       </div>
                     </div>
@@ -252,13 +265,13 @@ export default function TemporaryDrawer() {
               <div className="pt-20">
                 <div
                   onClick={handleToFavourites}
-                  className="flex justify-start center no-underline pb-4"
+                  className="flex justify-start center no-underline pb-4 cursor-pointer"
                 >
                   <IoMdHeartEmpty />
                   <div className="pl-4">Favourites</div>
                 </div>
                 <div
-                  className="flex  center no-underline pb-4"
+                  className="flex  center no-underline pb-4 cursor-pointer"
                   onClick={handleTobag}
                 >
                   <IoBagOutline />
@@ -266,19 +279,22 @@ export default function TemporaryDrawer() {
                 </div>
                 <div
                   onClick={handleToOrders}
-                  className="flex no-underline pb-4"
+                  className="flex no-underline pb-4 cursor-pointer"
                 >
                   <FiShoppingBag />
                   <div className="pl-4">Orders</div>
                 </div>
                 <div
                   onClick={handleToFindStore}
-                  className="flex no-underline pb-4"
+                  className="flex no-underline pb-4 cursor-pointer"
                 >
                   <PiStorefront />
                   <div className="pl-4">Find Store</div>
                 </div>
-                <div onClick={handleToHelp} className="flex no-underline pb-4">
+                <div
+                  onClick={handleToHelp}
+                  className="flex no-underline pb-4 cursor-pointer"
+                >
                   <MdOutlineHelpOutline />
                   <div className="pl-4">Help</div>
                 </div>

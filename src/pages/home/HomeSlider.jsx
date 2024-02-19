@@ -12,7 +12,7 @@ const HomeSlider = () => {
     autoplay: true,
     speed: 300,
     autoplaySpeed: 2000,
-    slidesToShow: 4,
+    slidesToShow: 1,
     slidesToScroll: 2,
     Arrow: true,
   };
