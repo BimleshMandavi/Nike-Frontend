@@ -274,50 +274,49 @@ const Checkout = () => {
   ];
 
   return (
-    <div className="main-checkout-cont">
+    <div className="main-checkout-cont w-full">
       <Headroom>
-        <div className="checkout-nav" style={{ padding: "24px 48px" }}>
-          <div className="left-logo">
+        <div className="checkout-nav flex justify-between px-5 pt-6">
+          <div className="left-logo ">
             <Link to="/">
               <SiNike className="logo-img" />
             </Link>
           </div>
-          <div className="right-nav-cont">
+          <div className="right-nav-cont flex justify-evenly items-center gap-4">
             <span className="contact-num">000 800 100 9538</span>
-
-            <Link to="">
-              <LiaSmsSolid className="check-right-logo sms-log" />
-            </Link>
-            <Link to="/cart" className="relative bottom-3">
-              <IoBagOutline
-                className="check-right-logo bag-log relative top-0"
-                style={{ cursor: "pointer" }}
-              />
-              <div
-                className="bag-item-count text-[11px]"
-                style={{
-                  textDecoration: "none",
-                  color: "#111111",
-                  position: "relative",
-                  right: "6px",
-                  top: "8px",
-                }}
-              >
-                {cart.length}
-              </div>
-            </Link>
+            <div className="flex gap-4">
+              <Link to="#">
+                <LiaSmsSolid className="check-right-logo sms-log" />
+              </Link>
+              <Link to="/cart" className="">
+                <IoBagOutline
+                  className="check-right-logo bag-log "
+                  style={{ cursor: "pointer" }}
+                />
+                <div
+                  className="bag-item-count text-[11px]"
+                  style={{
+                    textDecoration: "none",
+                    color: "#111111",
+                    position: "relative",
+                    right: "6px",
+                    top: "8px",
+                    display: Object.keys(cart).length === 0 ? "none" : "flex",
+                  }}
+                >
+                  {cart.length}
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </Headroom>
-      <div className="checkout-body-cont">
-        <div
-          className="checkout-left-part"
-          style={{ width: "50%", height: "100%" }}
-        >
-          <div className="order-heading">
+      <div className="checkout-body-cont px-8 lg:px-11 pt-8 md:flex md:justify-between">
+        <div className="checkout-left-part h-full w-full sm:w-[500px]">
+          <div className="order-heading ">
             <h2>How would you like to get your order?</h2>
-            <div className="message-body">
-              <span className="message-cont">
+            <div className="message-body w-full md:w-[500px]">
+              <span className="message-cont w-full ">
                 Customs regulation for India require a copy of the recipient`s
                 KYC. The address on the KYC needs to match the shipping address.
                 Our courier will contact you via SMS/email to obtain a copy of
@@ -331,14 +330,14 @@ const Checkout = () => {
                 Learn More
               </a>
             </div>
-            <div className="btn-toggle">
-              <Box sx={{ "& button": { m: 1 } }}>
+            <div className="btn-toggle w-full sm:w-[480px]">
+              <Box className="w-full" sx={{ "& button": { m: 1 } }}>
                 <div>
                   <Button
                     variant="outlined"
                     size="large"
                     style={{
-                      width: "480px",
+                      width: "100%",
                       height: "70px",
                       border: "2px solid black",
                       borderRadius: "12px",
@@ -438,7 +437,7 @@ const Checkout = () => {
                     noValidate
                     autoComplete="off"
                   >
-                    <div style={{ display: "flex", marginTop: "20px" }}>
+                    <div className="mt-[20px] sm:flex">
                       <TextField
                         id="outlined-select-currency-native"
                         select
@@ -497,7 +496,6 @@ const Checkout = () => {
                       fullWidth
                       label="Email"
                       name="email"
-                    
                       value={user?.email}
                       disabled={user?.email ? true : false}
                       id="email"
@@ -552,7 +550,7 @@ const Checkout = () => {
                 type="submit"
                 style={{
                   marginTop: "50px",
-                  width: "500px",
+                  width: "100%",
                   height: "60px",
                   borderRadius: "30px",
                   border: "none",
@@ -580,7 +578,7 @@ const Checkout = () => {
             </div>
           </div>
         </div>
-        <div className="checkout-right-part">
+        <div className="checkout-right-part pb-8">
           <h2 className="order-summary-title">Order Summary</h2>
           <div className="price-summary">
             <div className="prices">
@@ -740,11 +738,11 @@ const Checkout = () => {
           </div>
         </div>
         <div className="right-sub-footer  absolute right-0">
-          <div className="footer-element-right flex ">
+          <div className="footer-element-right hidden lg:flex ">
             {footerImg.map((item) => (
               <div className="footer-product flex justify-end " key={item.id}>
                 <img
-                  className="flex w-[45px] h-[27px] justify-end pr-2 mr-[8px]"
+                  className="flex  w-[45px] h-[27px] justify-end pr-2 mr-[8px]"
                   src={item.images}
                 />
               </div>

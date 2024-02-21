@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./Summary.css";
 import { useSelector } from "react-redux";
 
-  const Summary = () => {
+const Summary = () => {
   const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
@@ -26,7 +26,7 @@ import { useSelector } from "react-redux";
   };
 
   return (
-    <div className="summary-container ">
+    <div className="summary-container  ">
       <div className="sum-heading">Summary</div>
       <div>
         <div className="prices">
@@ -42,7 +42,7 @@ import { useSelector } from "react-redux";
           <div className="total-value">₹ {total}</div>
         </div>
       </div>
-      <div className="chekout-btns">
+      <div className="chekout-btns hiiden lg:flex">
         <div
           className="guest-btn"
           style={{
@@ -58,7 +58,7 @@ import { useSelector } from "react-redux";
             Guest Checkout
           </button>
         </div>
-        <div className="member-btn">
+        <div className="member-btn ">
           <button
             className="final-btns"
             type="submit"

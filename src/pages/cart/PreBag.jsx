@@ -81,14 +81,14 @@ const PreBag = () => {
   }, []);
 
   return (
-    <div className="main-pre-container ">
+    <div className="main-pre-container">
       <div
-        className="pre-bag-container pl"
+        className="pre-bag-container pl "
         style={{
           marginTop: "50px",
         }}
       >
-        <div className="product-right-part pl-8 pb-5">
+        <div className="product-right-part pl-8 pb-5 block lg:hidden">
           <div>
             <h1 className="text-3xl">{product?.title?.shortTitle}</h1>
             <h3>{product?.title?.longTitle}</h3>
@@ -101,189 +101,199 @@ const PreBag = () => {
             </div>
           </div>
         </div>
-        <div className="product-left-part ">
-          <div className="product-info">
-            <div className="product-img">
-              <img className="w-[500px] h-[300px]" src={product?.image} />
-            </div>
-            <div className="product-size">
-              <p className="text-1xl">Select Size</p>
-              <div className="size-grid">
-                <div
-                  className="grid1"
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(3,1fr)",
-                    gap: "7px",
-                    margin: "8px",
-                    background: "rgb(255, 255, 255)",
-                    boxShadow: "rgb(229, 229, 229) 0px 0px 0px 1px",
-                    width: "100%",
-                  }}
-                >
-                  <button style={{ cursor: "pointer" }}>UK 6</button>
-                  <button style={{ cursor: "pointer" }}>UK 6.5</button>
-                  <button style={{ cursor: "pointer" }}>UK 7</button>
-                  <button style={{ cursor: "pointer" }}>UK 7.5</button>
-                  <button style={{ cursor: "pointer" }}>UK 8</button>
-                  <button style={{ cursor: "pointer" }}>UK 8.5</button>
-                  <button style={{ cursor: "pointer" }}>UK 9</button>
-                  <button style={{ cursor: "pointer" }}>UK 9.5</button>
-                  <button style={{ cursor: "pointer" }}>UK 10</button>
-                  <button style={{ cursor: "pointer" }}>UK 10.5</button>
-                  <button style={{ cursor: "pointer" }}>UK 11</button>
-                  <button style={{ cursor: "pointer" }}>UK 11.5</button>
-                  <button style={{ cursor: "pointer" }}>UK 12</button>
+        <div className=" lg:flex md:w-full">
+          <div className="product-img p-4 w-full lg:w-[50%] max-h-[70vh] ">
+            <img
+              className="w-[500px] h-[300px] md:size-full lg:pl-[10%] lg:size-96"
+              src={product?.image}
+            />
+          </div>
+
+          <div className="product-left-part w-full md:mt-[30%] lg:mt-0 lg:w-[30%] ">
+            <div className="product-info">
+              <div className="hidden lg:block">
+                <h1 className="text-3xl">{product?.title?.shortTitle}</h1>
+                <h3>{product?.title?.longTitle}</h3>
+                <div className="product-price">
+                  MRP : ₹{product?.price?.mrp}.00
+                </div>
+                <span className="text-gray-400">
+                  incl. of taxes (Also includes all applicable duties)
+                </span>
+                <div className="product-color">
+                  <p className="text-xl">color : {product?.subCategory}</p>
                 </div>
               </div>
-            </div>
-            <div
-              className="product-btns"
-              style={{
-                margin: "12px 0 0",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-              }}
-            >
-              <div className="add-product pt-10">
-                <button
-                  style={{
-                    background: "black",
-                    color: "white",
-                    width: "100%",
-                    height: "48px",
-                    borderRadius: "30px",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => handleAddToBag(product?.id)}
-                >
-                  Add to Bag
-                </button>
-              </div>
-              <div
-                className="fav-add-product border-current"
-                style={{ marginTop: "12px" }}
-              >
-                <button
-                  className="w-full border-inherit rounded-3xl bg-[#8e8e8e55] h-12 white relative"
-                  onClick={handleAddtoFav}
-                >
-                  Favourite{" "}
-                  <FaRegHeart className="absolute top-4 right-[112px] t-2" />
-                </button>
-              </div>
-            </div>
-            <div className="info-section pt-12">
-              <div className="delivery-info">
-                <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
+              <div className="product-size">
+                <p className="text-xl pl-5 pt-3">Select Size</p>
+                <div className="size-grid">
+                  <div
+                    className="grid1"
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(3,1fr)",
+                      gap: "7px",
+                      margin: "8px",
+                      background: "rgb(255, 255, 255)",
+                      boxShadow: "rgb(229, 229, 229) 0px 0px 0px 1px",
+                      width: "100%",
+                    }}
                   >
-                    Delivery & Returns
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <div className="product-discreption">
-                      <article style={{ margin: "18px 0 0" }}>
-                        All purchases are subject to delivery fees. Standard
-                        delivery 4 to 9 business days Orders are processed and
-                        delivered Monday to Friday (excluding public holidays)
-                        Nike Members enjoy free returns.
-                      </article>
-                    </div>
-                  </AccordionDetails>
-                </Accordion>
+                    <button style={{ cursor: "pointer" }}>UK 6</button>
+                    <button style={{ cursor: "pointer" }}>UK 6.5</button>
+                    <button style={{ cursor: "pointer" }}>UK 7</button>
+                    <button style={{ cursor: "pointer" }}>UK 7.5</button>
+                    <button style={{ cursor: "pointer" }}>UK 8</button>
+                    <button style={{ cursor: "pointer" }}>UK 8.5</button>
+                    <button style={{ cursor: "pointer" }}>UK 9</button>
+                    <button style={{ cursor: "pointer" }}>UK 9.5</button>
+                    <button style={{ cursor: "pointer" }}>UK 10</button>
+                    <button style={{ cursor: "pointer" }}>UK 10.5</button>
+                    <button style={{ cursor: "pointer" }}>UK 11</button>
+                    <button style={{ cursor: "pointer" }}>UK 11.5</button>
+                    <button style={{ cursor: "pointer" }}>UK 12</button>
+                  </div>
+                </div>
               </div>
-              <div className="review-info">
-                <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
+              <div className="product-btns w-[90%]  pl-[10%]">
+                <div className="add-product pt-10">
+                  <button
+                    style={{
+                      background: "black",
+                      color: "white",
+                      width: "100%",
+                      height: "48px",
+                      borderRadius: "30px",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => handleAddToBag(product?.id)}
                   >
-                    Reviwes
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Box
-                      sx={{
-                        width: 200,
-                        display: "flex",
-                        alignItems: "center",
-                      }}
+                    Add to Bag
+                  </button>
+                </div>
+                <div
+                  className="fav-add-product border-current flex gap-3"
+                  style={{ marginTop: "12px" }}
+                >
+                  <button
+                    className="w-full border-inherit  rounded-3xl bg-[#8e8e8e55] h-12 white relative"
+                    onClick={handleAddtoFav}
+                  >
+                    Favourite
+                  </button>
+                </div>
+              </div>
+              <div className="info-section pt-12">
+                <div className="delivery-info">
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1-content"
+                      id="panel1-header"
                     >
-                      <Rating
-                        name="hover-feedback"
-                        value={value}
-                        precision={0.5}
-                        getLabelText={getLabelText}
-                        onChange={(event, newValue) => {
-                          setValue(newValue);
+                      Delivery & Returns
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <div className="product-discreption">
+                        <article style={{ margin: "18px 0 0" }}>
+                          All purchases are subject to delivery fees. Standard
+                          delivery 4 to 9 business days Orders are processed and
+                          delivered Monday to Friday (excluding public holidays)
+                          Nike Members enjoy free returns.
+                        </article>
+                      </div>
+                    </AccordionDetails>
+                  </Accordion>
+                </div>
+                <div className="review-info">
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1-content"
+                      id="panel1-header"
+                    >
+                      Reviwes
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <Box
+                        sx={{
+                          width: 200,
+                          display: "flex",
+                          alignItems: "center",
                         }}
-                        onChangeActive={(event, newHover) => {
-                          setHover(newHover);
-                        }}
-                        emptyIcon={
-                          <StarIcon
-                            style={{ opacity: 0.55 }}
-                            fontSize="inherit"
-                          />
-                        }
-                      />
-                      {value !== null && (
-                        <Box sx={{ ml: 2 }}>
-                          {LiaBellSlash[hover !== -1 ? hover : value]}
-                        </Box>
-                      )}
-                    </Box>
-                  </AccordionDetails>
-                </Accordion>
-              </div>
-              <div className="pro-info">
-                <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                  >
-                    Product information
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <div className="product-discreption">
-                      <article style={{ margin: "18px 0 0" }}>
-                        Quicker than 1, 2, 3—the original hoops shoe lets you
-                        step in and get going. Its easy-entry EasyOn system
-                        gives you a hands-free experience. Crisp leather dons
-                        the cleanest colour for the ultimate wearability. Yeah,
-                        its everything you love and then some.
-                      </article>
-                    </div>
-                  </AccordionDetails>
-                </Accordion>
-              </div>
-              <div className="more-info">
-                <Accordion>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1-content"
-                    id="panel1-header"
-                  >
-                    More Info
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Suspendisse malesuada lacus ex, sit amet blandit leo
-                    lobortis eget.
-                  </AccordionDetails>
-                </Accordion>
+                      >
+                        <Rating
+                          name="hover-feedback"
+                          value={value}
+                          precision={0.5}
+                          getLabelText={getLabelText}
+                          onChange={(event, newValue) => {
+                            setValue(newValue);
+                          }}
+                          onChangeActive={(event, newHover) => {
+                            setHover(newHover);
+                          }}
+                          emptyIcon={
+                            <StarIcon
+                              style={{ opacity: 0.55 }}
+                              fontSize="inherit"
+                            />
+                          }
+                        />
+                        {value !== null && (
+                          <Box sx={{ ml: 2 }}>
+                            {LiaBellSlash[hover !== -1 ? hover : value]}
+                          </Box>
+                        )}
+                      </Box>
+                    </AccordionDetails>
+                  </Accordion>
+                </div>
+                <div className="pro-info">
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1-content"
+                      id="panel1-header"
+                    >
+                      Product information
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      <div className="product-discreption">
+                        <article style={{ margin: "18px 0 0" }}>
+                          Quicker than 1, 2, 3—the original hoops shoe lets you
+                          step in and get going. Its easy-entry EasyOn system
+                          gives you a hands-free experience. Crisp leather dons
+                          the cleanest colour for the ultimate wearability.
+                          Yeah, its everything you love and then some.
+                        </article>
+                      </div>
+                    </AccordionDetails>
+                  </Accordion>
+                </div>
+                <div className="more-info">
+                  <Accordion>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel1-content"
+                      id="panel1-header"
+                    >
+                      More Info
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Suspendisse malesuada lacus ex, sit amet blandit leo
+                      lobortis eget.
+                    </AccordionDetails>
+                  </Accordion>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="other-products mt-12 h-[500px]">
-        <h1 className="h-[20%]" style={{ fontSize: "30px" }}>
+      <div className="other-products pt-12 pl-3 h-[500px]">
+        <h1 className="h-[20%] " style={{ fontSize: "30px" }}>
           You Might Also Like
         </h1>
         <HomeSlider className="h-[80%]" />

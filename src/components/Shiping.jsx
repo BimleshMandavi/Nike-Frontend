@@ -86,50 +86,48 @@ const Shipping = () => {
   return (
     <div className="main-checkout-cont">
       <Headroom>
-        <div className="checkout-nav" style={{ padding: "24px 48px" }}>
+        <div className="checkout-nav checkout-nav flex justify-between px-5 pt-6">
           <div className="left-logo">
             <Link to="/">
               <SiNike className="logo-img" />
             </Link>
           </div>
-          <div className="right-nav-cont">
+          <div className="right-nav-cont flex justify-evenly items-center gap-4">
             <span className="contact-num">000 800 100 9538</span>
-
-            <Link to="">
-              <LiaSmsSolid className="check-right-logo sms-log" />
-            </Link>
-            <Link to="/cart" className="relative bottom-3">
-              <IoBagOutline
-                className="check-right-logo bag-log"
-                style={{ cursor: "pointer" }}
-              ></IoBagOutline>
-              <div
-                className="bag-item-count text-[11px]"
-                style={{
-                  textDecoration: "none",
-                  color: "#111111",
-                  position: "relative",
-                  right: "6px",
-                  top: "8px",
-                }}
-              >
-                {cart.length}
-              </div>
-            </Link>
+            <div className="flex gap-4">
+              <Link to="">
+                <LiaSmsSolid className="check-right-logo sms-log" />
+              </Link>
+              <Link to="/cart" className="relative ">
+                <IoBagOutline
+                  className="check-right-logo bag-log"
+                  style={{ cursor: "pointer" }}
+                ></IoBagOutline>
+                <div
+                  className="bag-item-count text-[11px]"
+                  style={{
+                    textDecoration: "none",
+                    color: "#111111",
+                    position: "relative",
+                    right: "6px",
+                    top: "8px",
+                    display: Object.keys(cart).length === 0 ? "none" : "flex",
+                  }}
+                >
+                  {cart.length}
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </Headroom>
-      <div className="checkout-body-cont">
-        <div
-          className="checkout-left-part"
-          style={{ width: "50%", height: "100%" }}
-        >
-          <div className="order-heading">
-            <h2 className="text-xl pb-10">
+      <div className="checkout-body-cont px-3">
+        <div className="checkout-left-part" style={{ height: "100%" }}>
+          <div className="order-heading w-full">
+            <h2 className="text-xl px-3 pb-10 w-full">
               When would you like to get your order?
             </h2>
-            <div>
-              {" "}
+            <div className="pb-4">
               <Stack spacing={2} direction="row" className="w-full">
                 <Button className="w-[440px] h-[82px]" variant="outlined">
                   <span className="w-[70%] text-black">
@@ -170,7 +168,7 @@ const Shipping = () => {
                 type="submit"
                 style={{
                   marginTop: "50px",
-                  width: "500px",
+                  width: "100%",
                   height: "60px",
                   borderRadius: "30px",
                   border: "none",
@@ -249,7 +247,7 @@ const Shipping = () => {
               and taxes)
             </div>
           </div>
-          <div className="order-summary" style={{ marginTop: "20px" }}>
+          <div className="order-summary pb-3" style={{ marginTop: "20px" }}>
             <h3
               className="shipment-title"
               style={{ display: "flex", justifyContent: "center" }}
@@ -390,7 +388,10 @@ const Shipping = () => {
         <div className="right-sub-footer absolute right-0 ">
           <div className="footer-element-right flex ">
             {footerImg.map((item) => (
-              <div className="footer-product flex justify-end " key={item.id}>
+              <div
+                className="footer-product hidden lg:flex justify-end "
+                key={item.id}
+              >
                 <img
                   className="flex w-[45px] h-[27px] justify-end pr-2 mr-[8px]"
                   src={item.images}

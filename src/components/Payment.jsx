@@ -85,46 +85,45 @@ const Checkout = () => {
   return (
     <div className="main-checkout-cont">
       <Headroom>
-        <div className="checkout-nav" style={{ padding: "24px 48px" }}>
+        <div className="checkout-nav flex justify-between items-center px-4">
           <div className="left-logo">
             <Link to="/">
               <SiNike className="logo-img" />
             </Link>
           </div>
-          <div className="right-nav-cont">
+          <div className="right-nav-cont flex gap-3">
             <span className="contact-num">000 800 100 9538</span>
-
-            <Link to="">
-              <LiaSmsSolid className="check-right-logo sms-log" />
-            </Link>
-            <Link to="/cart" className="relative bottom-3">
-              <IoBagOutline
-                className="check-right-logo bag-log"
-                style={{ cursor: "pointer" }}
-              ></IoBagOutline>
-              <div
-                className="bag-item-count text-[11px]"
-                style={{
-                  textDecoration: "none",
-                  color: "#111111",
-                  position: "relative",
-                  right: "6px",
-                  top: "8px",
-                }}
-              >
-                {cart.length}
-              </div>
-            </Link>
+            <div className="flex gap-4">
+              <Link to="">
+                <LiaSmsSolid className="check-right-logo sms-log" />
+              </Link>
+              <Link to="/cart">
+                <IoBagOutline
+                  className="check-right-logo bag-log"
+                  style={{ cursor: "pointer" }}
+                />
+                <div
+                  className="bag-item-count text-[11px]"
+                  style={{
+                    textDecoration: "none",
+                    color: "#111111",
+                    position: "relative",
+                    right: "6px",
+                    top: "8px",
+                    display: Object.keys(cart).length === 0 ? "none" : "flex",
+                  }}
+                >
+                  {cart.length}
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </Headroom>
-      <div className="checkout-body-cont">
-        <div
-          className="checkout-left-part"
-          style={{ width: "50%", height: "100%" }}
-        >
+      <div className="checkout-body-cont px-3">
+        <div className="checkout-left-part" style={{ height: "100%" }}>
           <div className="order-heading">
-            <h2>Have a promo code?</h2>
+            <h2 className="text-xl  text-center">Have a promo code?</h2>
             <div className="btn-toggle">
               <Box sx={{ "& button": { m: 1 } }}>
                 <div>
@@ -149,7 +148,9 @@ const Checkout = () => {
                 className="add-input-area"
                 style={{ padding: "20px 0px 0px" }}
               >
-                <h2>How would you like to pay?</h2>
+                <h2 className="text-xl text-center">
+                  How would you like to pay?
+                </h2>
                 <div className="btn-toggle">
                   <Box sx={{ "& button": { m: 1 } }}>
                     <div>
@@ -157,7 +158,7 @@ const Checkout = () => {
                         variant="outlined"
                         size="large"
                         style={{
-                          width: "480px",
+                          width: "100%",
                           height: "70px",
                           border: "2px solid black",
                           borderRadius: "12px",
@@ -174,7 +175,7 @@ const Checkout = () => {
                         variant="outlined"
                         size="large"
                         style={{
-                          width: "480px",
+                          width: "100%",
                           height: "70px",
                           border: "2px solid black",
                           borderRadius: "12px",
@@ -188,7 +189,7 @@ const Checkout = () => {
                 </div>
               </div>
               <div className="contact-info-area" style={{ marginTop: "20px" }}>
-                <h2>Enter your payment details:</h2>
+                <h2 className="text-center">Enter your payment details:</h2>
                 <form action="" style={{ marginTop: "20px" }}>
                   <Box
                     sx={{
@@ -256,7 +257,7 @@ const Checkout = () => {
                 type="submit"
                 style={{
                   marginTop: "50px",
-                  width: "500px",
+                  width: "100%",
                   height: "60px",
                   borderRadius: "30px",
                   border: "none",
@@ -315,7 +316,7 @@ const Checkout = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="edit-info-btn h-[34px]  relative left-[260px]">
+                  <div className="edit-info-btn h-[34px]  ">
                     <Box
                       sx={{
                         display: "flex",
@@ -499,7 +500,6 @@ const Checkout = () => {
               </Link>
             </div>
             <div className="footer-element-links">
-              {" "}
               <Link
                 to="https://agreementservice.svs.nike.com/in/en_gb/rest/agreement?agreementType=termsOfUse&uxId=com.nike&country=IN&language=en&requestType=redirect"
                 style={{
@@ -530,7 +530,10 @@ const Checkout = () => {
         <div className="right-sub-footer absolute right-0 ">
           <div className="footer-element-right flex ">
             {footerImg.map((item) => (
-              <div className="footer-product flex justify-end " key={item.id}>
+              <div
+                className="footer-product hidden lg:flex justify-end "
+                key={item.id}
+              >
                 <img
                   className="flex w-[45px] h-[27px] justify-end pr-2 mr-[8px]"
                   src={item.images}

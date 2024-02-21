@@ -11,15 +11,16 @@ import AccordionDetails from "@mui/joy/AccordionDetails";
 import AccordionSummary from "@mui/joy/AccordionSummary";
 import { LuUser } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { IoBagOutline } from "react-icons/io5";
 import { FiShoppingBag } from "react-icons/fi";
 import { PiStorefront } from "react-icons/pi";
 import { MdOutlineHelpOutline } from "react-icons/md";
 import { ImCross } from "react-icons/im";
-import { logout } from "../redux/slices/auth";
+
 import toast from "react-hot-toast";
 import Navbar_3 from "./Navbar_3";
+import { logout } from "../redux/slices/auth";
 
 export default function TemporaryDrawer() {
   const navigate = useNavigate();
@@ -124,7 +125,7 @@ export default function TemporaryDrawer() {
                 className="flex-1 relative left-[245px]"
                 onClick={handleCloseToogle}
               >
-                <ImCross className="text-black" />
+                <ImCross className="text-white text-2xl p-1 rounded-2xl  bg-black" />
               </Button>
               <AccordionGroup sx={{ maxWidth: 300 }}>
                 <Accordion

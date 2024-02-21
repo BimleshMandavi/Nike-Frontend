@@ -7,12 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import Headroom from "react-headroom";
 import { useSelector } from "react-redux";
-import { Box, Checkbox, Stack } from "@mui/material";
-import { useState } from "react";
+import { Box, Checkbox } from "@mui/material";
+
 import toast from "react-hot-toast";
 
 const Billing = () => {
-  const [variant, setVariant] = useState("solid");
   const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cart);
   console.log("cart data in shiping", cart);
@@ -89,46 +88,47 @@ const Billing = () => {
   return (
     <div className="main-checkout-cont">
       <Headroom>
-        <div className="checkout-nav" style={{ padding: "24px 48px" }}>
+        <div className="checkout-nav flex justify-between px-5 pt-6">
           <div className="left-logo">
             <Link to="/">
               <SiNike className="logo-img" />
             </Link>
           </div>
-          <div className="right-nav-cont">
+          <div className="right-nav-cont flex justify-evenly items-center gap-4">
             <span className="contact-num">000 800 100 9538</span>
-
-            <Link to="">
-              <LiaSmsSolid className="check-right-logo sms-log" />
-            </Link>
-            <Link to="/cart" className="relative bottom-3">
-              <IoBagOutline
-                className="check-right-logo bag-log"
-                style={{ cursor: "pointer" }}
-              ></IoBagOutline>
-              <div
-                className="bag-item-count text-[11px]"
-                style={{
-                  textDecoration: "none",
-                  color: "#111111",
-                  position: "relative",
-                  right: "6px",
-                  top: "8px",
-                }}
-              >
-                {cart.length}
-              </div>
-            </Link>
+            <div className="flex gap-4">
+              <Link to="">
+                <LiaSmsSolid className="check-right-logo sms-log" />
+              </Link>
+              <Link to="/cart" className="">
+                <IoBagOutline
+                  className="check-right-logo bag-log"
+                  style={{ cursor: "pointer" }}
+                ></IoBagOutline>
+                <div
+                  className="bag-item-count text-[11px]"
+                  style={{
+                    textDecoration: "none",
+                    color: "#111111",
+                    position: "relative",
+                    right: "6px",
+                    top: "8px",
+                    display: Object.keys(cart).length === 0 ? "none" : "flex",
+                  }}
+                >
+                  {cart.length}
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </Headroom>
-      <div className="checkout-body-cont">
-        <div
-          className="checkout-left-part"
-          style={{ width: "50%", height: "100%" }}
-        >
+      <div className="checkout-body-cont w-full px-3">
+        <div className="checkout-left-part" style={{ height: "100%" }}>
           <div className="order-heading">
-            <h2 className="text-xl pb-10">What`s your billing address?</h2>
+            <h2 className="text-xl pb-10 text-center">
+              What`s your billing address?
+            </h2>
             <div>
               <Checkbox
                 label="Billing matches shipping address"
@@ -143,7 +143,7 @@ const Billing = () => {
                 type="submit"
                 style={{
                   marginTop: "50px",
-                  width: "500px",
+                  width: "100%",
                   height: "60px",
                   borderRadius: "30px",
                   border: "none",
@@ -392,7 +392,10 @@ const Billing = () => {
         <div className="right-sub-footer absolute right-0 ">
           <div className="footer-element-right flex ">
             {footerImg.map((item) => (
-              <div className="footer-product flex justify-end " key={item.id}>
+              <div
+                className="footer-product hidden lg:flex justify-end "
+                key={item.id}
+              >
                 <img
                   className="flex w-[45px] h-[27px] justify-end pr-2 mr-[8px]"
                   src={item.images}

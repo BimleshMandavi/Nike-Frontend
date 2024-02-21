@@ -75,49 +75,54 @@ const Bag = () => {
         <span>{cart.length} Items</span> | <span> ₹ {total}.00</span>
       </div>
 
-      <div className="pt-8 border-b-2 pb-10">
+      <div className="pt-8  pb-10">
         {cart && cart.length > 0 ? (
           cart.map((data) => (
-            <div className="bag-items py-[10] " key={data.id}>
+            <div className="bag-items pt-8 border-b-2 " key={data.id}>
               <div className="right-part">
-                <div className="item-imgs">
-                  <img src={data?.products[0]?.productId?.image} />
+                <div className="item-imgs h-[80px] w-[80px]">
+                  <img
+                    className="w-full h-full"
+                    src={data?.products[0]?.productId?.image}
+                  />
                 </div>
-                <div className="item-info">
-                  <div className="item-title">
-                    <div className="flex">
-                      {data?.products[0]?.productId?.title?.longTitle}
+                <div className="item-info pb-8">
+                  <div className="left-part">
+                    <span className="item-price">
+                      MRP:₹ {data?.products[0]?.productId?.price?.mrp}
+                    </span>
+                  </div>
+                  <div>
+                    <div className="item-title">
+                      <div className="flex">
+                        {data?.products[0]?.productId?.title?.longTitle}
+                      </div>
                     </div>
-                  </div>
-                  <div className="item-name">
-                    {data?.products[0]?.productId?.title?.shortTitle}
-                  </div>
-                  <div className="item-color">
-                    Colour: {data?.products[0]?.productId?.subCategory}
-                  </div>
-                  <div className="flex justify-between">
-                    <div className="item-size">Size</div>
-                    <div className="item-quant">
-                      Quantity: {data?.products[0]?.qty}
+                    <div className="item-name">
+                      {data?.products[0]?.productId?.title?.shortTitle}
                     </div>
-                  </div>
-                  <div className="item-btns gap-8">
-                    <div className="item-fav">
-                      <IoMdHeartEmpty className="btns" onClick={handleFav} />
+                    <div className="item-color">
+                      Colour: {data?.products[0]?.productId?.subCategory}
                     </div>
-                    <div className="item-del">
-                      <RiDeleteBinLine
-                        className="btns"
-                        onClick={() => handleDel(data?.id)}
-                      />
+                    <div className="flex justify-between">
+                      <div className="item-size">Size</div>
+                      <div className="item-quant">
+                        Quantity: {data?.products[0]?.qty}
+                      </div>
+                    </div>
+                    <div className="item-btns gap-8">
+                      <div className="item-fav">
+                        <IoMdHeartEmpty className="btns" onClick={handleFav} />
+                      </div>
+                      <div className="item-del">
+                        <RiDeleteBinLine
+                          className="btns"
+                          onClick={() => handleDel(data?.id)}
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="left-part">
-                <span className="item-price">
-                  MRP:₹ {data?.products[0]?.productId?.price?.mrp}
-                </span>
               </div>
             </div>
           ))
@@ -125,7 +130,6 @@ const Bag = () => {
           <div>No item in your bag !</div>
         )}
       </div>
-      <div className="more-product"></div>
     </div>
   );
 };

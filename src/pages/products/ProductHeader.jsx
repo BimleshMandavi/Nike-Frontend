@@ -2,6 +2,8 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Box,
+  Button,
   List,
   ListItem,
   ListItemButton,
@@ -9,8 +11,12 @@ import {
 } from "@mui/material";
 import { LuSettings2 } from "react-icons/lu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { useSelector } from "react-redux";
+import ProductToggle from "./ProductToggle";
 
 const ProductHeader = () => {
+  const { product } = useSelector((state) => state.product);
+
   return (
     <div
       className="product-header"
@@ -21,25 +27,26 @@ const ProductHeader = () => {
       }}
     >
       <div className="left-head-part">
-        <h1>New</h1>
+        <h1 className="text-slate-500 pt-2 text-bold">
+          {product?.length} Results
+        </h1>
       </div>
       <div
         className="right-head-part"
         style={{ display: "flex", justifyContent: "center" }}
       >
         <div
-          className="filter-text"
+          className="filter-text hidden lg:flex mr-[15px]"
           style={{
-            display: "flex",
             alignItems: "center",
-            marginRight: "15px",
             gap: "5px",
           }}
         >
           <h1>Filter</h1>
           <LuSettings2 />
         </div>
-        <div className="sort-acco hidden sm:flex">
+        <ProductToggle />
+        <div className="sort-acco hidden lg:flex">
           <Accordion style={{ padding: "0" }}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
