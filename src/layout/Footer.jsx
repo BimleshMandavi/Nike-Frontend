@@ -179,9 +179,12 @@ function Footer() {
                 <FaFacebookF className="social-link-icon" />
               </Link>
             </li>
-            <li className="social-icons">
-              <Link to="https://www.youtube.com/user/nike">
-                <TiSocialYoutubeCircular className="social-link-icon" />
+            <li className="social-icons ">
+              <Link
+                className="cursor-pointer"
+                to="https://www.youtube.com/user/nike"
+              >
+                <TiSocialYoutubeCircular className="social-link-icon cursor-pointer " />
               </Link>
             </li>
             <li className="social-icons">

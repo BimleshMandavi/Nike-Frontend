@@ -10,6 +10,7 @@ import { HiOutlineMapPin } from "react-icons/hi2";
 import Headroom from "react-headroom";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
+import { useState } from "react";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -82,8 +83,9 @@ const Checkout = () => {
   const handleEditBiling = () => {
     navigate("/billing");
   };
+
   return (
-    <div className="main-checkout-cont">
+    <div className="main-checkout-cont h-full w-full">
       <Headroom>
         <div className="checkout-nav flex justify-between items-center px-4">
           <div className="left-logo">
@@ -120,7 +122,7 @@ const Checkout = () => {
           </div>
         </div>
       </Headroom>
-      <div className="checkout-body-cont px-3">
+      <div className="checkout-body-cont px-3 md:flex lg:px-8 md:gap-4 md:justify-evenly">
         <div className="checkout-left-part" style={{ height: "100%" }}>
           <div className="order-heading">
             <h2 className="text-xl  text-center">Have a promo code?</h2>
@@ -129,7 +131,6 @@ const Checkout = () => {
                 <div>
                   <Box
                     sx={{
-                      width: 500,
                       maxWidth: "100%",
                     }}
                     style={{ marginTop: "20px" }}
@@ -373,17 +374,17 @@ const Checkout = () => {
           <div className="price-summary">
             <div className="prices">
               <div className="sub-info info">Subtotal</div>
-              <div className="sub-value info">{subtotal}</div>
+              <div className="sub-value info">₹ {subtotal}</div>
             </div>
             <div className="delevery-info">
               <div className="dele-info info">
                 Estimated Delivery & Handling
               </div>
-              <div className="dele-value info">{deliveryCoast}</div>
+              <div className="dele-value info">₹ {deliveryCoast}</div>
             </div>
             <div className="price-total">
               <div className="total-info ">Total</div>
-              <div className="total-value ">{total}</div>
+              <div className="total-value ">₹ {total}</div>
             </div>
             <div className="summary-help-text" style={{ fontSize: "0.8rem" }}>
               (The total reflects the price of your order, including all duties

@@ -22,9 +22,10 @@ const slice = createSlice({
 });
 
 export const getProducts =
-  (page, limit = 12) =>
+  (page, limit = 12,filter) =>
   async (dispatch) => {
-    const result = await productApi.getProduct(page, limit);
+    const result = await productApi.getProduct(page, limit,filter);
+    console.log(result)
     if (result) {
       await dispatch(slice.actions.getProduct(result.data));
     } else {

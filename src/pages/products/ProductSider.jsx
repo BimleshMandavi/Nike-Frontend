@@ -4,7 +4,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { pink } from "@mui/material/colors";
 import {
   Accordion,
   AccordionDetails,
@@ -19,8 +18,35 @@ import {
   RadioGroup,
 } from "@mui/material";
 
+import ColorCheckboxes from "./CheckBoxes/ColourCheckBoxes";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getProducts } from "../../redux/slices/productSlice";
+import GenderCheckBox from "./CheckBoxes/GenderCheckBox";
+import PriceFilletrBox from "./CheckBoxes/PriceFilletrBox";
+
 const ProductSider = () => {
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  const dispatch = useDispatch();
+  const [selectedItems, setSelectedItems] = useState("");
+  const fatchProducts = async () => {
+    let result = await dispatch(
+      getProducts(1, 10, {
+        category: { $regex: selectedItems, $options: "i" },
+      })
+    );
+    if (result) {
+      return true;
+    }
+  };
+
+  const handleItemClick = (text) => {
+    setSelectedItems(text);
+  };
+
+  useEffect(() => {
+    fatchProducts();
+  }, [selectedItems]);
+
   return (
     <div className="product-accordition hidden lg:flex">
       <div
@@ -46,7 +72,7 @@ const ProductSider = () => {
               "Accessories & Equipment",
             ].map((text) => (
               <ListItem key={text} disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => handleItemClick(text)}>
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
@@ -63,32 +89,7 @@ const ProductSider = () => {
                 Gender
               </AccordionSummary>
               <AccordionDetails>
-                <FormControl>
-                  <FormLabel id="demo-radio-buttons-group-label">
-                    Gender
-                  </FormLabel>
-                  <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="female"
-                    name="radio-buttons-group"
-                  >
-                    <FormControlLabel
-                      value="female"
-                      control={<Radio />}
-                      label="Female"
-                    />
-                    <FormControlLabel
-                      value="male"
-                      control={<Radio />}
-                      label="Male"
-                    />
-                    <FormControlLabel
-                      value="unisex"
-                      control={<Radio />}
-                      label="Unisex"
-                    />
-                  </RadioGroup>
-                </FormControl>
+                <GenderCheckBox />
               </AccordionDetails>
             </Accordion>
           </div>
@@ -122,7 +123,7 @@ const ProductSider = () => {
                 Shop by price
               </AccordionSummary>
               <AccordionDetails>
-                <FormGroup>
+                {/* <FormGroup>
                   <FormControlLabel
                     control={<Checkbox defaultChecked />}
                     label="Under ₹ 2500.00"
@@ -141,7 +142,8 @@ const ProductSider = () => {
                     control={<Checkbox />}
                     label=" Over ₹ 13000.00"
                   />
-                </FormGroup>
+                </FormGroup> */}
+                <PriceFilletrBox />
               </AccordionDetails>
             </Accordion>
           </div>
@@ -156,20 +158,7 @@ const ProductSider = () => {
               </AccordionSummary>
               <AccordionDetails>
                 <div>
-                  <Checkbox {...label} defaultChecked />
-                  <Checkbox {...label} defaultChecked color="secondary" />
-                  <Checkbox {...label} defaultChecked color="success" />
-                  <Checkbox {...label} defaultChecked color="default" />
-                  <Checkbox
-                    {...label}
-                    defaultChecked
-                    sx={{
-                      color: pink[800],
-                      "&.Mui-checked": {
-                        color: pink[600],
-                      },
-                    }}
-                  />
+                  <ColorCheckboxes />
                 </div>
               </AccordionDetails>
             </Accordion>

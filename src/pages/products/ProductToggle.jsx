@@ -37,9 +37,10 @@ export default function TemporaryDrawer() {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
-    ></Box>
+    />
   );
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
   return (
     <div className="w-[30%] p-0 m-0 flex lg:hidden">
       {["bottom"].map((anchor) => (

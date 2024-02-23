@@ -84,9 +84,9 @@ const Shipping = () => {
   };
 
   return (
-    <div className="main-checkout-cont">
-      <Headroom>
-        <div className="checkout-nav checkout-nav flex justify-between px-5 pt-6">
+    <div className="main-checkout-cont h-full w-full">
+      <Headroom className="">
+        <div className="checkout-nav checkout-nav flex justify-between px-5 pt-6 lg:px-20">
           <div className="left-logo">
             <Link to="/">
               <SiNike className="logo-img" />
@@ -121,7 +121,7 @@ const Shipping = () => {
           </div>
         </div>
       </Headroom>
-      <div className="checkout-body-cont px-3">
+      <div className="checkout-body-cont px-8  pt-8 lg:px-20 md:flex md:gap-4 md:justify-evenly">
         <div className="checkout-left-part" style={{ height: "100%" }}>
           <div className="order-heading w-full">
             <h2 className="text-xl px-3 pb-10 w-full">
@@ -134,7 +134,7 @@ const Shipping = () => {
                     Arrives Tue, 16 Jan - Wed, 7 Feb
                   </span>
                   <span className="text-slate-500 w-[30%]">
-                    {deliveryCoast}
+                    ₹ {deliveryCoast}
                   </span>
                 </Button>
               </Stack>
@@ -148,11 +148,10 @@ const Shipping = () => {
                     style={{ padding: "20px 0px 0px" }}
                   >
                     <img
-                      className="pl-5 pt-10"
+                      className="pl-5 shipment gap-8 pt-8"
                       src={data?.products[0]?.productId?.image}
                       alt=""
                     />
-                    <div className="btn-toggle"></div>
                   </div>
                 ))}
               </div>
@@ -195,7 +194,7 @@ const Shipping = () => {
                         <div>{user?.email}</div>
                       </div>
                     </div>
-                    <div className="edit-info-btn relative left-[260px]">
+                    <div className="edit-info-btn ">
                       <Box
                         sx={{
                           display: "flex",
@@ -230,17 +229,17 @@ const Shipping = () => {
           <div className="price-summary">
             <div className="prices">
               <div className="sub-info info">Subtotal</div>
-              <div className="sub-value info">{subtotal}</div>
+              <div className="sub-value info"> ₹ {subtotal}</div>
             </div>
             <div className="delevery-info">
               <div className="dele-info info">
                 Estimated Delivery & Handling
               </div>
-              <div className="dele-value info">{deliveryCoast}</div>
+              <div className="dele-value info">₹ {deliveryCoast}</div>
             </div>
             <div className="price-total">
               <div className="total-info ">Total</div>
-              <div className="total-value ">{total}</div>
+              <div className="total-value "> ₹ {total}</div>
             </div>
             <div className="summary-help-text" style={{ fontSize: "0.8rem" }}>
               (The total reflects the price of your order, including all duties
@@ -257,11 +256,9 @@ const Shipping = () => {
             {cart.map((data) => (
               <div
                 key={data.index}
-                className="shipment"
+                className=" shipment gap-8 pt-8"
                 style={{
                   display: "flex",
-                  justifyContent: "space-evenly",
-                  marginTop: "10px",
                 }}
               >
                 <div className="item-imgs">

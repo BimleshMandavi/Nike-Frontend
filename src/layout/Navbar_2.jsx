@@ -133,7 +133,7 @@ const Navbar_2 = () => {
             </Search>
           </div>
 
-          <div className="action_bar pr-[1%]">
+          <div className="action_bar pr-[2%]">
             <div className="flex items-center">
               <div className="flex md:hidden pr-2">
                 <SearchIcon style={{ cursor: "pointer" }} />

@@ -86,7 +86,7 @@ const Billing = () => {
   };
 
   return (
-    <div className="main-checkout-cont">
+    <div className="main-checkout-cont h-[90vh] w-full">
       <Headroom>
         <div className="checkout-nav flex justify-between px-5 pt-6">
           <div className="left-logo">
@@ -123,7 +123,7 @@ const Billing = () => {
           </div>
         </div>
       </Headroom>
-      <div className="checkout-body-cont w-full px-3">
+      <div className="checkout-body-cont h-full w-full px-4 md:flex md:justify-between md:gap-10">
         <div className="checkout-left-part" style={{ height: "100%" }}>
           <div className="order-heading">
             <h2 className="text-xl pb-10 text-center">
@@ -169,7 +169,7 @@ const Billing = () => {
                       <div>{user?.email}</div>
                     </div>
                   </div>
-                  <div className="edit-info-btn relative left-[260px]">
+                  <div className="edit-info-btn ">
                     <Box
                       sx={{
                         display: "flex",
@@ -203,7 +203,7 @@ const Billing = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="edit-info-btn h-[34px]  relative left-[260px]">
+                  <div className="edit-info-btn h-[34px]  ">
                     <Box
                       sx={{
                         display: "flex",
@@ -229,22 +229,22 @@ const Billing = () => {
             </div>
           </div>
         </div>
-        <div className="checkout-right-part">
+        <div className="checkout-right-part pb-10 md:w-[40%] md:px-10">
           <h2 className="order-summary-title">Order Summary</h2>
           <div className="price-summary">
             <div className="prices">
               <div className="sub-info info">Subtotal</div>
-              <div className="sub-value info">{subtotal}</div>
+              <div className="sub-value info">₹ {subtotal}</div>
             </div>
             <div className="delevery-info">
               <div className="dele-info info">
                 Estimated Delivery & Handling
               </div>
-              <div className="dele-value info">{deliveryCoast}</div>
+              <div className="dele-value info">₹ {deliveryCoast}</div>
             </div>
             <div className="price-total">
               <div className="total-info ">Total</div>
-              <div className="total-value ">{total}</div>
+              <div className="total-value ">₹ {total}</div>
             </div>
             <div className="summary-help-text" style={{ fontSize: "0.8rem" }}>
               (The total reflects the price of your order, including all duties

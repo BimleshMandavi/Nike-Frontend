@@ -7,27 +7,17 @@ import { getProducts } from "../../redux/slices/productSlice";
 function ProductItems() {
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.product);
+  console.log("product", product);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
 
-  const fetchProducts = async () => {
-    let result = await dispatch(getProducts(page, limit));
-    if (result) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+ 
 
-  useEffect(() => {
-    fetchProducts();
-  }, [page]);
+  
 
   const handleChangePage = (event, value) => {
     setPage(value);
   };
-
-  console.log(page);
 
   return (
     <div

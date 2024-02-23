@@ -274,9 +274,9 @@ const Checkout = () => {
   ];
 
   return (
-    <div className="main-checkout-cont w-full">
+    <div className="main-checkout-cont w-full h-full ">
       <Headroom>
-        <div className="checkout-nav flex justify-between px-5 pt-6">
+        <div className="checkout-nav flex justify-between px-5 pt-6 lg:px-20">
           <div className="left-logo ">
             <Link to="/">
               <SiNike className="logo-img" />
@@ -311,8 +311,8 @@ const Checkout = () => {
           </div>
         </div>
       </Headroom>
-      <div className="checkout-body-cont px-8 lg:px-11 pt-8 md:flex md:justify-between">
-        <div className="checkout-left-part h-full w-full sm:w-[500px]">
+      <div className="checkout-body-cont px-4  pt-8 lg:px-20 md:flex md:gap-4  md:justify-evenly">
+        <div className="checkout-left-part h-full ">
           <div className="order-heading ">
             <h2>How would you like to get your order?</h2>
             <div className="message-body w-full md:w-[500px]">
@@ -334,6 +334,7 @@ const Checkout = () => {
               <Box className="w-full" sx={{ "& button": { m: 1 } }}>
                 <div>
                   <Button
+                    className=""
                     variant="outlined"
                     size="large"
                     style={{
@@ -562,7 +563,7 @@ const Checkout = () => {
                 Continue
               </Button>
             </form>
-            <div className="item-summary-section" style={{ marginTop: "20px" }}>
+            <div className="item-summary-section py-6 ">
               <div className="section-heading">
                 <h2>Delivery</h2>
               </div>
@@ -600,7 +601,7 @@ const Checkout = () => {
               and taxes)
             </div>
           </div>
-          <div className="order-summary" style={{ marginTop: "20px" }}>
+          <div className="order-summary " style={{ marginTop: "20px" }}>
             <h3
               className="shipment-title"
               style={{ display: "flex", justifyContent: "center" }}
@@ -610,11 +611,9 @@ const Checkout = () => {
             {cart.map((data) => (
               <div
                 key={data.index}
-                className="shipment"
+                className="shipment gap-8 pt-8"
                 style={{
                   display: "flex",
-                  justifyContent: "space-evenly",
-                  marginTop: "10px",
                 }}
               >
                 <div className="item-imgs">
@@ -649,7 +648,6 @@ const Checkout = () => {
               </div>
             ))}
           </div>
-          <div className="shipent-summary"></div>
         </div>
       </div>
       <div
