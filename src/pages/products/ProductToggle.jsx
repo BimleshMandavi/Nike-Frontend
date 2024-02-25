@@ -13,6 +13,9 @@ import {
   RadioGroup,
 } from "@mui/material";
 import { pink } from "@mui/material/colors";
+import { useDispatch } from "react-redux";
+import { getProducts } from "../../redux/slices/productSlice";
+import { useEffect } from "react";
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -40,6 +43,30 @@ export default function TemporaryDrawer() {
     />
   );
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+  const [colour, setColour] = React.useState("");
+
+  const handleCheckboxChange = (value) => {
+    if (value === colour) {
+      setColour("");
+    } else {
+      setColour(value);
+    }
+    console.log("colour", colour);
+  };
+
+  const dispatch = useDispatch();
+
+  const fatchProducts = async () => {
+    let result = await dispatch(getProducts(1, 10));
+    if (result) {
+      return result;
+    }
+  };
+
+  useEffect(() => {
+    fatchProducts();
+  }, []);
 
   return (
     <div className="w-[30%] p-0 m-0 flex lg:hidden">

@@ -1,6 +1,7 @@
 import { Avatar, Box, Button } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import HomeSlider from "../../pages/home/HomeSlider";
 
 function Profile() {
   const { user } = useSelector((state) => state.auth);
@@ -26,7 +27,7 @@ function Profile() {
       <div className="profile-body mt-10 pb-[48px]">
         <div className="profile-avtar ">
           <Box sx={{ display: "flex", alignItems: "center", height: "80px" }}>
-            <Avatar className="h-[80px] w-[80px]" />
+            <Avatar variant="solid" className="size-2xl" />
             <div className=" flex pl-8 flex-col">
               <div className="flex gap-2 text-lg">
                 <h1 className="text-3xl">{user?.name}</h1>
@@ -76,6 +77,9 @@ function Profile() {
       <div className="mt-[16px]">
         Add your interests to shop a collection of products that are based on
         what you`re into.
+      </div>
+      <div className="pt-10 h-full w-full">
+        <HomeSlider />
       </div>
     </div>
   );

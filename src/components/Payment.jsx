@@ -8,13 +8,11 @@ import TextField from "@mui/material/TextField";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import Headroom from "react-headroom";
-import { useDispatch, useSelector } from "react-redux";
-import { useFormik } from "formik";
-import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
   let subtotal = 0;
@@ -283,7 +281,7 @@ const Checkout = () => {
                       <div>{user?.email}</div>
                     </div>
                   </div>
-                  <div className="edit-info-btn relative left-[260px]">
+                  <div className="edit-info-btn pl-[5%]">
                     <Box
                       sx={{
                         display: "flex",

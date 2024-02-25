@@ -25,8 +25,10 @@ const SignUp = () => {
       if (result) {
         localStorage.setItem("accessToken", result.token);
         navigate("/");
-        toast.success("Login successful");
+        toast.success("Login successful!");
         action.resetForm();
+      } else {
+        toast.error("Incorrect username or password");
       }
     },
   });

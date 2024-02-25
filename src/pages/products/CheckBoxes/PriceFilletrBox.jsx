@@ -5,11 +5,15 @@ import { getProducts } from "../../../redux/slices/productSlice";
 
 function PriceFilletrBox() {
   const [priceRanges, setPriceRanges] = useState({
-    under2500: false,
-    between2501And7500: false,
-    between7501And12999: false,
-    over13000: false,
+    A0And2500: false,
+    A2501And7500: false,
+    A7501And12999: false,
+    A13000And100000: false,
   });
+
+  console.log(priceRanges);
+
+  const [query, setQuery] = useState([]);
 
   const handlePriceRangeChange = (event) => {
     const { name, checked } = event.target;
@@ -17,42 +21,40 @@ function PriceFilletrBox() {
       ...prevState,
       [name]: checked,
     }));
+
+    console.log(name.split("And"), checked);
+    if (checked) {
+      let data = {
+        "price.mrp": {
+          $lte: Number(name.split("And")[1]), // Less than or equal to
+          $gte: Number(name.split("And")[0].split("A")[1]), // Greater than or equal to
+        },
+      };
+      setQuery((prevQuery) => ({
+        ...prevQuery,
+        [name]: data,
+        array: [...(prevQuery.array || []), data],
+      }));
+    } else {
+      // Remove the object from the array
+      setQuery((prevQuery) => ({
+        ...prevQuery,
+        [name]: false,
+        array: prevQuery.array.filter((item) => item !== prevQuery[name]),
+      }));
+    }
   };
-  console.log("price :", priceRanges);
 
   const dispatch = useDispatch();
 
   const fetchProducts = async () => {
     try {
-     const res = await dispatch(
+      const res = await dispatch(
         getProducts(1, 10, {
-          $or: [
-            { "price.mrp": { $lt: priceRanges.under2500 ? 2500:""} },
-            {
-              $or: [
-                {
-                  "price.mrp": {
-                    $gte: priceRanges.between2501And7500 ? 2500 :"",
-                    $lte:priceRanges.between2501And7500 ? 7500:"",
-                  },
-                },
-                {
-                  "price.mrp": {
-                    $gte: priceRanges.between7501And12999 && 7500,
-                    $lte: 12999,
-                  },
-                },
-                {
-                  "price.mrp": {
-                    $gte: priceRanges.over13000 && 12999,
-                  },
-                },
-              ],
-            },
-          ],
+          $or: query.array,
         })
       );
-      console.log(res)
+      console.log(res);
     } catch (error) {
       console.error("Error fetching products:", error);
       return null;
@@ -68,9 +70,9 @@ function PriceFilletrBox() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={priceRanges.under2500}
+              checked={priceRanges.A0And2500}
               onChange={handlePriceRangeChange}
-              name="under2500"
+              name="A0And2500"
             />
           }
           label="Under ₹ 2500.00"
@@ -78,9 +80,9 @@ function PriceFilletrBox() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={priceRanges.between2501And7500}
+              checked={priceRanges.A2501And7500}
               onChange={handlePriceRangeChange}
-              name="between2501And7500"
+              name="A2501And7500"
             />
           }
           label="₹ 2501.00 - ₹ 7500.00"
@@ -90,9 +92,9 @@ function PriceFilletrBox() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={priceRanges.between7501And12999}
+              checked={priceRanges.A7501And12999}
               onChange={handlePriceRangeChange}
-              name="between7501And12999"
+              name="A7501And12999"
             />
           }
           label="₹ 7501.00 - ₹ 12999.00"
@@ -100,9 +102,9 @@ function PriceFilletrBox() {
         <FormControlLabel
           control={
             <Checkbox
-              checked={priceRanges.over13000}
+              checked={priceRanges.A13000And100000}
               onChange={handlePriceRangeChange}
-              name="over13000"
+              name="A13000And100000"
             />
           }
           label="Over ₹ 13000.00"

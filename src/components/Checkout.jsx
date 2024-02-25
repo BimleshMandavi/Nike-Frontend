@@ -67,7 +67,6 @@ const Checkout = () => {
             locality: values?.locality,
             city: values?.city,
             state: values?.state,
-
             zipcode: values?.zipcode,
           },
         ],

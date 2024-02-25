@@ -10,12 +10,8 @@ import {
   AccordionSummary,
   Box,
   Checkbox,
-  FormControl,
   FormControlLabel,
   FormGroup,
-  FormLabel,
-  Radio,
-  RadioGroup,
 } from "@mui/material";
 
 import ColorCheckboxes from "./CheckBoxes/ColourCheckBoxes";
@@ -123,26 +119,6 @@ const ProductSider = () => {
                 Shop by price
               </AccordionSummary>
               <AccordionDetails>
-                {/* <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Under ₹ 2500.00"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label="₹ 2501.00 - ₹ 7500.00"
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="₹ 7501.00 - ₹ 12999.00"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label=" Over ₹ 13000.00"
-                  />
-                </FormGroup> */}
                 <PriceFilletrBox />
               </AccordionDetails>
             </Accordion>

@@ -123,7 +123,7 @@ const Billing = () => {
           </div>
         </div>
       </Headroom>
-      <div className="checkout-body-cont h-full w-full px-4 md:flex md:justify-between md:gap-10">
+      <div className="checkout-body-cont h-full w-full px-4 md:flex md:justify-evenly md:gap-10">
         <div className="checkout-left-part" style={{ height: "100%" }}>
           <div className="order-heading">
             <h2 className="text-xl pb-10 text-center">

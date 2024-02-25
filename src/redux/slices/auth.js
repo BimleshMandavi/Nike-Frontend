@@ -55,10 +55,8 @@ export const logout = () => async (dispatch) => {
   return true;
 };
 
-export const updateUser = (id,data) => async () => {
-  let result = await authApi.updateUser(id,data);
-  console.log("result in slice", result);
-  console.log("data in slice", data);
+export const updateUser = (id, data) => async () => {
+  let result = await authApi.updateUser(id, data);
   if (result) {
     return result;
   } else {

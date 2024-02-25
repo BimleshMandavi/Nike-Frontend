@@ -57,8 +57,6 @@ class AuthApi {
 
   async updateUser(id, data) {
     try {
-      console.log("data in mocks", data);
-      console.log("id in mocks", id);
       const response = await axios.put(
         `http://localhost:5003/userapp/user/update/${id}`,
         data,
@@ -69,8 +67,6 @@ class AuthApi {
           },
         }
       );
-      console.log("updaten id in mocks", id);
-      console.log("update reponse in mocks", response);
       return response.data;
     } catch (error) {
       console.log("error", error);
