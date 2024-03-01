@@ -583,17 +583,17 @@ const Checkout = () => {
           <div className="price-summary">
             <div className="prices">
               <div className="sub-info info">Subtotal</div>
-              <div className="sub-value info">{subtotal}</div>
+              <div className="sub-value info">{subtotal.toFixed(2)}</div>
             </div>
             <div className="delevery-info">
               <div className="dele-info info">
                 Estimated Delivery & Handling
               </div>
-              <div className="dele-value info">{deliveryCoast}</div>
+              <div className="dele-value info">{deliveryCoast.toFixed(2)}</div>
             </div>
             <div className="price-total">
               <div className="total-info ">Total</div>
-              <div className="total-value ">{total}</div>
+              <div className="total-value ">{total.toFixed(2)}</div>
             </div>
             <div className="summary-help-text" style={{ fontSize: "0.8rem" }}>
               (The total reflects the price of your order, including all duties
@@ -641,7 +641,7 @@ const Checkout = () => {
 
                   <div className="item-price">
                     {" "}
-                    MRP:₹ {data?.products[0]?.productId?.price?.mrp}
+                    MRP:₹ {data?.products[0]?.productId?.price?.mrp.toFixed(2)}
                   </div>
                 </div>
               </div>

@@ -31,15 +31,15 @@ const Summary = () => {
       <div>
         <div className="prices">
           <div className="sub-info">Subtotal</div>
-          <div className="sub-value">₹ {subtotal}</div>
+          <div className="sub-value">₹ {subtotal.toFixed(2)}</div>
         </div>
         <div className="delevery-info">
           <div className="dele-info">Estimated Delivery & Handling</div>
-          <div className="dele-value">₹ {deliveryCoast}</div>
+          <div className="dele-value">₹ {deliveryCoast.toFixed(2)}</div>
         </div>
         <div className="price-total">
           <div className="total-info">Total</div>
-          <div className="total-value">₹ {total}</div>
+          <div className="total-value">₹ {total.toFixed(2)}</div>
         </div>
       </div>
       <div className="chekout-btns hiiden lg:flex">

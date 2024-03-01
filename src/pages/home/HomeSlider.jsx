@@ -30,7 +30,7 @@ const HomeSlider = () => {
 
   return (
     <>
-      <div className="home-slider-container w-full hidden md:block">
+      <div className="home-slider-container w-full hidden md:block overflow-x-hidden">
         <h2 className="text-2xl pt-5 pl-8">Always Iconic</h2>
         <Slider {...setting}>
           {article.map((item) => (

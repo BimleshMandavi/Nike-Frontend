@@ -11,10 +11,6 @@ function ProductItems() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
 
- 
-
-  
-
   const handleChangePage = (event, value) => {
     setPage(value);
   };
@@ -50,7 +46,7 @@ function ProductItems() {
                               {item?.title?.longTitle}
                             </h3>
                             <div className="product-price no-underline text-sm font-bold pt-1 sm:pt-4">
-                              MRP : ₹{item?.price?.cost}.00
+                              MRP : ₹{item?.price?.cost.toFixed(2)}
                             </div>
                           </div>
                         </Link>
