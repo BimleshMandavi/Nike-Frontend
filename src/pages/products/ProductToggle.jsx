@@ -8,14 +8,16 @@ import {
   Checkbox,
   FormControl,
   FormControlLabel,
-  FormGroup,
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { pink } from "@mui/material/colors";
 import { useDispatch } from "react-redux";
 import { getProducts } from "../../redux/slices/productSlice";
 import { useEffect } from "react";
+import GenderCheckBox from "./CheckBoxes/GenderCheckBox";
+import PriceFilletrBox from "./CheckBoxes/PriceFilletrBox";
+import ColourCheckBox from "./CheckBoxes/ColourCheckBoxes";
+import BrandBox from "./CheckBoxes/BrandBox";
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -42,18 +44,6 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     />
   );
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
-  const [colour, setColour] = React.useState("");
-
-  const handleCheckboxChange = (value) => {
-    if (value === colour) {
-      setColour("");
-    } else {
-      setColour(value);
-    }
-    console.log("colour", colour);
-  };
 
   const dispatch = useDispatch();
 
@@ -142,52 +132,13 @@ export default function TemporaryDrawer() {
               <div className="p-6">
                 <h3 className="text-2xl">Gender</h3>
                 <div className="border-b-2">
-                  <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="female"
-                    name="radio-buttons-group"
-                  >
-                    <FormControlLabel
-                      value="female"
-                      control={<Radio />}
-                      label="Female"
-                    />
-                    <FormControlLabel
-                      value="male"
-                      control={<Radio />}
-                      label="Male"
-                    />
-                    <FormControlLabel
-                      value="unisex"
-                      control={<Radio />}
-                      label="Unisex"
-                    />
-                  </RadioGroup>
+                  <GenderCheckBox />
                 </div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl">Shop By Price</h3>
                 <div className="border-b-2">
-                  <FormGroup>
-                    <FormControlLabel
-                      control={<Checkbox defaultChecked />}
-                      label="Under ₹ 2500.00"
-                    />
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label="₹ 2501.00 - ₹ 7500.00"
-                    />
-                  </FormGroup>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={<Checkbox defaultChecked />}
-                      label="₹ 7501.00 - ₹ 12999.00"
-                    />
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      label=" Over ₹ 13000.00"
-                    />
-                  </FormGroup>
+                  <PriceFilletrBox />
                 </div>
               </div>
               <div className="p-6">
@@ -202,33 +153,13 @@ export default function TemporaryDrawer() {
               <div className="p-6">
                 <h3 className="text-2xl">Colour</h3>
                 <div className="border-b-2">
-                  <Checkbox {...label} defaultChecked />
-                  <Checkbox {...label} defaultChecked color="secondary" />
-                  <Checkbox {...label} defaultChecked color="success" />
-                  <Checkbox {...label} defaultChecked color="default" />
-                  <Checkbox
-                    {...label}
-                    defaultChecked
-                    sx={{
-                      color: pink[800],
-                      "&.Mui-checked": {
-                        color: pink[600],
-                      },
-                    }}
-                  />
+                  <ColourCheckBox />
                 </div>
               </div>
               <div>
                 <h3 className="text-2xl">Brand</h3>
                 <div>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Life Style"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Tennis"
-                  />
+                  <BrandBox />
                 </div>
               </div>
 

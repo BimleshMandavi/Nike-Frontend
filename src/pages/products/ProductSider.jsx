@@ -20,6 +20,9 @@ import { useDispatch } from "react-redux";
 import { getProducts } from "../../redux/slices/productSlice";
 import GenderCheckBox from "./CheckBoxes/GenderCheckBox";
 import PriceFilletrBox from "./CheckBoxes/PriceFilletrBox";
+import BrandBox from "./CheckBoxes/BrandBox";
+import SportsBox from "./CheckBoxes/SportsBox";
+import IconBox from "./CheckBoxes/IconBox";
 
 const ProductSider = () => {
   const dispatch = useDispatch();
@@ -149,51 +152,7 @@ const ProductSider = () => {
                 Sports
               </AccordionSummary>
               <AccordionDetails>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="LifeStyle"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Running" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Training & GYM"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Basketball" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Football"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Yoga" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Golf"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label="Skateboarding"
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Tennis"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Althletics" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Walking"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Dance" />
-                </FormGroup>
+                <SportsBox />
               </AccordionDetails>
             </Accordion>
           </div>
@@ -207,27 +166,7 @@ const ProductSider = () => {
                 Brand
               </AccordionSummary>
               <AccordionDetails>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Nike Sportswear"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Jordan" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Nike By You"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="NikeLab" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="ACG"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Nike Pro" />
-                </FormGroup>
+                <BrandBox />
               </AccordionDetails>
             </Accordion>
           </div>
@@ -241,96 +180,7 @@ const ProductSider = () => {
                 Icon
               </AccordionSummary>
               <AccordionDetails>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Air Force 1"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Air Max" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Blazer"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Blasilia" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Cortez"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Element" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Huarache"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Mercurial" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Melton"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Miler" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Nike Dunk"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Pegasus" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Phantom"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Structure" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Sunray"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label="Terra Kiger"
-                  />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Tiempo"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Vomero" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Windhorse"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Windrunner" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Noke SuperRep"
-                  />
-                  <FormControlLabel control={<Checkbox />} label="Alphafly" />
-                </FormGroup>
-                <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Nike Vaporfly"
-                  />
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label="Nike ZoomFly"
-                  />
-                </FormGroup>
+                <IconBox />
               </AccordionDetails>
             </Accordion>
           </div>

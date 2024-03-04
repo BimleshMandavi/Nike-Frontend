@@ -9,7 +9,7 @@ function ProductItems() {
   const { product } = useSelector((state) => state.product);
   console.log("product", product);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
+  const [limit, setLimit] = useState(12);
 
   const handleChangePage = (event, value) => {
     setPage(value);

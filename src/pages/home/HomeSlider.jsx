@@ -14,7 +14,7 @@ const HomeSlider = () => {
     autoplaySpeed: 2000,
     slidesToShow: 1,
     slidesToScroll: 2,
-    Arrow: true,
+    Arrow: false,
   };
   const setting = {
     dots: true,
@@ -25,12 +25,12 @@ const HomeSlider = () => {
     autoplaySpeed: 2000,
     slidesToShow: 3,
     slidesToScroll: 2,
-    Arrow: true,
+    Arrow: false,
   };
 
   return (
     <>
-      <div className="home-slider-container w-full hidden md:block overflow-x-hidden">
+      <div className="home-slider-container w-full hidden md:block overflow-hidden">
         <h2 className="text-2xl pt-5 pl-8">Always Iconic</h2>
         <Slider {...setting}>
           {article.map((item) => (
