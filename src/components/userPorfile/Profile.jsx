@@ -14,7 +14,7 @@ function Profile() {
         <Link className="no-underline" to="">
           Inbox
         </Link>
-        <Link className="no-underline" to="">
+        <Link className="no-underline" to="/orders">
           Orders
         </Link>
         <Link className="no-underline" to="/favourites">

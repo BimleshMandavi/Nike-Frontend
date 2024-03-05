@@ -5,63 +5,65 @@ import "./Navbar_2.css";
 import "./Media-query.css";
 import { Link, useNavigate } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
+
 import Headroom from "react-headroom";
 import { LuUser } from "react-icons/lu";
 import NavToggle from "./NavToggle";
 import { useDispatch, useSelector } from "react-redux";
 import { Box, Button, Menu, MenuItem } from "@mui/material";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import { logout } from "../redux/slices/auth";
+import SearchToggle from "./SearchToggle";
+import SearchBox from "./SearchBox";
+import { useState } from "react";
 
 const Navbar_2 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
 
-  const Search = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: "0 5px 5px 0",
-    background: "#F5F5F5",
-    cursor: "pointer",
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.black, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  }));
+  // const Search = styled("div")(({ theme }) => ({
+  //   position: "relative",
+  //   borderRadius: "0 5px 5px 0",
+  //   background: "#F5F5F5",
+  //   cursor: "pointer",
+  //   "&:hover": {
+  //     backgroundColor: alpha(theme.palette.common.black, 0.25),
+  //   },
+  //   marginRight: theme.spacing(2),
+  //   marginLeft: 0,
+  //   width: "100%",
+  //   [theme.breakpoints.up("sm")]: {
+  //     marginLeft: theme.spacing(3),
+  //     width: "auto",
+  //   },
+  // }));
 
-  const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }));
+  // const SearchIconWrapper = styled("div")(({ theme }) => ({
+  //   padding: theme.spacing(0, 2),
+  //   height: "100%",
+  //   position: "absolute",
+  //   pointerEvents: "none",
+  //   display: "flex",
+  //   alignItems: "center",
+  //   justifyContent: "center",
+  // }));
 
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    "& .MuiInputBase-input": {
-      padding: theme.spacing(1, 1, 1, 0),
+  // const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  //   color: "inherit",
+  //   "& .MuiInputBase-input": {
+  //     padding: theme.spacing(1, 1, 1, 0),
 
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("md")]: {
-        width: "20ch",
-      },
-    },
-  }));
+  //     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+  //     transition: theme.transitions.create("width"),
+  //     width: "100%",
+  //     [theme.breakpoints.up("md")]: {
+  //       width: "20ch",
+  //     },
+  //   },
+  // }));
 
   const handleLogOut = async () => {
     let result = await dispatch(logout());
@@ -121,22 +123,52 @@ const Navbar_2 = () => {
             </a>
           </div>
           <div className="search-input-cont hidden md:flex">
-            <Search style={{ borderRadius: "20px" }}>
+            {/* <Search style={{ borderRadius: "20px" }}>
               <SearchIconWrapper>
                 <SearchIcon style={{ cursor: "pointer" }} />
               </SearchIconWrapper>
               <StyledInputBase
                 className="search-toggle"
                 placeholder="Search"
+                value={searchTerm}
+                type="text"
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyPress={handleKeyPress}
                 inputProps={{ "aria-label": "search" }}
+                // startAdornment={
+                //   <SearchIcon className="" style={{ cursor: "pointer" }} />
+                // }
               />
-            </Search>
+            </Search> */}
+
+            <div className="searchBar">
+              {/* <input
+                type="text"
+                id="searchInput"
+                placeholder="Search"
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyPress={handleKeyPress}
+                style={{
+                  height: "40px",
+                  display: "block",
+                  borderRadius: "20px",
+                  border: "1px solid transparent",
+                  background: "#eaeaea",
+                  padding: "5px 5px 5px 9px",
+                  width: "203px",
+                  boxSizing: "border-box",
+                  marginLeft: "auto",
+                  marginTop: "6px",
+                }}
+              /> */}
+              <SearchBox />
+            </div>
           </div>
 
           <div className="action_bar pr-[2%]">
             <div className="flex items-center">
-              <div className="flex md:hidden pr-2">
-                <SearchIcon style={{ cursor: "pointer" }} />
+              <div className="flex md:hidden pr-5">
+                <SearchToggle />
               </div>
               <div className="favuorite-icon pre-order">
                 <Link

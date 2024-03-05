@@ -55,24 +55,16 @@ function Footer() {
               <AccordionDetails>
                 <ul>
                   <li className="footer-linkes">
-                    <a href="https://www.nike.com/orders/details/">
-                      Order Status
-                    </a>
+                    <Link to={"/orders"}>Order Status</Link>
                   </li>
                   <li className="footer-linkes">
-                    <a href="https://www.nike.com/in/help/a/shipping-delivery-gs">
-                      Delivery
-                    </a>
+                    <Link to={"/orders"}>Delivery</Link>
                   </li>
                   <li className="footer-linkes">
-                    <a href="https://www.nike.com/in/help/a/returns-policy-gs">
-                      Returns
-                    </a>
+                    <Link to={"/orders"}>Returns</Link>
                   </li>
                   <li className="footer-linkes">
-                    <a href="https://www.nike.com/in/help/a/payment-options-gs">
-                      Payment Options
-                    </a>
+                    <Link to={"/payment"}>Payment Options</Link>
                   </li>
                   <li className="footer-linkes">
                     <a href="https://www.nike.com/in/help/#contact">
@@ -119,22 +111,16 @@ function Footer() {
             </li>
             <ul>
               <li className="footer-linkes">
-                <a href="https://www.nike.com/orders/details/">Order Status</a>
+                <Link to={"/orders"}>Order Status</Link>
               </li>
               <li className="footer-linkes">
-                <a href="https://www.nike.com/in/help/a/shipping-delivery-gs">
-                  Delivery
-                </a>
+                <Link to={"/orders"}>Delivery</Link>
               </li>
               <li className="footer-linkes">
-                <a href="https://www.nike.com/in/help/a/returns-policy-gs">
-                  Returns
-                </a>
+                <Link to={"/orders"}>Returns</Link>
               </li>
               <li className="footer-linkes">
-                <a href="https://www.nike.com/in/help/a/payment-options-gs">
-                  Payment Options
-                </a>
+                <Link to={"/payment"}>Payment Options</Link>
               </li>
               <li className="footer-linkes">
                 <a href="https://www.nike.com/in/help/#contact">Contact Us</a>

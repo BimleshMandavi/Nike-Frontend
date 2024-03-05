@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import Headroom from "react-headroom";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -80,6 +81,50 @@ const Checkout = () => {
   };
   const handleEditBiling = () => {
     navigate("/billing");
+  };
+
+  const [creditCardClicked, setCreditCardClicked] = useState(false);
+
+  const [paymentDetailsVisible, setPaymentDetailsVisible] = useState(false);
+
+  const handleCreditCardClick = () => {
+    setCreditCardClicked(true);
+    togglePaymentDetails()(true); // Show payment details when credit card button is clicked
+  };
+
+  const togglePaymentDetails = () => {
+    setPaymentDetailsVisible(!paymentDetailsVisible);
+  };
+
+  const [upiIdClicked, setUpiIdClicked] = useState(false);
+
+  const [idDetailsVisible, setIdDetailsVisible] = useState(false);
+
+  const handleUpiClicked = () => {
+    setUpiIdClicked(true);
+    toggleUpiDetails()(true);
+  };
+  const toggleUpiDetails = () => {
+    setIdDetailsVisible(!idDetailsVisible);
+  };
+
+  const [orderPlaced, setOrderPlaced] = useState(false);
+
+  const handlePlaceOrder = () => {
+    // Gather all necessary details for the order
+    const orderDetails = {
+      user: user,
+      cart: cart,
+      paymentMethod: creditCardClicked ? "Credit Card" : "UPI", // Determine payment method
+      shippingAddress: user.address, // Assuming user address is stored in user object
+      // Add more details as needed
+    };
+
+    // Send orderDetails to backend to create the order
+    // Example: fetch('/api/orders', { method: 'POST', body: JSON.stringify(orderDetails) })
+
+    // Set state to indicate that order is placed
+    setOrderPlaced(true);
   };
 
   return (
@@ -163,6 +208,7 @@ const Checkout = () => {
                           borderRadius: "12px",
                           marginTop: "10px",
                         }}
+                        onClick={handleCreditCardClick}
                       >
                         Credit or Debit card
                       </Button>
@@ -180,93 +226,143 @@ const Checkout = () => {
                           borderRadius: "12px",
                           marginTop: "10px",
                         }}
+                        onClick={handleUpiClicked}
                       >
-                        G pay
+                        UPI
+                      </Button>
+                    </div>
+                  </Box>
+                  <Box sx={{ "& button": { m: 1 } }}>
+                    <div>
+                      <Button
+                        variant="outlined"
+                        size="large"
+                        style={{
+                          width: "100%",
+                          height: "70px",
+                          border: "2px solid black",
+                          borderRadius: "12px",
+                          marginTop: "10px",
+                        }}
+                      >
+                        Cash On Delivery
                       </Button>
                     </div>
                   </Box>
                 </div>
               </div>
-              <div className="contact-info-area" style={{ marginTop: "20px" }}>
-                <h2 className="text-center">Enter your payment details:</h2>
-                <form action="" style={{ marginTop: "20px" }}>
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="Name on card"
-                      placeholder="Name on card"
-                      id="email"
-                      helperText="Invailid card name"
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      width: 500,
-                      maxWidth: "100%",
-                    }}
-                    style={{ marginTop: "20px" }}
-                  >
-                    <TextField
-                      fullWidth
-                      label="Card number"
-                      placeholder="Card number"
-                      id="fullWidth"
-                      helperText="Card number is required"
-                    />
-                  </Box>
-                </form>
-              </div>
-              <Box
-                component="form"
-                sx={{
-                  "& .MuiTextField-root": { m: 1, width: "25ch" },
-                }}
-                style={{ marginTop: "20px" }}
-                noValidate
-                autoComplete="off"
-              >
-                <div style={{ marginTop: "20px" }}>
-                  <TextField
-                    id="outlined-multiline-flexible"
-                    placeholder="MM/YY"
-                    label="MM/YY"
-                    multiline
-                    maxRows={4}
-                    helperText="Expiry date is required"
-                  />
-                  <TextField
-                    id="outlined-textarea"
-                    placeholder="CVV"
-                    label="CVV"
-                    multiline
-                    helperText="CVV is required"
-                  />
-                </div>
-              </Box>
 
-              <Button
-                variant="outlined"
-                size="large"
-                type="submit"
-                style={{
-                  marginTop: "50px",
-                  width: "100%",
-                  height: "60px",
-                  borderRadius: "30px",
-                  border: "none",
-                  padding: "16px 20px",
-                  color: "white",
-                  backgroundColor: "black",
-                }}
-              >
-                Place Order
-              </Button>
+              {paymentDetailsVisible && (
+                <div
+                  className="contact-info-area"
+                  style={{ marginTop: "20px" }}
+                >
+                  <h2 className="text-center">Enter your payment details:</h2>
+                  <form action="" style={{ marginTop: "20px" }}>
+                    <Box
+                      sx={{
+                        width: 500,
+                        maxWidth: "100%",
+                      }}
+                      style={{ marginTop: "20px" }}
+                    >
+                      <TextField
+                        fullWidth
+                        label="Name on card"
+                        placeholder="Name on card"
+                        id="email"
+                        helperText="Invailid card name"
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        width: 500,
+                        maxWidth: "100%",
+                      }}
+                      style={{ marginTop: "20px" }}
+                    >
+                      <TextField
+                        fullWidth
+                        label="Card number"
+                        placeholder="Card number"
+                        id="fullWidth"
+                        helperText="Card number is required"
+                      />
+                    </Box>
+                    <Box
+                      component="form"
+                      sx={{
+                        "& .MuiTextField-root": { m: 1, width: "25ch" },
+                      }}
+                      style={{ marginTop: "20px" }}
+                      noValidate
+                      autoComplete="off"
+                    >
+                      <div style={{ marginTop: "20px" }}>
+                        <TextField
+                          id="outlined-multiline-flexible"
+                          placeholder="MM/YY"
+                          label="MM/YY"
+                          multiline
+                          maxRows={4}
+                          helperText="Expiry date is required"
+                        />
+                        <TextField
+                          id="outlined-textarea"
+                          placeholder="CVV"
+                          label="CVV"
+                          multiline
+                          helperText="CVV is required"
+                        />
+                      </div>
+                    </Box>
+                  </form>
+                </div>
+              )}
+              {idDetailsVisible && (
+                <div className="pt-4">
+                  <h2>Enter your UPI ID</h2>
+                  <form action="">
+                    <Box
+                      sx={{
+                        width: 500,
+                        maxWidth: "100%",
+                      }}
+                      style={{ marginTop: "20px" }}
+                    >
+                      <TextField
+                        fullWidth
+                        label="UPI ID"
+                        placeholder="Eg:-xxxx56@ybl"
+                        id="fullWidth"
+                        helperText="Upi id must be required"
+                      />
+                    </Box>
+                  </form>
+                </div>
+              )}
+              <div>
+                {!orderPlaced && (
+                  <Button
+                    variant="outlined"
+                    size="large"
+                    type="submit"
+                    style={{
+                      marginTop: "50px",
+                      width: "100%",
+                      height: "60px",
+                      borderRadius: "30px",
+                      border: "none",
+                      padding: "16px 20px",
+                      color: "white",
+                      backgroundColor: "black",
+                    }}
+                    onClick={handlePlaceOrder}
+                  >
+                    Place Order
+                  </Button>
+                )}
+              </div>
             </div>
             <div className="item-summary-section" style={{ marginTop: "20px" }}>
               <div className="section-heading mb-[20%] ">

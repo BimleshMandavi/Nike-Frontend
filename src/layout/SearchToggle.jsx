@@ -7,7 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import SearchBox from "./SearchBox";
 export default function DrawerAnchor() {
   const [state, setState] = React.useState({
-    top: true,
+    top: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
