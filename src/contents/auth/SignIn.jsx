@@ -73,7 +73,7 @@ const SignUp = () => {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <TextField
               style={{ marginTop: "40px" }}
-              id="outlined-basic"
+              id="outlined-basic01"
               name="username"
               label="Email"
               variant="outlined"
@@ -83,7 +83,7 @@ const SignUp = () => {
             />
             <TextField
               style={{ marginTop: "40px" }}
-              id="outlined-basic"
+              id="outlined-basic02"
               name="password"
               label="Password"
               type={"password"}

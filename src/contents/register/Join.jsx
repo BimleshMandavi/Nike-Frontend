@@ -73,7 +73,7 @@ const Join = () => {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <TextField
               style={{ marginTop: "40px" }}
-              id="outlined-basic"
+              id="outlined-basic1"
               label="Name"
               name="name"
               variant="outlined"
@@ -84,7 +84,7 @@ const Join = () => {
 
             <TextField
               style={{ marginTop: "40px" }}
-              id="outlined-basic"
+              id="outlined-basic2"
               label="Email"
               name="email"
               type={"email"}
@@ -96,7 +96,7 @@ const Join = () => {
             />
 
             <TextField
-              id="outlined-basic"
+              id="outlined-basic3"
               label="Password"
               name="password"
               type={"password"}

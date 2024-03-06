@@ -16,6 +16,8 @@ const Checkout = () => {
 
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
+
+  console.log("user is:", user);
   let subtotal = 0;
   let deliveryCoast = 1250;
 

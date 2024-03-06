@@ -4,8 +4,6 @@ import { IoBagOutline } from "react-icons/io5";
 import "./Navbar_2.css";
 import "./Media-query.css";
 import { Link, useNavigate } from "react-router-dom";
-import { styled, alpha } from "@mui/material/styles";
-
 import Headroom from "react-headroom";
 import { LuUser } from "react-icons/lu";
 import NavToggle from "./NavToggle";
@@ -14,13 +12,11 @@ import { Box, Button, Menu, MenuItem } from "@mui/material";
 import toast from "react-hot-toast";
 import { logout } from "../redux/slices/auth";
 import SearchToggle from "./SearchToggle";
-import SearchBox from "./SearchBox";
 import { useState } from "react";
 
 const Navbar_2 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
 
@@ -161,10 +157,8 @@ const Navbar_2 = () => {
                   marginTop: "6px",
                 }}
               /> */}
-              <SearchBox />
             </div>
           </div>
-
           <div className="action_bar pr-[2%]">
             <div className="flex items-center">
               <div className="flex md:hidden pr-5">
@@ -197,7 +191,6 @@ const Navbar_2 = () => {
                 </Link>
               </div>
             </div>
-
             <div className=" mr-7   flex items-center justify-center">
               <div className="user-login flex lg:hidden ">
                 <Box

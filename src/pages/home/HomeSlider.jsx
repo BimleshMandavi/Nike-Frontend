@@ -32,7 +32,7 @@ const HomeSlider = () => {
     <>
       <div className="home-slider-container w-full hidden md:block overflow-hidden">
         <h2 className="text-2xl pt-5 pl-8">Always Iconic</h2>
-        <Slider {...setting}>
+        <Slider  {...setting}>
           {article.map((item) => (
             <Link
               key={item.id}
