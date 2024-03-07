@@ -143,7 +143,7 @@ const Shipping = () => {
               <div className="flex ">
                 {cart.map((data) => (
                   <div
-                    key={data.index}
+                    key={data.id}
                     className="add-input-area"
                     style={{ padding: "20px 0px 0px" }}
                   >
@@ -181,19 +181,10 @@ const Shipping = () => {
               </Button>
             </div>
             <div className="item-summary-section" style={{ marginTop: "25px" }}>
-              <div>
-                <div className="section-heading mb-[20%]">
-                  <h2 className="mb-2">Delivery</h2>
-                  <div className="flex pl-2">
-                    <div className="text-[20px]">
-                      <div className="user-address-info text-slate-600 flex ">
-                        <div>{user?.firstName}</div>
-                        <div>{user?.lastName}</div>
-                      </div>
-                      <div className="user-city  text-slate-600">
-                        <div>{user?.email}</div>
-                      </div>
-                    </div>
+              <div className="flex items-center justify-between">
+                <div className="section-heading mb-[40%]">
+                  <div className="flex items-center justify-between">
+                    <h2 className="mb-2">Delivery</h2>
                     <div className="edit-info-btn ">
                       <Box
                         sx={{
@@ -208,6 +199,50 @@ const Shipping = () => {
                           Edit
                         </Button>
                       </Box>
+                    </div>
+                  </div>
+                  <div className="flex pl-2">
+                    <div className="text-[20px]">
+                      <div className="user-address-info flex ">
+                        <div className="flex gap-3">
+                          <h3>Name :</h3>
+                          <div className=" text-slate-600">{user?.name}</div>
+                          <div>{user?.lastName}</div>
+                        </div>
+                      </div>
+                      <div className="user-city">
+                        <div className="flex gap-3">
+                          <h3>Email :</h3>
+                          <div className=" text-slate-600">{user?.email}</div>
+                        </div>
+                        <div className="flex gap-3">
+                          <h3>Phone No. :</h3>
+                          <div className=" text-slate-600">
+                            {user?.address?.[0].phone}
+                          </div>
+                        </div>
+                        <div className="flex gap-3">
+                          <h3>PAN No. :</h3>
+                          <div className=" text-slate-600">
+                            {user?.address?.[0].panNumber}
+                          </div>
+                        </div>
+                        <div className="flex gap-3">
+                          <h4>Address:</h4>
+                          <div className=" text-slate-600">
+                            {user?.address?.[0]?.city}
+                          </div>
+                          <div className=" text-slate-600">
+                            {user?.address?.[0]?.state}
+                          </div>
+                          <div className=" text-slate-600">
+                            {user?.address?.[0]?.zipcode}
+                          </div>
+                          <div className=" text-slate-600">
+                            {user?.address?.[0]?.locality}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -229,17 +264,19 @@ const Shipping = () => {
           <div className="price-summary">
             <div className="prices">
               <div className="sub-info info">Subtotal</div>
-              <div className="sub-value info"> ₹ {subtotal}</div>
+              <div className="sub-value info"> ₹ {subtotal.toFixed(2)}</div>
             </div>
             <div className="delevery-info">
               <div className="dele-info info">
                 Estimated Delivery & Handling
               </div>
-              <div className="dele-value info">₹ {deliveryCoast}</div>
+              <div className="dele-value info">
+                ₹ {deliveryCoast.toFixed(2)}
+              </div>
             </div>
             <div className="price-total">
               <div className="total-info ">Total</div>
-              <div className="total-value "> ₹ {total}</div>
+              <div className="total-value "> ₹ {total.toFixed(2)}</div>
             </div>
             <div className="summary-help-text" style={{ fontSize: "0.8rem" }}>
               (The total reflects the price of your order, including all duties
@@ -255,7 +292,7 @@ const Shipping = () => {
             </h3>
             {cart.map((data) => (
               <div
-                key={data.index}
+                key={data.id}
                 className=" shipment gap-8 pt-8"
                 style={{
                   display: "flex",
@@ -287,7 +324,7 @@ const Shipping = () => {
 
                   <div className="item-price">
                     {" "}
-                    MRP:₹ {data?.products[0]?.productId?.price?.mrp}
+                    MRP:₹ {data?.products[0]?.productId?.price?.mrp.toFixed(2)}
                   </div>
                 </div>
               </div>

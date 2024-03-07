@@ -366,19 +366,13 @@ const Checkout = () => {
                 )}
               </div>
             </div>
-            <div className="item-summary-section" style={{ marginTop: "20px" }}>
-              <div className="section-heading mb-[20%] ">
-                <h2 className="mb-2">Delivery</h2>
-                <div className="flex ">
-                  <div className="text-[20px]">
-                    <div className="user-address-info text-slate-600 flex ">
-                      <div>{user?.firstName}</div>
-                      <div>{user?.lastName}</div>
-                    </div>
-                    <div className="user-city  text-slate-600">
-                      <div>{user?.email}</div>
-                    </div>
-                  </div>
+            <div
+              className="item-summary-section "
+              style={{ marginTop: "20px" }}
+            >
+              <div className="section-heading mb-[40%] ">
+                <div className="flex items-center justify-between">
+                  <h2 className="mb-2">Delivery</h2>
                   <div className="edit-info-btn pl-[5%]">
                     <Box
                       sx={{
@@ -395,24 +389,54 @@ const Checkout = () => {
                     </Box>
                   </div>
                 </div>
-              </div>
-              <div className="section-heading mb-[20%]">
-                <h2 className="mb-2">Shipping</h2>
                 <div className="flex ">
                   <div className="text-[20px]">
-                    <div className="text-slate-500 w-[30%] text-[18px]">
-                      {deliveryCoast} Shipping
+                    <div className="user-address-info flex ">
+                      <div className="flex gap-3">
+                        <h3>Name :</h3>
+                        <div className=" text-slate-600">{user?.name}</div>
+                        <div>{user?.lastName}</div>
+                      </div>
                     </div>
-                    <div className="text-[18px] text-slate-500">
-                      <p className="text-[18px] text-slate-500 mb-0">
-                        Shipment One
-                      </p>
-                      <p className="text-[18px] text-slate-500 mb-0">
-                        {" "}
-                        Arrives Tue, 16 Jan - Wed, 7 Feb
-                      </p>
+                    <div className="user-city">
+                      <div className="flex gap-3">
+                        <h3>Email :</h3>
+                        <div className=" text-slate-600">{user?.email}</div>
+                      </div>
+                      <div className="flex gap-3">
+                        <h3>Phone No. :</h3>
+                        <div className=" text-slate-600">
+                          {user?.address?.[0].phone}
+                        </div>
+                      </div>
+                      <div className="flex gap-3">
+                        <h3>PAN No. :</h3>
+                        <div className=" text-slate-600">
+                          {user?.address?.[0].panNumber}
+                        </div>
+                      </div>
+                      <div className="flex gap-3">
+                        <h4>Address:</h4>
+                        <div className=" text-slate-600">
+                          {user?.address?.[0]?.city}
+                        </div>
+                        <div className=" text-slate-600">
+                          {user?.address?.[0]?.state}
+                        </div>
+                        <div className=" text-slate-600">
+                          {user?.address?.[0]?.zipcode}
+                        </div>
+                        <div className=" text-slate-600">
+                          {user?.address?.[0]?.locality}
+                        </div>
+                      </div>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div className="section-heading mb-[30%]">
+                <div className="flex items-center justify-between">
+                  <h2 className="mb-2">Shipping</h2>
                   <div className="edit-info-btn h-[34px]  ">
                     <Box
                       sx={{
@@ -429,20 +453,27 @@ const Checkout = () => {
                     </Box>
                   </div>
                 </div>
-              </div>
-              <div className="section-heading mb-[20%] ">
-                <h2 className="mb-2">Billing</h2>
                 <div className="flex ">
                   <div className="text-[20px]">
-                    <div className="user-address-info text-slate-600 flex ">
-                      <div>{user?.firstName}</div>
-                      <div>{user?.lastName}</div>
+                    <div className="text-slate-500 w-[30%] text-[18px]">
+                      ₹ {deliveryCoast.toFixed(2)} Shipping
                     </div>
-                    <div className="user-city  text-slate-600">
-                      <div>{user?.city}</div>
+                    <div className="text-[18px] text-slate-500">
+                      <p className="text-[18px] text-slate-500 mb-0">
+                        Shipment One
+                      </p>
+                      <p className="text-[18px] text-slate-500 mb-0">
+                        {" "}
+                        Arrives Tue, 16 Jan - Wed, 7 Feb
+                      </p>
                     </div>
                   </div>
-                  <div className="edit-info-btn relative left-[260px]">
+                </div>
+              </div>
+              <div className="section-heading mb-[30%] ">
+                <div className="flex items-center justify-between">
+                  <h2 className="mb-2">Billing</h2>
+                  <div className="edit-info-btn ">
                     <Box
                       sx={{
                         display: "flex",
@@ -458,6 +489,15 @@ const Checkout = () => {
                     </Box>
                   </div>
                 </div>
+                <div className="flex ">
+                  <div className="text-[20px]">
+                    <div className=" text-slate-600">{user?.name}</div>
+                    <div className=" text-slate-600">{user?.email}</div>
+                    <div className=" text-slate-600">
+                      {user?.address?.[0]?.city}
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="section-heading">
                 <h2>Payment</h2>
@@ -470,17 +510,19 @@ const Checkout = () => {
           <div className="price-summary">
             <div className="prices">
               <div className="sub-info info">Subtotal</div>
-              <div className="sub-value info">₹ {subtotal}</div>
+              <div className="sub-value info">₹ {subtotal.toFixed(2)}</div>
             </div>
             <div className="delevery-info">
               <div className="dele-info info">
                 Estimated Delivery & Handling
               </div>
-              <div className="dele-value info">₹ {deliveryCoast}</div>
+              <div className="dele-value info">
+                ₹ {deliveryCoast.toFixed(2)}
+              </div>
             </div>
             <div className="price-total">
               <div className="total-info ">Total</div>
-              <div className="total-value ">₹ {total}</div>
+              <div className="total-value ">₹ {total.toFixed(2)}</div>
             </div>
             <div className="summary-help-text" style={{ fontSize: "0.8rem" }}>
               (The total reflects the price of your order, including all duties
@@ -497,11 +539,9 @@ const Checkout = () => {
             {cart.map((data) => (
               <div
                 key={data.index}
-                className="shipment"
+                className="shipment gap-8 pt-8"
                 style={{
                   display: "flex",
-                  justifyContent: "space-evenly",
-                  marginTop: "10px",
                 }}
               >
                 <div className="item-imgs">
@@ -530,7 +570,9 @@ const Checkout = () => {
 
                   <div className="item-price">
                     {" "}
-                    MRP:₹ {data?.products[0]?.productId?.price?.mrp}
+                    MRP:₹ {data?.products[0]?.productId?.price?.mrp.toFixed(
+                      2
+                    )}{" "}
                   </div>
                 </div>
               </div>

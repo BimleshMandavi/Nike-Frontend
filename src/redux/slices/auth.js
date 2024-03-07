@@ -56,6 +56,7 @@ export const logout = () => async (dispatch) => {
 };
 
 export const updateUser = (id, data) => async () => {
+  console.log("data in slice :", data);
   let result = await authApi.updateUser(id, data);
   if (result) {
     return result;

@@ -1,4 +1,3 @@
-import { FaRegHeart } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
 import HomeSlider from "../home/HomeSlider";
 import { useDispatch, useSelector } from "react-redux";
@@ -101,14 +100,13 @@ const PreBag = () => {
             </div>
           </div>
         </div>
-        <div className=" lg:flex md:w-full">
-          <div className="product-img p-4 w-full lg:w-[50%] max-h-[70vh] ">
+        <div className=" lg:flex md:w-full lg:justify-around lg:px-10">
+          <div className="product-img p-4 w-full lg:w-[30%] max-h-[60vh] ">
             <img
-              className="w-[500px] h-[300px] md:size-full lg:pl-[10%] lg:size-96"
+              className="w-[100%] h-[300px] md:size-full lg:pl-[10%] lg:size-full"
               src={product?.image}
             />
           </div>
-
           <div className="product-left-part w-full md:mt-[30%] lg:mt-0 lg:w-[30%] ">
             <div className="product-info">
               <div className="hidden lg:block">

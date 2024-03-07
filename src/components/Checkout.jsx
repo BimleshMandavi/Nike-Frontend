@@ -20,9 +20,6 @@ const Checkout = () => {
 
   const { user } = useSelector((state) => state.auth);
   const { cart } = useSelector((state) => state.cart);
-
-  console.log("cart data in checkout", cart);
-
   let subtotal = 0;
   let deliveryCoast = 1250;
 
@@ -33,41 +30,29 @@ const Checkout = () => {
   }
   let total = deliveryCoast + subtotal;
 
-  console.log("user data", user);
-
-  useEffect(() => {
-    const handleGetUser = async () => {
-      try {
-        const data = await dispatch(getUser());
-        console.log("data", data);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
-    handleGetUser();
-  }, []);
-
   const formik = useFormik({
     initialValues: {
       firstName: user?.name,
       lastName: user?.lastName,
       locality: user?.address?.locality,
       state: user?.address?.state,
-
       city: user?.address?.city,
       zipcode: user?.address?.zipcode,
-      // email: user?.email,
-      // phone: "",
+      email: user?.email,
+      phone: user?.address?.phone,
+      panNumber: user?.address?.panNumber,
     },
     onSubmit: async (values, action) => {
       console.log("values", values);
       let data = {
         address: [
           {
+            phone: values.phone,
             locality: values?.locality,
             city: values?.city,
             state: values?.state,
             zipcode: values?.zipcode,
+            panNumber: values?.panNumber,
           },
         ],
       };
@@ -81,6 +66,17 @@ const Checkout = () => {
       console.log("result in checkout page", result);
     },
   });
+  useEffect(() => {
+    const handleGetUser = async () => {
+      try {
+        const data = await dispatch(getUser());
+        console.log("data", data);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+    handleGetUser();
+  }, []);
 
   const states = [
     {
@@ -148,15 +144,15 @@ const Checkout = () => {
       label: "Jharkhand",
     },
     {
-      value: "CPY",
+      value: "CPP",
       label: "Karnataka",
     },
     {
-      value: "JCY",
+      value: "JCx",
       label: "Kerala",
     },
     {
-      value: "JPC",
+      value: "JPk",
       label: "Lakshadeep",
     },
     {
@@ -468,9 +464,11 @@ const Checkout = () => {
                           <TextField
                             id="outlined-read-only-input"
                             defaultValue="India"
-                            name="country"
+                            label="Country"
+                            name="locality"
+                            value={formik.values.locality}
                             InputProps={{
-                              readOnly: false,
+                              readOnly: true,
                             }}
                           />
                         </div>

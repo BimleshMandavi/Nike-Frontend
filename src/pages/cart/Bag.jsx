@@ -3,13 +3,12 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCart, listCart } from "../../redux/slices/cart";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getUser } from "../../redux/slices/auth";
 
 const Bag = () => {
   const dispatch = useDispatch();
 
-  const [refresh, setRefresh] = useState(false);
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
 
@@ -49,7 +48,6 @@ const Bag = () => {
     let data = await dispatch(deleteCart(id));
     console.log(data);
     if (data) {
-      setRefresh(!refresh);
       return true;
     } else {
       return false;
