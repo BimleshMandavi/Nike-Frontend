@@ -1,59 +1,39 @@
-import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrders } from "../redux/slices/orders";
+import { useEffect } from "react";
 
-function Orders() {
-  // State to store order number
-  const [orderNumber, setOrderNumber] = useState("");
-  // State to store order status
-  const [orderStatus, setOrderStatus] = useState("");
+const Orders = () => {
+  const dispatch = useDispatch();
+  const orders = useSelector((state) => state.orders);
+  console.log("oders in page", orders);
 
-  // Function to handle changes in input field
-  const handleInputChange = (e) => {
-    setOrderNumber(e.target.value);
+  const fatchOrders = async () => {
+    try {
+      let result = await dispatch(getOrders(1, 10));
+      console.log("result  of fetching data", result);
+      if (result) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
-  // Function to simulate fetching order status from server
-  const fetchOrderStatus = () => {
-    // Simulated logic to fetch order status
-    // This could be replaced with an actual API call
-    // For simplicity, we'll just simulate a few random statuses
-    const statuses = ["Processing", "Shipped", "Out for delivery", "Delivered"];
-    const randomStatusIndex = Math.floor(Math.random() * statuses.length);
-    const randomStatus = statuses[randomStatusIndex];
-    setOrderStatus(randomStatus);
-  };
-
-  // Function to handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Fetch order status when form is submitted
-    fetchOrderStatus();
-  };
+  useEffect(() => {
+    fatchOrders();
+  }, []);
 
   return (
-    <div>
-      <h1>Order Status Page</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="orderNumber">Order Number:</label>
-          <input
-            type="text"
-            id="orderNumber"
-            name="orderNumber"
-            value={orderNumber}
-            onChange={handleInputChange}
-            required
-          />
+    <>
+      <div className="order-container">
+        <div className="text-center h-full">
+          <h1 className="text-2xl">Your Orders</h1>
         </div>
-        <button type="submit">Check Status</button>
-      </form>
-      {orderStatus && (
-        <div>
-          <h2>Order Status:</h2>
-          <p>{orderStatus}</p>
-        </div>
-      )}
-    </div>
+      </div>
+    </>
   );
-}
+};
 
 export default Orders;

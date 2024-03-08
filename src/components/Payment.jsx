@@ -8,16 +8,17 @@ import TextField from "@mui/material/TextField";
 import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineMapPin } from "react-icons/hi2";
 import Headroom from "react-headroom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { createOrders } from "../redux/slices/orders";
+import toast from "react-hot-toast";
 
 const Checkout = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
 
-  console.log("user is:", user);
   let subtotal = 0;
   let deliveryCoast = 1250;
 
@@ -112,21 +113,60 @@ const Checkout = () => {
 
   const [orderPlaced, setOrderPlaced] = useState(false);
 
-  const handlePlaceOrder = () => {
-    // Gather all necessary details for the order
-    const orderDetails = {
-      user: user,
-      cart: cart,
-      paymentMethod: creditCardClicked ? "Credit Card" : "UPI", // Determine payment method
-      shippingAddress: user.address, // Assuming user address is stored in user object
-      // Add more details as needed
+  const handlePlaceOrder = async () => {
+    let data = {
+      userId: user && user.id,
+      products: [],
+      address: {
+        locality:
+          user &&
+          user.address &&
+          user.address.length > 0 &&
+          user.address[0].locality,
+        city:
+          user &&
+          user.address &&
+          user.address.length > 0 &&
+          user.address[0].city,
+        state:
+          user &&
+          user.address &&
+          user.address.length > 0 &&
+          user.address[0].state,
+        country:
+          user &&
+          user.address &&
+          user.address.length > 0 &&
+          user.address[0].country,
+        zipcode:
+          user &&
+          user.address &&
+          user.address.length > 0 &&
+          user.address[0].zipcode,
+      },
+      status: "pending",
+      paymentStatus: "pending",
+      // paymentMode:
+      //   method === "Cash on Delivery"
+      //     ? "cod"
+      //     : method === "Net Banking"
+      //     ? "netbank"
+      //     : "creditcard",
     };
 
-    // Send orderDetails to backend to create the order
-    // Example: fetch('/api/orders', { method: 'POST', body: JSON.stringify(orderDetails) })
-
-    // Set state to indicate that order is placed
-    setOrderPlaced(true);
+    cart?.map((item) => {
+      data.products.push({
+        productId: item.products[0].productId.id,
+        qty:"1"
+      });
+    });
+    console.log("data in payments :", data);
+    const result = await dispatch(createOrders(data));
+    console.log("data in payments :", data);
+    if (result) {
+      navigate("/orders");
+      toast.success("Your order is placed!");
+    }
   };
 
   return (

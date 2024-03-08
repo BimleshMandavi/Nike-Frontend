@@ -22,7 +22,65 @@ class OrdersApi {
     }
   }
 
- 
+  async getOrders(id) {
+    try {
+      const response = await axios.get(
+        `http://localhost:5003/userapp/order/get/${id}`,
+
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+      console.log("response in get orders", response);
+      if (response.data.status === "SUCCESS") {
+        return response.data;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async listOrders(page, limit, id) {
+    try {
+      let data = {
+        query: { userId: id },
+        options: {
+          collation: "",
+          sort: { name: 1 },
+          populate: "products.productId",
+          projection: "",
+          lean: false,
+          leanWithId: true,
+          page: page,
+          limit: limit,
+          pagination: true,
+          useEstimatedCount: false,
+          useCustomCountFn: false,
+          forceCountFn: false,
+          read: {},
+          options: {},
+        },
+        isCountOnly: false,
+      };
+      const response = await axios.post(
+        `http://localhost:5003/userapp/order/list`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+      console.log("response in moks", response);
+      if (response.data.status === "SUCCESS") {
+        return response.data;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 export const ordersApi = new OrdersApi();

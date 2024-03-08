@@ -1,34 +1,32 @@
 import axios from "axios";
 
 class ProductApi {
-  async getProduct(page,limit,filter) {
+  async getProduct(page, limit, filter) {
+    let obj = {
+      query: filter,
+      options: {
+        collation: "",
+        sort: { name: 1 },
+        populate: "",
+        projection: "",
+        lean: false,
+        leanWithId: true,
+        page: page,
+        limit: limit,
+        pagination: true,
+        useEstimatedCount: false,
+        useCustomCountFn: false,
+        forceCountFn: false,
+        read: {},
+        options: {},
 
-    let obj={
-        
-  "query":filter,
-  "options": {
-    "collation": "",
-    "sort": {"name":1},
-    "populate": "",
-    "projection": "",
-    "lean": false,
-    "leanWithId": true,
-    "page": page,
-    "limit": limit,
-    "pagination": true,
-    "useEstimatedCount": false,
-    "useCustomCountFn": false,
-    "forceCountFn": false,
-    "read": {},
-    "options": {},
-  
-  "isCountOnly": false
-}
-    }
+        isCountOnly: false,
+      },
+    };
     try {
       const response = await axios.post(
-        `http://localhost:5003/userapp/product/list`,obj,
-        
+        `http://localhost:5003/userapp/product/list`,
+        obj
       );
 
       if (response.data.status === "SUCCESS") {
@@ -39,13 +37,7 @@ class ProductApi {
     }
   }
 
-
-
-
-async getSingleProduct(id) {
-
- 
-    
+  async getSingleProduct(id) {
     try {
       const response = await axios.get(
         `http://localhost:5003/userapp/product/get/${id}`,
@@ -64,7 +56,6 @@ async getSingleProduct(id) {
       console.log(error);
     }
   }
-
 }
 
 export const productApi = new ProductApi();

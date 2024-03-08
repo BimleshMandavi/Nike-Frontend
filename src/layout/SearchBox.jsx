@@ -8,7 +8,7 @@ const SearchBox = ({ handleCToogle }) => {
   const navigate = useNavigate();
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(9);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleKeyPress = (event) => {

@@ -3,7 +3,7 @@ import { productApi } from "../../mocks/products";
 
 const initialState = {
   product: [],
-  singleProduct:{},
+  singleProduct: {},
 };
 
 const slice = createSlice({
@@ -15,17 +15,16 @@ const slice = createSlice({
       state.product = data;
     },
     getSingleProduct(state, action) {
-      let data = {...action.payload};
+      let data = { ...action.payload };
       state.singleProduct = data;
     },
   },
 });
 
 export const getProducts =
-  (page, limit = 12,filter) =>
+  (page, limit = 12, filter) =>
   async (dispatch) => {
-    const result = await productApi.getProduct(page, limit,filter);
-    console.log(result)
+    const result = await productApi.getProduct(page, limit, filter);
     if (result) {
       await dispatch(slice.actions.getProduct(result.data));
     } else {
@@ -33,16 +32,14 @@ export const getProducts =
     }
   };
 
-  export const getSingleProduct=
-    (id) =>
-    async () => {
-      const result = await productApi.getSingleProduct(id);
-      if (result) {
-        return  result
-        // await dispatch(slice.actions.getSingleProduct(result.data));
-      } else {
-        return false;
-      }
-    };
+export const getSingleProduct = (id) => async () => {
+  const result = await productApi.getSingleProduct(id);
+  if (result) {
+    return result;
+    // await dispatch(slice.actions.getSingleProduct(result.data));
+  } else {
+    return false;
+  }
+};
 
 export const { reducer } = slice;
