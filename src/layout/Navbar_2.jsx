@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import { logout } from "../redux/slices/auth";
 import SearchToggle from "./SearchToggle";
 import { useState } from "react";
+import SearchBox from "./SearchBox";
 
 const Navbar_2 = () => {
   const dispatch = useDispatch();
@@ -157,6 +158,7 @@ const Navbar_2 = () => {
                   marginTop: "6px",
                 }}
               /> */}
+              <SearchBox />
             </div>
           </div>
           <div className="action_bar pr-[2%]">

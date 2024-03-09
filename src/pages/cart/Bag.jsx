@@ -43,7 +43,7 @@ const Bag = () => {
     handleFetchListCart();
   }, []);
 
-  const handleFav = () => {};
+  // const handleFav = () => {};
   const handleDel = async (id) => {
     let data = await dispatch(deleteCart(id));
     console.log(data);
@@ -74,7 +74,7 @@ const Bag = () => {
       </div>
 
       <div className="pt-8  pb-10">
-        {cart && cart.length > 0 ? (
+        {cart && cart.length >= 0 ? (
           cart.map((data) => (
             <div className="bag-items pt-8 border-b-2 " key={data.id}>
               <div className="right-part">
@@ -110,7 +110,7 @@ const Bag = () => {
                     </div>
                     <div className="item-btns gap-8">
                       <div className="item-fav">
-                        <IoMdHeartEmpty className="btns" onClick={handleFav} />
+                        <IoMdHeartEmpty className="btns" />
                       </div>
                       <div className="item-del">
                         <RiDeleteBinLine
