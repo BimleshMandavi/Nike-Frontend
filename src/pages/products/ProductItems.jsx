@@ -7,13 +7,23 @@ import { getProducts } from "../../redux/slices/productSlice";
 function ProductItems() {
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.product);
-  console.log("product", product);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
 
   const handleChangePage = (event, value) => {
     setPage(value);
   };
+
+  const handleFetchProducts = async () => {
+    let result = await dispatch(getProducts(page, limit));
+    if (result) {
+      return true;
+    }
+  };
+
+  useEffect(() => {
+    handleFetchProducts();
+  }, []);
 
   return (
     <div
@@ -30,7 +40,7 @@ function ProductItems() {
                   {product &&
                     product?.length > 0 &&
                     product.map((item, index) => (
-                      <div key={index} style={{}}>
+                      <div key={index}>
                         <Link to={`/pre-cart/${item.id}`}>
                           <div className="product-img w-full h-[70%] pt-5  lg:h-[60%] text-center ">
                             <img

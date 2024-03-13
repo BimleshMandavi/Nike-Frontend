@@ -21,47 +21,6 @@ const Navbar_2 = () => {
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
 
-  // const Search = styled("div")(({ theme }) => ({
-  //   position: "relative",
-  //   borderRadius: "0 5px 5px 0",
-  //   background: "#F5F5F5",
-  //   cursor: "pointer",
-  //   "&:hover": {
-  //     backgroundColor: alpha(theme.palette.common.black, 0.25),
-  //   },
-  //   marginRight: theme.spacing(2),
-  //   marginLeft: 0,
-  //   width: "100%",
-  //   [theme.breakpoints.up("sm")]: {
-  //     marginLeft: theme.spacing(3),
-  //     width: "auto",
-  //   },
-  // }));
-
-  // const SearchIconWrapper = styled("div")(({ theme }) => ({
-  //   padding: theme.spacing(0, 2),
-  //   height: "100%",
-  //   position: "absolute",
-  //   pointerEvents: "none",
-  //   display: "flex",
-  //   alignItems: "center",
-  //   justifyContent: "center",
-  // }));
-
-  // const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  //   color: "inherit",
-  //   "& .MuiInputBase-input": {
-  //     padding: theme.spacing(1, 1, 1, 0),
-
-  //     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-  //     transition: theme.transitions.create("width"),
-  //     width: "100%",
-  //     [theme.breakpoints.up("md")]: {
-  //       width: "20ch",
-  //     },
-  //   },
-  // }));
-
   const handleLogOut = async () => {
     let result = await dispatch(logout());
     if (result) {
@@ -73,6 +32,9 @@ const Navbar_2 = () => {
   };
 
   const handleProfile = () => {
+    navigate("/profile");
+  };
+  const handleProfileAcount = () => {
     navigate("/profile");
   };
 
@@ -120,44 +82,7 @@ const Navbar_2 = () => {
             </a>
           </div>
           <div className="search-input-cont hidden md:flex">
-            {/* <Search style={{ borderRadius: "20px" }}>
-              <SearchIconWrapper>
-                <SearchIcon style={{ cursor: "pointer" }} />
-              </SearchIconWrapper>
-              <StyledInputBase
-                className="search-toggle"
-                placeholder="Search"
-                value={searchTerm}
-                type="text"
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onKeyPress={handleKeyPress}
-                inputProps={{ "aria-label": "search" }}
-                // startAdornment={
-                //   <SearchIcon className="" style={{ cursor: "pointer" }} />
-                // }
-              />
-            </Search> */}
-
             <div className="searchBar">
-              {/* <input
-                type="text"
-                id="searchInput"
-                placeholder="Search"
-                onChange={(e) => setSearchTerm(e.target.value)}
-                onKeyPress={handleKeyPress}
-                style={{
-                  height: "40px",
-                  display: "block",
-                  borderRadius: "20px",
-                  border: "1px solid transparent",
-                  background: "#eaeaea",
-                  padding: "5px 5px 5px 9px",
-                  width: "203px",
-                  boxSizing: "border-box",
-                  marginLeft: "auto",
-                  marginTop: "6px",
-                }}
-              /> */}
               <SearchBox />
             </div>
           </div>
@@ -201,9 +126,9 @@ const Navbar_2 = () => {
                     alignItems: "center",
                   }}
                 >
-                  <span className="hidden sm:flex pl-[30px]">
-                    Hi, {user.name}
-                  </span>
+                  <Link className="hidden sm:flex pl-[30px]" to={"/profile"}>
+                    <span>Hi, {user.name}</span>
+                  </Link>
                   <div className="ml-4 ">
                     <Button
                       id="basic-button"
@@ -228,7 +153,9 @@ const Navbar_2 = () => {
                       <MenuItem onClick={handleClose}>
                         <span onClick={handleProfile}> Profile</span>
                       </MenuItem>
-                      <MenuItem onClick={handleClose}>My account</MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <span onClick={handleProfileAcount}>My account</span>
+                      </MenuItem>
                       <MenuItem onClick={handleClose}>
                         <span onClick={handleLogOut}>Logout</span>
                       </MenuItem>

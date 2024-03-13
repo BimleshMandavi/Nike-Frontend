@@ -18,16 +18,16 @@ const ColorCheckboxes = () => {
     console.log("colour", checkedValue);
   };
 
-  const handleFetchProducts = async() => {
-    let result = await dispatch(getProducts(1,10,{"subCategory":{"$regex":checkedValue,"$options":"i"}}))
-    if(result){
-        return true
+    const handleFetchProducts = async() => {
+      let result = await dispatch(getProducts(1,10,{"subCategory":{"$regex":checkedValue,"$options":"i"}}))
+      if(result){
+          return true
+      }
     }
-  }
 
-  useEffect(()=>{
-    handleFetchProducts();
-  },[checkedValue])
+    useEffect(()=>{
+      handleFetchProducts();
+    },[checkedValue])
 
   return (
     <FormGroup>

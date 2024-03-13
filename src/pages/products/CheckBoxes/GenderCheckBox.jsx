@@ -22,7 +22,7 @@ function GenderCheckBox() {
 
   const fatchProducts = async () => {
     let result = await dispatch(
-      getProducts(1, 10, { longTitle: { $regex: gender, $options: "i" } })
+      getProducts(1, 12, { longTitle: { $regex: gender, $options: "i" } })
     );
     if (result) {
       return result;

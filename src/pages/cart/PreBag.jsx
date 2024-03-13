@@ -37,6 +37,7 @@ const PreBag = () => {
   const [value, setValue] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
   const { id } = useParams();
+ 
   const navigate = useNavigate();
   const [product, setProduct] = useState();
 
@@ -70,7 +71,7 @@ const PreBag = () => {
   const fetchSingleProduct = async () => {
     let result = await dispatch(getSingleProduct(id));
     if (result) {
-      setProduct(result?.data); // &&
+      setProduct(result?.data);
       return true;
     }
   };

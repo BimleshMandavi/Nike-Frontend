@@ -3,6 +3,7 @@ import { cartApi } from "../../mocks/cart";
 
 const initialState = {
   cart: [],
+  cartsItemcount: {}
 };
 const slice = createSlice({
   name: "cart",
@@ -13,6 +14,7 @@ const slice = createSlice({
       console.log(action.payload);
       if (action.payload) {
         state.cart = [...action.payload.data];
+        state.cartsItemcount = {...action.payload.paginator}
       }
     },
     deleteCart (state){

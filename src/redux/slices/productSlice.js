@@ -32,11 +32,11 @@ export const getProducts =
     }
   };
 
-export const getSingleProduct = (id) => async () => {
+export const getSingleProduct = (id) => async (dispatch) => {
   const result = await productApi.getSingleProduct(id);
   if (result) {
+    await dispatch(slice.actions.getSingleProduct(result.data));
     return result;
-    // await dispatch(slice.actions.getSingleProduct(result.data));
   } else {
     return false;
   }

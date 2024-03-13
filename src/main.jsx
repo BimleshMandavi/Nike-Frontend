@@ -18,6 +18,7 @@ import Shipping from "./components/Shiping.jsx";
 import Billing from "./components/Billing.jsx";
 import Profile from "./components/userPorfile/Profile.jsx";
 import Orders from "./components/Orders.jsx";
+import OrderView from "./components/OrderView.jsx";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/orders",
         element: <Orders />,
+      },
+      {
+        path: "/order-info/:id",
+        element: <OrderView />,
       },
     ],
   },

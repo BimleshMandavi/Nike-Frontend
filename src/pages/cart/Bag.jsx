@@ -23,9 +23,6 @@ const Bag = () => {
     fetchUser();
   }, []);
 
-  console.log("user", cart);
-  console.log(user);
-
   const handleFetchListCart = async () => {
     try {
       let result = await dispatch(listCart(1, 10, user?.id));
@@ -43,7 +40,6 @@ const Bag = () => {
     handleFetchListCart();
   }, []);
 
-  // const handleFav = () => {};
   const handleDel = async (id) => {
     let data = await dispatch(deleteCart(id));
     console.log(data);

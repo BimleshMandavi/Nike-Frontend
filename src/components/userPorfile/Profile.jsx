@@ -1,29 +1,13 @@
 import { Avatar, Box, Button } from "@mui/material";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import HomeSlider from "../../pages/home/HomeSlider";
+import UserNav from "../UserNav";
 
 function Profile() {
   const { user } = useSelector((state) => state.auth);
   return (
-    <div className="m-0 p-0 h-full w-full pl-8 pr-8">
-      <div className="profile-nav flex justify-center gap-[20px] mt-10 ">
-        <Link className="no-underline text-slate-500" to="/profile">
-          Profile
-        </Link>
-        <Link className="no-underline" to="">
-          Inbox
-        </Link>
-        <Link className="no-underline" to="/orders">
-          Orders
-        </Link>
-        <Link className="no-underline" to="/favourites">
-          Favourites
-        </Link>
-        <Link className="no-underline" to="">
-          Settings
-        </Link>
-      </div>
+    <div className="m-0 p-0 h-full w-full pl-8 pr-8 text-xl mt-10">
+      <UserNav />
       <div className="profile-body mt-10 pb-[48px]">
         <div className="profile-avtar ">
           <Box sx={{ display: "flex", alignItems: "center", height: "80px" }}>

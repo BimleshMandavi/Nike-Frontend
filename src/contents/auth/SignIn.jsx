@@ -19,9 +19,7 @@ const SignUp = () => {
     onSubmit: async (values, action) => {
       const { username, password } = values;
       const data = { username, password };
-      console.log(data);
       let result = await dispatch(login(data));
-      console.log(result);
       if (result) {
         localStorage.setItem("accessToken", result.token);
         navigate("/");
@@ -33,7 +31,6 @@ const SignUp = () => {
     },
   });
 
-  console.log("form values", formik.values);
   return (
     <div
       style={{

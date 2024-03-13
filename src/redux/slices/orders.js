@@ -31,8 +31,9 @@ export const createOrders = (data) => async () => {
   }
 };
 
-export const getOrders = (data) => async () => {
-  const result = await ordersApi.getOrders(data);
+export const getSingleOrder = (data) => async () => {
+  console.log("data for single order", data);
+  const result = await ordersApi.getSingleOrder(data);
   if (result) {
     // await dispatch(slice.actions.addToCart(result.data));
     return result;
@@ -41,10 +42,11 @@ export const getOrders = (data) => async () => {
   }
 };
 
-export const listOrders = (data) => async () => {
-  let result = await ordersApi.listOrders(data);
-  console.log("order data in slice", data);
+export const listOrders = (page, limit, id) => async (dispatch) => {
+  let result = await ordersApi.listOrders(page, limit, id);
+  // console.log("order data in slice", data);
   if (result) {
+    await dispatch(slice.actions.listOrders(result.data));
     return result;
   } else {
     return false;

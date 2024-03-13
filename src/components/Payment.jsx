@@ -86,6 +86,8 @@ const Checkout = () => {
     navigate("/billing");
   };
 
+  const [method, setMethod] = useState("");
+
   const [creditCardClicked, setCreditCardClicked] = useState(false);
 
   const [paymentDetailsVisible, setPaymentDetailsVisible] = useState(false);
@@ -93,6 +95,7 @@ const Checkout = () => {
   const handleCreditCardClick = () => {
     setCreditCardClicked(true);
     togglePaymentDetails()(true); // Show payment details when credit card button is clicked
+    setMethod("Credit card");
   };
 
   const togglePaymentDetails = () => {
@@ -106,6 +109,11 @@ const Checkout = () => {
   const handleUpiClicked = () => {
     setUpiIdClicked(true);
     toggleUpiDetails()(true);
+    setMethod("UPI");
+  };
+
+  const handleCOD = () => {
+    setMethod("Cash on Delivery");
   };
   const toggleUpiDetails = () => {
     setIdDetailsVisible(!idDetailsVisible);
@@ -146,18 +154,18 @@ const Checkout = () => {
       },
       status: "pending",
       paymentStatus: "pending",
-      // paymentMode:
-      //   method === "Cash on Delivery"
-      //     ? "cod"
-      //     : method === "Net Banking"
-      //     ? "netbank"
-      //     : "creditcard",
+      paymentMode:
+        method === "Cash on Delivery"
+          ? "cod"
+          : method === "UPI"
+          ? "upi"
+          : "creditcard",
     };
 
     cart?.map((item) => {
       data.products.push({
         productId: item.products[0].productId.id,
-        qty:"1"
+        qty: "1",
       });
     });
     console.log("data in payments :", data);
@@ -286,6 +294,7 @@ const Checkout = () => {
                           borderRadius: "12px",
                           marginTop: "10px",
                         }}
+                        onClick={handleCOD}
                       >
                         Cash On Delivery
                       </Button>

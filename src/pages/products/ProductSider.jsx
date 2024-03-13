@@ -30,7 +30,7 @@ const ProductSider = () => {
   const fatchProducts = async () => {
     let result = await dispatch(
       getProducts(1, 10, {
-        category: { $regex: selectedItems, $options: "i" },
+        subCategory: { $regex: selectedItems, $options: "i" },
       })
     );
     if (result) {

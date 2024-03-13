@@ -1,16 +1,21 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getOrders } from "../redux/slices/orders";
+import { listOrders } from "../redux/slices/orders";
 import { useEffect } from "react";
+import { Button } from "@mui/material";
+import "./order.css";
+import { useNavigate } from "react-router-dom";
+import UserNav from "./UserNav";
 
 const Orders = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const orders = useSelector((state) => state.orders);
-  console.log("oders in page", orders);
+  const { order } = useSelector((state) => state.order);
+  const user = useSelector((state) => state.user);
+  console.log("orders in page", order);
 
   const fatchOrders = async () => {
     try {
-      let result = await dispatch(getOrders(1, 10));
-      console.log("result  of fetching data", result);
+      let result = await dispatch(listOrders(1, 100, user?.id));
       if (result) {
         return true;
       } else {
@@ -21,16 +26,96 @@ const Orders = () => {
     }
   };
 
+  const handleOrderInfo = (id) => {
+    navigate(`/order-info/${id}`);
+  };
+
   useEffect(() => {
     fatchOrders();
   }, []);
 
   return (
     <>
-      <div className="order-container">
-        <div className="text-center h-full">
-          <h1 className="text-2xl">Your Orders</h1>
+      <div className="main_oreder px-5 bg-slate-400">
+        <div className="container_order">
+          <div className="Myorders">
+            <div className="myorder flex gap-6 text-center justify-between border-b-2 text-xl overflow-x-auto pb-4">
+              <h1>My Orders</h1>
+              <UserNav />
+            </div>
+            <div className="pt-10">
+              <div className="items sm:flex sm:justify-center sm:flex-col">
+                {order &&
+                  order.length > 0 &&
+                  order.map((item, index) => (
+                    <div key={index}>
+                      {item &&
+                        item.products &&
+                        item.products.length > 0 &&
+                        item.products.map((item1, index) => (
+                          <div
+                            key={index}
+                            className="singleitem w-full  py-8 sm:flex sm:justify-center"
+                          >
+                            <div className="orderDetails block sm:flex sm:w-[970px]">
+                              <div className="image sm:h-[283px] sm:w-[225px]">
+                                <img
+                                  className="w-full h-full p-2"
+                                  src={
+                                    item1 &&
+                                    item1.productId &&
+                                    item1.productId.image
+                                  }
+                                />
+                              </div>
+                              <div className="descripotin sm:relative pl-4 pb-6 sm:pl-3">
+                                <div className="title">
+                                  <p className="text-lg pt-3">
+                                    {item1 &&
+                                      item1.productId &&
+                                      item1.productId.title &&
+                                      item1.productId.title.shortTitle}
+                                  </p>
+                                  <p className="text-sm">
+                                    colour :{" "}
+                                    {item1 &&
+                                      item1?.productId &&
+                                      item1?.productId?.subCategory}
+                                  </p>
+                                  <p className="text-lg">
+                                    price : ₹
+                                    {item1 &&
+                                      item1?.productId &&
+                                      item1?.productId?.title &&
+                                      item1?.productId?.price?.mrp.toFixed(2)}
+                                  </p>
+                                </div>
+                                <div className="pb-3">
+                                  (Order ID - {item?.id})
+                                </div>
+                                <div className="sm:flex sm:justify-between flex-col">
+                                  <div className="order_status ">
+                                    {item?.status}
+                                  </div>
+                                  <div className="oderrinfo sm:left-[90%] sm:bottom-[20%] pt-2 sm:pt-8">
+                                    <Button
+                                      onClick={() => handleOrderInfo(item?.id)}
+                                    >
+                                      Order Info
+                                    </Button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
         </div>
+        <div className="footer" style={{ marginTop: "5%" }}></div>
       </div>
     </>
   );

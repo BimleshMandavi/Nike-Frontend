@@ -22,7 +22,7 @@ class OrdersApi {
     }
   }
 
-  async getOrders(id) {
+  async getSingleOrder(id) {
     try {
       const response = await axios.get(
         `http://localhost:5003/userapp/order/get/${id}`,
