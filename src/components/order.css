@@ -1,0 +1,75 @@
+.main_oreder {
+    background-color: #f1f1f1;
+}
+.myaccount {
+    margin: 0 15%;
+}
+.myorder {
+    margin: 0 15%;
+}
+.orderDetails {
+    margin: 5px;
+background-color: #ffffff;
+    box-shadow: #fff;
+}
+.orderDetails:hover{
+
+box-shadow: #b1afaf;
+}
+.orderDetails img {
+    max-width: 100%;
+}
+.order_status {
+    width: 138px;
+    height: 27px;
+    background-color: #cef4cb;
+    color: #37d53a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+.oderrinfo button {
+    border: 1px solid #42a2a2;
+    font-family: montserrat-bold, sans-serif;
+    font-size: 14px;
+    padding: 20px;
+    width: 206px;
+    height: 50px;
+    border-radius: 5px;
+    color: #42a2a2;
+    font-weight: bold;
+    display: flex; 
+    align-items: center;
+
+}
+
+@media (max-width:1200px) {
+    .myorder {
+        margin: 0 8%;
+    }
+
+    .myaccount {
+        margin: 0 8%;
+    }
+}
+
+@media (max-width:980px) {
+    .myorder {
+        margin: 0 0%;
+    }
+
+    .myaccount {
+        margin: 0 0%;
+    }
+}
+
+@media (max-width:980px) {
+    .myorder {
+        margin: 0 0%;
+    }
+
+    .myaccount {
+        margin: 0 0%;
+    }
+}
