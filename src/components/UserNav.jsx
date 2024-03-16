@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const UserNav = () => {
   return (
-    <div className="profile-nav flex justify-center gap-[20px]  ">
-      <Link className="no-underline text-slate-500" to="/profile">
+    <div className="profile-nav flex justify-center gap-[8px]  ">
+      <Link className="no-underline git " to="/profile">
         Profile
       </Link>
       <Link className="no-underline" to="">

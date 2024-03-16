@@ -61,7 +61,7 @@ const Bag = () => {
   let total = deliveryCoast + subtotal;
 
   return (
-    <div className="bag-container">
+    <div className="bag-container pr-[35px]">
       <div className="bag-heading flex justify-center sm:justify-start">
         <p>Bag</p>
       </div>

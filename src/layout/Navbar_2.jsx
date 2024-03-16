@@ -37,6 +37,9 @@ const Navbar_2 = () => {
   const handleProfileAcount = () => {
     navigate("/profile");
   };
+  const hanldeOrders = () => {
+    navigate("/orders");
+  };
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -86,7 +89,7 @@ const Navbar_2 = () => {
               <SearchBox />
             </div>
           </div>
-          <div className="action_bar pr-[2%]">
+          <div className="action_bar ">
             <div className="flex items-center">
               <div className="flex md:hidden pr-5">
                 <SearchToggle />
@@ -126,7 +129,7 @@ const Navbar_2 = () => {
                     alignItems: "center",
                   }}
                 >
-                  <Link className="hidden sm:flex pl-[30px]" to={"/profile"}>
+                  <Link className="hidden lg:flex pl-[30px]" to={"/profile"}>
                     <span>Hi, {user.name}</span>
                   </Link>
                   <div className="ml-4 ">
@@ -154,7 +157,19 @@ const Navbar_2 = () => {
                         <span onClick={handleProfile}> Profile</span>
                       </MenuItem>
                       <MenuItem onClick={handleClose}>
-                        <span onClick={handleProfileAcount}>My account</span>
+                        <span onClick={hanldeOrders}>Orders</span>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <span onClick={handleProfile}>Favorites</span>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <span onClick={handleProfile}>Inbox</span>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <span onClick={handleProfile}>Experiences</span>
+                      </MenuItem>
+                      <MenuItem onClick={handleClose}>
+                        <span onClick={handleProfileAcount}>My Account</span>
                       </MenuItem>
                       <MenuItem onClick={handleClose}>
                         <span onClick={handleLogOut}>Logout</span>

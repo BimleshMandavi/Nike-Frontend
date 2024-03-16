@@ -47,6 +47,33 @@ export default function TemporaryDrawer() {
 
   const dispatch = useDispatch();
 
+  const [filters, setFilters] = React.useState({
+    sortBy: "featured", // Default value for sorting
+    gender: [], // Array to hold selected genders
+    price: [], // Array to hold selected price range
+    sale: false, // Boolean to track if sale checkbox is checked
+    color: [], // Array to hold selected colors
+    brand: [], // Array to hold selected brands
+  });
+
+  const handleApplyFilters = () => {
+    console.log("Applied Filters:", filters);
+
+    dispatch(getProducts(1, 10, filters));
+  };
+
+  const handleClearFilters = () => {
+    // Reset all filter state variables to their initial/default values
+    setFilters({
+      sortBy: "featured",
+      gender: [],
+      price: [],
+      sale: false,
+      color: [],
+      brand: [],
+    });
+  };
+
   const fatchProducts = async () => {
     let result = await dispatch(getProducts(1, 10));
     if (result) {
@@ -172,6 +199,7 @@ export default function TemporaryDrawer() {
                     cursor: "pointer",
                     border: "2px solid grey",
                   }}
+                  onClick={handleClearFilters}
                 >
                   Clear
                 </button>
@@ -184,6 +212,7 @@ export default function TemporaryDrawer() {
                     borderRadius: "30px",
                     cursor: "pointer",
                   }}
+                  onClick={handleApplyFilters}
                 >
                   Apply
                 </button>

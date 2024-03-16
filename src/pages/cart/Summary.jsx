@@ -26,7 +26,7 @@ const Summary = () => {
   };
 
   return (
-    <div className="summary-container  ">
+    <div className="summary-container pr-[40px]">
       <div className="sum-heading">Summary</div>
       <div>
         <div className="prices">

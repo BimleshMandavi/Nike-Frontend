@@ -39,8 +39,8 @@ const Orders = () => {
       <div className="main_oreder px-5 bg-slate-400">
         <div className="container_order">
           <div className="Myorders">
-            <div className="myorder flex gap-6 text-center justify-between border-b-2 text-xl overflow-x-auto pb-4">
-              <h1>My Orders</h1>
+            <div className="myorder pt-4 flex gap-6 text-center justify-between border-b-2 text-xl overflow-x-auto pb-4">
+              <h1>My Orders ( {order.length} )</h1>
               <UserNav />
             </div>
             <div className="pt-10">

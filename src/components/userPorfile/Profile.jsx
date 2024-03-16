@@ -38,7 +38,7 @@ function Profile() {
           <Button size="sm">Edit</Button>
         </Box>
       </div>
-      <div className="other-anchor-area flex pl-[16px] gap-[20px] border-b-2 pb-8">
+      <div className="other-anchor-area flex pl-[16px] gap-[20px] border-b-2 pb-8 flex-wrap">
         <a className="no-underline " href="">
           All
         </a>

@@ -44,6 +44,14 @@ const Navbar_1 = () => {
     navigate("/profile");
   };
 
+  const hanldeOrders = () => {
+    navigate("/orders");
+  };
+
+  const handleProfileAcount = () => {
+    navigate("/profile");
+  };
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -85,7 +93,7 @@ const Navbar_1 = () => {
               alignItems: "center",
             }}
           >
-            <Link>Hi, {user.name}</Link>
+            <Link to={"/profile"}>Hi, {user.name}</Link>
             <div className="pl-0">
               <Button
                 id="basic-button"
@@ -109,7 +117,21 @@ const Navbar_1 = () => {
                 <MenuItem onClick={handleClose}>
                   <span onClick={handleProfile}> Profile</span>
                 </MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <span onClick={hanldeOrders}>Orders</span>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <span onClick={handleProfile}>Favorites</span>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <span onClick={handleProfile}>Inbox</span>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <span onClick={handleProfile}>Experiences</span>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <span onClick={handleProfileAcount}>My Account</span>
+                </MenuItem>
                 <MenuItem onClick={handleClose}>
                   <span onClick={handleLogOut}>Logout</span>
                 </MenuItem>
