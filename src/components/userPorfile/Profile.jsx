@@ -1,7 +1,7 @@
 import { Avatar, Box, Button } from "@mui/material";
 import { useSelector } from "react-redux";
 import HomeSlider from "../../pages/home/HomeSlider";
-import UserNav from "../UserNav";
+import UserNav from "../userPorfile/UserNav";
 
 function Profile() {
   const { user } = useSelector((state) => state.auth);

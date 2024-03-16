@@ -64,7 +64,6 @@ const Navbar_2 = () => {
             <Link to="#" className=" list-none no-underline">
               New & Featured
             </Link>
-
             <Link to="#" className=" no-underline">
               Men
             </Link>

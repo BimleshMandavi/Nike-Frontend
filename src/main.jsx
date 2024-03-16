@@ -8,17 +8,17 @@ import SignIn from "./contents/auth/SignIn.jsx";
 import { Provider } from "react-redux";
 import Products from "./pages/products/Products.jsx";
 import PreBag from "./pages/cart/PreBag.jsx";
-import Checkout from "./components/Checkout.jsx";
-import Payment from "./components/Payment.jsx";
+import Checkout from "./components/Checkout/Checkout.jsx";
+import Payment from "./components/Checkout/Payment.jsx";
 import Favourites from "./components/Favourites.jsx";
 import store from "./redux/store/store.js";
 import Join from "./contents/register/Join.jsx";
 import { Toaster } from "react-hot-toast";
-import Shipping from "./components/Shiping.jsx";
-import Billing from "./components/Billing.jsx";
+import Shipping from "./components/Checkout/Shiping.jsx";
+import Billing from "./components/Checkout/Billing.jsx";
 import Profile from "./components/userPorfile/Profile.jsx";
-import Orders from "./components/Orders.jsx";
-import OrderView from "./components/OrderView.jsx";
+import Orders from "./components/Orders/Orders.jsx";
+import OrderView from "./components/Orders/OrderView.jsx";
 
 const router = createBrowserRouter([
   {

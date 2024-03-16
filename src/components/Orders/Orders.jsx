@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { listOrders } from "../redux/slices/orders";
+import { listOrders } from "../../redux/slices/orders";
 import { useEffect } from "react";
 import { Button } from "@mui/material";
 import "./order.css";
 import { useNavigate } from "react-router-dom";
-import UserNav from "./UserNav";
+import UserNav from "../userPorfile/UserNav";
 
 const Orders = () => {
   const navigate = useNavigate();

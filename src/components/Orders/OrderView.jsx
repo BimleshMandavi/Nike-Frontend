@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleOrder } from "../redux/slices/orders";
+import { getSingleOrder } from "../../redux/slices/orders";
 import { useEffect, useState } from "react";
-import UserNav from "./UserNav";
-import { getSingleProduct } from "../redux/slices/productSlice";
+import UserNav from "../userPorfile/UserNav";
+import { getSingleProduct } from "../../redux/slices/productSlice";
 import Steaper from "./Steaper";
 
 const OrderView = () => {

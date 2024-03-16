@@ -12,7 +12,7 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
-import { getUser, updateUser } from "../redux/slices/auth";
+import { getUser, updateUser } from "../../redux/slices/auth";
 
 const Checkout = () => {
   const dispatch = useDispatch();

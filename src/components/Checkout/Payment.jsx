@@ -10,7 +10,7 @@ import { HiOutlineMapPin } from "react-icons/hi2";
 import Headroom from "react-headroom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { createOrders } from "../redux/slices/orders";
+import { createOrders } from "../../redux/slices/orders";
 import toast from "react-hot-toast";
 
 const Checkout = () => {
