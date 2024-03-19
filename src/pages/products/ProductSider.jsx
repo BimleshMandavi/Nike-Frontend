@@ -29,7 +29,7 @@ const ProductSider = () => {
   const [selectedItems, setSelectedItems] = useState("");
   const fatchProducts = async () => {
     let result = await dispatch(
-      getProducts(1, 10, {
+      getProducts(1, 12, {
         subCategory: { $regex: selectedItems, $options: "i" },
       })
     );
@@ -47,7 +47,7 @@ const ProductSider = () => {
   }, [selectedItems]);
 
   return (
-    <div className="product-accordition hidden lg:flex">
+    <div className="product-accordition">
       <div
         style={{
           maxHeight: "70vh",

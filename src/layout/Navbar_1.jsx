@@ -93,7 +93,7 @@ const Navbar_1 = () => {
               alignItems: "center",
             }}
           >
-            <Link to={"/profile"}>Hi, {user.name}</Link>
+            <Link to={"/profile"}>Hi, {user?.firstName}</Link>
             <div className="pl-0">
               <Button
                 id="basic-button"

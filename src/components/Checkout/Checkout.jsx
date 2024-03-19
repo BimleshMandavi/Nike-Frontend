@@ -20,6 +20,9 @@ const Checkout = () => {
 
   const { user } = useSelector((state) => state.auth);
   const { cart } = useSelector((state) => state.cart);
+
+  console.log("user data", user);
+
   let subtotal = 0;
   let deliveryCoast = 1250;
 
@@ -32,7 +35,7 @@ const Checkout = () => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: user?.name,
+      firstName: user?.firstName,
       lastName: user?.lastName,
       locality: user?.address?.locality,
       state: user?.address?.state,
@@ -365,7 +368,7 @@ const Checkout = () => {
                     <TextField
                       fullWidth
                       label="First Name"
-                      id="first name"
+                      id="first_name"
                       name="firstName"
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
@@ -441,7 +444,7 @@ const Checkout = () => {
                         name="state"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.state}
+                        value={formik?.values?.state}
                         SelectProps={{
                           native: true,
                         }}
@@ -466,10 +469,12 @@ const Checkout = () => {
                             defaultValue="India"
                             label="Country"
                             name="locality"
-                            value={formik.values.locality}
-                            InputProps={{
-                              readOnly: true,
-                            }}
+                            onChange={formik.handleChange}
+                            onBlur={formik.handleBlur}
+                            value={formik?.values?.locality}
+                            // InputProps={{
+                            //   readOnly: true,
+                            // }}
                           />
                         </div>
                       </Box>
@@ -495,7 +500,7 @@ const Checkout = () => {
                       label="Email"
                       name="email"
                       value={user?.email}
-                      disabled={user?.email ? true : false}
+                      // disabled={user?.email ? true : false}
                       id="email"
                       helperText="Please enter your email"
                     />

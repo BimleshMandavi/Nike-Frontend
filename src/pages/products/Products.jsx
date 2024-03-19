@@ -7,7 +7,7 @@ import ProductHeader from "./ProductHeader";
 const Products = () => {
   return (
     <div
-      className="product-main-container"
+      className="product-main-container overflow-x-hidden"
       style={{ marginTop: "1rem", position: "fix" }}
     >
       <ProductHeader />
@@ -15,12 +15,15 @@ const Products = () => {
         className="product-body-cont"
         style={{
           display: "flex",
-          justifyContent: "space-between",
           overflow: "hidden",
         }}
       >
-        <ProductSider className="h-full" />
-        <ProductItems />
+        <div className=" hidden lg:flex lg:h-full lg:w-[20%]">
+          <ProductSider />
+        </div>
+        <div className="h-fll lg:w-[80%] w-full">
+          <ProductItems />
+        </div>
       </div>
     </div>
   );

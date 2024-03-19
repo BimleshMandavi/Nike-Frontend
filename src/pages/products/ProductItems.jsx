@@ -1,4 +1,11 @@
-import { Box, CssBaseline, Pagination, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  CssBaseline,
+  Pagination,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -10,14 +17,26 @@ function ProductItems() {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
 
+  const [loading, setLoading] = useState(false);
+
   const handleChangePage = (event, value) => {
     setPage(value);
   };
 
   const handleFetchProducts = async () => {
-    let result = await dispatch(getProducts(page, limit));
-    if (result) {
-      return true;
+    try {
+      setLoading(true);
+      let result = await dispatch(getProducts(page, limit));
+      if (result) {
+        setLoading(false);
+        return true;
+      } else {
+        setLoading(true);
+      }
+    } catch (error) {
+      console.log("error");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -27,16 +46,27 @@ function ProductItems() {
 
   return (
     <div
-      className="product-container max-h-[90vh] overflow-y-hidden sm:overflow-y-scroll pl-0 lg:pl-[34px] "
+      className="product-container max-h-[85vh] overflow-y-hidden sm:overflow-y-scroll pl-0 lg:pl-[34px] "
       style={{ overflowY: "scroll" }}
     >
-      <div className="secondery-div  ">
+      <div className="secondery-div flex justify-center  ">
         <Box sx={{ display: "flex" }}>
-          <CssBaseline />
           <div className="product-cont">
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-              <Typography paragraph>
-                <div className="home-items-cont grid grid-cols-2 lg:grid-cols-3 gap-4">
+            <Box
+              component="main"
+              sx={{
+                flexGrow: 1,
+                p: 3,
+
+                width: "100%",
+              }}
+            >
+              {loading ? (
+                <div className="flex w-full justify-center items-center">
+                  <CircularProgress />
+                </div>
+              ) : (
+                <div className="home-items-cont grid grid-cols-2 lg:grid-cols-3 gap-4 border px-3">
                   {product &&
                     product?.length > 0 &&
                     product.map((item, index) => (
@@ -63,7 +93,7 @@ function ProductItems() {
                       </div>
                     ))}
                 </div>
-              </Typography>
+              )}
             </Box>
           </div>
         </Box>

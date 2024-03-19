@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleOrder } from "../../redux/slices/orders";
 import { useEffect, useState } from "react";
@@ -66,12 +66,18 @@ const OrderView = () => {
       <div className="user-details mx-10 pt-8 bg-[#ffffff] gap-10 sm:flex  ">
         <div className="address px-10 ">
           <h3 className="text-xl"> Delivery Address :</h3>
-          <h3 className="text-lg">{user?.name}</h3>
+          <div className="text-lg gap-2 flex">
+            <h3>{user?.firstName}</h3>
+            <h3>{user?.lastName}</h3>
+          </div>
           <h3 className="text-lg">{user?.email}</h3>
+          <h3 className="text-lg">{user?.address[0]?.phone}</h3>
+          <h3 className="text-lg">{user?.address[0]?.panNumber}</h3>
           <div className=" flex gap-2">
-            <p className="text-lg"> {singleOrder?.address?.city}</p>
-            <p className="text-lg">{singleOrder?.address?.state}</p>
-            <p className="text-lg">{singleOrder?.address?.zipcode}</p>
+            <p className="text-lg">{user?.address[0]?.zipcode}</p>,
+            <p className="text-lg"> {user?.address[0]?.city}</p>,
+            <p className="text-lg">{user?.address[0]?.state}</p>,
+            <p className="text-lg">{user?.address[0]?.locality}</p>
           </div>
         </div>
         <div className="ml-5 w-full">
@@ -82,12 +88,15 @@ const OrderView = () => {
         <div>
           <div className=" w-full  py-8 sm:flex sm:justify-center">
             <div className="orderDetails block sm:flex sm:w-[970px]">
-              <div className="image sm:h-[283px] sm:w-[225px]">
+              <Link
+                to={"/products"}
+                className="image sm:h-[283px] sm:w-[225px]"
+              >
                 <img
                   className="w-full h-full p-2"
                   src={singleProduct.singleProduct.image}
                 />
-              </div>
+              </Link>
               <div className="descripotin sm:relative pl-4 pb-6 sm:pl-3">
                 <div className="title">
                   <p className="text-lg pt-3">

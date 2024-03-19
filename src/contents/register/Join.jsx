@@ -13,14 +13,15 @@ const Join = () => {
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      name: "",
+      firstName: "",
+      lastName: "",
       email: "",
       password: "",
     },
     onSubmit: async (values, action) => {
-      const { name, email, password } = values;
-      const data = { name, email, password };
-      console.log(data);
+      const { firstName, lastName, email, password } = values;
+      const data = { firstName, lastName, email, password };
+      console.log("user data",data);
       let result = await dispatch(register(data));
       console.log(result);
       if (result) {
@@ -74,12 +75,22 @@ const Join = () => {
             <TextField
               style={{ marginTop: "40px" }}
               id="outlined-basic1"
-              label="Name"
-              name="name"
+              label="First Name"
+              name="firstName"
               variant="outlined"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.name}
+              value={formik.values.firstName}
+            />
+            <TextField
+              style={{ marginTop: "40px" }}
+              id="outlined-basic1"
+              label="Last Name"
+              name="lastName"
+              variant="outlined"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.lastName}
             />
 
             <TextField

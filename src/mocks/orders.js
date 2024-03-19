@@ -43,9 +43,10 @@ class OrdersApi {
   }
 
   async listOrders(page, limit, id) {
+    console.log("id", id);
     try {
       let data = {
-        query: { userId: id },
+        query: { "userId": id },
         options: {
           collation: "",
           sort: { name: 1 },

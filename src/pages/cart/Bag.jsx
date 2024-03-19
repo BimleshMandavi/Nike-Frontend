@@ -70,7 +70,7 @@ const Bag = () => {
       </div>
 
       <div className="pt-8  pb-10">
-        {cart && cart.length >= 0 ? (
+        {cart && cart.length > 0 ? (
           cart.map((data) => (
             <div className="bag-items pt-8 border-b-2 " key={data.id}>
               <div className="right-part">
@@ -121,7 +121,9 @@ const Bag = () => {
             </div>
           ))
         ) : (
-          <div>No item in your bag !</div>
+          <div className="text-xl text-center">
+            <h2>There are no items in your bag !</h2>
+          </div>
         )}
       </div>
     </div>

@@ -17,6 +17,8 @@ const Shipping = () => {
   console.log("cart data in shiping", cart);
   console.log("user data in shiping", user);
 
+  console.log("user data", user);
+
   let subtotal = 0;
   let deliveryCoast = 1250;
 
@@ -206,8 +208,12 @@ const Shipping = () => {
                       <div className="user-address-info flex ">
                         <div className="flex gap-3">
                           <h3>Name :</h3>
-                          <div className=" text-slate-600">{user?.name}</div>
-                          <div>{user?.lastName}</div>
+                          <div className=" text-slate-600">
+                            {user?.firstName}
+                          </div>
+                          <div className=" text-slate-600">
+                            {user?.lastName}
+                          </div>
                         </div>
                       </div>
                       <div className="user-city">
@@ -218,13 +224,13 @@ const Shipping = () => {
                         <div className="flex gap-3">
                           <h3>Phone No. :</h3>
                           <div className=" text-slate-600">
-                            {user?.address?.[0].phone}
+                            {user?.address?.[0]?.phone}
                           </div>
                         </div>
                         <div className="flex gap-3">
                           <h3>PAN No. :</h3>
                           <div className=" text-slate-600">
-                            {user?.address?.[0].panNumber}
+                            {user?.address?.[0]?.panNumber}
                           </div>
                         </div>
                         <div className="flex gap-3">
@@ -391,7 +397,6 @@ const Shipping = () => {
               </Link>
             </div>
             <div className="footer-element-links">
-              {" "}
               <Link
                 to="https://agreementservice.svs.nike.com/in/en_gb/rest/agreement?agreementType=termsOfUse&uxId=com.nike&country=IN&language=en&requestType=redirect"
                 style={{

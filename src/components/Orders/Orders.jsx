@@ -10,11 +10,15 @@ const Orders = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { order } = useSelector((state) => state.order);
-  const user = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.auth);
   console.log("orders in page", order);
 
   const fatchOrders = async () => {
     try {
+      if (!user?.id) {
+        return;
+      }
+      console.log("user", user);
       let result = await dispatch(listOrders(1, 100, user?.id));
       if (result) {
         return true;
@@ -36,7 +40,7 @@ const Orders = () => {
 
   return (
     <>
-      <div className="main_oreder px-5 bg-slate-400">
+      <div className="main_oreder px-5 bg-slate-400 min-h-[85vh]">
         <div className="container_order">
           <div className="Myorders">
             <div className="myorder pt-4 flex gap-6 text-center justify-between border-b-2 text-xl overflow-x-auto pb-4">
@@ -45,14 +49,13 @@ const Orders = () => {
             </div>
             <div className="pt-10">
               <div className="items sm:flex sm:justify-center sm:flex-col">
-                {order &&
-                  order.length > 0 &&
+                {order && order.length > 0 ? (
                   order.map((item, index) => (
                     <div key={index}>
                       {item &&
-                        item.products &&
-                        item.products.length > 0 &&
-                        item.products.map((item1, index) => (
+                        item[0]?.products &&
+                        item[0]?.products.length > 0 &&
+                        item[0]?.products.map((item1, index) => (
                           <div
                             key={index}
                             className="singleitem w-full  py-8 sm:flex sm:justify-center"
@@ -95,11 +98,13 @@ const Orders = () => {
                                 </div>
                                 <div className="sm:flex sm:justify-between flex-col">
                                   <div className="order_status ">
-                                    {item?.status}
+                                    {item[0]?.status}
                                   </div>
                                   <div className="oderrinfo sm:left-[90%] sm:bottom-[20%] pt-2 sm:pt-8">
                                     <Button
-                                      onClick={() => handleOrderInfo(item?.id)}
+                                      onClick={() =>
+                                        handleOrderInfo(item[0]?.id)
+                                      }
                                     >
                                       Order Info
                                     </Button>
@@ -110,12 +115,16 @@ const Orders = () => {
                           </div>
                         ))}
                     </div>
-                  ))}
+                  ))
+                ) : (
+                  <div className="text-2xl text-center pt-10">
+                    <h2>You don't have any orders yet! </h2>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
-        <div className="footer" style={{ marginTop: "5%" }}></div>
       </div>
     </>
   );

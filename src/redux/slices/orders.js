@@ -13,7 +13,7 @@ const slice = createSlice({
       console.log("action");
       console.log(action.payload);
       if (action.payload) {
-        state.order = [...action.payload.data];
+        state.order = [action.payload.data];
       }
     },
   },

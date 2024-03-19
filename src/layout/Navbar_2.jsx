@@ -14,6 +14,12 @@ import { logout } from "../redux/slices/auth";
 import SearchToggle from "./SearchToggle";
 import { useState } from "react";
 import SearchBox from "./SearchBox";
+import New_Fetured from "./ActionDrawers/New_Fetured";
+import Men from "./ActionDrawers/Men";
+import Women from "./ActionDrawers/Women";
+import Kids from "./ActionDrawers/Kids";
+import Sale from "./ActionDrawers/Sale";
+// import DropDownMenu from "./DropDownMenu";
 
 const Navbar_2 = () => {
   const dispatch = useDispatch();
@@ -53,35 +59,35 @@ const Navbar_2 = () => {
 
   return (
     <>
-      <Headroom className="">
+      <Headroom>
         <div className="nav2-container  relative ">
           <div className="logo-container">
             <Link to="/">
               <SiNike className="brand-logo-2" />
             </Link>
           </div>
-          <div className=" hidden  gap-4 items-center lg:flex flex-wrap">
-            <Link to="#" className=" list-none no-underline">
-              New & Featured
+          <div className="nav_bar hidden  lg:gap-3 lg:items-center lg:flex flex-wrap">
+            <Link to="#" className=" list-none no-underline ">
+              <New_Fetured />
             </Link>
-            <Link to="#" className=" no-underline">
-              Men
+            <Link to="#" className=" no-underline ">
+              <Men />
             </Link>
-            <Link to="#" className=" no-underline">
-              Women
+            <Link to="#" className=" no-underline  ">
+              <Women />
             </Link>
-            <Link to="#" className=" no-underline">
-              Kids
+            <Link to="#" className=" no-underline  ">
+              <Kids />
             </Link>
-            <Link to="#" className=" no-underline">
-              Sale
+            <Link to="#" className=" no-underline  ">
+              <Sale />
             </Link>
-            <Link to="#" className=" no-underline">
+            <Link to="#" className=" no-underline  ">
               Customise
             </Link>
-            <a href="#" className=" no-underline">
+            <Link to="#" className=" no-underline  ">
               SNKRS
-            </a>
+            </Link>
           </div>
           <div className="search-input-cont hidden md:flex">
             <div className="searchBar">
@@ -129,7 +135,7 @@ const Navbar_2 = () => {
                   }}
                 >
                   <Link className="hidden lg:flex pl-[30px]" to={"/profile"}>
-                    <span>Hi, {user.name}</span>
+                    <span>Hi, {user?.firstName}</span>
                   </Link>
                   <div className="ml-4 ">
                     <Button
@@ -143,7 +149,7 @@ const Navbar_2 = () => {
                       <LuUser className="flex lg:hidden text-2xl text-black " />
                     </Button>
                     <Menu
-                      className="list hover:"
+                      className="list "
                       id="basic-menu"
                       anchorEl={anchorEl}
                       open={open}

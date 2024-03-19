@@ -59,7 +59,7 @@ export default function TemporaryDrawer() {
   const handleApplyFilters = () => {
     console.log("Applied Filters:", filters);
 
-    dispatch(getProducts(1, 10, filters));
+    dispatch(getProducts(1, 12, filters));
   };
 
   const handleClearFilters = () => {
