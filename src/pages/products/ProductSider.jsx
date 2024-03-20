@@ -17,7 +17,7 @@ import {
 import ColorCheckboxes from "./CheckBoxes/ColourCheckBoxes";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../../redux/slices/productSlice";
+import { getProduct } from "../../redux/slices/productSlice";
 import GenderCheckBox from "./CheckBoxes/GenderCheckBox";
 import PriceFilletrBox from "./CheckBoxes/PriceFilletrBox";
 import BrandBox from "./CheckBoxes/BrandBox";
@@ -29,8 +29,8 @@ const ProductSider = () => {
   const [selectedItems, setSelectedItems] = useState("");
   const fatchProducts = async () => {
     let result = await dispatch(
-      getProducts(1, 12, {
-        subCategory: { $regex: selectedItems, $options: "i" },
+      getProduct(1, 12, {
+        "title.longTitle": { $regex: selectedItems, $options: "i" },
       })
     );
     if (result) {
@@ -40,6 +40,7 @@ const ProductSider = () => {
 
   const handleItemClick = (text) => {
     setSelectedItems(text);
+    console.log("selected text :", text);
   };
 
   useEffect(() => {
@@ -60,13 +61,15 @@ const ProductSider = () => {
           <List>
             {[
               "Shoes",
-              "Jackets",
-              "Send Hoodies & Sweatshirts",
-              "Trousers & Tights",
+              "Jacket",
+              "Hoodie",
+              "Sweatshirt",
+              "T-Shirt",
+              "Trouser",
               "Shorts",
-              "Tops & T-Shirts",
+              "Top",
               "Compression & Baselayer",
-              "Tracksuits",
+              "Tracksuit",
               "Socks",
               "Accessories & Equipment",
             ].map((text) => (

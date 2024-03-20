@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getProducts } from "../redux/slices/productSlice";
+import { getProduct } from "../redux/slices/productSlice";
 import PropTypes from "prop-types";
 const SearchBox = ({ handleCToogle }) => {
   const dispatch = useDispatch();
@@ -13,16 +13,15 @@ const SearchBox = ({ handleCToogle }) => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      navigate("/products");
-      console.log("searchTerm", searchTerm);
       setFilter({ "title.longTitle": { $regex: searchTerm, $options: "i" } });
       handleCToogle();
     }
   };
 
   const fatchProduct = async () => {
-    let result = await dispatch(getProducts(page, limit, filter));
+    let result = await dispatch(getProduct(page, limit, filter));
     if (result) {
+      navigate("/products");
       return true;
     } else {
       return false;

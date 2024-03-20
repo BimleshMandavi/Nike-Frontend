@@ -16,7 +16,7 @@ const New_Fetured = () => {
     // Perform actions with the selected value, such as making a query
     console.log("Selected value:", value);
     // Close the menu after selecting an item
-    // handleClose();
+    handleClose();
   };
   return (
     <div className="hidden lg:w-full lg:flex">
@@ -27,7 +27,7 @@ const New_Fetured = () => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
-          className="text-black center p-0"
+          className="text-black center p-0 "
         >
           <h2>New & Featured</h2>
         </div>

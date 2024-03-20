@@ -1,9 +1,11 @@
 import { Menu } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../../redux/slices/productSlice";
+import { getProduct } from "../../redux/slices/productSlice";
+import { useNavigate } from "react-router-dom";
 
 const Women = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -21,11 +23,12 @@ const Women = () => {
 
   const hndleFetchProduct = async () => {
     let result = await dispatch(
-      getProducts(1, 12, {
-        longTitle: { $regex: listItem, $options: "i" },
+      getProduct(1, 12, {
+        "title.longTitle": { $regex: listItem, $options: "i" },
       })
     );
     if (result) {
+      navigate("/products")
       return true;
     }
   };

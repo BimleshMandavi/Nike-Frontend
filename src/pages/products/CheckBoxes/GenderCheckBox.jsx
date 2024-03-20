@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../../../redux/slices/productSlice";
+import { getProduct } from "../../../redux/slices/productSlice";
 
 function GenderCheckBox() {
   const dispatch = useDispatch();
@@ -22,7 +22,9 @@ function GenderCheckBox() {
 
   const fatchProducts = async () => {
     let result = await dispatch(
-      getProducts(1, 12, { longTitle: { $regex: gender, $options: "i" } })
+      getProduct(1, 12, {
+        "title.longTitle": { $regex: gender, $options: "i" },
+      })
     );
     if (result) {
       return result;
@@ -43,8 +45,8 @@ function GenderCheckBox() {
           onChange={handleGender}
           name="radio-buttons-group"
         >
-          <FormControlLabel value="female" control={<Radio />} label="Female" />
-          <FormControlLabel value="male" control={<Radio />} label="Male" />
+          <FormControlLabel value="Women" control={<Radio />} label="Female" />
+          <FormControlLabel value="Men" control={<Radio />} label="Male" />
           <FormControlLabel value="unisex" control={<Radio />} label="Unisex" />
         </RadioGroup>
       </FormControl>

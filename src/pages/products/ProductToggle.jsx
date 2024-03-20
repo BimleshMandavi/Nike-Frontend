@@ -12,7 +12,7 @@ import {
   RadioGroup,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../../redux/slices/productSlice";
+import { getProduct } from "../../redux/slices/productSlice";
 import { useEffect } from "react";
 import GenderCheckBox from "./CheckBoxes/GenderCheckBox";
 import PriceFilletrBox from "./CheckBoxes/PriceFilletrBox";
@@ -75,7 +75,7 @@ export default function TemporaryDrawer() {
   };
 
   const fatchProducts = async () => {
-    let result = await dispatch(getProducts(1, 10));
+    let result = await dispatch(getProduct(1, 12));
     if (result) {
       return result;
     }

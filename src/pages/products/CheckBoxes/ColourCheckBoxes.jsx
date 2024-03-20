@@ -3,7 +3,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../../../redux/slices/productSlice";
+import { getProduct } from "../../../redux/slices/productSlice";
 
 const ColorCheckboxes = () => {
   const dispatch = useDispatch();
@@ -15,12 +15,11 @@ const ColorCheckboxes = () => {
     } else {
       setCheckedValue(value);
     }
-    console.log("colour", checkedValue);
   };
 
   const handleFetchProducts = async () => {
     let result = await dispatch(
-      getProducts(1, 12, {
+      getProduct(1, 12, {
         subCategory: { $regex: checkedValue, $options: "i" },
       })
     );
@@ -84,6 +83,16 @@ const ColorCheckboxes = () => {
           />
         }
         label="White"
+      />
+      <FormControlLabel
+        control={
+          <Checkbox
+            checked={checkedValue === "pink"}
+            onChange={() => handleCheckboxChange("pink")}
+            defaultChecked
+          />
+        }
+        label="Pink"
       />
     </FormGroup>
   );

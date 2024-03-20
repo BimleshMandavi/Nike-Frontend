@@ -1,7 +1,12 @@
 import { Menu } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getProduct } from "../../redux/slices/productSlice";
+import { useNavigate } from "react-router-dom";
 
 const Men = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -11,13 +16,28 @@ const Men = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const [listItem, setListItem] = useState("");
+
+  const hndleFetchProduct = async () => {
+    let result = await dispatch(
+      getProduct(1, 12, {
+        "title.longTitle": { $regex: listItem, $options: "i" },
+      })
+    );
+    if (result) {
+      navigate("/products");
+      return true;
+    }
+  };
 
   const handleListItemClick = (value) => {
-    console.log("Selected value:", value);
-
+    setListItem(value);
     handleClose();
   };
 
+  useEffect(() => {
+    hndleFetchProduct();
+  }, [listItem]);
   return (
     <div className="hidden lg:w-full lg:flex ">
       <div className="ml-4 ">

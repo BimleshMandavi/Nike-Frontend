@@ -1,32 +1,27 @@
-import {
-  Box,
-  CircularProgress,
-  CssBaseline,
-  Pagination,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, CircularProgress, Pagination, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import { getProducts } from "../../redux/slices/productSlice";
+import { getProduct } from "../../redux/slices/productSlice";
 
 function ProductItems() {
   const dispatch = useDispatch();
-  const { product } = useSelector((state) => state.product);
+  const { product, pagination } = useSelector((state) => state.product);
+  console.log("pagination", pagination);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
-
+  console.log(limit, page);
   const [loading, setLoading] = useState(false);
 
   const handleChangePage = (event, value) => {
     setPage(value);
+    console.log(value);
   };
 
   const handleFetchProducts = async () => {
     try {
       setLoading(true);
-      let result = await dispatch(getProducts(page, limit));
+      let result = await dispatch(getProduct(page, limit));
       if (result) {
         setLoading(false);
         return true;
@@ -42,7 +37,7 @@ function ProductItems() {
 
   useEffect(() => {
     handleFetchProducts();
-  }, []);
+  }, [page, limit]);
 
   return (
     <div
@@ -104,7 +99,7 @@ function ProductItems() {
             onChange={handleChangePage}
             className="flex justify-center w-full"
             page={page}
-            count={5}
+            count={pagination.pageCount}
             shape="rounded"
           />
         </Stack>

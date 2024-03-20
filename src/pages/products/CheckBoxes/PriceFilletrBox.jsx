@@ -1,7 +1,7 @@
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../../../redux/slices/productSlice";
+import { getProduct } from "../../../redux/slices/productSlice";
 
 function PriceFilletrBox() {
   const [priceRanges, setPriceRanges] = useState({
@@ -50,13 +50,13 @@ function PriceFilletrBox() {
   const fetchProducts = async () => {
     try {
       const res = await dispatch(
-        getProducts(1, 10, {
+        getProduct(1, 12, {
           $or: query.array,
         })
       );
       console.log(res);
     } catch (error) {
-      console.error("Error fetching products:", error);
+      console.error("Error :", error);
       return null;
     }
   };
