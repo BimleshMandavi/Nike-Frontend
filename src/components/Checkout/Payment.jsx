@@ -114,6 +114,7 @@ const Checkout = () => {
 
   const handleCOD = () => {
     setMethod("Cash on Delivery");
+    handlePlaceOrder();
   };
   const toggleUpiDetails = () => {
     setIdDetailsVisible(!idDetailsVisible);

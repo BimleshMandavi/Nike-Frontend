@@ -136,7 +136,7 @@ const Shipping = () => {
                     Arrives Tue, 16 Jan - Wed, 7 Feb
                   </span>
                   <span className="text-slate-500 w-[30%]">
-                    ₹ {deliveryCoast}
+                    ₹ {deliveryCoast.toFixed(2)}
                   </span>
                 </Button>
               </Stack>

@@ -3,7 +3,7 @@ import { cartApi } from "../../mocks/cart";
 
 const initialState = {
   cart: [],
-  cartsItemcount: {}
+  cartsItemcount: {},
 };
 const slice = createSlice({
   name: "cart",
@@ -14,12 +14,12 @@ const slice = createSlice({
       console.log(action.payload);
       if (action.payload) {
         state.cart = [...action.payload.data];
-        state.cartsItemcount = {...action.payload.paginator}
+        state.cartsItemcount = { ...action.payload.paginator };
       }
     },
-    deleteCart (state){
-       state.cart=[]
-    }
+    deleteCart(state) {
+      state.cart = [];
+    },
   },
 });
 
@@ -44,17 +44,19 @@ export const getCart = (data) => async () => {
     return false;
   }
 };
-export const listCart = (page,limit='10',id) => async (dispatch) => {
-  const result = await cartApi.listCart(page,limit,id);
-  if (result) {
-    // console.log("result in  cart slice",result)
-    await dispatch(slice.actions.listCart(result.data));
-    // console.log("object")
-    return result;
-  } else {
-    return false;
-  }
-};
+export const listCart =
+  (page, limit = "10", id) =>
+  async (dispatch) => {
+    const result = await cartApi.listCart(page, limit, id);
+    if (result) {
+      // console.log("result in  cart slice",result)
+      await dispatch(slice.actions.listCart(result.data));
+      // console.log("object")
+      return result;
+    } else {
+      return false;
+    }
+  };
 
 export const deleteCart = (id) => async () => {
   const result = await cartApi.deleteCart(id);
@@ -65,5 +67,13 @@ export const deleteCart = (id) => async () => {
     return result;
   } else {
     return false;
+  }
+};
+
+export const updateCart = (id,data) => async () => {
+  const result = await cartApi.updateCart(id,data);
+  if (result) {
+    console.log("upadate cart result", result);
+    return result;
   }
 };

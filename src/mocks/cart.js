@@ -60,10 +60,10 @@ class CartApi {
     }
   }
 
-  async listCart(page,limit,id) {
+  async listCart(page, limit, id) {
     try {
       let data = {
-        query: {userId:id},
+        query: { userId: id },
         options: {
           collation: "",
           sort: { name: 1 },
@@ -97,6 +97,25 @@ class CartApi {
       }
     } catch (error) {
       console.log(error);
+    }
+  }
+  async updateCart(id, data) {
+    try {
+      const response = await axios.put(
+        `http://localhost:5003/userapp/cart/update/${id}`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+      console.log("response in get cart", response);
+      if (response.data.status === "SUCCESS") {
+        return response.data;
+      }
+    } catch (error) {
+      console.log("error", error);
     }
   }
 }

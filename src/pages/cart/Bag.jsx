@@ -2,26 +2,26 @@ import "./Bag.css";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteCart, listCart } from "../../redux/slices/cart";
-import { useEffect } from "react";
+import { deleteCart, listCart, updateCart } from "../../redux/slices/cart";
+import { useEffect, useState } from "react";
 import { getUser } from "../../redux/slices/auth";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const Bag = () => {
   const dispatch = useDispatch();
+  const [refresh, setRefresh] = useState(false);
 
+  const [size, setSize] = useState(1);
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
 
+  console.log("cart", cart);
   const fetchUser = async () => {
     let result = await dispatch(getUser());
     if (result) {
       return true;
     }
   };
-
-  useEffect(() => {
-    fetchUser();
-  }, []);
 
   const handleFetchListCart = async () => {
     try {
@@ -36,10 +36,6 @@ const Bag = () => {
     }
   };
 
-  useEffect(() => {
-    handleFetchListCart();
-  }, []);
-
   const handleDel = async (id) => {
     let data = await dispatch(deleteCart(id));
     console.log(data);
@@ -52,6 +48,7 @@ const Bag = () => {
 
   let subtotal = 0;
   let deliveryCoast = 1250;
+  const id = cart && cart.length > 0 && cart[0] && cart[0]?.id;
 
   for (let i of cart) {
     let price =
@@ -60,13 +57,41 @@ const Bag = () => {
   }
   let total = deliveryCoast + subtotal;
 
+  const handleQtyChange = async (event) => {
+    const data = {
+      products: [
+        {
+          productId: event.target.name,
+          qty: event.target.value,
+        },
+      ],
+    };
+    let result = await dispatch(updateCart(id, data));
+    if (result) {
+      console.log("result", result);
+      setRefresh(!refresh);
+      return result;
+    }
+  };
+  const handleSizeChange = (e) => {
+    setSize(e.target.value);
+  };
+
+  const qtyOptions = Array.from({ length: 10 }, (_, index) => index + 1);
+  const sizeOptions = Array.from({ length: 12 }, (_, index) => index + 1);
+
+  useEffect(() => {
+    handleFetchListCart();
+    fetchUser();
+  }, [refresh]);
+
   return (
     <div className="bag-container pr-[35px]">
       <div className="bag-heading flex justify-center sm:justify-start">
         <p>Bag</p>
       </div>
       <div className="flex justify-center pb-10 border-b-2 gap-1 sm:hidden">
-        <span>{cart.length} Items</span> | <span> ₹ {total}.00</span>
+        <span>{cart.length} Items</span> | <span> ₹ {total.toFixed(2)}</span>
       </div>
 
       <div className="pt-8  pb-10">
@@ -83,7 +108,8 @@ const Bag = () => {
                 <div className="item-info pb-8">
                   <div className="left-part">
                     <span className="item-price">
-                      MRP:₹ {data?.products[0]?.productId?.price?.mrp}
+                      MRP:₹
+                      {data?.products[0]?.productId?.price?.mrp.toFixed(2)}
                     </span>
                   </div>
                   <div>
@@ -98,10 +124,47 @@ const Bag = () => {
                     <div className="item-color">
                       Colour: {data?.products[0]?.productId?.subCategory}
                     </div>
-                    <div className="flex justify-between">
-                      <div className="item-size">Size</div>
+                    <div className="flex justify-between pt-4">
+                      <div className="item-size">
+                        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                          <InputLabel id="demo-select-small-label">
+                            Size
+                          </InputLabel>
+                          <Select
+                            labelId="demo-select-small-label"
+                            id="demo-select-small"
+                            value={size}
+                            label="size"
+                            onChange={handleSizeChange}
+                          >
+                            {sizeOptions.map((option1) => (
+                              <MenuItem key={option1} value={option1}>
+                                {option1}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
+                      </div>
                       <div className="item-quant">
-                        Quantity: {data?.products[0]?.qty}
+                        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                          <InputLabel id="demo-select-small-label">
+                            Qty
+                          </InputLabel>
+                          <Select
+                            labelId="demo-select-small-label"
+                            id="demo-select-small"
+                            value={data?.products[0]?.qty}
+                            label="Qty"
+                            name={data.id}
+                            onChange={handleQtyChange}
+                          >
+                            {qtyOptions.map((option) => (
+                              <MenuItem key={option} value={option}>
+                                {option}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                        </FormControl>
                       </div>
                     </div>
                     <div className="item-btns gap-8">
