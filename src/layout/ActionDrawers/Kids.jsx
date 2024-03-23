@@ -1,5 +1,6 @@
-import { Menu,} from "@mui/material";
+import { Menu } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Kids = () => {
   const handleClick = (event) => {
@@ -41,165 +42,179 @@ const Kids = () => {
             "aria-labelledby": "basic-button",
           }}
         >
-          <div className="flex justify-evenly pt-8 cursor-default">
+          <div className="flex justify-evenly pt-8 cursor-default flex-wrap">
             <div onClick={handleClose}>
               <div>
-                <h3 className="cursor-pointer text-xl">New&Featured</h3>
-                <ul className="mt-6 space-y-1">
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    New Arrivals
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Shoes
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Clothing
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    SNKRS Lounch calender
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Get Em in SNKRS
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Member Exclusive
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
+                <h3 className="cursor-pointer text-xl">Featured</h3>
+                {[
+                  "New Releases",
+                  "Newest Sneakers",
+                  "Easy On & Off",
+                  "Bestsellers",
+                  "Member Exclusive",
+                  "Jordan",
+                  "Last Sizes Available",
+                  "Bags and Bagpaks",
+                  "Sale",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
-                <h3 className="cursor-pointer text-xl">Shop Icons</h3>
-                <ul className="mt-6 space-y-1">
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    New Arrivals
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Shoes
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Clothing
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    SNKRS Lounch calender
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Get Em in SNKRS
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Member Exclusive
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
+                <h3 className="cursor-pointer text-xl">Boys'Shoes</h3>
+                {[
+                  "All Shoes",
+                  "Older Boys (7 - 14 years)",
+                  "Yunger Boys (4-7 Years)",
+                  "Babies and Tollders (0 - 4 Years)",
+                  "Lifestyle",
+                  "Jordan",
+                  "Running",
+                  "Basketball",
+                  "Football",
+                  "Sandals and Slides",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
-                <h3 className="cursor-pointer text-xl">New For Men</h3>
-                <ul className="mt-6 space-y-1">
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    New Arrivals
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Shoes
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Clothing
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    SNKRS Lounch calender
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Get Em in SNKRS
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Member Exclusive
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
+                <h3 className="cursor-pointer text-xl">Girls' Shoes</h3>
+                {[
+                  "All Shoes",
+                  "Older Girls (7 - 14 years)",
+                  "Yunger Girls (4-7 Years)",
+                  "Babies and Tollders (0 - 4 Years)",
+                  "Lifestyle",
+                  "Jordan",
+                  "Running",
+                  "Basketball",
+                  "Football",
+                  "Sandals and Slides",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
-                <h3 className="cursor-pointer text-xl">New For Women</h3>
-                <ul className="mt-6 space-y-1">
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    New Arrivals
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Shoes
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Clothing
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    SNKRS Lounch calender
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Get Em in SNKRS
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Member Exclusive
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
+                <h3 className="cursor-pointer text-xl">Kids By Age</h3>
+                {[
+                  "Older Kids (7 - 14 years)",
+                  "Yunger Kids (4-7 Years)",
+                  "Babies and Tollders (0 - 4 Years)",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
-                <h3 className="cursor-pointer text-xl">New For Kids</h3>
-                <ul className="mt-6 space-y-1">
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    New Arrivals
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Shoes
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Clothing
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    SNKRS Lounch calender
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Get Em in SNKRS
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Member Exclusive
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
+                <h3 className="cursor-pointer text-xl">Shop By Sport</h3>
+                {[
+                  "Football",
+                  "Running",
+                  "Basketball",
+                  "Gym and Training",
+                  "Tennis",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div onClick={handleClose}>
+              <div>
+                <h3 className="cursor-pointer text-xl">Boys' Clothing</h3>
+                {[
+                  "Tops and T-shirts",
+                  "Hoodies and Sweatshirts",
+                  "Pants and Leggings",
+                  "Shorts",
+                  "All Boys Clothing",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
+              </div>
+            </div>
+            <div onClick={handleClose}>
+              <div>
+                <h3 className="cursor-pointer text-xl">Girls' Clothing</h3>
+                {[
+                  "Tops and T-shirts",
+                  "Hoodies and Sweatshirts",
+                  "Sport Bras",
+                  "Pants and Leggings",
+                  "Shorts",
+                  "All Boys Clothing",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import { Menu } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const New_Fetured = () => {
   const handleClick = (event) => {
@@ -52,219 +53,121 @@ const New_Fetured = () => {
             <div onClick={handleClose}>
               <div className="cursor-pointer">
                 <h3 className="cursor-pointer text-xl">New & Featured</h3>
-                <ul className="mt-6 space-y-1">
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("New Arrivals")}
+                {[
+                  "New Arrivals",
+                  "Latest Shoes",
+                  "Latest Clothing",
+                  "SNKRS Lounch calender",
+                  "Get Em in SNKRS",
+                  "Bestsellers",
+                  "Member Exclusive",
+                  "Top Kick under 8000.00",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
                   >
-                    New Arrivals
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Latest Shoes")}
-                  >
-                    Latest Shoes
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Latest Clothing")}
-                  >
-                    Latest Clothing
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("SNKRS Lounch calender")}
-                  >
-                    SNKRS Lounch calender
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick(" Get Em in SNKRS")}
-                  >
-                    Get Em in SNKRS
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick(" Bestsellers")}
-                  >
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Member Exclusive")}
-                  >
-                    Member Exclusive
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() =>
-                      handleListItemClick("Top Kick under 8000.00")
-                    }
-                  >
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div className="cursor-pointer">
                 <h3 className="cursor-pointer text-xl">Shop Icons</h3>
-                <ul className="mt-6 space-y-1">
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Air Force 1")}
+                {[
+                  "Air Force 1",
+                  "Air Jordan 1",
+                  "Air Max",
+                  "Dunk",
+                  "Cortez",
+                  "Blazer",
+                  "Pegasus",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
                   >
-                    Air Force 1
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Air Jordan 1")}
-                  >
-                    Air Jordan 1
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Air Max")}
-                  >
-                    Air Max
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Dunk")}
-                  >
-                    Dunk
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Cortez")}
-                  >
-                    Cortez
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Blazer")}
-                  >
-                    Blazer
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Pegasus")}
-                  >
-                    Pegasus
-                  </li>
-                </ul>
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div className="cursor-pointer">
                 <h3 className="cursor-pointer text-xl">New For Men</h3>
-                <ul className="mt-6 space-y-1">
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Shoes")}
+                {[
+                  "Shoes",
+                  "Clothing",
+                  "Accessories",
+                  "SNKRS Lounch calender",
+                  "Shop All New",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
                   >
-                    Shoes
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Clothing")}
-                  >
-                    Clothing
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Accessories")}
-                  >
-                    Accessories
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("SNKRS Lounch calender")}
-                  >
-                    SNKRS Lounch calender
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Shop All New")}
-                  >
-                    Shop All New
-                  </li>
-                </ul>
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div className="cursor-pointer">
                 <h3 className="cursor-pointer text-xl">New For Women</h3>
-                <ul className="mt-6 space-y-1">
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Shoes")}
+                {[
+                  "Shoes",
+                  "Clothing",
+                  "Accessories",
+                  "SNKRS Lounch calender",
+                  "Shop All New",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
                   >
-                    Shoes
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Clothing")}
-                  >
-                    Clothing
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Accessories")}
-                  >
-                    Accessories
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("SNKRS lounch calender")}
-                  >
-                    SNKRS Lounch calender
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Shop All New")}
-                  >
-                    Shop All New
-                  </li>
-                </ul>
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
                 <h3 className="cursor-pointer text-xl">New For Kids</h3>
-                <ul className="mt-6 space-y-1">
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Shoes")}
+                {[
+                  "Shoes",
+                  "Clothing",
+                  "Accessories",
+                  "SNKRS Lounch calender",
+                  "Shop All New",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
                   >
-                    Shoes
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Clothing")}
-                  >
-                    Clothing
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Accessories")}
-                  >
-                    Accessories
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("SNKRS lounch calender")}
-                  >
-                    SNKRS Lounch calender
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Shop All New")}
-                  >
-                    Shop All New
-                  </li>
-                </ul>
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

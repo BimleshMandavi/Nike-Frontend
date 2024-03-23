@@ -1,5 +1,6 @@
-import { Menu,  } from "@mui/material";
+import { Menu } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Sale = () => {
   const handleClick = (event) => {
@@ -44,162 +45,75 @@ const Sale = () => {
           <div className="flex justify-evenly pt-8 cursor-default">
             <div onClick={handleClose}>
               <div>
-                <h3 className="cursor-pointer text-xl">New&Featured</h3>
-                <ul className="mt-6 space-y-1">
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    New Arrivals
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Shoes
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Clothing
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    SNKRS Lounch calender
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Get Em in SNKRS
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Member Exclusive
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
+                <h3 className="cursor-pointer text-xl">Sale</h3>
+                {[
+                  "Shop All Sale",
+                  "Shoes Sale",
+                  "Clothing Sale",
+                  "Accessories & Equipment Sale",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
-                <h3 className="cursor-pointer text-xl">Shop Icons</h3>
-                <ul className="mt-6 space-y-1">
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    New Arrivals
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Shoes
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Clothing
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    SNKRS Lounch calender
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Get Em in SNKRS
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Member Exclusive
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
+                <h3 className="cursor-pointer text-xl">Men's Sale</h3>
+                {["Shoes", "Clothing"].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
-                <h3 className="cursor-pointer text-xl">New For Men</h3>
-                <ul className="mt-6 space-y-1">
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    New Arrivals
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Shoes
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Clothing
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    SNKRS Lounch calender
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Get Em in SNKRS
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Member Exclusive
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
+                <h3 className="cursor-pointer text-xl">Women's Sale</h3>
+                {["Shoes", "Clothing"].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
-                <h3 className="cursor-pointer text-xl">New For Women</h3>
-                <ul className="mt-6 space-y-1">
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    New Arrivals
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Shoes
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Clothing
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    SNKRS Lounch calender
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Get Em in SNKRS
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Member Exclusive
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div onClick={handleClose}>
-              <div>
-                <h3 className="cursor-pointer text-xl">New For Kids</h3>
-                <ul className="mt-6 space-y-1">
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    New Arrivals
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Shoes
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Latest Clothing
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    SNKRS Lounch calender
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Get Em in SNKRS
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    {" "}
-                    Bestsellers
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Member Exclusive
-                  </li>
-                  <li className="cursor-pointer text-slate-500 hover:text-black">
-                    Top Kick under 8000.00
-                  </li>
-                </ul>
+                <h3 className="cursor-pointer text-xl">Kid's Sale</h3>
+                {["Shoes", "Clothing"].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
+                  >
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
