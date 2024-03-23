@@ -21,7 +21,7 @@ const SearchBox = ({ handleCToogle }) => {
   const fatchProduct = async () => {
     let result = await dispatch(getProduct(page, limit, filter));
     if (result) {
-      navigate("/products");
+      // navigate("/products");
       return true;
     } else {
       return false;

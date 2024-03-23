@@ -31,7 +31,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Air Force 1"}
               onChange={() => handleValues("Air Force 1")}
             />
@@ -52,7 +51,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Blazer"}
               onChange={() => handleValues("Blazer")}
             />
@@ -73,7 +71,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Cortez"}
               onChange={() => handleValues("Cortez")}
             />
@@ -94,7 +91,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Huarache"}
               onChange={() => handleValues("Huarache")}
             />
@@ -115,7 +111,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Melton"}
               onChange={() => handleValues("Melton")}
             />
@@ -136,7 +131,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Nike Dunk"}
               onChange={() => handleValues("Nike Dunk")}
             />
@@ -157,7 +151,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Phantom"}
               onChange={() => handleValues("Phantom")}
             />
@@ -178,7 +171,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Sunray"}
               onChange={() => handleValues("Sunray")}
             />
@@ -199,7 +191,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Tiempo"}
               onChange={() => handleValues("Tiempo")}
             />
@@ -220,7 +211,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Windhorse"}
               onChange={() => handleValues("Windhorse")}
             />
@@ -241,7 +231,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Nike SuperRep"}
               onChange={() => handleValues("Nike SuperRep")}
             />
@@ -262,7 +251,6 @@ function IconBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
               checked={icon === "Nike Vaporfly"}
               onChange={() => handleValues("Nike Vaporfly")}
             />

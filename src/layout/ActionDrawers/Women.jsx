@@ -1,12 +1,7 @@
 import { Menu } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getProduct } from "../../redux/slices/productSlice";
-import { useNavigate } from "react-router-dom";
-
+import { useState } from "react";
+import { Link } from "react-router-dom";
 const Women = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -16,31 +11,6 @@ const Women = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
-  const [listItem, setListItem] = useState("");
-
-  console.log("listItem :", listItem);
-
-  const hndleFetchProduct = async () => {
-    let result = await dispatch(
-      getProduct(1, 12, {
-        "title.longTitle": { $regex: listItem, $options: "i" },
-      })
-    );
-    if (result) {
-      navigate("/products")
-      return true;
-    }
-  };
-
-  const handleListItemClick = (value) => {
-    setListItem(value);
-    handleClose();
-  };
-
-  useEffect(() => {
-    hndleFetchProduct();
-  }, [listItem]);
 
   return (
     <div className="hidden lg:w-full lg:flex">
@@ -76,225 +46,107 @@ const Women = () => {
             <div onClick={handleClose}>
               <div>
                 <h3 className="cursor-pointer text-xl">Featured</h3>
-                <ul className="mt-6 space-y-1">
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("New Releases")}
+                {[
+                  "New Release",
+                  "Bestsellers",
+                  "Member Exclusive",
+                  "Jordan",
+                  "Retro Runnnig",
+                  "Bestsellers",
+                  "Custom With Nike By You",
+                  "Basketball",
+                  "Sale",
+                  "Running Shoes Finder",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
                   >
-                    New Releases
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Bestsellers")}
-                  >
-                    Bestsellers
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Member Exclusive")}
-                  >
-                    Member Exclusive
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Jordan")}
-                  >
-                    Jordan
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Retro Running")}
-                  >
-                    Retro Running
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() =>
-                      handleListItemClick("Customise with Nike by you")
-                    }
-                  >
-                    Customise with Nike By You
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Sale")}
-                  >
-                    Sale
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Running Sheos Finder")}
-                  >
-                    Running Shoes Finder
-                  </li>
-                </ul>
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
                 <h3 className="cursor-pointer text-xl">Shoes</h3>
-                <ul className="mt-6 space-y-1">
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("All Shoes")}
+                {[
+                  "All Shoes",
+                  "Newest Sneakers",
+                  "Jordan",
+                  "Lifestyle",
+                  "Running",
+                  "Bestsellers",
+                  "Gym and Training",
+                  "Basketball",
+                  "Football",
+                  "Sandals and Slides",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
                   >
-                    All Shoes
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Newest Sneakers")}
-                  >
-                    Newest Sneakers
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Jordan")}
-                  >
-                    Jordan
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Lifestyle")}
-                  >
-                    Lifestyle
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Running")}
-                  >
-                    Running
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Bestsellers")}
-                  >
-                    Bestsellers
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Gym and Trainning")}
-                  >
-                    Gym and Training
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Basketball")}
-                  >
-                    Basketball
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Football")}
-                  >
-                    Football
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Sandals and Slides")}
-                  >
-                    Sandals and Slides
-                  </li>
-                </ul>
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
                 <h3 className="cursor-pointer text-xl">Clothing</h3>
-                <ul className="mt-6 space-y-1">
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("All Clothing")}
+                {[
+                  "All Clothing",
+                  "Top and T-shirt",
+                  "Shorts",
+                  "Pants and Leggings",
+                  "Hoodie and Sweatshirts",
+                  "Jackets and Glites",
+                  "Jordan",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
                   >
-                    All Clothing
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Tops and T-Shirts")}
-                  >
-                    Tops and T-Shirts
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Shorts")}
-                  >
-                    Shorts
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Pants and Leggings")}
-                  >
-                    Pants and Leggings
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() =>
-                      handleListItemClick("Hoodeis and Sweatshirts")
-                    }
-                  >
-                    Hoodies and Sweatshirts
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Jackets and Gilets")}
-                  >
-                    Jackets and Gilets
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Jordan")}
-                  >
-                    Jordan
-                  </li>
-                </ul>
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
             <div onClick={handleClose}>
               <div>
                 <h3 className="cursor-pointer text-xl">Shop By Sport</h3>
-                <ul className="mt-6 space-y-1">
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Running")}
+                {[
+                  "Running",
+                  "Basketball",
+                  "Football",
+                  "Golf",
+                  "Tennis",
+                  "Gym and Training",
+                  "Yoga",
+                ].map((text, index) => (
+                  <Link
+                    className="flex  text no-underline text-slate-500 hover:text-black pt-2"
+                    key={index}
+                    to={{
+                      pathname: "/products",
+                      search: `?type=${text}`,
+                    }}
                   >
-                    Running
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Basketball")}
-                  >
-                    Basketball
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Football")}
-                  >
-                    Football
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Golf")}
-                  >
-                    Golf
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Tennis")}
-                  >
-                    Tennis
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Gym and Trainnig")}
-                  >
-                    Gym and Trainning
-                  </li>
-                  <li
-                    className="cursor-pointer text-slate-500 hover:text-black"
-                    onClick={() => handleListItemClick("Yoga")}
-                  >
-                    Yoga
-                  </li>
-                </ul>
+                    <button>{text}</button>
+                  </Link>
+                ))}
               </div>
             </div>
           </div>

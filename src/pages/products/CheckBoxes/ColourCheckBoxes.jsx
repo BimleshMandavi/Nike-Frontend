@@ -39,7 +39,6 @@ const ColorCheckboxes = () => {
           <Checkbox
             checked={checkedValue === "red"}
             onChange={() => handleCheckboxChange("red")}
-            defaultChecked
           />
         }
         label="Red"
@@ -49,7 +48,6 @@ const ColorCheckboxes = () => {
           <Checkbox
             checked={checkedValue === "blue"}
             onChange={() => handleCheckboxChange("blue")}
-            defaultChecked
           />
         }
         label="Blue"
@@ -59,7 +57,6 @@ const ColorCheckboxes = () => {
           <Checkbox
             checked={checkedValue === "green"}
             onChange={() => handleCheckboxChange("green")}
-            defaultChecked
           />
         }
         label="Green"
@@ -69,7 +66,6 @@ const ColorCheckboxes = () => {
           <Checkbox
             checked={checkedValue === "black"}
             onChange={() => handleCheckboxChange("black")}
-            defaultChecked
           />
         }
         label="Black"
@@ -79,7 +75,6 @@ const ColorCheckboxes = () => {
           <Checkbox
             checked={checkedValue === "white"}
             onChange={() => handleCheckboxChange("white")}
-            defaultChecked
           />
         }
         label="White"
@@ -89,7 +84,6 @@ const ColorCheckboxes = () => {
           <Checkbox
             checked={checkedValue === "pink"}
             onChange={() => handleCheckboxChange("pink")}
-            defaultChecked
           />
         }
         label="Pink"

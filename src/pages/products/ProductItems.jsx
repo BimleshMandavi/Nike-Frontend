@@ -1,10 +1,14 @@
 import { Box, CircularProgress, Pagination, Stack } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getProduct } from "../../redux/slices/productSlice";
 
 function ProductItems() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selecteItem = searchParams.get("type");
+
+  console.log("select item:", selecteItem);
   const dispatch = useDispatch();
   const { product, pagination } = useSelector((state) => state.product);
   const [page, setPage] = useState(1);
@@ -14,6 +18,9 @@ function ProductItems() {
     setPage(value);
   };
 
+  const { products } = useParams();
+
+  console.log("products for query :", products);
   const handleFetchProducts = async () => {
     try {
       setLoading(true);

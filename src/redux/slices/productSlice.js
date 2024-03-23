@@ -27,6 +27,7 @@ export const getProduct =
   (page, limit = 12, filter) =>
   async (dispatch) => {
     const result = await productApi.getProduct(page, limit, filter);
+    console.log(result,'this is ')
     if (result) {
       await dispatch(slice.actions.getProduct(result.data));
       return true;

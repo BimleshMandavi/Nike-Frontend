@@ -191,31 +191,35 @@ export default function TemporaryDrawer() {
               </div>
 
               <div className=" w-full flex justify-around p-8 gap-3">
-                <button
-                  style={{
-                    width: "100%",
-                    height: "48px",
-                    borderRadius: "30px",
-                    cursor: "pointer",
-                    border: "2px solid grey",
-                  }}
-                  onClick={handleClearFilters}
-                >
-                  Clear
-                </button>
-                <button
-                  style={{
-                    background: "black",
-                    color: "white",
-                    width: "100%",
-                    height: "48px",
-                    borderRadius: "30px",
-                    cursor: "pointer",
-                  }}
-                  onClick={handleApplyFilters}
-                >
-                  Apply
-                </button>
+                <div>
+                  <button
+                    style={{
+                      width: "100%",
+                      height: "48px",
+                      borderRadius: "30px",
+                      cursor: "pointer",
+                      border: "2px solid grey",
+                    }}
+                    onClick={handleClearFilters}
+                  >
+                    Clear
+                  </button>
+                </div>
+                <div>
+                  <button
+                    style={{
+                      background: "black",
+                      color: "white",
+                      width: "100%",
+                      height: "48px",
+                      borderRadius: "30px",
+                      cursor: "pointer",
+                    }}
+                    onClick={handleApplyFilters}
+                  >
+                    Apply
+                  </button>
+                </div>
               </div>
             </div>
           </Drawer>

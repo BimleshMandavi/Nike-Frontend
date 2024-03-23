@@ -74,7 +74,7 @@ const Bag = () => {
     }
   };
   const handleSizeChange = (e) => {
-    setSize(e.target.value);
+    setSize(e.target.value); 
   };
 
   const qtyOptions = Array.from({ length: 10 }, (_, index) => index + 1);

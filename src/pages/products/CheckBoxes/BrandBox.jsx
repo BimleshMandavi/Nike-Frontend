@@ -31,7 +31,7 @@ function BrandBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
+    
               checked={checkedValue === "Nike Sportswear"}
               onChange={() => handleCheckboxChange("Nike Sportswear")}
             />
@@ -48,7 +48,7 @@ function BrandBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
+         
               checked={checkedValue === "Nike By You"}
               onChange={() => handleCheckboxChange("Nike By You")}
             />
@@ -68,7 +68,7 @@ function BrandBox() {
         <FormControlLabel
           control={
             <Checkbox
-              defaultChecked
+      
               checked={checkedValue === "ACG"}
               onChange={() => handleCheckboxChange("ACG")}
             />
