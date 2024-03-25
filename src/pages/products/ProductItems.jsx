@@ -1,30 +1,30 @@
 import { Box, CircularProgress, Pagination, Stack } from "@mui/material";
-import { Link, useParams, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { getProduct } from "../../redux/slices/productSlice";
 
 function ProductItems() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const selecteItem = searchParams.get("type");
-
-  console.log("select item:", selecteItem);
   const dispatch = useDispatch();
   const { product, pagination } = useSelector((state) => state.product);
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(12);
   const [loading, setLoading] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selecteItem = searchParams.get("type");
+
   const handleChangePage = (event, value) => {
     setPage(value);
   };
 
-  const { products } = useParams();
-
-  console.log("products for query :", products);
   const handleFetchProducts = async () => {
     try {
       setLoading(true);
-      let result = await dispatch(getProduct(page, limit));
+      let result = await dispatch(
+        getProduct(page, limit, {
+          "title.longTitle": { $regex: selecteItem, $options: "i" },
+        })
+      );
       if (result) {
         setLoading(false);
         return true;
@@ -40,7 +40,7 @@ function ProductItems() {
 
   useEffect(() => {
     handleFetchProducts();
-  }, [page, limit]);
+  }, [page, limit, selecteItem]);
 
   return (
     <div

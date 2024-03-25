@@ -19,23 +19,12 @@ import Men from "./ActionDrawers/Men";
 import Women from "./ActionDrawers/Women";
 import Kids from "./ActionDrawers/Kids";
 import Sale from "./ActionDrawers/Sale";
-// import DropDownMenu from "./DropDownMenu";
 
 const Navbar_2 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
-
-  const handleLogOut = async () => {
-    let result = await dispatch(logout());
-    if (result) {
-      localStorage.removeItem("accessToken", "");
-      navigate("/");
-      toast.success("Logout successful");
-      return true;
-    }
-  };
 
   const handleProfile = () => {
     navigate("/profile");
@@ -55,6 +44,16 @@ const Navbar_2 = () => {
   const open = Boolean(anchorEl);
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogOut = async () => {
+    let result = await dispatch(logout());
+    if (result) {
+      localStorage.removeItem("accessToken", "");
+      navigate("/");
+      toast.success("Logout successful");
+      return true;
+    }
   };
 
   return (

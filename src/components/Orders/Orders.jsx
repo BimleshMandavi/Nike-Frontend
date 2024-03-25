@@ -80,7 +80,7 @@ const Orders = () => {
                                       item1.productId.title.shortTitle}
                                   </p>
                                   <p className="text-sm">
-                                    colour :{" "}
+                                    colour :
                                     {item1 &&
                                       item1?.productId &&
                                       item1?.productId?.subCategory}
@@ -94,7 +94,7 @@ const Orders = () => {
                                   </p>
                                 </div>
                                 <div className="pb-3">
-                                  (Order ID - {item?.id})
+                                  (Order ID - {item && item[0]?.id})
                                 </div>
                                 <div className="sm:flex sm:justify-between flex-col">
                                   <div className="order_status ">

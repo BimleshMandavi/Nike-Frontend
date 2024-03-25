@@ -1,8 +1,5 @@
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   Accordion,
@@ -13,40 +10,15 @@ import {
   FormControlLabel,
   FormGroup,
 } from "@mui/material";
-
 import ColorCheckboxes from "./CheckBoxes/ColourCheckBoxes";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getProduct } from "../../redux/slices/productSlice";
 import GenderCheckBox from "./CheckBoxes/GenderCheckBox";
 import PriceFilletrBox from "./CheckBoxes/PriceFilletrBox";
 import BrandBox from "./CheckBoxes/BrandBox";
 import SportsBox from "./CheckBoxes/SportsBox";
 import IconBox from "./CheckBoxes/IconBox";
+import { Link } from "react-router-dom";
 
 const ProductSider = () => {
-  const dispatch = useDispatch();
-  const [selectedItems, setSelectedItems] = useState("");
-  const fatchProducts = async () => {
-    let result = await dispatch(
-      getProduct(1, 12, {
-        "title.longTitle": { $regex: selectedItems, $options: "i" },
-      })
-    );
-    if (result) {
-      return true;
-    }
-  };
-
-  const handleItemClick = (text) => {
-    setSelectedItems(text);
-    console.log("selected text :", text);
-  };
-
-  useEffect(() => {
-    fatchProducts();
-  }, [selectedItems]);
-
   return (
     <div className="product-accordition">
       <div
@@ -72,12 +44,17 @@ const ProductSider = () => {
               "Tracksuit",
               "Socks",
               "Accessories & Equipment",
-            ].map((text) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton onClick={() => handleItemClick(text)}>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
+            ].map((text, index) => (
+              <Link
+                className="flex  no-underline pt-1 pl-5"
+                key={index}
+                to={{
+                  pathname: "/products",
+                  search: `?type=${text}`,
+                }}
+              >
+                <button>{text}</button>
+              </Link>
             ))}
           </List>
           <Divider />
