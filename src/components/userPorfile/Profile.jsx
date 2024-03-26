@@ -5,6 +5,28 @@ import UserNav from "../userPorfile/UserNav";
 
 function Profile() {
   const { user } = useSelector((state) => state.auth);
+  console.log("user:", user);
+
+  const getFormattedDate = (dateString) => {
+    const date = new Date(dateString);
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+    return `${monthNames[monthIndex]} ${year}`;
+  };
   return (
     <div className="m-0 p-0 h-full w-full pl-8 pr-8 text-xl mt-10">
       <UserNav />
@@ -17,8 +39,8 @@ function Profile() {
                 <h1 className="text-3xl">{user?.firstName}</h1>
                 <h1 className="text-3xl">{user?.lastName}</h1>
               </div>
-              <div className="text-slate-500">
-                Nike Member Since January 2024
+              <div className="text-slate-600">
+                {`Nike Member Since ${getFormattedDate(user?.createdAt)}`}
               </div>
             </div>
           </Box>
