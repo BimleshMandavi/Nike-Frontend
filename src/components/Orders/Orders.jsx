@@ -71,7 +71,7 @@ const Orders = () => {
                                   }
                                 />
                               </div>
-                              <div className="descripotin sm:relative pl-4 pb-6 sm:pl-3">
+                              <div className="descripotin sm:relative pl-4 pb-6 sm:pl-10">
                                 <div className="title">
                                   <p className="text-lg pt-3">
                                     {item1 &&
@@ -96,18 +96,19 @@ const Orders = () => {
                                 <div className="pb-3">
                                   (Order ID - {item && item[0]?.id})
                                 </div>
-                                <div className="sm:flex sm:justify-between flex-col">
+                                <div className="sm:flex sm:justify-between  flex-col">
                                   <div className="order_status ">
                                     {item[0]?.status}
                                   </div>
                                   <div className="oderrinfo sm:left-[90%] sm:bottom-[20%] pt-2 sm:pt-8">
-                                    <Button
+                                    <button
+                                      className="text-black"
                                       onClick={() =>
                                         handleOrderInfo(item[0]?.id)
                                       }
                                     >
                                       Order Info
-                                    </Button>
+                                    </button>
                                   </div>
                                 </div>
                               </div>
