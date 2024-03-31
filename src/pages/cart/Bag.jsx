@@ -74,7 +74,7 @@ const Bag = () => {
     }
   };
   const handleSizeChange = (e) => {
-    setSize(e.target.value); 
+    setSize(e.target.value);
   };
 
   const qtyOptions = Array.from({ length: 10 }, (_, index) => index + 1);
@@ -108,7 +108,7 @@ const Bag = () => {
                 <div className="item-info pb-8">
                   <div className="left-part">
                     <span className="item-price">
-                      MRP:₹
+                      MRP: ₹
                       {data?.products[0]?.productId?.price?.mrp.toFixed(2)}
                     </span>
                   </div>
