@@ -1,36 +1,19 @@
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getProduct } from "../redux/slices/productSlice";
 import PropTypes from "prop-types";
+import { useState } from "react";
+
 const SearchBox = ({ handleCToogle }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(9);
-  const [filter, setFilter] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      setFilter({ "title.longTitle": { $regex: searchTerm, $options: "i" } });
+  const handleKeyPress = (e,action) => {
+    if (e.key === "Enter") {
+      navigate(`/search?q=${encodeURIComponent(searchTerm)}`);
       handleCToogle();
+      action.resetForm();
     }
   };
 
-  const fatchProduct = async () => {
-    let result = await dispatch(getProduct(page, limit, filter));
-    if (result) {
-      // navigate("/products");
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  useEffect(() => {
-    fatchProduct();
-  }, [filter]);
   return (
     <>
       <div className="searchBar">

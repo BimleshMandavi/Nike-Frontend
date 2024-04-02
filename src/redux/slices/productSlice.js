@@ -3,7 +3,7 @@ import { productApi } from "../../mocks/products";
 
 const initialState = {
   product: [],
-  pagination:{},
+  pagination: {},
   singleProduct: {},
 };
 
@@ -14,7 +14,7 @@ const slice = createSlice({
     getProduct(state, action) {
       let data = [...action.payload.data];
       state.product = data;
-      state.pagination = action.payload.paginator
+      state.pagination = action.payload.paginator;
     },
     getSingleProduct(state, action) {
       let data = { ...action.payload };
@@ -27,7 +27,6 @@ export const getProduct =
   (page, limit = 12, filter) =>
   async (dispatch) => {
     const result = await productApi.getProduct(page, limit, filter);
-    console.log(result,'this is ')
     if (result) {
       await dispatch(slice.actions.getProduct(result.data));
       return true;

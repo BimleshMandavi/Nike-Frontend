@@ -8,23 +8,42 @@ function ProductItems() {
   const dispatch = useDispatch();
   const { product, pagination } = useSelector((state) => state.product);
   const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(12);
+  const [limit] = useState(12);
   const [loading, setLoading] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
+
+  //  Get search params
+  const [searchParams] = useSearchParams();
   const selecteItem = searchParams.get("type");
+  const [searchTexted] = useSearchParams();
+  const searchedItem = searchTexted.get("q");
+  console.log("Search Q:", searchedItem);
 
   const handleChangePage = (event, value) => {
     setPage(value);
   };
 
+  const [filters, setFiltes] = useState({});
+
+  useEffect(() => {
+    if (selecteItem) {
+      setFiltes({
+        ...filters,
+        ["title.longTitle"]: { $regex: selecteItem, $options: "i" },
+      });
+    } else if (searchedItem) {
+      setFiltes({
+        ...filters,
+        ["category"]: { $regex: searchedItem, $options: "i" },
+      });
+    }
+  }, [selecteItem, searchedItem]);
+
+  console.log("filter", filters);
+
   const handleFetchProducts = async () => {
     try {
       setLoading(true);
-      let result = await dispatch(
-        getProduct(page, limit, {
-          "title.longTitle": { $regex: selecteItem, $options: "i" },
-        })
-      );
+      let result = await dispatch(getProduct(page, limit, filters));
       if (result) {
         setLoading(false);
         return true;
@@ -40,7 +59,7 @@ function ProductItems() {
 
   useEffect(() => {
     handleFetchProducts();
-  }, [page, limit, selecteItem]);
+  }, [page, limit, selecteItem, filters]);
 
   return (
     <div

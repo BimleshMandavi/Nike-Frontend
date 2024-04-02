@@ -146,7 +146,7 @@ export default function TemporaryDrawer() {
                             className="text-black center p-0 flex w-[230px]"
                           >
                             <LuUser className="flex lg:hidden text-2xl text-black" />
-                            <span className="pl-4">Hi, {user.name}</span>
+                            <span className="pl-4">Hi, {user.firstName}</span>
                           </div>
                         </div>
                       </Box>

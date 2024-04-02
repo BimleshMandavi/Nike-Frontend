@@ -3,7 +3,9 @@ import axios from "axios";
 class ProductApi {
   async getProduct(page, limit, filter) {
     let obj = {
-      query: filter,
+      query: {
+        $and : [filter ? filter : {}]
+      },
       options: {
         collation: "",
         sort: { name: 1 },

@@ -17,8 +17,22 @@ import BrandBox from "./CheckBoxes/BrandBox";
 import SportsBox from "./CheckBoxes/SportsBox";
 import IconBox from "./CheckBoxes/IconBox";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const ProductSider = () => {
+  const [selectedSportValues, setSelectedSportValues] = useState([]);
+  const [selectedColourValues, setSelectedColourValues] = useState([]);
+
+  console.log("selected Colour Values in parent :", selectedColourValues);
+
+  console.log("sport values in productSider", selectedSportValues);
+
+  const handleSelectedSportValuesChange = (values) => {
+    setSelectedSportValues(values);
+  };
+  const handleSelectedColourValuesChange = (values) => {
+    setSelectedColourValues(values);
+  };
   return (
     <div className="product-accordition">
       <div
@@ -83,10 +97,7 @@ const ProductSider = () => {
               </AccordionSummary>
               <AccordionDetails>
                 <FormGroup>
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked />}
-                    label="Boys"
-                  />
+                  <FormControlLabel control={<Checkbox />} label="Boys" />
                   <FormControlLabel control={<Checkbox />} label="Girls" />
                 </FormGroup>
               </AccordionDetails>
@@ -117,7 +128,11 @@ const ProductSider = () => {
               </AccordionSummary>
               <AccordionDetails>
                 <div>
-                  <ColorCheckboxes />
+                  <ColorCheckboxes
+                    onSelectedColourValuesChange={
+                      handleSelectedColourValuesChange
+                    }
+                  />
                 </div>
               </AccordionDetails>
             </Accordion>
@@ -132,7 +147,9 @@ const ProductSider = () => {
                 Sports
               </AccordionSummary>
               <AccordionDetails>
-                <SportsBox />
+                <SportsBox
+                  onSelectedSportValuesChange={handleSelectedSportValuesChange}
+                />
               </AccordionDetails>
             </Accordion>
           </div>

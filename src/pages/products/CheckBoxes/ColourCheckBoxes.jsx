@@ -1,44 +1,47 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
-import { useDispatch } from "react-redux";
-import { getProduct } from "../../../redux/slices/productSlice";
 
-const ColorCheckboxes = () => {
-  const dispatch = useDispatch();
-  const [checkedValue, setCheckedValue] = useState("");
+import PropTypes from "prop-types";
+
+const ColorCheckboxes = ({ onSelectedColourValuesChange }) => {
+  const [checkedValue, setCheckedValue] = useState([]);
+
+  
+  console.log("checked colour", checkedValue);
 
   const handleCheckboxChange = (value) => {
-    if (value === checkedValue) {
-      setCheckedValue("");
+    if (checkedValue.includes(value)) {
+      setCheckedValue(checkedValue.filter((item) => item !== value));
     } else {
-      setCheckedValue(value);
+      setCheckedValue([...checkedValue, value]);
     }
+    onSelectedColourValuesChange(checkedValue);
   };
 
-  const handleFetchProducts = async () => {
-    let result = await dispatch(
-      getProduct(1, 12, {
-        subCategory: { $regex: checkedValue, $options: "i" },
-      })
-    );
-    if (result) {
-      return true;
-    }
-  };
+  // const handleFetchProducts = async () => {
+  //   let result = await dispatch(
+  //     getProduct(1, 12, {
+  //       subCategory: { $regex: checkedValue, $options: "i" },
+  //     })
+  //   );
+  //   if (result) {
+  //     return true;
+  //   }
+  // };
 
-  useEffect(() => {
-    handleFetchProducts();
-  }, [checkedValue]);
+  // useEffect(() => {
+  //   handleFetchProducts();
+  // }, [checkedValue]);
 
   return (
     <FormGroup>
       <FormControlLabel
         control={
           <Checkbox
-            checked={checkedValue === "red"}
-            onChange={() => handleCheckboxChange("red")}
+            checked={checkedValue.includes("Red")}
+            onChange={() => handleCheckboxChange("Red")}
           />
         }
         label="Red"
@@ -46,7 +49,7 @@ const ColorCheckboxes = () => {
       <FormControlLabel
         control={
           <Checkbox
-            checked={checkedValue === "blue"}
+            checked={checkedValue.includes("blue")}
             onChange={() => handleCheckboxChange("blue")}
           />
         }
@@ -55,7 +58,7 @@ const ColorCheckboxes = () => {
       <FormControlLabel
         control={
           <Checkbox
-            checked={checkedValue === "green"}
+            checked={checkedValue.includes("green")}
             onChange={() => handleCheckboxChange("green")}
           />
         }
@@ -64,7 +67,7 @@ const ColorCheckboxes = () => {
       <FormControlLabel
         control={
           <Checkbox
-            checked={checkedValue === "black"}
+            checked={checkedValue.includes("black")}
             onChange={() => handleCheckboxChange("black")}
           />
         }
@@ -73,7 +76,7 @@ const ColorCheckboxes = () => {
       <FormControlLabel
         control={
           <Checkbox
-            checked={checkedValue === "white"}
+            checked={checkedValue.includes("white")}
             onChange={() => handleCheckboxChange("white")}
           />
         }
@@ -82,7 +85,7 @@ const ColorCheckboxes = () => {
       <FormControlLabel
         control={
           <Checkbox
-            checked={checkedValue === "pink"}
+            checked={checkedValue.includes("pink")}
             onChange={() => handleCheckboxChange("pink")}
           />
         }
@@ -90,6 +93,10 @@ const ColorCheckboxes = () => {
       />
     </FormGroup>
   );
+};
+
+ColorCheckboxes.propTypes = {
+  onSelectedColourValuesChange: PropTypes.func.isRequired,
 };
 
 export default ColorCheckboxes;
