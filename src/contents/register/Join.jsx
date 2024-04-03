@@ -21,7 +21,7 @@ const Join = () => {
     onSubmit: async (values, action) => {
       const { firstName, lastName, email, password } = values;
       const data = { firstName, lastName, email, password };
-      console.log("user data",data);
+      console.log("user data", data);
       let result = await dispatch(register(data));
       console.log(result);
       if (result) {
@@ -34,32 +34,34 @@ const Join = () => {
     },
   });
 
+  const loginWithGoogle = () => {
+    window.open(`http://localhost:5003/auth/google`, "_self");
+  };
+
   return (
     <div
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "60vh",
-        margin: "60px 0",
+        height: "90vh",
+        margin: "40px 0",
       }}
-      className="px-[30px] pt-6"
+      className="px-[30px] flex-col"
     >
       <form onSubmit={formik.handleSubmit}>
         <Box
           className="Main_box"
           sx={{ width: { lg: "460px", md: "460px", sm: "460px", xs: "100%" } }}
         >
-          <Box
-            className="Logo"
-            sx={{ marginTop: "46px", height: "50px", width: "50px" }}
-          >
-            <SiNike
-              className="logo-01"
-              sx={{ height: "50px", width: "50px" }}
-            />
-            <SiJordan />
-          </Box>
+          <div className="Logo flex my-8">
+            <div>
+              <SiNike className="logo-01 size-10" />
+            </div>
+            <div>
+              <SiJordan className="size-10" />
+            </div>
+          </div>
 
           <Box className="Headline">
             <Typography variant="h5">
@@ -152,11 +154,26 @@ const Join = () => {
                 cursor: "pointer",
               }}
             >
-              Submit
+              Sign Up
             </button>
           </Box>
         </Box>
       </form>
+      <button
+        style={{
+          color: "#ffff",
+          padding: "15px",
+          backgroundColor: "#4853f2",
+          borderRadius: "25px",
+          width: "20rem",
+          cursor: "pointer",
+          boxShadow: "2px black",
+        }}
+        className="bg-black text-white w-[30em] h-[110px]"
+        onClick={() => loginWithGoogle()}
+      >
+        Continue with Google
+      </button>
     </div>
   );
 };

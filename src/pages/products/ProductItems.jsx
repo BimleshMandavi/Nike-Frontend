@@ -22,18 +22,28 @@ function ProductItems() {
     setPage(value);
   };
 
-  const [filters, setFiltes] = useState({});
+  const [filters, setFilters] = useState({});
 
   useEffect(() => {
     if (selecteItem) {
-      setFiltes({
+      setFilters({
         ...filters,
-        ["title.longTitle"]: { $regex: selecteItem, $options: "i" },
+        $or: [
+          { "title.longTitle": { $regex: selecteItem, $options: "i" } },
+          { shortTitle: { $regex: selecteItem, $options: "i" } },
+          { category: { $regex: selecteItem, $options: "i" } },
+          { subCategory: { $regex: selecteItem, $options: "i" } },
+        ],
       });
     } else if (searchedItem) {
-      setFiltes({
+      setFilters({
         ...filters,
-        ["category"]: { $regex: searchedItem, $options: "i" },
+        $or: [
+          { "title.longTitle": { $regex: searchedItem, $options: "i" } },
+          { shortTitle: { $regex: searchedItem, $options: "i" } },
+          { category: { $regex: searchedItem, $options: "i" } },
+          { subCategory: { $regex: searchedItem, $options: "i" } },
+        ],
       });
     }
   }, [selecteItem, searchedItem]);

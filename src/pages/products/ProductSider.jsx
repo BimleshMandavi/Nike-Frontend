@@ -17,15 +17,18 @@ import BrandBox from "./CheckBoxes/BrandBox";
 import SportsBox from "./CheckBoxes/SportsBox";
 import IconBox from "./CheckBoxes/IconBox";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getProduct } from "../../redux/slices/productSlice";
 
 const ProductSider = () => {
+  const dispatch = useDispatch();
+  // const [filter, setFilter] = useState({});
   const [selectedSportValues, setSelectedSportValues] = useState([]);
   const [selectedColourValues, setSelectedColourValues] = useState([]);
-
-  console.log("selected Colour Values in parent :", selectedColourValues);
-
-  console.log("sport values in productSider", selectedSportValues);
+  const [selectedGenderValues, setSelectedGenderValues] = useState([]);
+  const [selectedBrandValues, setSelectedBrandValues] = useState([]);
+  const [selectedIconValues, setSelectedIconValues] = useState([]);
 
   const handleSelectedSportValuesChange = (values) => {
     setSelectedSportValues(values);
@@ -33,6 +36,66 @@ const ProductSider = () => {
   const handleSelectedColourValuesChange = (values) => {
     setSelectedColourValues(values);
   };
+  const handleSelectedGenderValuesChange = (values) => {
+    setSelectedGenderValues(values);
+  };
+  const handleSelectedBrandValuesChange = (values) => {
+    setSelectedBrandValues(values);
+  };
+  const handleSelectedIconValuesChange = (values) => {
+    setSelectedIconValues(values);
+  };
+
+  // const queryOptions = {
+  //   selectedSportValues,
+  //   selectedColourValues,
+  //   selectedGenderValues,
+  //   selectedBrandValues,
+  //   selectedIconValues,
+  // };
+
+  const handleFatchProducts = async () => {
+    try {
+      let query = {};
+
+      // Construct the query based on selected filter values
+      if (
+        selectedBrandValues.length > 0 ||
+        selectedSportValues.length > 0 ||
+        selectedGenderValues.length > 0 ||
+        selectedColourValues.length > 0 ||
+        selectedIconValues.length > 0
+      ) {
+        query = {
+          $or: [
+            { "title.longTitle": { $in: selectedBrandValues } },
+            { "title.longTitle": { $in: selectedSportValues } },
+            { "title.longTitle": { $in: selectedGenderValues } },
+            { subCategory: { $in: selectedColourValues } },
+            { "title.longTitle": { $in: selectedIconValues } },
+          ],
+        };
+      }
+
+      let result = await dispatch(getProduct(1, 12, query));
+      if (result) {
+        return true;
+      }
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+
+  useEffect(() => {
+    handleFatchProducts();
+  }, [
+    selectedBrandValues,
+    selectedColourValues,
+    selectedSportValues,
+    selectedGenderValues,
+    selectedIconValues,
+  ]);
+
   return (
     <div className="product-accordition">
       <div
@@ -82,7 +145,11 @@ const ProductSider = () => {
                 Gender
               </AccordionSummary>
               <AccordionDetails>
-                <GenderCheckBox />
+                <GenderCheckBox
+                  onSelectedGenderValuesChange={
+                    handleSelectedGenderValuesChange
+                  }
+                />
               </AccordionDetails>
             </Accordion>
           </div>
@@ -163,7 +230,9 @@ const ProductSider = () => {
                 Brand
               </AccordionSummary>
               <AccordionDetails>
-                <BrandBox />
+                <BrandBox
+                  onSelectedBrandValuesChange={handleSelectedBrandValuesChange}
+                />
               </AccordionDetails>
             </Accordion>
           </div>
@@ -177,7 +246,9 @@ const ProductSider = () => {
                 Icon
               </AccordionSummary>
               <AccordionDetails>
-                <IconBox />
+                <IconBox
+                  onSelectedIconValuesChange={handleSelectedIconValuesChange}
+                />
               </AccordionDetails>
             </Accordion>
           </div>

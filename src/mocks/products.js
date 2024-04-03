@@ -4,7 +4,7 @@ class ProductApi {
   async getProduct(page, limit, filter) {
     let obj = {
       query: {
-        $and : [filter ? filter : {}]
+        $or: [filter ? filter : {}],
       },
       options: {
         collation: "",
@@ -21,7 +21,6 @@ class ProductApi {
         forceCountFn: false,
         read: {},
         options: {},
-
         isCountOnly: false,
       },
     };

@@ -30,6 +30,9 @@ const SignUp = () => {
       }
     },
   });
+  const loginWithGoogle = () => {
+    window.open(`http://localhost:5003/auth/google`, "_self");
+  };
 
   return (
     <div
@@ -38,25 +41,22 @@ const SignUp = () => {
         justifyContent: "center",
         alignItems: "center",
         height: "60vh",
-        margin: "40px 0",
       }}
-      className="px-[30px] pt-6"
+      className="px-[50px] pt-6 flex-col mt-10"
     >
       <form onSubmit={formik.handleSubmit}>
         <Box
           className="Main_box"
           sx={{ width: { lg: "460px", md: "460px", sm: "460px", xs: "100%" } }}
         >
-          <Box
-            className="Logo"
-            sx={{ marginTop: "46px", height: "50px", width: "50px" }}
-          >
-            <SiNike
-              className="logo-01"
-              sx={{ height: "50px", width: "50px" }}
-            />
-            <SiJordan />
-          </Box>
+          <div className="Logo flex my-8">
+            <div>
+              <SiNike className="logo-01 size-10" />
+            </div>
+            <div>
+              <SiJordan className="size-10" />
+            </div>
+          </div>
 
           <Box className="Headline">
             <Typography variant="h5">
@@ -123,11 +123,26 @@ const SignUp = () => {
                 cursor: "pointer",
               }}
             >
-              Submit
+              Sign In
             </button>
           </Box>
         </Box>
       </form>
+      <button
+        style={{
+          color: "#ffff",
+          padding: "15px",
+          backgroundColor: "#4853f2",
+          borderRadius: "25px",
+          width: "20rem",
+          cursor: "pointer",
+          boxShadow: "2px black",
+        }}
+        className="bg-black text-white w-[30em] h-[110px]"
+        onClick={() => loginWithGoogle()}
+      >
+        Continue with Google
+      </button>
     </div>
   );
 };

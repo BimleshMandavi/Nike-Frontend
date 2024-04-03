@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 function SportsBox({ onSelectedSportValuesChange }) {
   const [selectedValues, setSelectedValues] = useState([]);
 
-  console.log("selected values :", selectedValues);
+  console.log("selected values in child:", selectedValues);
 
   // Function to handle checkbox change
   const handleCheckboxChange = (value) => {

@@ -5,35 +5,34 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { getProduct } from "../../../redux/slices/productSlice";
 
-function GenderCheckBox() {
-  const dispatch = useDispatch();
+import PropTypes from "prop-types";
+import { useState } from "react";
 
+function GenderCheckBox({ onSelectedGenderValuesChange }) {
   const [gender, setGender] = useState("");
 
   const handleGender = (event) => {
     const genderValue = event.target.value;
     setGender(genderValue);
+    onSelectedGenderValuesChange(gender);
   };
   console.log("Gender :", gender);
 
-  const fatchProducts = async () => {
-    let result = await dispatch(
-      getProduct(1, 12, {
-        "title.longTitle": { $regex: gender, $options: "i" },
-      })
-    );
-    if (result) {
-      return result;
-    }
-  };
+  // const fatchProducts = async () => {
+  //   let result = await dispatch(
+  //     getProduct(1, 12, {
+  //       "title.longTitle": { $regex: gender, $options: "i" },
+  //     })
+  //   );
+  //   if (result) {
+  //     return result;
+  //   }
+  // };
 
-  useEffect(() => {
-    fatchProducts();
-  }, [gender]);
+  // useEffect(() => {
+  //   fatchProducts();
+  // }, [gender]);
 
   return (
     <>
@@ -53,5 +52,9 @@ function GenderCheckBox() {
     </>
   );
 }
+
+GenderCheckBox.propTypes = {
+  onSelectedGenderValuesChange: PropTypes.func.isRequired,
+};
 
 export default GenderCheckBox;
