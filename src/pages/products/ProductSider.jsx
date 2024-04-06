@@ -69,9 +69,9 @@ const ProductSider = () => {
       ) {
         query = {
           $or: [
-            // {
-            //   "title.longTitle": { $regex: selectedBrandValues, $options: "i" },
-            // },
+            {
+              "title.longTitle": { $regex: selectedBrandValues, $options: "i" },
+            },
 
             {
               "title.longTitle": {
@@ -80,16 +80,16 @@ const ProductSider = () => {
               },
             },
             { subCategory: { $regex: selectedColourValues, $options: "i" } },
-            // {
-            //   "title.longTitle": { $regex: selectedIconValues, $options: "i" },
-            // },
-            // {
-            //   "title.longTitle": { $regex: selectedSportValues, $options: "i" },
-            // },
+            {
+              "title.longTitle": { $regex: selectedIconValues, $options: "i" },
+            },
+            {
+              "title.longTitle": { $regex: selectedSportValues, $options: "i" },
+            },
           ],
         };
       }
-
+        
       let result = await dispatch(getProduct(1, 12, query));
       if (result) {
         return true;
