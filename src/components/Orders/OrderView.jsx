@@ -1,6 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleOrder } from "../../redux/slices/orders";
+import { cencelOrder, getSingleOrder } from "../../redux/slices/orders";
 import { useEffect, useState } from "react";
 import UserNav from "../userPorfile/UserNav";
 import { getSingleProduct } from "../../redux/slices/productSlice";
@@ -58,6 +58,14 @@ const OrderView = () => {
     }
   };
 
+  const handleOrderCencel = async () => {
+    let result = await dispatch(cencelOrder(id));
+    if (result) {
+      console.log(result, "order cancelled");
+      return true;
+    }
+  };
+
   return (
     <div className="bg-[#f1f3f6] min-h-[100vh]">
       <div className="my-5 pt-5">
@@ -71,13 +79,13 @@ const OrderView = () => {
             <h3>{user?.lastName}</h3>
           </div>
           <h3 className="text-lg">{user?.email}</h3>
-          <h3 className="text-lg">{user?.address[0]?.phone}</h3>
-          <h3 className="text-lg">{user?.address[0]?.panNumber}</h3>
+          <h3 className="text-lg">{user?.address?.[0]?.phone}</h3>
+          <h3 className="text-lg">{user?.address?.[0]?.panNumber}</h3>
           <div className=" flex gap-2">
-            <p className="text-lg">{user?.address[0]?.zipcode}</p>,
-            <p className="text-lg"> {user?.address[0]?.city}</p>,
-            <p className="text-lg">{user?.address[0]?.state}</p>,
-            <p className="text-lg">{user?.address[0]?.locality}</p>
+            <p className="text-lg">{user?.address?.[0]?.zipcode}</p>,
+            <p className="text-lg"> {user?.address?.[0]?.city}</p>,
+            <p className="text-lg">{user?.address?.[0]?.state}</p>,
+            <p className="text-lg">{user?.address?.[0]?.locality}</p>
           </div>
         </div>
         <div className="ml-5 w-full">
@@ -86,7 +94,7 @@ const OrderView = () => {
       </div>
       <div className=" sm:flex sm:justify-center sm:flex-col">
         <div>
-          <div className=" w-full  py-8 sm:flex sm:justify-center">
+          <div className=" w-full  py-8 sm:flex sm:justify-evenly">
             <div className="orderDetails block sm:flex sm:w-[970px]">
               <Link
                 to={"/products"}
@@ -97,7 +105,7 @@ const OrderView = () => {
                   src={singleProduct.singleProduct.image}
                 />
               </Link>
-              <div className="descripotin sm:relative pl-4 pb-6 sm:pl-3">
+              <div className="descripotin sm:relative p-4  sm:ml-11">
                 <div className="title">
                   <p className="text-lg pt-3">
                     {singleProduct?.singleProduct?.title?.shortTitle}
@@ -113,8 +121,18 @@ const OrderView = () => {
                 <div className="pb-3">
                   (Order ID - {singleProduct.singleProduct.id})
                 </div>
-                <div className="sm:flex sm:justify-between flex-col">
-                  <div className="order_status ">{singleOrder.status}</div>
+                <div className="sm:flex sm:justify-between sm:mt-11">
+                  <div className="flex justify-between gap-3 mt-4">
+                    <div className="order_status ">{singleOrder.status}</div>
+                    <div className="order_status ">
+                      <button
+                        className="text-red-600 border-black"
+                        onClick={handleOrderCencel}
+                      >
+                        Cencel
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

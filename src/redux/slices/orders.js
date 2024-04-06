@@ -52,3 +52,13 @@ export const listOrders = (page, limit, id) => async (dispatch) => {
     return false;
   }
 };
+
+export const cencelOrder = (id) => async (dispatch) => {
+  let result = await ordersApi.cencelOrder(id);
+
+  if (result) {
+    console.log("cancelled Order", result);
+    await dispatch(slice.actions.cencelOrder(id));
+    return result;
+  }
+};

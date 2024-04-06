@@ -1,15 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { persistedReducer } from "./rootReducer";
-import { persistStore } from "redux-persist";
+import { rootReducer } from "./rootReducer";
+// import { persistStore } from "redux-persist";
 
 const store = configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
+  reducer: rootReducer,
 });
 
 export default store;
 
-export let persistor = persistStore(store);
+// export let persistor = persistStore(store);

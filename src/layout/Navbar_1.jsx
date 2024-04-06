@@ -34,6 +34,7 @@ const Navbar_1 = () => {
     console.log(result);
     if (result) {
       localStorage.removeItem("accessToken", "");
+      
       navigate("/");
       toast.success("Logout successful");
       return true;

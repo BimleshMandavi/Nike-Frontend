@@ -101,6 +101,24 @@ class CartApi {
   }
   async updateCart(id, data) {
     try {
+      // let data = {
+      //   query: { id, data },
+      //   options: {
+      //     collation: "",
+      //     sort: { name: 1 },
+      //     populate: "products.productId",
+      //     projection: "",
+      //     lean: false,
+      //     leanWithId: true,
+      //     pagination: true,
+      //     useEstimatedCount: false,
+      //     useCustomCountFn: false,
+      //     forceCountFn: false,
+      //     read: {},
+      //     options: {},
+      //   },
+      //   isCountOnly: false,
+      // };
       const response = await axios.put(
         `http://localhost:5003/userapp/cart/update/${id}`,
         data,

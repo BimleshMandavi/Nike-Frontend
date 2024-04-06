@@ -14,10 +14,7 @@ import {
 import { useDispatch } from "react-redux";
 import { getProduct } from "../../redux/slices/productSlice";
 import { useEffect } from "react";
-import GenderCheckBox from "./CheckBoxes/GenderCheckBox";
 import PriceFilletrBox from "./CheckBoxes/PriceFilletrBox";
-import ColourCheckBox from "./CheckBoxes/ColourCheckBoxes";
-import BrandBox from "./CheckBoxes/BrandBox";
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -158,9 +155,7 @@ export default function TemporaryDrawer() {
               </div>
               <div className="p-6">
                 <h3 className="text-2xl">Gender</h3>
-                <div className="border-b-2">
-                  <GenderCheckBox />
-                </div>
+                <div className="border-b-2"></div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl">Shop By Price</h3>
@@ -179,15 +174,11 @@ export default function TemporaryDrawer() {
               </div>
               <div className="p-6">
                 <h3 className="text-2xl">Colour</h3>
-                <div className="border-b-2">
-                  <ColourCheckBox />
-                </div>
+                <div className="border-b-2"></div>
               </div>
               <div>
                 <h3 className="text-2xl">Brand</h3>
-                <div>
-                  <BrandBox />
-                </div>
+                <div></div>
               </div>
 
               <div className=" w-full flex justify-around p-8 gap-3">

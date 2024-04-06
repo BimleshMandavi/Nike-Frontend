@@ -46,7 +46,7 @@ class OrdersApi {
     console.log("id", id);
     try {
       let data = {
-        query: { "userId": id },
+        query: { userId: id },
         options: {
           collation: "",
           sort: { name: 1 },
@@ -80,6 +80,25 @@ class OrdersApi {
       }
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async cencelOrder(id) {
+    try {
+      const response = await axios.delete(
+        `http://localhost:5003/userapp/order/soft-delete/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+      console.log("response in delete cart", response);
+      if (response.data.status === "SUCCESS") {
+        return response.data;
+      }
+    } catch (error) {
+      console.log("error", error);
     }
   }
 }

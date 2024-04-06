@@ -16,7 +16,6 @@ function ProductItems() {
   const selecteItem = searchParams.get("type");
   const [searchTexted] = useSearchParams();
   const searchedItem = searchTexted.get("q");
-  console.log("Search Q:", searchedItem);
 
   const handleChangePage = (event, value) => {
     setPage(value);
@@ -47,8 +46,6 @@ function ProductItems() {
       });
     }
   }, [selecteItem, searchedItem]);
-
-  console.log("filter", filters);
 
   const handleFetchProducts = async () => {
     try {

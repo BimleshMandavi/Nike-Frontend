@@ -17,8 +17,10 @@ const slice = createSlice({
         state.cartsItemcount = { ...action.payload.paginator };
       }
     },
-    deleteCart(state) {
-      state.cart = [];
+    deleteCart(state, action) {
+      let id = action.payload;
+      state.cart = state.cart.filter((item) => item.id !== id);
+      state.cartsItemcount.itemCount = state.cartsPaginator?.itemCount - 1;
     },
   },
 });
@@ -45,35 +47,32 @@ export const getCart = (data) => async () => {
   }
 };
 export const listCart =
-  (page, limit = "10", id) =>
+  (page, limit = "12", id) =>
   async (dispatch) => {
     const result = await cartApi.listCart(page, limit, id);
     if (result) {
-      // console.log("result in  cart slice",result)
       await dispatch(slice.actions.listCart(result.data));
-      // console.log("object")
       return result;
     } else {
       return false;
     }
   };
 
-export const deleteCart = (id) => async () => {
+export const deleteCart = (id) => async (dispatch) => {
   const result = await cartApi.deleteCart(id);
   if (result) {
     console.log("result in delete cart", result);
-    // await dispatch(slice.actions.deleteCart(result.data));
-
+    await dispatch(slice.actions.deleteCart(id));
     return result;
   } else {
     return false;
   }
 };
 
-export const updateCart = (id,data) => async () => {
-  const result = await cartApi.updateCart(id,data);
+export const updateCart = (id, data) => async () => {
+  const result = await cartApi.updateCart(id, data);
   if (result) {
-    console.log("upadate cart result", result);
+    // await dispatch(slice.actions.updateCart(result.data));
     return result;
   }
 };

@@ -12,19 +12,22 @@ import { Box, Button, Menu, MenuItem } from "@mui/material";
 import toast from "react-hot-toast";
 import { logout } from "../redux/slices/auth";
 import SearchToggle from "./SearchToggle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBox from "./SearchBox";
 import New_Fetured from "./ActionDrawers/New_Fetured";
 import Men from "./ActionDrawers/Men";
 import Women from "./ActionDrawers/Women";
 import Kids from "./ActionDrawers/Kids";
 import Sale from "./ActionDrawers/Sale";
+import { getCart, listCart } from "../redux/slices/cart";
 
 const Navbar_2 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
+  const {cartsItemcount} = useSelector((state) => state.cart);
+  console.log(cartsItemcount,'count')
 
   const handleProfile = () => {
     navigate("/profile");
@@ -35,6 +38,19 @@ const Navbar_2 = () => {
   const hanldeOrders = () => {
     navigate("/orders");
   };
+
+  const fetchCartList = async() => {
+    let result = await dispatch(listCart(1,10,user?.id))
+    if(result){
+      return true;
+    }else{
+      console.log(result)
+    }
+  }
+
+  useEffect(()=>{
+    fetchCartList()
+  },[])
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -120,7 +136,7 @@ const Navbar_2 = () => {
                       display: Object.keys(cart).length === 0 ? "none" : "flex",
                     }}
                   >
-                    {cart.length}
+                    {cartsItemcount?.itemCount}
                   </div>
                 </Link>
               </div>

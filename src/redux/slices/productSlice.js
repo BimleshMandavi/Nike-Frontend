@@ -24,7 +24,7 @@ const slice = createSlice({
 });
 
 export const getProduct =
-  (page, limit = 12, filter) =>
+  (page, limit = 12, filter={}) =>
   async (dispatch) => {
     const result = await productApi.getProduct(page, limit, filter);
     if (result) {

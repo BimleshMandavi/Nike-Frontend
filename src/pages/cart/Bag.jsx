@@ -10,6 +10,7 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 const Bag = () => {
   const dispatch = useDispatch();
   const [refresh, setRefresh] = useState(false);
+  const [load, setLoad] = useState(false);
 
   const [size, setSize] = useState(1);
   const { cart } = useSelector((state) => state.cart);
@@ -37,9 +38,12 @@ const Bag = () => {
   };
 
   const handleDel = async (id) => {
+    setLoad(true);
+    console.log("dlete");
     let data = await dispatch(deleteCart(id));
     console.log(data);
     if (data) {
+      setLoad(false);
       return true;
     } else {
       return false;
@@ -49,6 +53,7 @@ const Bag = () => {
   let subtotal = 0;
   let deliveryCoast = 1250;
   const id = cart && cart.length > 0 && cart[0] && cart[0]?.id;
+  console.log("id: ", id);
 
   for (let i of cart) {
     let price =
@@ -57,7 +62,8 @@ const Bag = () => {
   }
   let total = deliveryCoast + subtotal;
 
-  const handleQtyChange = async (event) => {
+  const handleQtyChange = async (event, productId) => {
+    console.log("e", event);
     const data = {
       products: [
         {
@@ -66,7 +72,7 @@ const Bag = () => {
         },
       ],
     };
-    let result = await dispatch(updateCart(id, data));
+    let result = await dispatch(updateCart(productId, data));
     if (result) {
       console.log("result", result);
       setRefresh(!refresh);
@@ -83,7 +89,7 @@ const Bag = () => {
   useEffect(() => {
     handleFetchListCart();
     fetchUser();
-  }, [refresh]);
+  }, [refresh, load]);
 
   return (
     <div className="bag-container pr-[35px]">
@@ -95,7 +101,7 @@ const Bag = () => {
       </div>
 
       <div className="pt-8  pb-10">
-        {cart && cart.length > 0 ? (
+        {cart && cart?.length > 0 ? (
           cart.map((data) => (
             <div className="bag-items pt-8 border-b-2 " key={data.id}>
               <div className="right-part">
@@ -155,8 +161,13 @@ const Bag = () => {
                             id="demo-select-small"
                             value={data?.products[0]?.qty}
                             label="Qty"
-                            name={data.id}
-                            onChange={handleQtyChange}
+                            name={data?.products[0]?.productId?.id}
+                            onChange={(event) =>
+                              handleQtyChange(
+                                event,
+                                data.products[0].productId.id
+                              )
+                            }
                           >
                             {qtyOptions.map((option) => (
                               <MenuItem key={option} value={option}>

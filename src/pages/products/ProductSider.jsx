@@ -7,15 +7,15 @@ import {
   AccordionSummary,
   Box,
   Checkbox,
+  FormControl,
   FormControlLabel,
   FormGroup,
+  FormLabel,
+  Radio,
+  RadioGroup,
 } from "@mui/material";
-import ColorCheckboxes from "./CheckBoxes/ColourCheckBoxes";
-import GenderCheckBox from "./CheckBoxes/GenderCheckBox";
+
 import PriceFilletrBox from "./CheckBoxes/PriceFilletrBox";
-import BrandBox from "./CheckBoxes/BrandBox";
-import SportsBox from "./CheckBoxes/SportsBox";
-import IconBox from "./CheckBoxes/IconBox";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -24,11 +24,19 @@ import { getProduct } from "../../redux/slices/productSlice";
 const ProductSider = () => {
   const dispatch = useDispatch();
   // const [filter, setFilter] = useState({});
-  const [selectedSportValues, setSelectedSportValues] = useState([]);
-  const [selectedColourValues, setSelectedColourValues] = useState([]);
-  const [selectedGenderValues, setSelectedGenderValues] = useState([]);
-  const [selectedBrandValues, setSelectedBrandValues] = useState([]);
-  const [selectedIconValues, setSelectedIconValues] = useState([]);
+  const [selectedSportValues, setSelectedSportValues] = useState("");
+  const [selectedColourValues, setSelectedColourValues] = useState("");
+  const [selectedGenderValues, setSelectedGenderValues] = useState("");
+  const [selectedBrandValues, setSelectedBrandValues] = useState("");
+  const [selectedIconValues, setSelectedIconValues] = useState("");
+  const [selectedKidsValues, setSelectedKidsValues] = useState("");
+
+  console.log("sport", selectedSportValues);
+  console.log("colour", selectedColourValues);
+  console.log("gender", selectedGenderValues);
+  console.log("brand", selectedBrandValues);
+  console.log("icon", selectedIconValues);
+  console.log("Kids", selectedKidsValues);
 
   const handleSelectedSportValuesChange = (values) => {
     setSelectedSportValues(values);
@@ -36,8 +44,8 @@ const ProductSider = () => {
   const handleSelectedColourValuesChange = (values) => {
     setSelectedColourValues(values);
   };
-  const handleSelectedGenderValuesChange = (values) => {
-    setSelectedGenderValues(values);
+  const handleSelectedGenderValuesChange = (event) => {
+    setSelectedGenderValues(event.target.value);
   };
   const handleSelectedBrandValuesChange = (values) => {
     setSelectedBrandValues(values);
@@ -45,20 +53,13 @@ const ProductSider = () => {
   const handleSelectedIconValuesChange = (values) => {
     setSelectedIconValues(values);
   };
-
-  // const queryOptions = {
-  //   selectedSportValues,
-  //   selectedColourValues,
-  //   selectedGenderValues,
-  //   selectedBrandValues,
-  //   selectedIconValues,
-  // };
+  const handleSelectedKidsValuesChange = (values) => {
+    setSelectedKidsValues(values);
+  };
 
   const handleFatchProducts = async () => {
     try {
       let query = {};
-
-      // Construct the query based on selected filter values
       if (
         selectedBrandValues.length > 0 ||
         selectedSportValues.length > 0 ||
@@ -68,11 +69,23 @@ const ProductSider = () => {
       ) {
         query = {
           $or: [
-            { "title.longTitle": { $in: selectedBrandValues } },
-            { "title.longTitle": { $in: selectedSportValues } },
-            { "title.longTitle": { $in: selectedGenderValues } },
-            { subCategory: { $in: selectedColourValues } },
-            { "title.longTitle": { $in: selectedIconValues } },
+            // {
+            //   "title.longTitle": { $regex: selectedBrandValues, $options: "i" },
+            // },
+
+            {
+              "title.longTitle": {
+                $regex: selectedGenderValues,
+                $options: "i",
+              },
+            },
+            { subCategory: { $regex: selectedColourValues, $options: "i" } },
+            // {
+            //   "title.longTitle": { $regex: selectedIconValues, $options: "i" },
+            // },
+            // {
+            //   "title.longTitle": { $regex: selectedSportValues, $options: "i" },
+            // },
           ],
         };
       }
@@ -145,11 +158,33 @@ const ProductSider = () => {
                 Gender
               </AccordionSummary>
               <AccordionDetails>
-                <GenderCheckBox
-                  onSelectedGenderValuesChange={
-                    handleSelectedGenderValuesChange
-                  }
-                />
+                <FormControl>
+                  <FormLabel id="demo-radio-buttons-group-label">
+                    Gender
+                  </FormLabel>
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    value={selectedGenderValues}
+                    onChange={handleSelectedGenderValuesChange}
+                    name="radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      value="Women"
+                      control={<Radio />}
+                      label="Female"
+                    />
+                    <FormControlLabel
+                      value="Men"
+                      control={<Radio />}
+                      label="Male"
+                    />
+                    <FormControlLabel
+                      value="unisex"
+                      control={<Radio />}
+                      label="Unisex"
+                    />
+                  </RadioGroup>
+                </FormControl>
               </AccordionDetails>
             </Accordion>
           </div>
@@ -164,8 +199,24 @@ const ProductSider = () => {
               </AccordionSummary>
               <AccordionDetails>
                 <FormGroup>
-                  <FormControlLabel control={<Checkbox />} label="Boys" />
-                  <FormControlLabel control={<Checkbox />} label="Girls" />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedKidsValues === "Boys"}
+                        onChange={() => handleSelectedKidsValuesChange("Boys")}
+                      />
+                    }
+                    label="Boys"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedKidsValues === "Girls"}
+                        onChange={() => handleSelectedKidsValuesChange("Girls")}
+                      />
+                    }
+                    label="Girls"
+                  />
                 </FormGroup>
               </AccordionDetails>
             </Accordion>
@@ -194,13 +245,72 @@ const ProductSider = () => {
                 Colour
               </AccordionSummary>
               <AccordionDetails>
-                <div>
-                  <ColorCheckboxes
-                    onSelectedColourValuesChange={
-                      handleSelectedColourValuesChange
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedColourValues === "Red"}
+                        onChange={() => handleSelectedColourValuesChange("Red")}
+                      />
                     }
+                    label="Red"
                   />
-                </div>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedColourValues === "blue"}
+                        onChange={() =>
+                          handleSelectedColourValuesChange("blue")
+                        }
+                      />
+                    }
+                    label="Blue"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedColourValues === "green"}
+                        onChange={() =>
+                          handleSelectedColourValuesChange("green")
+                        }
+                      />
+                    }
+                    label="Green"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedColourValues === "black"}
+                        onChange={() =>
+                          handleSelectedColourValuesChange("black")
+                        }
+                      />
+                    }
+                    label="Black"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedColourValues === "white"}
+                        onChange={() =>
+                          handleSelectedColourValuesChange("white")
+                        }
+                      />
+                    }
+                    label="White"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedColourValues === "pink"}
+                        onChange={() =>
+                          handleSelectedColourValuesChange("pink")
+                        }
+                      />
+                    }
+                    label="Pink"
+                  />
+                </FormGroup>
               </AccordionDetails>
             </Accordion>
           </div>
@@ -214,9 +324,146 @@ const ProductSider = () => {
                 Sports
               </AccordionSummary>
               <AccordionDetails>
-                <SportsBox
-                  onSelectedSportValuesChange={handleSelectedSportValuesChange}
-                />
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "LifeStyle"}
+                        onChange={() =>
+                          handleSelectedSportValuesChange("LifeStyle")
+                        }
+                      />
+                    }
+                    label="LifeStyle"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Running"}
+                        onChange={() =>
+                          handleSelectedSportValuesChange("Running")
+                        }
+                      />
+                    }
+                    label="Running"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Training Gym"}
+                        onChange={() =>
+                          handleSelectedSportValuesChange("Training & Gym")
+                        }
+                      />
+                    }
+                    label="Training & GYM"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Basketball"}
+                        onChange={() =>
+                          handleSelectedSportValuesChange("Basketball")
+                        }
+                      />
+                    }
+                    label="Basketball"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Football"}
+                        onChange={() =>
+                          handleSelectedSportValuesChange("Football")
+                        }
+                      />
+                    }
+                    label="Football"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Yoga"}
+                        onChange={() => handleSelectedSportValuesChange("Yoga")}
+                      />
+                    }
+                    label="Yoga"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Golf"}
+                        onChange={() => handleSelectedSportValuesChange("Golf")}
+                      />
+                    }
+                    label="Golf"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Skateboarding"}
+                        onChange={() =>
+                          handleSelectedSportValuesChange("Skateboarding")
+                        }
+                      />
+                    }
+                    label="Skateboarding"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Tennis"}
+                        onChange={() =>
+                          handleSelectedSportValuesChange("Tennis")
+                        }
+                      />
+                    }
+                    label="Tennis"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Althletics"}
+                        onChange={() =>
+                          handleSelectedSportValuesChange("Althletics")
+                        }
+                      />
+                    }
+                    label="Althletics"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Walking"}
+                        onChange={() =>
+                          handleSelectedSportValuesChange("Walking")
+                        }
+                      />
+                    }
+                    label="Walking"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedSportValues === "Dance"}
+                        onChange={() =>
+                          handleSelectedSportValuesChange("Dance")
+                        }
+                      />
+                    }
+                    label="Dance"
+                  />
+                </FormGroup>
               </AccordionDetails>
             </Accordion>
           </div>
@@ -230,9 +477,69 @@ const ProductSider = () => {
                 Brand
               </AccordionSummary>
               <AccordionDetails>
-                <BrandBox
-                  onSelectedBrandValuesChange={handleSelectedBrandValuesChange}
-                />
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedBrandValues === "Nike Sportswear"}
+                        onChange={() =>
+                          handleSelectedBrandValuesChange("Nike Sportswear")
+                        }
+                      />
+                    }
+                    label="Nike Sportswear"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    checked={selectedBrandValues === "Jordan"}
+                    onChange={() => handleSelectedBrandValuesChange("Jordan")}
+                    label="Jordan"
+                  />
+
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedBrandValues === "Nike By You"}
+                        onChange={() =>
+                          handleSelectedBrandValuesChange("Nike By You")
+                        }
+                      />
+                    }
+                    label="Nike By You"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedBrandValues === "NikeLab"}
+                        onChange={() =>
+                          handleSelectedBrandValuesChange("NikeLab")
+                        }
+                      />
+                    }
+                    label="NikeLab"
+                  />
+
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedBrandValues === "ACG"}
+                        onChange={() => handleSelectedBrandValuesChange("ACG")}
+                      />
+                    }
+                    label="ACG"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedBrandValues === "Nike Pro"}
+                        onChange={() =>
+                          handleSelectedBrandValuesChange("Nike Pro")
+                        }
+                      />
+                    }
+                    label="Nike Pro"
+                  />
+                </FormGroup>
               </AccordionDetails>
             </Accordion>
           </div>
@@ -246,9 +553,292 @@ const ProductSider = () => {
                 Icon
               </AccordionSummary>
               <AccordionDetails>
-                <IconBox
-                  onSelectedIconValuesChange={handleSelectedIconValuesChange}
-                />
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Air Force 1"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Air Force 1")
+                        }
+                      />
+                    }
+                    label="Air Force 1"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Air Max"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Air Max")
+                        }
+                      />
+                    }
+                    label="Air Max"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Blazer"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Blazer")
+                        }
+                      />
+                    }
+                    label="Blazer"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Blasilia"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Blasilia")
+                        }
+                      />
+                    }
+                    label="Blasilia"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Cortez"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Cortez")
+                        }
+                      />
+                    }
+                    label="Cortez"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Element"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Element")
+                        }
+                      />
+                    }
+                    label="Element"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Huarache"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Huarache")
+                        }
+                      />
+                    }
+                    label="Huarache"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Mercurial"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Mercurial")
+                        }
+                      />
+                    }
+                    label="Mercurial"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Melton"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Melton")
+                        }
+                      />
+                    }
+                    label="Melton"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Miler"}
+                        onChange={() => handleSelectedIconValuesChange("Miler")}
+                      />
+                    }
+                    label="Miler"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Nike Dunk"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Nike Dunk")
+                        }
+                      />
+                    }
+                    label="Nike Dunk"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Pegasus"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Pegasus")
+                        }
+                      />
+                    }
+                    label="Pegasus"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Phantom"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Phantom")
+                        }
+                      />
+                    }
+                    label="Phantom"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Structure"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Structure")
+                        }
+                      />
+                    }
+                    label="Structure"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Sunray"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Sunray")
+                        }
+                      />
+                    }
+                    label="Sunray"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Terra Kiger"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Terra Kiger")
+                        }
+                      />
+                    }
+                    label="Terra Kiger"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Tiempo"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Tiempo")
+                        }
+                      />
+                    }
+                    label="Tiempo"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Vomero"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Vomero")
+                        }
+                      />
+                    }
+                    label="Vomero"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Windhorse"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Windhorse")
+                        }
+                      />
+                    }
+                    label="Windhorse"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Windrunner"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Windrunner")
+                        }
+                      />
+                    }
+                    label="Windrunner"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Nike SuperRep"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Nike SuperRep")
+                        }
+                      />
+                    }
+                    label="Nike SuperRep"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Alphafly"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Alphafly")
+                        }
+                      />
+                    }
+                    label="Alphafly"
+                  />
+                </FormGroup>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Nike Vaporfly"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Nike Vaporfly")
+                        }
+                      />
+                    }
+                    label="Nike Vaporfly"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={selectedIconValues === "Nike ZoomFly"}
+                        onChange={() =>
+                          handleSelectedIconValuesChange("Nike ZoomFly")
+                        }
+                      />
+                    }
+                    label="Nike ZoomFly"
+                  />
+                </FormGroup>
               </AccordionDetails>
             </Accordion>
           </div>
