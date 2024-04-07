@@ -13,10 +13,14 @@ import {
 } from "@mui/material";
 import { LiaBellSlash } from "react-icons/lia";
 import StarIcon from "@mui/icons-material/Star";
-import { createCart } from "../../redux/slices/cart";
+import { createCart, updateCart } from "../../redux/slices/cart";
 import toast from "react-hot-toast";
 
 const PreBag = () => {
+  const { cart } = useSelector((state) => state.cart);
+
+  console.log("cart data", cart);
+
   const labels = {
     0.5: "Useless",
     1: "Useless+",
@@ -37,12 +41,9 @@ const PreBag = () => {
   const [value, setValue] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
   const { id } = useParams();
- 
   const navigate = useNavigate();
   const [product, setProduct] = useState();
-
   const { user } = useSelector((state) => state.auth);
-  console.log("user", user);
   const handleAddtoFav = () => {
     navigate("/favourites");
   };
@@ -57,12 +58,27 @@ const PreBag = () => {
           },
         ],
       };
-      console.log("data", data);
-      const result = await dispatch(createCart(data));
-      console.log("result", result);
-      if (result.status === "SUCCESS") {
-        toast.success("Your Product is added to Cart");
-        navigate("/cart");
+     
+      let upDateCart =
+        cart &&
+        cart.length > 0 &&
+        cart.find((crt) => crt?.products[0]?.productId?.id === productId);
+      console.log("upDateCart", upDateCart);
+      if (upDateCart) {
+         const id = cart[0].id;
+        const result = await dispatch(updateCart(id, data));
+        console.log("result", result);
+        if (result.status === "SUCCESS") {
+          toast.success("Your Product is updated to Cart");
+          navigate("/cart");
+        }
+      } else {
+        const result = await dispatch(createCart(data));
+        console.log("result", result);
+        if (result.status === "SUCCESS") {
+          toast.success("Your Product is added to Cart");
+          navigate("/cart");
+        }
       }
     } catch (error) {
       console.log("error", error);

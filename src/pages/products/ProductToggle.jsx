@@ -8,12 +8,14 @@ import {
   Checkbox,
   FormControl,
   FormControlLabel,
+  FormGroup,
+  FormLabel,
   Radio,
   RadioGroup,
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { getProduct } from "../../redux/slices/productSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PriceFilletrBox from "./CheckBoxes/PriceFilletrBox";
 
 export default function TemporaryDrawer() {
@@ -44,43 +46,60 @@ export default function TemporaryDrawer() {
 
   const dispatch = useDispatch();
 
-  const [filters, setFilters] = React.useState({
-    sortBy: "featured", // Default value for sorting
-    gender: [], // Array to hold selected genders
-    price: [], // Array to hold selected price range
-    sale: false, // Boolean to track if sale checkbox is checked
-    color: [], // Array to hold selected colors
-    brand: [], // Array to hold selected brands
-  });
+  const [selectedColourValues, setSelectedColourValues] = useState("");
+  const [selectedGenderValues, setSelectedGenderValues] = useState("");
+  const [selectedBrandValues, setSelectedBrandValues] = useState("");
 
-  const handleApplyFilters = () => {
-    console.log("Applied Filters:", filters);
-
-    dispatch(getProducts(1, 12, filters));
+  const handleSelectedColourValuesChange = (values) => {
+    setSelectedColourValues(values);
+  };
+  const handleSelectedGenderValuesChange = (event) => {
+    setSelectedGenderValues(event.target.value);
+  };
+  const handleSelectedBrandValuesChange = (values) => {
+    setSelectedBrandValues(values);
   };
 
-  const handleClearFilters = () => {
-    // Reset all filter state variables to their initial/default values
-    setFilters({
-      sortBy: "featured",
-      gender: [],
-      price: [],
-      sale: false,
-      color: [],
-      brand: [],
-    });
-  };
+  const handleFatchProducts = async () => {
+    try {
+      let query = {};
+      if (
+        selectedBrandValues.length > 0 ||
+        selectedGenderValues.length > 0 ||
+        selectedColourValues.length > 0
+      ) {
+        query = {
+          $or: [
+            {
+              "title.longTitle": {
+                $regex: selectedBrandValues,
+                $options: "i",
+              },
+            },
 
-  const fatchProducts = async () => {
-    let result = await dispatch(getProduct(1, 12));
-    if (result) {
-      return result;
+            {
+              "title.longTitle": {
+                $regex: selectedGenderValues,
+                $options: "i",
+              },
+            },
+            { subCategory: { $regex: selectedColourValues, $options: "i" } },
+          ],
+        };
+      }
+
+      let result = await dispatch(getProduct(1, 12, query));
+      if (result) {
+        return true;
+      }
+    } catch (error) {
+      console.log("Error", error);
     }
   };
 
   useEffect(() => {
-    fatchProducts();
-  }, []);
+    handleFatchProducts();
+  }, [selectedBrandValues, selectedColourValues, selectedGenderValues]);
 
   return (
     <div className="w-[30%] p-0 m-0 flex lg:hidden">
@@ -155,7 +174,33 @@ export default function TemporaryDrawer() {
               </div>
               <div className="p-6">
                 <h3 className="text-2xl">Gender</h3>
-                <div className="border-b-2"></div>
+                <div className="border-b-2">
+                  <FormControl>
+                    <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
+                    <RadioGroup
+                      aria-labelledby="demo-radio-buttons-group-label"
+                      value={selectedGenderValues}
+                      onChange={handleSelectedGenderValuesChange}
+                      name="radio-buttons-group"
+                    >
+                      <FormControlLabel
+                        value="Women"
+                        control={<Radio />}
+                        label="Female"
+                      />
+                      <FormControlLabel
+                        value="Men"
+                        control={<Radio />}
+                        label="Male"
+                      />
+                      <FormControlLabel
+                        value="unisex"
+                        control={<Radio />}
+                        label="Unisex"
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </div>
               </div>
               <div className="p-6">
                 <h3 className="text-2xl">Shop By Price</h3>
@@ -174,11 +219,146 @@ export default function TemporaryDrawer() {
               </div>
               <div className="p-6">
                 <h3 className="text-2xl">Colour</h3>
-                <div className="border-b-2"></div>
+                <div className="border-b-2">
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedColourValues === "Red"}
+                          onChange={() =>
+                            handleSelectedColourValuesChange("Red")
+                          }
+                        />
+                      }
+                      label="Red"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedColourValues === "blue"}
+                          onChange={() =>
+                            handleSelectedColourValuesChange("blue")
+                          }
+                        />
+                      }
+                      label="Blue"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedColourValues === "green"}
+                          onChange={() =>
+                            handleSelectedColourValuesChange("green")
+                          }
+                        />
+                      }
+                      label="Green"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedColourValues === "black"}
+                          onChange={() =>
+                            handleSelectedColourValuesChange("black")
+                          }
+                        />
+                      }
+                      label="Black"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedColourValues === "white"}
+                          onChange={() =>
+                            handleSelectedColourValuesChange("white")
+                          }
+                        />
+                      }
+                      label="White"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedColourValues === "pink"}
+                          onChange={() =>
+                            handleSelectedColourValuesChange("pink")
+                          }
+                        />
+                      }
+                      label="Pink"
+                    />
+                  </FormGroup>
+                </div>
               </div>
               <div>
                 <h3 className="text-2xl">Brand</h3>
-                <div></div>
+                <div>
+                  <FormGroup>
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedBrandValues === "Nike Sportswear"}
+                          onChange={() =>
+                            handleSelectedBrandValuesChange("Nike Sportswear")
+                          }
+                        />
+                      }
+                      label="Nike Sportswear"
+                    />
+                    <FormControlLabel
+                      control={<Checkbox />}
+                      checked={selectedBrandValues === "Jordan"}
+                      onChange={() => handleSelectedBrandValuesChange("Jordan")}
+                      label="Jordan"
+                    />
+
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedBrandValues === "Nike By You"}
+                          onChange={() =>
+                            handleSelectedBrandValuesChange("Nike By You")
+                          }
+                        />
+                      }
+                      label="Nike By You"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedBrandValues === "NikeLab"}
+                          onChange={() =>
+                            handleSelectedBrandValuesChange("NikeLab")
+                          }
+                        />
+                      }
+                      label="NikeLab"
+                    />
+
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedBrandValues === "ACG"}
+                          onChange={() =>
+                            handleSelectedBrandValuesChange("ACG")
+                          }
+                        />
+                      }
+                      label="ACG"
+                    />
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={selectedBrandValues === "Nike Pro"}
+                          onChange={() =>
+                            handleSelectedBrandValuesChange("Nike Pro")
+                          }
+                        />
+                      }
+                      label="Nike Pro"
+                    />
+                  </FormGroup>
+                </div>
               </div>
 
               <div className=" w-full flex justify-around p-8 gap-3">
@@ -191,7 +371,6 @@ export default function TemporaryDrawer() {
                       cursor: "pointer",
                       border: "2px solid grey",
                     }}
-                    onClick={handleClearFilters}
                   >
                     Clear
                   </button>
@@ -206,7 +385,6 @@ export default function TemporaryDrawer() {
                       borderRadius: "30px",
                       cursor: "pointer",
                     }}
-                    onClick={handleApplyFilters}
                   >
                     Apply
                   </button>

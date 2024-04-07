@@ -19,15 +19,15 @@ import Men from "./ActionDrawers/Men";
 import Women from "./ActionDrawers/Women";
 import Kids from "./ActionDrawers/Kids";
 import Sale from "./ActionDrawers/Sale";
-import { getCart, listCart } from "../redux/slices/cart";
+import { listCart } from "../redux/slices/cart";
 
 const Navbar_2 = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { cart } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.auth);
-  const {cartsItemcount} = useSelector((state) => state.cart);
-  console.log(cartsItemcount,'count')
+  const { cartsItemcount } = useSelector((state) => state.cart);
+  console.log(cartsItemcount, "count");
 
   const handleProfile = () => {
     navigate("/profile");
@@ -39,18 +39,18 @@ const Navbar_2 = () => {
     navigate("/orders");
   };
 
-  const fetchCartList = async() => {
-    let result = await dispatch(listCart(1,10,user?.id))
-    if(result){
+  const fetchCartList = async () => {
+    let result = await dispatch(listCart(1, 12, user?.id));
+    if (result) {
       return true;
-    }else{
-      console.log(result)
+    } else {
+      console.log(result);
     }
-  }
+  };
 
-  useEffect(()=>{
-    fetchCartList()
-  },[])
+  useEffect(() => {
+    fetchCartList();
+  }, []);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
