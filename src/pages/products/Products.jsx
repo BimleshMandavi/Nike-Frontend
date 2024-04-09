@@ -7,7 +7,7 @@ import ProductHeader from "./ProductHeader";
 const Products = () => {
   return (
     <div
-      className="product-main-container overflow-x-hidden"
+      className="product-main-container h-[85vh] overflow-x-hidden"
       style={{ marginTop: "1rem", position: "fix" }}
     >
       <ProductHeader />

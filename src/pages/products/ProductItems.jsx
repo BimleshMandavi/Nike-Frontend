@@ -29,9 +29,10 @@ function ProductItems() {
         ...filters,
         $or: [
           { "title.longTitle": { $regex: selecteItem, $options: "i" } },
-          { shortTitle: { $regex: selecteItem, $options: "i" } },
+          { "title.shortTitle": { $regex: selecteItem, $options: "i" } },
           { category: { $regex: selecteItem, $options: "i" } },
           { subCategory: { $regex: selecteItem, $options: "i" } },
+          { colour: { $regex: selecteItem, $options: "i" } },
         ],
       });
     } else if (searchedItem) {
@@ -39,9 +40,10 @@ function ProductItems() {
         ...filters,
         $or: [
           { "title.longTitle": { $regex: searchedItem, $options: "i" } },
-          { shortTitle: { $regex: searchedItem, $options: "i" } },
+          { "title.shortTitle": { $regex: searchedItem, $options: "i" } },
           { category: { $regex: searchedItem, $options: "i" } },
           { subCategory: { $regex: searchedItem, $options: "i" } },
+          { colour: { $regex: searchedItem, $options: "i" } },
         ],
       });
     }
@@ -87,7 +89,10 @@ function ProductItems() {
             >
               {loading ? (
                 <div className="flex w-full h-[50vh] justify-center items-center">
-                  <CircularProgress className="size-10" />
+                  <div className="flex gap-10">
+                    <CircularProgress className="size-10" />
+                    <p>Loading...</p>
+                  </div>
                 </div>
               ) : (
                 <div>

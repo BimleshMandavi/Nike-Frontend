@@ -44,6 +44,9 @@ const Navbar_1 = () => {
   const handleProfile = () => {
     navigate("/profile");
   };
+  const handleFavouret =()=>{
+    navigate("/favourites");
+  }
 
   const hanldeOrders = () => {
     navigate("/orders");
@@ -122,7 +125,7 @@ const Navbar_1 = () => {
                   <span onClick={hanldeOrders}>Orders</span>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                  <span onClick={handleProfile}>Favorites</span>
+                  <span onClick={handleFavouret}>Favorites</span>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
                   <span onClick={handleProfile}>Inbox</span>

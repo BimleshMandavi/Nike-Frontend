@@ -11,7 +11,7 @@ import AccordionDetails from "@mui/joy/AccordionDetails";
 import AccordionSummary from "@mui/joy/AccordionSummary";
 import { LuUser } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { IoBagOutline } from "react-icons/io5";
 import { FiShoppingBag } from "react-icons/fi";
 import { PiStorefront } from "react-icons/pi";
@@ -190,41 +190,653 @@ export default function TemporaryDrawer() {
                 <Accordion>
                   <AccordionSummary>New and Featured</AccordionSummary>
                   <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                    <Accordion>
+                      <AccordionSummary>New & Featured</AccordionSummary>
+                      <AccordionDetails>
+                        <div className="cursor-pointer">
+                          {[
+                            "New Arrivals",
+                            "Latest Shoes",
+                            "Latest Clothing",
+                            "SNKRS Lounch calender",
+                            "Get Em in SNKRS",
+                            "Bestsellers",
+                            "Member Exclusive",
+                            "Top Kick under 8000.00",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Shop Icons</AccordionSummary>
+                      <AccordionDetails>
+                        <div className="cursor-pointer">
+                          {[
+                            "Air Force 1",
+                            "Air Jordan 1",
+                            "Air Max",
+                            "Dunk",
+                            "Cortez",
+                            "Blazer",
+                            "Pegasus",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>New For Men</AccordionSummary>
+                      <AccordionDetails>
+                        <div className="cursor-pointer">
+                          {[
+                            "Shoes",
+                            "Clothing",
+                            "Accessories",
+                            "SNKRS Lounch calender",
+                            "Shop All New",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>New For Women</AccordionSummary>
+                      <AccordionDetails>
+                        <div className="cursor-pointer">
+                          {[
+                            "Shoes",
+                            "Clothing",
+                            "Accessories",
+                            "SNKRS Lounch calender",
+                            "Shop All New",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>New For Kids</AccordionSummary>
+                      <AccordionDetails>
+                        <div className="cursor-pointer">
+                          {[
+                            "Shoes",
+                            "Clothing",
+                            "Accessories",
+                            "SNKRS Lounch calender",
+                            "Shop All New",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
                   </AccordionDetails>
                 </Accordion>
                 <Accordion>
                   <AccordionSummary>Men</AccordionSummary>
                   <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                    <Accordion>
+                      <AccordionSummary>Featured</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "New Release",
+                            "Bestsellers",
+                            "Member Exclusive",
+                            "Jordan",
+                            "Retro Runnnig",
+                            "Bestsellers",
+                            "Custom With Nike By You",
+                            "Basketball",
+                            "Sale",
+                            "Running Shoes Finder",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Shoes</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "All Shoes",
+                            "Newest Sneakers",
+                            "Jordan",
+                            "Lifestyle",
+                            "Running",
+                            "Bestsellers",
+                            "Gym and Training",
+                            "Basketball",
+                            "Football",
+                            "Sandals and Slides",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Clothing</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "All Clothing",
+                            "Top and T-shirt",
+                            "Shorts",
+                            "Pants and Leggings",
+                            "Hoodie and Sweatshirts",
+                            "Jackets and Glites",
+                            "Jordan",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Shop By Sport</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "Running",
+                            "Basketball",
+                            "Football",
+                            "Golf",
+                            "Tennis",
+                            "Gym and Training",
+                            "Yoga",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  text no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
                   </AccordionDetails>
                 </Accordion>
                 <Accordion>
                   <AccordionSummary>Women</AccordionSummary>
                   <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                    <Accordion>
+                      <AccordionSummary>Featured</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "New Release",
+                            "Bestsellers",
+                            "Member Exclusive",
+                            "Jordan",
+                            "Retro Runnnig",
+                            "Bestsellers",
+                            "Custom With Nike By You",
+                            "Basketball",
+                            "Sale",
+                            "Running Shoes Finder",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Shoes</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "All Shoes",
+                            "Newest Sneakers",
+                            "Jordan",
+                            "Lifestyle",
+                            "Running",
+                            "Bestsellers",
+                            "Gym and Training",
+                            "Basketball",
+                            "Football",
+                            "Sandals and Slides",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Clothing</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "All Clothing",
+                            "Top and T-shirt",
+                            "Shorts",
+                            "Pants and Leggings",
+                            "Hoodie and Sweatshirts",
+                            "Jackets and Glites",
+                            "Jordan",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Shop By Sport</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "Running",
+                            "Basketball",
+                            "Football",
+                            "Golf",
+                            "Tennis",
+                            "Gym and Training",
+                            "Yoga",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  text no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
                   </AccordionDetails>
                 </Accordion>
                 <Accordion>
                   <AccordionSummary>Kids</AccordionSummary>
                   <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                    <Accordion>
+                      <AccordionSummary>Featured</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "New Releases",
+                            "Newest Sneakers",
+                            "Easy On & Off",
+                            "Bestsellers",
+                            "Member Exclusive",
+                            "Jordan",
+                            "Last Sizes Available",
+                            "Bags and Bagpaks",
+                            "Sale",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Boy's Shoes</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "All Shoes",
+                            "Older Boys (7 - 14 years)",
+                            "Yunger Boys (4-7 Years)",
+                            "Babies and Tollders (0 - 4 Years)",
+                            "Lifestyle",
+                            "Jordan",
+                            "Running",
+                            "Basketball",
+                            "Football",
+                            "Sandals and Slides",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Girls Shoes</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "All Shoes",
+                            "Older Girls (7 - 14 years)",
+                            "Yunger Girls (4-7 Years)",
+                            "Babies and Tollders (0 - 4 Years)",
+                            "Lifestyle",
+                            "Jordan",
+                            "Running",
+                            "Basketball",
+                            "Football",
+                            "Sandals and Slides",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Kids By Age</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "Older Kids (7 - 14 years)",
+                            "Yunger Kids (4-7 Years)",
+                            "Babies and Tollders (0 - 4 Years)",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Shop By Sport</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "Football",
+                            "Running",
+                            "Basketball",
+                            "Gym and Training",
+                            "Tennis",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Boys Clothing</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "Tops and T-shirts",
+                            "Hoodies and Sweatshirts",
+                            "Pants and Leggings",
+                            "Shorts",
+                            "All Boys Clothing",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Girls Clothing</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "Tops and T-shirts",
+                            "Hoodies and Sweatshirts",
+                            "Sport Bras",
+                            "Pants and Leggings",
+                            "Shorts",
+                            "All Boys Clothing",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
                   </AccordionDetails>
                 </Accordion>
                 <Accordion>
                   <AccordionSummary>Sale</AccordionSummary>
                   <AccordionDetails>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
+                    <Accordion>
+                      <AccordionSummary>Sale</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {[
+                            "Shop All Sale",
+                            "Shoes Sale",
+                            "Clothing Sale",
+                            "Accessories & Equipment Sale",
+                          ].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Men's Sale</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {["Shoes", "Clothing"].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Women's Sale</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {["Shoes", "Clothing"].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
+                    <Accordion>
+                      <AccordionSummary>Kids's Sale</AccordionSummary>
+                      <AccordionDetails>
+                        <div>
+                          {["Shoes", "Clothing"].map((text, index) => (
+                            <Link
+                              className="flex  no-underline text-slate-500 hover:text-black pt-2"
+                              key={index}
+                              to={{
+                                pathname: "/products",
+                                search: `?type=${text}`,
+                              }}
+                            >
+                              <button>{text}</button>
+                            </Link>
+                          ))}
+                        </div>
+                      </AccordionDetails>
+                    </Accordion>
                   </AccordionDetails>
                 </Accordion>
               </AccordionGroup>

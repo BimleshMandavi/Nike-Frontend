@@ -30,34 +30,33 @@ const ProductSider = () => {
   const [selectedBrandValues, setSelectedBrandValues] = useState("");
   const [selectedIconValues, setSelectedIconValues] = useState("");
   const [selectedKidsValues, setSelectedKidsValues] = useState("");
-
-  console.log("sport", selectedSportValues);
-  console.log("colour", selectedColourValues);
-  console.log("gender", selectedGenderValues);
-  console.log("brand", selectedBrandValues);
-  console.log("icon", selectedIconValues);
-  console.log("Kids", selectedKidsValues);
+  const [query, setQuery] = useState([]);
 
   const handleSelectedSportValuesChange = (values) => {
     setSelectedSportValues(values);
   };
+
   const handleSelectedColourValuesChange = (values) => {
     setSelectedColourValues(values);
   };
+
   const handleSelectedGenderValuesChange = (event) => {
     setSelectedGenderValues(event.target.value);
   };
+
   const handleSelectedBrandValuesChange = (values) => {
     setSelectedBrandValues(values);
   };
+
   const handleSelectedIconValuesChange = (values) => {
     setSelectedIconValues(values);
   };
+
   const handleSelectedKidsValuesChange = (values) => {
     setSelectedKidsValues(values);
   };
 
-  const handleFatchProducts = async () => {
+  const handleFetchProducts = async () => {
     try {
       let query = {};
       if (
@@ -67,29 +66,51 @@ const ProductSider = () => {
         selectedColourValues.length > 0 ||
         selectedIconValues.length > 0
       ) {
-        query = {
-          $or: [
-            {
-              "title.longTitle": { $regex: selectedBrandValues, $options: "i" },
-            },
+        let orQuery = [];
 
-            {
-              "title.longTitle": {
-                $regex: selectedGenderValues,
-                $options: "i",
-              },
+        if (selectedBrandValues.length > 0) {
+          orQuery.push({
+            "title.longTitle": { $regex: selectedBrandValues, $options: "i" },
+          });
+        }
+
+        if (selectedGenderValues.length > 0) {
+          orQuery.push({
+            subCategory: {
+              $regex: selectedGenderValues,
+              $options: "i",
             },
-            { subCategory: { $regex: selectedColourValues, $options: "i" } },
-            {
-              "title.longTitle": { $regex: selectedIconValues, $options: "i" },
-            },
-            {
-              "title.longTitle": { $regex: selectedSportValues, $options: "i" },
-            },
-          ],
+          });
+        }
+
+        if (selectedColourValues.length > 0) {
+          orQuery.push({
+            colour: { $regex: selectedColourValues, $options: "i" },
+          });
+        }
+
+        if (selectedIconValues.length > 0) {
+          orQuery.push({
+            "title.longTitle": { $regex: selectedIconValues, $options: "i" },
+          });
+        }
+
+        if (selectedSportValues.length > 0) {
+          orQuery.push({
+            "title.longTitle": { $regex: selectedSportValues, $options: "i" },
+          });
+        }
+        if (selectedSportValues.length > 0) {
+          orQuery.push({
+            "title.shortTitle": { $regex: selectedSportValues, $options: "i" },
+          });
+        }
+
+        query = {
+          $or: orQuery,
         };
       }
-        
+
       let result = await dispatch(getProduct(1, 12, query));
       if (result) {
         return true;
@@ -100,7 +121,7 @@ const ProductSider = () => {
   };
 
   useEffect(() => {
-    handleFatchProducts();
+    handleFetchProducts();
   }, [
     selectedBrandValues,
     selectedColourValues,

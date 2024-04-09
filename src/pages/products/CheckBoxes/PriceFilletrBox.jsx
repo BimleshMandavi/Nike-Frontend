@@ -11,7 +11,6 @@ function PriceFilletrBox() {
     A13000And100000: false,
   });
 
-
   const [query, setQuery] = useState([]);
 
   const handlePriceRangeChange = (event) => {
