@@ -69,14 +69,14 @@ const PreBag = () => {
         const result = await dispatch(updateCart(id, data));
         console.log("result", result);
         if (result.status === "SUCCESS") {
-          toast.success("Your Product is updated to Cart");
+          toast.success("Item Updated To Cart");
           navigate("/cart");
         }
       } else {
         const result = await dispatch(createCart(data));
         console.log("result", result);
         if (result.status === "SUCCESS") {
-          toast.success("Your Product is added to Cart");
+          toast.success("Item added to Cart");
           navigate("/cart");
         }
       }
