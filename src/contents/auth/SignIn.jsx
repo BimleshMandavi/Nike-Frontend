@@ -40,7 +40,7 @@ const SignUp = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "60vh",
+        height: "70vh",
       }}
       className="px-[50px] pt-6 flex-col mt-10"
     >

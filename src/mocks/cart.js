@@ -32,7 +32,7 @@ class CartApi {
           },
         }
       );
-      console.log("response in get cart", response);
+      
       if (response.data.status === "SUCCESS") {
         return response.data;
       }

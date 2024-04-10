@@ -12,8 +12,6 @@ class OrdersApi {
           },
         }
       );
-      console.log("data in mocks", data);
-      console.log("response in orders mocks", response);
       if (response.data.status == "SUCCESS") {
         return response.data;
       }
@@ -33,7 +31,6 @@ class OrdersApi {
           },
         }
       );
-      console.log("response in get orders", response);
       if (response.data.status === "SUCCESS") {
         return response.data;
       }
@@ -74,7 +71,6 @@ class OrdersApi {
           },
         }
       );
-      console.log("response in moks", response);
       if (response.data.status === "SUCCESS") {
         return response.data;
       }
@@ -93,7 +89,6 @@ class OrdersApi {
           },
         }
       );
-      console.log("response in delete cart", response);
       if (response.data.status === "SUCCESS") {
         return response.data;
       }
