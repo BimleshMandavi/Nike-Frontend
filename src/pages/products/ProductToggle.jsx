@@ -289,80 +289,82 @@ export default function TemporaryDrawer() {
                     />
                   </FormGroup>
                 </div>
-              </div>
-              <div>
-                <h3 className="text-2xl">Brand</h3>
                 <div>
-                  <FormGroup>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={selectedBrandValues === "Nike Sportswear"}
-                          onChange={() =>
-                            handleSelectedBrandValuesChange("Nike Sportswear")
-                          }
-                        />
-                      }
-                      label="Nike Sportswear"
-                    />
-                    <FormControlLabel
-                      control={<Checkbox />}
-                      checked={selectedBrandValues === "Jordan"}
-                      onChange={() => handleSelectedBrandValuesChange("Jordan")}
-                      label="Jordan"
-                    />
+                  <h3 className="text-2xl pt-4">Brand</h3>
+                  <div>
+                    <FormGroup>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={selectedBrandValues === "Nike Sportswear"}
+                            onChange={() =>
+                              handleSelectedBrandValuesChange("Nike Sportswear")
+                            }
+                          />
+                        }
+                        label="Nike Sportswear"
+                      />
+                      <FormControlLabel
+                        control={<Checkbox />}
+                        checked={selectedBrandValues === "Jordan"}
+                        onChange={() =>
+                          handleSelectedBrandValuesChange("Jordan")
+                        }
+                        label="Jordan"
+                      />
 
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={selectedBrandValues === "Nike By You"}
-                          onChange={() =>
-                            handleSelectedBrandValuesChange("Nike By You")
-                          }
-                        />
-                      }
-                      label="Nike By You"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={selectedBrandValues === "NikeLab"}
-                          onChange={() =>
-                            handleSelectedBrandValuesChange("NikeLab")
-                          }
-                        />
-                      }
-                      label="NikeLab"
-                    />
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={selectedBrandValues === "Nike By You"}
+                            onChange={() =>
+                              handleSelectedBrandValuesChange("Nike By You")
+                            }
+                          />
+                        }
+                        label="Nike By You"
+                      />
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={selectedBrandValues === "NikeLab"}
+                            onChange={() =>
+                              handleSelectedBrandValuesChange("NikeLab")
+                            }
+                          />
+                        }
+                        label="NikeLab"
+                      />
 
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={selectedBrandValues === "ACG"}
-                          onChange={() =>
-                            handleSelectedBrandValuesChange("ACG")
-                          }
-                        />
-                      }
-                      label="ACG"
-                    />
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={selectedBrandValues === "Nike Pro"}
-                          onChange={() =>
-                            handleSelectedBrandValuesChange("Nike Pro")
-                          }
-                        />
-                      }
-                      label="Nike Pro"
-                    />
-                  </FormGroup>
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={selectedBrandValues === "ACG"}
+                            onChange={() =>
+                              handleSelectedBrandValuesChange("ACG")
+                            }
+                          />
+                        }
+                        label="ACG"
+                      />
+                      <FormControlLabel
+                        control={
+                          <Checkbox
+                            checked={selectedBrandValues === "Nike Pro"}
+                            onChange={() =>
+                              handleSelectedBrandValuesChange("Nike Pro")
+                            }
+                          />
+                        }
+                        label="Nike Pro"
+                      />
+                    </FormGroup>
+                  </div>
                 </div>
               </div>
 
-              <div className=" w-full flex justify-around p-8 gap-3">
-                <div>
+              <div className=" w-full flex justify-around p-8 gap-3 ">
+                <div className=" w-full">
                   <button
                     style={{
                       width: "100%",
@@ -375,7 +377,7 @@ export default function TemporaryDrawer() {
                     Clear
                   </button>
                 </div>
-                <div>
+                <div className=" w-full">
                   <button
                     style={{
                       background: "black",
@@ -385,6 +387,7 @@ export default function TemporaryDrawer() {
                       borderRadius: "30px",
                       cursor: "pointer",
                     }}
+                    onClick={handleCloseToogle}
                   >
                     Apply
                   </button>
