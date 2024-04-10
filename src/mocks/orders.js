@@ -4,7 +4,7 @@ class OrdersApi {
   async createOrders(data) {
     try {
       const response = await axios.post(
-        `http://localhost:5003/userapp/order/create/`,
+        `process.env.REACT_APP_HOST/userapp/order/create/`,
         data,
         {
           headers: {
@@ -25,7 +25,7 @@ class OrdersApi {
   async getSingleOrder(id) {
     try {
       const response = await axios.get(
-        `http://localhost:5003/userapp/order/get/${id}`,
+        `process.env.REACT_APP_HOST/userapp/order/get/${id}`,
 
         {
           headers: {
@@ -66,7 +66,7 @@ class OrdersApi {
         isCountOnly: false,
       };
       const response = await axios.post(
-        `http://localhost:5003/userapp/order/list`,
+        `process.env.REACT_APP_HOST/userapp/order/list`,
         data,
         {
           headers: {
@@ -86,7 +86,7 @@ class OrdersApi {
   async cencelOrder(id) {
     try {
       const response = await axios.delete(
-        `http://localhost:5003/userapp/order/soft-delete/${id}`,
+        `process.env.REACT_APP_HOST/userapp/order/soft-delete/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -4,7 +4,7 @@ class CartApi {
   async createCart(data) {
     try {
       const response = await axios.post(
-        `http://localhost:5003/userapp/cart/create/`,
+        `process.env.REACT_APP_HOST/userapp/cart/create/`,
         data,
         {
           headers: {
@@ -24,7 +24,7 @@ class CartApi {
   async getCart(id) {
     try {
       const response = await axios.get(
-        `http://localhost:5003/userapp/cart/get/${id}`,
+        `process.env.REACT_APP_HOST/userapp/cart/get/${id}`,
 
         {
           headers: {
@@ -43,7 +43,7 @@ class CartApi {
   async deleteCart(id) {
     try {
       const response = await axios.delete(
-        `http://localhost:5003/userapp/cart/delete/${id}`,
+        `process.env.REACT_APP_HOST/userapp/cart/delete/${id}`,
 
         {
           headers: {
@@ -83,7 +83,7 @@ class CartApi {
         isCountOnly: false,
       };
       const response = await axios.post(
-        `http://localhost:5003/userapp/cart/list`,
+        `process.env.REACT_APP_HOST/userapp/cart/list`,
         data,
         {
           headers: {
@@ -120,7 +120,7 @@ class CartApi {
       //   isCountOnly: false,
       // };
       const response = await axios.put(
-        `http://localhost:5003/userapp/cart/update/${id}`,
+        `process.env.REACT_APP_HOST/userapp/cart/update/${id}`,
         data,
         {
           headers: {
