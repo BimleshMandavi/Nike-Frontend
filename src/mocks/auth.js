@@ -3,12 +3,16 @@ import axios from "axios";
 class AuthApi {
   async getUser() {
     try {
-      const response = await axios.get(`/userapp/user/me`, {
-        method: "get",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const response = await axios.get(
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/user/me`,
+        {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
 
       if (response.data.status === "SUCCESS") {
         return response.data;
@@ -20,7 +24,11 @@ class AuthApi {
 
   async register(data) {
     try {
-      const response = await axios.post(`/userapp/auth/register`, data);
+      const response = await axios.post(
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/auth/register`,
+        data
+      );
 
       if (response.data.status === "SUCCESS") {
         return response.data;
@@ -34,7 +42,12 @@ class AuthApi {
 
   async login(data) {
     try {
-      const response = await axios.post(`/userapp/auth/login`, data);
+      const response = await axios.post(
+        
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/auth/login`,
+        data
+      );
 
       if (response.data.status === "SUCCESS") {
         return response.data;
@@ -49,6 +62,7 @@ class AuthApi {
   async updateUser(id, data) {
     try {
       const response = await axios.put(
+     
         `/userapp/user/update/${id}`,
         data,
 

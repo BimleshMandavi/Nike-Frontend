@@ -3,11 +3,16 @@ import axios from "axios";
 class CartApi {
   async createCart(data) {
     try {
-      const response = await axios.post(`/userapp/cart/create/`, data, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const response = await axios.post(
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/cart/create/`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
       console.log("response", response);
       if (response.data.status === "SUCCESS") {
         return response.data;
@@ -20,7 +25,8 @@ class CartApi {
   async getCart(id) {
     try {
       const response = await axios.get(
-        `/userapp/cart/get/${id}`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/cart/get/${id}`,
 
         {
           headers: {
@@ -39,7 +45,8 @@ class CartApi {
   async deleteCart(id) {
     try {
       const response = await axios.delete(
-        `/userapp/cart/delete/${id}`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/cart/delete/${id}`,
 
         {
           headers: {
@@ -78,11 +85,16 @@ class CartApi {
         },
         isCountOnly: false,
       };
-      const response = await axios.post(`/userapp/cart/list`, data, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const response = await axios.post(
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/cart/list`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
       console.log("response", response);
       if (response.data.status === "SUCCESS") {
         return response.data;
@@ -111,12 +123,17 @@ class CartApi {
       //   },
       //   isCountOnly: false,
       // };
-      const response = await axios.put(`/userapp/cart/update/${id}`, data, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
-
+      const response = await axios.put(
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/cart/update/${id}`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
+      console.log("response in get cart", response);
       if (response.data.status === "SUCCESS") {
         return response.data;
       }

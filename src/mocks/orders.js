@@ -3,11 +3,16 @@ import axios from "axios";
 class OrdersApi {
   async createOrders(data) {
     try {
-      const response = await axios.post(`/userapp/order/create/`, data, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const response = await axios.post(
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/order/create/`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
       if (response.data.status == "SUCCESS") {
         return response.data;
       }
@@ -19,7 +24,8 @@ class OrdersApi {
   async getSingleOrder(id) {
     try {
       const response = await axios.get(
-        `/userapp/order/get/${id}`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/order/get/${id}`,
 
         {
           headers: {
@@ -58,11 +64,16 @@ class OrdersApi {
         },
         isCountOnly: false,
       };
-      const response = await axios.post(`/userapp/order/list`, data, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const response = await axios.post(
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/order/list`,
+        data,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
       if (response.data.status === "SUCCESS") {
         return response.data;
       }
@@ -73,11 +84,15 @@ class OrdersApi {
 
   async cencelOrder(id) {
     try {
-      const response = await axios.delete(`/userapp/order/soft-delete/${id}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
+      const response = await axios.delete(
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/order/soft-delete/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      );
       if (response.data.status === "SUCCESS") {
         return response.data;
       }
