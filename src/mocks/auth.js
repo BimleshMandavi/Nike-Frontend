@@ -4,7 +4,7 @@ class AuthApi {
   async getUser() {
     try {
       const response = await axios.get(
-        `http://localhost:5003/userapp/user/me`,
+        `process.env.REACT_APP_HOST/userapp/user/me`,
         {
           method: "get",
           headers: {
@@ -24,7 +24,7 @@ class AuthApi {
   async register(data) {
     try {
       const response = await axios.post(
-        `http://localhost:5003/userapp/auth/register`,
+        `process.env.REACT_APP_HOST/userapp/auth/register`,
         data
       );
 
@@ -41,7 +41,7 @@ class AuthApi {
   async login(data) {
     try {
       const response = await axios.post(
-        `http://localhost:5003/userapp/auth/login`,
+        `process.env.REACT_APP_HOST/userapp/auth/login`,
         data
       );
 
@@ -58,7 +58,7 @@ class AuthApi {
   async updateUser(id, data) {
     try {
       const response = await axios.put(
-        `http://localhost:5003/userapp/user/update/${id}`,
+        `process.env.REACT_APP_HOST/userapp/user/update/${id}`,
         data,
 
         {
