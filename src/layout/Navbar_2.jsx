@@ -109,7 +109,7 @@ const Navbar_2 = () => {
               <SearchBox />
             </div>
           </div>
-          <div className="action_bar mr-[-40px] ">
+          <div className="action_bar  ">
             <div className="flex items-center">
               <div className="flex md:hidden pr-5">
                 <SearchToggle />

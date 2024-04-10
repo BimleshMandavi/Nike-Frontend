@@ -139,6 +139,7 @@ const ProductSider = () => {
           overflowX: "hidden",
           width: "240px",
         }}
+        className="scroll-hide"
       >
         <Box sx={{ overflow: "auto" }}>
           <List>

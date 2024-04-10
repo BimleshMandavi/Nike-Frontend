@@ -72,8 +72,8 @@ function ProductItems() {
 
   return (
     <div
-      className="product-container max-h-[85vh] overflow-y-hidden sm:overflow-y-scroll pl-0 lg:pl-[34px] "
-      style={{ overflowY: "scroll" }}
+      className="product-container max-h-[85vh] overflow-y-auto sm:overflow-y-scroll  pl-0 lg:pl-[34px] "
+      // style={{ overflowY: "scroll" }}
     >
       <div className="secondery-div flex justify-center  ">
         <Box sx={{ display: "flex" }}>
