@@ -25,7 +25,7 @@ class ProductApi {
     };
     try {
       const response = await axios.post(
-        `http://localhost:5003/userapp/product/list`,
+        `process.env.REACT_APP_HOST/userapp/product/list`,
         obj
       );
 
@@ -40,7 +40,7 @@ class ProductApi {
   async getSingleProduct(id) {
     try {
       const response = await axios.get(
-        `http://localhost:5003/userapp/product/get/${id}`,
+        `process.env.REACT_APP_HOST/userapp/product/get/${id}`,
         {
           method: "get",
           headers: {
