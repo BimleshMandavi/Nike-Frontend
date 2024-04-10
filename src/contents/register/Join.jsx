@@ -44,8 +44,8 @@ const Join = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "90vh",
-        margin: "40px 0",
+        height: "100vh",
+        margin: "50px 10px",
       }}
       className="px-[30px] flex-col"
     >
@@ -168,8 +168,9 @@ const Join = () => {
           width: "20rem",
           cursor: "pointer",
           boxShadow: "2px black",
+          
         }}
-        className="bg-black text-white w-[30em] h-[110px]"
+        className="bg-black text-white w-[30em] h-[110px] "
         onClick={() => loginWithGoogle()}
       >
         Continue with Google
