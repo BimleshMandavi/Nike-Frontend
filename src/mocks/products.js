@@ -25,7 +25,8 @@ class ProductApi {
     };
     try {
       const response = await axios.post(
-        `process.env.REACT_APP_HOST/userapp/product/list`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/product/list`,
         obj
       );
 
@@ -40,7 +41,8 @@ class ProductApi {
   async getSingleProduct(id) {
     try {
       const response = await axios.get(
-        `process.env.REACT_APP_HOST/userapp/product/get/${id}`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/product/get/${id}`,
         {
           method: "get",
           headers: {

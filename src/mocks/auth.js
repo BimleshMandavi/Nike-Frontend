@@ -4,7 +4,8 @@ class AuthApi {
   async getUser() {
     try {
       const response = await axios.get(
-        `process.env.REACT_APP_HOST/userapp/user/me`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/user/me`,
         {
           method: "get",
           headers: {
@@ -24,7 +25,8 @@ class AuthApi {
   async register(data) {
     try {
       const response = await axios.post(
-        `process.env.REACT_APP_HOST/userapp/auth/register`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/auth/register`,
         data
       );
 
@@ -41,7 +43,8 @@ class AuthApi {
   async login(data) {
     try {
       const response = await axios.post(
-        `process.env.REACT_APP_HOST/userapp/auth/login`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/auth/login`,
         data
       );
 
@@ -58,7 +61,8 @@ class AuthApi {
   async updateUser(id, data) {
     try {
       const response = await axios.put(
-        `process.env.REACT_APP_HOST/userapp/user/update/${id}`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/user/update/${id}`,
         data,
 
         {

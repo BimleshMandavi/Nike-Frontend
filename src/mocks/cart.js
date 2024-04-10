@@ -4,7 +4,8 @@ class CartApi {
   async createCart(data) {
     try {
       const response = await axios.post(
-        `process.env.REACT_APP_HOST/userapp/cart/create/`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/cart/create/`,
         data,
         {
           headers: {
@@ -24,7 +25,8 @@ class CartApi {
   async getCart(id) {
     try {
       const response = await axios.get(
-        `process.env.REACT_APP_HOST/userapp/cart/get/${id}`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/cart/get/${id}`,
 
         {
           headers: {
@@ -32,7 +34,7 @@ class CartApi {
           },
         }
       );
-      
+
       if (response.data.status === "SUCCESS") {
         return response.data;
       }
@@ -43,7 +45,8 @@ class CartApi {
   async deleteCart(id) {
     try {
       const response = await axios.delete(
-        `process.env.REACT_APP_HOST/userapp/cart/delete/${id}`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/cart/delete/${id}`,
 
         {
           headers: {
@@ -51,7 +54,7 @@ class CartApi {
           },
         }
       );
-      console.log("response in delete cart", response);
+
       if (response.data.status === "SUCCESS") {
         return response.data;
       }
@@ -83,7 +86,8 @@ class CartApi {
         isCountOnly: false,
       };
       const response = await axios.post(
-        `process.env.REACT_APP_HOST/userapp/cart/list`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/cart/list`,
         data,
         {
           headers: {
@@ -120,7 +124,8 @@ class CartApi {
       //   isCountOnly: false,
       // };
       const response = await axios.put(
-        `process.env.REACT_APP_HOST/userapp/cart/update/${id}`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/cart/update/${id}`,
         data,
         {
           headers: {
@@ -128,7 +133,7 @@ class CartApi {
           },
         }
       );
-      console.log("response in get cart", response);
+
       if (response.data.status === "SUCCESS") {
         return response.data;
       }
