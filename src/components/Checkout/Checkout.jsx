@@ -37,7 +37,7 @@ const Checkout = () => {
     initialValues: {
       firstName: user?.firstName,
       lastName: user?.lastName,
-      locality: user?.address?.locality,
+      locality: "India",
       state: user?.address?.state,
       city: user?.address?.city,
       zipcode: user?.address?.zipcode,
@@ -612,7 +612,7 @@ const Checkout = () => {
             </h3>
             {cart.map((data) => (
               <div
-                key={data.index}
+                key={data.id}
                 className="shipment gap-8 pt-8"
                 style={{
                   display: "flex",

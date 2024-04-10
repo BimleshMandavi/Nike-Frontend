@@ -59,10 +59,15 @@ const OrderView = () => {
   };
 
   const handleOrderCencel = async () => {
-    let result = await dispatch(cencelOrder(id));
-    if (result) {
-      console.log(result, "order cancelled");
-      return true;
+    // I want to cancel the order at is correct?
+    try {
+      let result = await dispatch(cencelOrder(id));
+      if (result) {
+        console.log(result, "order cancelled");
+        return true;
+      }
+    } catch (error) {
+      console.log("error", error);
     }
   };
 
@@ -129,7 +134,7 @@ const OrderView = () => {
                         className="text-red-600 border-black"
                         onClick={handleOrderCencel}
                       >
-                        Cencel
+                        Cancel
                       </button>
                     </div>
                   </div>

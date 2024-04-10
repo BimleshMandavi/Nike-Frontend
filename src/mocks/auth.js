@@ -43,7 +43,6 @@ class AuthApi {
   async login(data) {
     try {
       const response = await axios.post(
-        
         // eslint-disable-next-line no-undef
         `${process.env.REACT_APP_HOST}/userapp/auth/login`,
         data
@@ -62,8 +61,8 @@ class AuthApi {
   async updateUser(id, data) {
     try {
       const response = await axios.put(
-     
-        `/userapp/user/update/${id}`,
+        // eslint-disable-next-line no-undef
+        `${process.env.REACT_APP_HOST}/userapp/user/update/${id}`,
         data,
 
         {
