@@ -58,14 +58,14 @@ const PreBag = () => {
           },
         ],
       };
-     
+
       let upDateCart =
         cart &&
         cart.length > 0 &&
         cart.find((crt) => crt?.products[0]?.productId?.id === productId);
       console.log("upDateCart", upDateCart);
       if (upDateCart) {
-         const id = cart[0].id;
+        const id = cart[0].id;
         const result = await dispatch(updateCart(id, data));
         console.log("result", result);
         if (result.status === "SUCCESS") {
@@ -117,29 +117,29 @@ const PreBag = () => {
             </div>
           </div>
         </div>
-        <div className=" lg:flex md:w-full lg:justify-around lg:px-10">
-          <div className="product-img p-4 w-full lg:w-[30%] max-h-[60vh] ">
+        <div className=" lg:flex md:w-full lg:justify-around lg:px-12 lg:pt-7">
+          <div className="product-img p-4 w-full lg:w-[30%] lg:h-[60%] ">
             <img
-              className="w-[100%] h-[300px] md:size-full lg:pl-[10%] lg:size-full"
+              className="w-[100%] h-[60%] md:size-full lg:pl-[10%] lg:size-full"
               src={product?.image}
             />
           </div>
           <div className="product-left-part w-full md:mt-[30%] lg:mt-0 lg:w-[30%] ">
             <div className="product-info">
-              <div className="hidden lg:block">
+              <div className="hidden lg:block ">
                 <h1 className="text-3xl">{product?.title?.shortTitle}</h1>
-                <h3>{product?.title?.longTitle}</h3>
-                <div className="product-price">
+                <h3 className="lg:mt-4">{product?.title?.longTitle}</h3>
+                <div className="product-price lg:mt-3">
                   MRP : ₹{product?.price?.mrp}.00
                 </div>
-                <span className="text-gray-400">
+                <span className="text-gray-400 lg:mt-2">
                   incl. of taxes (Also includes all applicable duties)
                 </span>
                 <div className="product-color">
-                  <p className="text-xl">color : {product?.subCategory}</p>
+                  <p className="text-xl">color : {product?.colour}</p>
                 </div>
               </div>
-              <div className="product-size">
+              {/* <div className="product-size">
                 <p className="text-xl pl-5 pt-3">Select Size</p>
                 <div className="size-grid">
                   <div
@@ -169,8 +169,8 @@ const PreBag = () => {
                     <button style={{ cursor: "pointer" }}>UK 12</button>
                   </div>
                 </div>
-              </div>
-              <div className="product-btns w-[90%]  pl-[10%]">
+              </div> */}
+              <div className="product-btns w-[90%]  px-[10%]">
                 <div className="add-product pt-10">
                   <button
                     style={{

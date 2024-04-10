@@ -29,7 +29,7 @@ const Join = () => {
         toast.success("Registration Successful!");
         action.resetForm();
       } else {
-        toast.error("Wrong username or password");
+        toast.error("Registration Failed!");
       }
     },
   });

@@ -101,7 +101,7 @@ function ProductItems() {
                       product?.length > 0 &&
                       product.map((item, index) => (
                         <div key={index}>
-                          <Link to={`/pre-cart/${item.id}`}>
+                          <Link to={`/pre-cart/${item.id}`} className="no-underline">
                             <div className="product-img w-full h-[70%] pt-5  lg:h-[60%] text-center ">
                               <img
                                 src={item?.image}
