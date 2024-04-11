@@ -110,7 +110,7 @@ const ProductSider = () => {
           $or: orQuery,
         };
       }
-      
+
       let result = await dispatch(getProduct(1, 12, query));
       if (result) {
         return true;
@@ -139,7 +139,6 @@ const ProductSider = () => {
           overflowX: "hidden",
           width: "240px",
         }}
-        className="scroll-hide"
       >
         <Box sx={{ overflow: "auto" }}>
           <List>

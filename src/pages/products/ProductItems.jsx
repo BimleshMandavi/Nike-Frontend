@@ -73,7 +73,7 @@ function ProductItems() {
   return (
     <div
       className="product-container max-h-[85vh] overflow-y-auto sm:overflow-y-scroll  pl-0 lg:pl-[34px] "
-      // style={{ overflowY: "scroll" }}
+      style={{ scrollbarWidth: "none" }}
     >
       <div className="secondery-div flex justify-center  ">
         <Box sx={{ display: "flex" }}>
@@ -91,7 +91,7 @@ function ProductItems() {
                 <div className="flex w-full h-[50vh] justify-center items-center">
                   <div className="flex gap-10">
                     <CircularProgress className="size-10" />
-                    <p>Loading...</p>
+                    {/* <p>Loading...</p> */}
                   </div>
                 </div>
               ) : (
@@ -101,7 +101,10 @@ function ProductItems() {
                       product?.length > 0 &&
                       product.map((item, index) => (
                         <div key={index}>
-                          <Link to={`/pre-cart/${item.id}`} className="no-underline">
+                          <Link
+                            to={`/pre-cart/${item.id}`}
+                            className="no-underline"
+                          >
                             <div className="product-img w-full h-[70%] pt-5  lg:h-[60%] text-center ">
                               <img
                                 src={item?.image}

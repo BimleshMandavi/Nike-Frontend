@@ -8,7 +8,7 @@ const Products = () => {
   return (
     <div
       className="product-main-container h-[85vh] overflow-x-hidden"
-      style={{ marginTop: "1rem", position: "fix" }}
+      style={{ marginTop: "1rem", position: "fix", scrollbarWidth: "none" }}
     >
       <ProductHeader />
       <div
