@@ -46,7 +46,7 @@ const Favourites = () => {
           </button>
         </div>
       </div>
-      <div className="fav-body" style={{ padding: "0px 32px", width: "550px" }}>
+      <div className="fav-body px-8" style={{ width: "550px" }}>
         <div
           className="fav-item-img"
           style={{ height: "500px", width: "500px" }}
