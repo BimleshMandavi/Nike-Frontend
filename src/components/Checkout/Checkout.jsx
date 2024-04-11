@@ -374,6 +374,7 @@ const Checkout = () => {
                       onBlur={formik.handleBlur}
                       value={formik.values.firstName}
                       helperText="Please enter your first name"
+                      required={true}
                     />
                   </Box>
                   <Box
@@ -392,6 +393,7 @@ const Checkout = () => {
                       value={formik.values.lastName}
                       id="fullWidth"
                       helperText="Please enter your last name"
+                      required={true}
                     />
                   </Box>
 
@@ -425,6 +427,7 @@ const Checkout = () => {
                         value={formik.values.city}
                         multiline
                         helperText="Please enter your locality"
+                        required={true}
                       />
                     </div>
                   </Box>
@@ -445,6 +448,7 @@ const Checkout = () => {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik?.values?.state}
+                        required={true}
                         SelectProps={{
                           native: true,
                         }}
@@ -500,6 +504,7 @@ const Checkout = () => {
                       label="Email"
                       name="email"
                       value={user?.email}
+                      required={true}
                       // disabled={user?.email ? true : false}
                       id="email"
                       helperText="Please enter your email"
@@ -516,6 +521,7 @@ const Checkout = () => {
                       fullWidth
                       label="Phone Number"
                       name="phone"
+                      required={true}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.phone}
@@ -527,7 +533,6 @@ const Checkout = () => {
               </div>
               <div className="user-pan-info" style={{ marginTop: "20px" }}>
                 <h2>What`s your PAN?</h2>
-
                 <Box
                   sx={{
                     width: 500,

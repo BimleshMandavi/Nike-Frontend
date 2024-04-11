@@ -77,6 +77,7 @@ const SignUp = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.username}
+              required={true}
             />
             <TextField
               style={{ marginTop: "40px" }}
@@ -88,6 +89,7 @@ const SignUp = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.password}
+              required={true}
             />
           </div>
 

@@ -48,6 +48,11 @@ const PreBag = () => {
     navigate("/favourites");
   };
   const handleAddToBag = async (productId) => {
+    if (!user) {
+      alert("Your Unaouthrized");
+      navigate("/sign-in");
+      return;
+    }
     try {
       let data = {
         userId: user?.id,

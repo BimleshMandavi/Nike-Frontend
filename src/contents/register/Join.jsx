@@ -83,6 +83,7 @@ const Join = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.firstName}
+              required={true}
             />
             <TextField
               style={{ marginTop: "40px" }}
@@ -93,6 +94,7 @@ const Join = () => {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               value={formik.values.lastName}
+              required={true}
             />
 
             <TextField
@@ -168,7 +170,6 @@ const Join = () => {
           width: "20rem",
           cursor: "pointer",
           boxShadow: "2px black",
-          
         }}
         className="bg-black text-white w-[30em] h-[110px] "
         onClick={() => loginWithGoogle()}
