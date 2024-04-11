@@ -118,7 +118,7 @@ const PreBag = () => {
                 marginTop: "50px",
               }}
             >
-              <div className="product-right-part pl-8 pb-5 block lg:hidden">
+              <div className="product-right-part px-3 pb-5 block lg:hidden">
                 <div>
                   <h1 className="text-3xl">{product?.title?.shortTitle}</h1>
                   <h3>{product?.title?.longTitle}</h3>
