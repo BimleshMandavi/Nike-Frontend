@@ -30,7 +30,6 @@ const ProductSider = () => {
   const [selectedBrandValues, setSelectedBrandValues] = useState("");
   const [selectedIconValues, setSelectedIconValues] = useState("");
   const [selectedKidsValues, setSelectedKidsValues] = useState("");
-  const [query, setQuery] = useState([]);
 
   const handleSelectedSportValuesChange = (values) => {
     setSelectedSportValues(values);

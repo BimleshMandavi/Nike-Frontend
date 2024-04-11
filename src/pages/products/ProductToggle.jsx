@@ -83,7 +83,7 @@ export default function TemporaryDrawer() {
                 $options: "i",
               },
             },
-            { subCategory: { $regex: selectedColourValues, $options: "i" } },
+            { colour: { $regex: selectedColourValues, $options: "i" } },
           ],
         };
       }
