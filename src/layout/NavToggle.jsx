@@ -108,7 +108,7 @@ export default function TemporaryDrawer() {
   };
 
   return (
-    <div className="w-[30%] p-0 m-0">
+    <div className="w-[30%] p-0 m-0 over">
       {["right"].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
@@ -120,7 +120,7 @@ export default function TemporaryDrawer() {
             onClose={toggleDrawer(anchor, false)}
           >
             {list(anchor)}
-            <div className="navToggle-container p-4">
+            <div className="navToggle-container p-4 overflow-x-hidden">
               <Button
                 className="flex-1 relative left-[245px]"
                 onClick={handleCloseToogle}
