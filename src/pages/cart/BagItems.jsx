@@ -1,14 +1,11 @@
 import Bag from "./Bag";
 import Summary from "./Summary";
-import "./Bag-Item.css";
+
 import HomeSlider from "../home/HomeSlider";
 
 const BagItems = () => {
   return (
-    <div
-      className="bagItem-container 
-max-w-full"
-    >
+    <div className="bagItem-container max-w-full px-8">
       <div className="block  lg:flex lg:px-10 lg:justify-around">
         <div className="bag-cont">
           <Bag />

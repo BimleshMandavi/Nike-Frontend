@@ -103,7 +103,7 @@ const Bag = () => {
   }, [refresh, load]);
 
   return (
-    <div className="bag-container pr-[35px]">
+    <div className="bag-container ">
       <div className="bag-heading flex justify-center sm:justify-start">
         <p>Bag</p>
       </div>
@@ -120,10 +120,10 @@ const Bag = () => {
             <span>{cart.length} Items</span> |{" "}
             <span> ₹ {total.toFixed(2)}</span>
           </div>
-          <div className="pt-8  pb-10">
+          <div className="pt-8  pb-10 ">
             {cart && cart?.length > 0 ? (
               cart.map((data) => (
-                <div className="bag-items pt-8 border-b-2 " key={data.id}>
+                <div className="bag-items pt-8 border-b-2  " key={data.id}>
                   <div className="right-part">
                     <div className="item-imgs h-[80px] w-[80px]">
                       <img
@@ -138,7 +138,7 @@ const Bag = () => {
                           {data?.products[0]?.productId?.price?.mrp.toFixed(2)}
                         </span>
                       </div>
-                      <div>
+                      <div className="">
                         <div className="item-title">
                           <div className="flex">
                             {data?.products[0]?.productId?.title?.longTitle}
@@ -150,7 +150,7 @@ const Bag = () => {
                         <div className="item-color">
                           Colour: {data?.products[0]?.productId?.colour}
                         </div>
-                        <div className="flex justify-between pt-4">
+                        <div className="flex  pt-4">
                           <div className="item-size">
                             <FormControl
                               sx={{ m: 1, minWidth: 120 }}
