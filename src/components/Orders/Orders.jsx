@@ -94,7 +94,7 @@ const Orders = () => {
                                       colour :
                                       {item1 &&
                                         item1?.productId &&
-                                        item1?.productId?.subCategory}
+                                        item1?.productId?.colour}
                                     </p>
                                     <p className="text-lg">
                                       price : ₹

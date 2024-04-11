@@ -129,7 +129,7 @@ const PreBag = () => {
                     incl. of taxes (Also includes all applicable duties)
                   </span>
                   <div className="product-color">
-                    <p className="text-xl">color : {product?.subCategory}</p>
+                    <p className="text-xl">color : {product?.colour}</p>
                   </div>
                 </div>
               </div>

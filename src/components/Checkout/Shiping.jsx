@@ -318,10 +318,8 @@ const Shipping = () => {
                     {data?.products[0]?.productId?.title?.shortTitle}
                   </div>
                   <div className="item-color">
-                    {data?.products[0]?.productId?.subCategory}
+                    {data?.products[0]?.productId?.colour}
                   </div>
-
-                  <div className="item-size">Size</div>
 
                   <div className="item-quant">
                     {" "}

@@ -632,7 +632,7 @@ const Checkout = () => {
                   </div>
                   <div className="item-color">
                     {" "}
-                    Colour: {data?.products[0]?.productId?.subCategory}
+                    Colour: {data?.products[0]?.productId?.colour}
                   </div>
 
                   <div className="item-size">Size</div>

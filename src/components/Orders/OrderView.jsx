@@ -116,7 +116,7 @@ const OrderView = () => {
                     {singleProduct?.singleProduct?.title?.shortTitle}
                   </p>
                   <p className="text-sm">
-                    colour : {singleProduct?.singleProduct?.subCategory}
+                    colour : {singleProduct?.singleProduct?.colour}
                   </p>
                   <p className="text-lg">
                     price : ₹{" "}

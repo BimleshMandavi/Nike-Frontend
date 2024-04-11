@@ -148,7 +148,7 @@ const Bag = () => {
                           {data?.products[0]?.productId?.title?.shortTitle}
                         </div>
                         <div className="item-color">
-                          Colour: {data?.products[0]?.productId?.subCategory}
+                          Colour: {data?.products[0]?.productId?.colour}
                         </div>
                         <div className="flex justify-between pt-4">
                           <div className="item-size">
