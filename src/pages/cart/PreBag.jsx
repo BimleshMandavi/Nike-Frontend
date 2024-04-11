@@ -86,7 +86,7 @@ const PreBag = () => {
   };
   const fetchSingleProduct = async () => {
     setLoading(true);
-    // let result = await dispatch(getSingleProduct(id));
+    let result = await dispatch(getSingleProduct(id));
     if (result) {
       setLoading(false);
       setProduct(result?.data);
