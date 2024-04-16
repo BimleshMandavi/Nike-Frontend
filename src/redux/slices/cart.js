@@ -10,8 +10,6 @@ const slice = createSlice({
   initialState,
   reducers: {
     listCart(state, action) {
-      console.log("action");
-      console.log(action.payload);
       if (action.payload) {
         state.cart = [...action.payload.data];
         state.cartsItemcount = { ...action.payload.paginator };
