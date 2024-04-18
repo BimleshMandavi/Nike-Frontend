@@ -28,7 +28,7 @@
     "framer-motion": "^10.18.0",
     "glider-js": "^1.7.8",
     "jest-config": "^29.7.0",
-    "prop": "^0.1.1",
+    "prop": "^0.1.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
